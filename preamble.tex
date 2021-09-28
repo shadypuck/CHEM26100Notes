@@ -1,11 +1,20 @@
 \usepackage[margin=1in]{geometry}
+\usepackage{csquotes}
 \usepackage{fancyhdr}
+\usepackage{marginnote}
+\usepackage{enumitem}
+\usepackage{tikz}
 \usepackage{amsmath,amssymb}
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage[hidelinks]{hyperref}
+
+\MakeOuterQuote{"}
 
 \fancypagestyle{main}{
     \fancyhf{}
     \fancyhead[L]{\leftmark}
-    \fancyhead[R]{MATH 20700}
+    \fancyhead[R]{CHEM 26100}
     \fancyfoot[R]{Labalme\ \thepage}
 }
 \fancypagestyle{plain}{
@@ -13,4 +22,17 @@
     \renewcommand{\headrulewidth}{0pt}
 }
 
+\reversemarginpar
+
+\setlist[itemize,3]{label={\scriptsize$\blacksquare$}}
+
+\usetikzlibrary{fpu}
+\colorlet{blx}{blue!90!green!80}
+\colorlet{grx}{green!50!black!90!yellow!80}
+\colorlet{orx}{orange!80!black!90!yellow!80}
+\colorlet{rex}{red!80!black!90!orange!80}
+
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\e}[1][]{\text{e}^{#1}}
+
+\usepackage{subfiles}

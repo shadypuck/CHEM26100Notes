@@ -1,0 +1,151 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+
+\begin{document}
+
+
+
+
+\chapter{From Classical to Quantum Mechanics}
+\section{Blackbody Radiation}
+\begin{itemize}
+    \item \marginnote{9/27:}The surface of a hot body emits energy in the form of EM radiation.
+    \item Changes that occur with temperature:
+    \begin{itemize}
+        \item If less than $\SI{500}{\celsius}$, we have IR Radiation (heat).
+        \item If $\SIrange{500}{600}{\celsius}$, we have visible radiation (a glowing body).
+        \item If $\SI{5000}{\celsius}$, we have a "white hot" body (short wavelength).
+    \end{itemize}
+    \item As a body gets hotter, it emits shorter wavelength radiation.
+    \item \textbf{Stefan-Boltzmann law}: The the total emissive power $R$ (recall that power is en / time) of a blackbody (BB) is given by
+    \begin{equation*}
+        R(T) = \sigma T^4
+    \end{equation*}
+    where $\sigma\approx\SI{5.67e-8}{\watt\per\square\meter\per\kelvin\tothe{4}}$ is \textbf{Stefan's constant}.
+    \begin{itemize}
+        \item Work done by Stefan and Boltzmann (c. 1870 / 1884, respectively).
+    \end{itemize}
+    \item \textbf{Wien's 1st Law}: The wavelength for maximum emissive power obeys the equation
+    \begin{equation*}
+        \lambda_\text{max}T = b
+    \end{equation*}
+    where $b=\SI{2.808e-3}{\meter\kelvin}$ is \textbf{Wein's displacement constant}.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \draw [<->] (0,4.5) -- node[left]{$R(\lambda,T)$} (0,0) -- node[below=2mm]{$\lambda\ (\si{\micro\meter})$} (7.5,0);
+            \foreach \x in {1,...,7} {
+                \draw (\x,0.1) -- ++(0,-0.2);
+            }
+            \foreach \y in {1,...,4} {
+                \draw (0.1,\y) -- ++(-0.2,0);
+            }
+            
+            \begin{scope}[xscale=1.8]
+                \draw [blx,thick,samples=100,smooth,/pgf/fpu,/pgf/fpu/output format=fixed] plot[domain=0.1:4] (\x,{5*10^2/(\x^5*(e^(9900/(2000*\x))-1))});
+                \draw [grx,thick,samples=100,smooth,/pgf/fpu,/pgf/fpu/output format=fixed] plot[domain=0.1:4] (\x,{5*10^2/(\x^5*(e^(9900/(1750*\x))-1))});
+                \draw [orx,thick,samples=100,smooth,/pgf/fpu,/pgf/fpu/output format=fixed] plot[domain=0.1:4] (\x,{5*10^2/(\x^5*(e^(9900/(1500*\x))-1))});
+                \draw [rex,thick,samples=100,smooth,/pgf/fpu,/pgf/fpu/output format=fixed] plot[domain=0.1:4] (\x,{5*10^2/(\x^5*(e^(9900/(1000*\x))-1))});
+        
+                \draw [semithick] (0.997,3.667) node[above right]{$\lambda_\text{max}$} -- ++(0,-0.2);
+                \draw [semithick] (1.139,1.93) -- ++(0,-0.2);
+                \draw [semithick] (1.329,0.946) -- ++(0,-0.2);
+                \draw [semithick] (1.994,0.211) -- ++(0,-0.2);
+            \end{scope}
+    
+            \begin{scope}[xshift=6cm,yshift=3cm]
+                \node at (0,1.2) {${\color{blx}\blacksquare}=\SI{2000}{\kelvin}$};
+                \node at (0,0.8) {${\color{grx}\blacksquare}=\SI{1750}{\kelvin}$};
+                \node at (0,0.4) {${\color{orx}\blacksquare}=\SI{1500}{\kelvin}$};
+                \node at (0,0) {${\color{rex}\blacksquare}=\SI{1000}{\kelvin}$};
+            \end{scope}
+        \end{tikzpicture}
+        \caption{Wein's 1st Law.}
+        \label{fig:WeinLaw1}
+    \end{figure}
+    \item Area under the curve (found with integration) is the total emissive power.
+    \item We now change variables from emissive power $R$ to energy density $\rho$ in the BB cavity.
+    \begin{equation*}
+        \rho(\lambda,T) = \frac{4}{c}R(\lambda,T)
+    \end{equation*}
+    \item Wien's 2nd Law (1893): The energy density must have a functional relationship with the following form.
+    \begin{equation*}
+        \rho(\lambda,T) = \frac{f(\lambda T)}{\lambda^5}
+    \end{equation*}
+    \begin{itemize}
+        \item $f(\lambda T)$ cannot be determined from thermodynamics. Thus, something else is needed!
+    \end{itemize}
+    \item Lord Rayleigh and his graduate student Jeans (1899) propose a solution.
+    \begin{itemize}
+        \item EM: The thermal radiation within a cavity must exist in the form of standing waves.
+        \item RJ showed that the number $n$ of standing waves per unit volume, per wavelength has the following form.
+        \begin{equation*}
+            n(\lambda) = \frac{8\pi}{\lambda^4}
+        \end{equation*}
+        \item If $\bar{\epsilon}$ is the average energy in the mode with wavelength $\lambda$, then
+        \begin{equation*}
+            \rho(\lambda,T) = \frac{8\pi}{\lambda^4}\bar{\epsilon}
+        \end{equation*}
+        \item Waves come from atoms in the walls of the BB cavity, which act as linear harmonic oscillators at a frequency $\nu=c/\lambda$.
+        \item Assuming thermal equilibrium, we obtain
+        \begin{align*}
+            \bar{\epsilon} &= \frac{\int_0^\infty\epsilon\e[-\epsilon/kT]}{\int_0^\infty\e[-\epsilon/kT]}\\
+            &= -\pdv{\beta}\ln\left( \int_0^\infty\e[-\beta\epsilon]\dd{\epsilon} \right)\\
+            &= \frac{1}{\beta}\\
+            &= kT
+        \end{align*}
+        where $k$ is the Boltzmann constant.
+        \begin{itemize}
+            \item Basically, we sum all energies $\epsilon$, weighted by the probability $\e[-\epsilon/kT]$ of the energy existing, and divided by the total energy.
+            \item The first equation is equivalent to the second with $\beta=1/kT$.
+        \end{itemize}
+        \item Therefore,
+        \begin{equation*}
+            \rho(\lambda,T) = \frac{8\pi kT}{\lambda^4}
+        \end{equation*}
+    \end{itemize}
+    \item UV catastrophe: Rayleigh's formula diverges from the experimental data for short wavelength.
+    \begin{itemize}
+        \item The above formula diverges to $+\infty$, driven by the $\lambda^4$ term in the denominator, as $\lambda\to 0$. However, the amount of radiation of shorter wavelengths should decrease past a point, as seen in Figure \ref{fig:WeinLaw1}.
+    \end{itemize}
+    \item Max Planck comes in, proposes an idea to the German acacdemy that's so radical, they think he's insane, but he's actually right and it lays a key idea for quantum mechanics.
+    \item Planck's key insight: The energy levels of the oscillators are not continuous, but are quantized.
+    \begin{itemize}
+        \item So we can't actually take an integral as Rayleigh did; we have to take an infinite series.
+        \item In reality,
+        \begin{align*}
+            \bar{\epsilon} &= \frac{\sum_{n=0}^\infty n\epsilon_0\e[-\beta n\epsilon_0]}{\sum_{n=0}^\infty\e[-\beta n\epsilon_0]}\\
+            &= \frac{\epsilon_0}{\e[\beta\epsilon_0]-1}
+        \end{align*}
+        \item Thus,
+        \begin{equation*}
+            \rho(\lambda,T) = \frac{8\pi\epsilon_0}{\lambda^4(\e[\epsilon/kT]-1)}
+        \end{equation*}
+        \item But to satisfy Wien's 2nd law, we must let $\epsilon_0\propto 1/\lambda$. More specifically, $\epsilon_0=hc/\lambda=h\nu$, where $h$ is Planck's constant.
+        \begin{itemize}
+            \item This setup allowed us to get an accurate value for Planck's constant for the first time in history.
+        \end{itemize}
+        \item Planck's theory predicts the data of Figure 1.
+    \end{itemize}
+    \item A perfect blackbody absorbs and emits radiation at all frequencies.
+    \begin{itemize}
+        \item A star is pretty close to a blackbody. The graphite in a pencil is 97\% a blackbody. We are all blackbodies.
+        \item The entire universe can be viewed as a blackbody.
+    \end{itemize}
+    \item Princeton and Bell Labs telescopes find \textbf{Cosmic Background Radiation} (A. A. Penzias and R. W. Wilson, 1964).
+    \begin{itemize}
+        \item Background radiation from the universe itself.
+        \item $\lambda_\text{max}=\SI{7.35}{\centi\meter}$.
+        \item Isotropic radio signal, that comes form everywhere.
+        \item From this, you can workout the temperature of the universe from Wein's first law.
+        \item Thus, the whole universe is a blackbody with a temperature of approximately $\SI{3}{\kelvin}$.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
