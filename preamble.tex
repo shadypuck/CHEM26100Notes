@@ -2,6 +2,7 @@
 \usepackage{csquotes}
 \usepackage{fancyhdr}
 \usepackage{marginnote}
+\usepackage[style=apa]{biblatex}
 \usepackage{enumitem}
 \usepackage{tikz}
 \usepackage{amsmath,amssymb}
@@ -23,6 +24,9 @@
 }
 
 \reversemarginpar
+
+\addbibresource{../main.bib}
+\DefineBibliographyStrings{english}{bibliography={References}}
 
 \setlist[itemize,3]{label={\scriptsize$\blacksquare$}}
 

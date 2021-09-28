@@ -31,7 +31,7 @@
     \begin{equation*}
         \lambda_\text{max}T = b
     \end{equation*}
-    where $b=\SI{2.808e-3}{\meter\kelvin}$ is \textbf{Wein's displacement constant}.
+    where $b=\SI{2.898e-3}{\meter\kelvin}$ is \textbf{Wein's displacement constant}. \emph{Also known as} \textbf{Wien's displacement law}.
     \begin{figure}[h!]
         \centering
         \begin{tikzpicture}
@@ -142,6 +142,51 @@
         \item Isotropic radio signal, that comes form everywhere.
         \item From this, you can workout the temperature of the universe from Wein's first law.
         \item Thus, the whole universe is a blackbody with a temperature of approximately $\SI{3}{\kelvin}$.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Chapter 1: The Dawn of the Quantum Theory}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{9/28:}\textbf{Blackbody}: A body which absorbs and emits all frequencies. \emph{Also known as} \textbf{ideal body}.
+    \item "Many theoretical physicists tried to derive expressions consistent with these experimental curves of intensity versus frequency [see Figure \ref{fig:WeinLaw1}], but they were all unsuccessful. In fact, the expression that is derived according to the laws of nineteenth century physics is" as follows \parencite[3]{bib:McQuarrieSimon}.
+    \item \textbf{Rayleigh-Jeans law}: The equation
+    \begin{equation*}
+        \dd{\rho(\nu,T)} = \rho_\nu(T)\dd{\nu} = \frac{8\pi k_BT}{c^3}\nu^2\dd{\nu}
+    \end{equation*}
+    where $\rho_\nu(T)\dd{\nu}$ is the "radiant energy density between the frequencies $\nu$ and $\nu+\dd{\nu}$" \parencite[3]{bib:McQuarrieSimon}.
+    \item The ultraviolet catastrophe is so named because the frequency increases as the radiation enters the ultraviolet region.
+    \item Planck's solution:
+    \begin{itemize}
+        \item Rayleigh and Jeans assumed (as does classical physics) that the energies of the electronic oscillators responsible for the emission of the radiation could have any value whatsoever.
+        \item However, Planck assumed discrete oscillator energies proportional to an integral multiple of the frequency: $E=nh\nu$, where $n\in\mathbb{Z}$.
+        \item Using this quantization energy and ideas from statistical thermodynamics (see Chapter 17), Planck derived the \textbf{Planck distribution law for blackbody radiation}.
+        \item The only undetermined constant in the above equation was $h$, and Planck showed that if we let $h=\SI{6.626e-34}{\joule\second}$, then this equation gives excellent agreement with the experimental data for all frequencies and temperatures.
+    \end{itemize}
+    \item \textbf{Planck distribution law for blackbody radiation}: The equation
+    \begin{equation*}
+        \dd{\rho(\nu,T)} = \rho_\nu(T)\dd{\nu} = \frac{8\pi h}{c^3}\frac{\nu^3\dd{\nu}}{\e[h\nu/k_BT]-1}
+    \end{equation*}
+    \begin{itemize}
+        \item Note that for small frequencies, the Planck distribution law and Rayleigh-Jeans law converge, but they diverge for large frequencies, as expected.
+        \item Because $\nu$ and $\lambda$ are related by $\lambda\nu=c$ (and subsequently by $\dd{\nu}=-c/\lambda^2\dd{\lambda}$), we can write the Planck distribution law in terms of wavelength, as well.
+        \begin{equation*}
+            \dd{\rho(\lambda,T)} = \rho_\lambda(T)\dd{\lambda} = \frac{8\pi hc}{\lambda^5}\frac{\dd{\lambda}}{\e[hc/\lambda k_BT]-1}
+        \end{equation*}
+    \end{itemize}
+    \item Differentiating $\rho_\lambda(T)$ with respect to $\lambda$ gives an alternate formulation for $b$:
+    \begin{equation*}
+        \lambda_\text{max}T = \frac{hc}{4.965k_B}
+    \end{equation*}
+    \item Astronomers use the theory of blackbody radiation to estimate the surface temperatures of stars.
+    \begin{itemize}
+        \item We can measure the electromagnetic spectrum of a star (which will follow a curve similar to one of the ones in Figure \ref{fig:WeinLaw1}).
+        \item Then we can find $\lambda_\text{max}$. From here, all that's necessary is to plug into Wien's displacement law:
+        \begin{equation*}
+            T = \frac{b}{\lambda_\text{max}}
+        \end{equation*}
     \end{itemize}
 \end{itemize}
 
