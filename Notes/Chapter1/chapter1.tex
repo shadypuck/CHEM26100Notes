@@ -147,6 +147,145 @@
 
 
 
+\section{Photoelectric Effect and Bohr Atom}
+\begin{itemize}
+    \item \marginnote{9/29:}In 1887, Hertz shines UV light at electrodes and observes a spark.
+    \begin{itemize}
+        \item In 1900, Lenard shows that electrons are ejected from the metal surface of the electrodes.
+    \end{itemize}
+    \item Experimental setup:
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \draw
+                (0.4,2) circle (1mm)
+                (-0.4,2) circle (1mm)
+                (-2,1) circle (2mm) node{$I$}
+                (-0.5,2) -- (-2,2) -- (-2,1.2) (-2,0.8) -- (-2,0) -- (-0.8,0) (0.2,0) -- (2,0) -- (2,2) -- (0.5,2)
+                (-0.8,-0.2) -- ++(0,0.4) (0.2,-0.2) -- ++(0,0.4)
+            ;
+            \node at (0,2.3) {$V$};
+    
+            \draw [semithick] (1,0.4) -- ++(-2,0) arc[start angle=90,end angle=270,x radius=2mm,y radius=5mm] -- ++(0.5,0) -- ++(0.4,-0.6) -- ++(0.5,0) -- ++(-0.3,0.6) -- ++(0.9,0) arc[start angle=-90,end angle=90,x radius=2mm,y radius=5mm];
+    
+            \draw [decoration={snake,post length=3mm,amplitude=1pt,segment length=5pt},decorate,->,shorten >=2mm] (0.4,-1.5) node[below right]{UV light} -- (-0.8,0);
+            \draw [dashed,->] (-0.6,0) -- node[above]{$\e[-]$} (0,0);
+        \end{tikzpicture}
+        \caption{Photoelectric effect experiment.}
+        \label{fig:PEeffectExp}
+    \end{figure}
+    \begin{itemize}
+        \item Shine UV light through a quartz crystal window so that it impinges on the left plate.
+        \item This causes an electron to be ejected from the illuminated plate and cross the potential difference (recall that they didn't know about electrons at the time; they just knew something was happening).
+        \item Increase the external potential until the spark goes away (gives some data about the energy of the electron).
+    \end{itemize}
+    \item Odd features:
+    \begin{enumerate}
+        \item There is a threshold frequency of radiation required to eject the electrons.
+        \begin{itemize}
+            \item You can shine as much light as you want below a certain frequency and nothing will happen.
+            \item However, as soon as you reach that frequency, you get a spark.
+        \end{itemize}
+        \item The maximum kinetic energy (KE necessary to overcome the voltage PE???) depends linearly upon the frequency and is independent of the intensity.
+    \end{enumerate}
+    \item Einstein (1906) proposes that light consists of quanta called photons.
+    \item If you assume this, Max KE obeys the following form.
+    \begin{equation*}
+        \frac{1}{2}mv_\text{max}^2 = h\nu-W
+    \end{equation*}
+    where the work function $W$ is the energy required to remove the photon from the metal.
+    \begin{itemize}
+        \item When $KE\to 0$, we obtain the threshold frequency
+        \begin{equation*}
+            \nu_\text{th} = \frac{W}{h}
+        \end{equation*}
+        required to remove an electron from the metal.
+    \end{itemize}
+    \item Millikan (1914-1917), hot off the success of the oil drop experiment, experimentally corroborates Einstein's theory at UChicago in Ryerson.
+    \begin{itemize}
+        \item Noting that $KE=eV$ as well where $e$ is the charge of an electron and $V$ is the stopping voltage, Millikan obtains
+        \begin{equation*}
+            V = \frac{h}{e}\nu-\frac{W}{e}
+        \end{equation*}
+        \item The slope of this linear data plot is $h/e$, and Millikan definitely knows the charge of the electron (!), so he can also measure Planck's constant this way.
+        \item When Millikan gets the same value Planck got a different way, he corroborates Einstein's theory.
+    \end{itemize}
+    \item Thus, this quantization is not just one result, but is fundamental to our understanding of radiation.
+    \item Bohr (1913) makes assumptions.
+    \begin{enumerate}
+        \item Circle orbits of electrons about the nucleus.
+        \item Only certain stationary orbits are allowed.
+        \item The electron radiates energy only during a transition between orbits.
+        \item The orbital angular momentum is quantized: $L=\frac{nh}{2\pi}$ where $n\in\N$ is a quantum number.
+    \end{enumerate}
+    \item Assumption 1 is wrong.
+    \item Two equations:
+    \begin{itemize}
+        \item Equation one: Coulomb attraction of the electron and proton (nucleus) is balanced by a centripetal acceleration.
+        \begin{equation*}
+            \frac{Ze^2}{4\pi\epsilon_0r^2} = \frac{mv^2}{r}
+        \end{equation*}
+        where $Z$ is the charge of the nucleus, and $e$ is the charge of an electron.
+        \begin{itemize}
+            \item This follows exactly from classical mechanics.
+        \end{itemize}
+        \item Equation two: Quantization of the orbital angular momentum:
+        \begin{equation*}
+            mvr = \frac{nh}{2\pi} = n\hbar
+        \end{equation*}
+        where $\hbar=h/2\pi$.
+        \begin{itemize}
+            \item This is a new development from quantum mechanics.
+        \end{itemize}
+    \end{itemize}
+    \item We now solve the two equations for our two unknowns (the velocity and radius).
+    \begin{align*}
+        v &= \frac{Ze^2}{4\pi\epsilon_0\hbar n}&
+        r &= \frac{4\pi\epsilon_0\hbar^2n^2}{Zme^2}
+    \end{align*}
+    \item It follows that the translational kinetic energy $T$ is given by
+    \begin{align*}
+        T &= \frac{1}{2}mv^2\\
+        &= \frac{m}{2\hbar}\left( \frac{Ze^2}{4\pi\epsilon_0} \right)^2\frac{1}{n^2}
+    \end{align*}
+    \begin{itemize}
+        \item This is the origin of the $1/n^2$ in the Bohr model.
+    \end{itemize}
+    \item With respect to potential energy, we also have
+    \begin{align*}
+        V &= -\frac{Ze^2}{4\pi\epsilon_0r}\\
+        &= -\frac{m}{\hbar^2}\left( \frac{Ze^2}{4\pi\epsilon_0} \right)^2\frac{1}{n^2}
+    \end{align*}
+    \item It follows that the total energy $E$ is given by
+    \begin{align*}
+        E_n &= T+V\\
+        &= -\frac{m}{\hbar^2}\left( \frac{Ze^2}{4\pi\epsilon_0} \right)^2\frac{1}{n^2}
+    \end{align*}
+    \item Thus, the reason we have discrete transitions is because the atom has discrete energy levels.
+    \item Indeed, energy transitions are described by the following.
+    \begin{equation*}
+        E_b-E_a = hcR_0\left( \frac{1}{n_b^2}-\frac{1}{n_a^2} \right)
+    \end{equation*}
+    where $R_0$, the Rhydberg constant (observed by Rhydberg and his spectral lines far before Bohr, but applicable here), is all of the other constants swept together.
+    \begin{itemize}
+        \item Note that
+        \begin{equation*}
+            R_0 = \frac{m\left( \frac{e^2}{4\pi\epsilon_0} \right)^2}{4\pi c\hbar^3}
+        \end{equation*}
+        \item Thus, quantum mechanics exactly describes the spectral transitions experimentally described earlier.
+    \end{itemize}
+    \item Limitations of the Bohr model:
+    \begin{enumerate}
+        \item Assumption 1.
+        \item Cannot be generalized to many electron atoms and models.
+        \item No reliable way to predict the time dependence of events like the electron transitions.
+    \end{enumerate}
+    \item So the Bohr model brings us to the brink of being able to predict chemistry, but we still need to go a bit further.
+\end{itemize}
+
+
+
 \section{Chapter 1: The Dawn of the Quantum Theory}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
@@ -161,7 +300,7 @@
     \item Planck's solution:
     \begin{itemize}
         \item Rayleigh and Jeans assumed (as does classical physics) that the energies of the electronic oscillators responsible for the emission of the radiation could have any value whatsoever.
-        \item However, Planck assumed discrete oscillator energies proportional to an integral multiple of the frequency: $E=nh\nu$, where $n\in\mathbb{Z}$.
+        \item However, Planck assumed discrete oscillator energies proportional to an integral multiple of the frequency: $E=nh\nu$, where $n\in\Z$.
         \item Using this quantization energy and ideas from statistical thermodynamics (see Chapter 17), Planck derived the \textbf{Planck distribution law for blackbody radiation}.
         \item The only undetermined constant in the above equation was $h$, and Planck showed that if we let $h=\SI{6.626e-34}{\joule\second}$, then this equation gives excellent agreement with the experimental data for all frequencies and temperatures.
     \end{itemize}
