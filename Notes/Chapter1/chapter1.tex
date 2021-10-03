@@ -400,6 +400,149 @@
             T = \frac{b}{\lambda_\text{max}}
         \end{equation*}
     \end{itemize}
+    \item \marginnote{10/3:}\textbf{Photoelectric effect}: The ejection of electrons from the surface of a metal by radiation.
+    \item Classical predictions vs. experimental data.
+    \begin{itemize}
+        \item Classical mechanics: Intensity is proportional to the amplitude squared of the incident light. Thus, the electrons at the surface of the metal should oscillate along with the field, and when they are oscillating violently enough, they should break away from the surface with a kinetic energy that depends on the amplidude/intensity (specifically, \emph{not} the frequency).
+        \begin{itemize}
+            \item Experimental observation: KE of the ejected electrons is independent of intensity and linearly dependent on the frequency.
+        \end{itemize}
+        \item Classical mechanics: The photoelectric effect should occur for any frequency of light as long as the intensity is sufficiently high.
+        \begin{itemize}
+            \item Experimental data: There exists a threshold frequency $\nu_0$, characteristic of the metallic surface, below which no electrons are ejected, regardless of intensity.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Work function}: The minimum energy required to remove an electron from the surface of the particular metal. \emph{Denoted by} $\bm{\phi}$. \emph{Units} $\si{\electronvolt}$.
+    \begin{itemize}
+        \item The work function of the metal is analogous to the ionization energy of an isolated atom.
+    \end{itemize}
+    \item Bright line spectra: "For many years, scientists had tried to find a pattern in the wavelengths or frequencies of the lines in the hydrogen atom spectrum. Finally, in 1885, an amateur Swiss scientist, Johann Balmer, showed that a plot of the frequency of the lines versus $1/n^2$ ($n=3,4,5,\dots$) is linear" \parencite[10]{bib:McQuarrieSimon}.
+    \item \textbf{Balmer's formula}: The equation
+    \begin{equation*}
+        \tilde{\nu} = \num{109680}\left( \frac{1}{2^2}-\frac{1}{n^2} \right)\si{\per\centi\meter}
+    \end{equation*}
+    for $n=3,4,5,\dots$, where $\tilde{\nu}$ denotes wavenumber.
+    \item \textbf{Balmer series}: The series of lines predicted by Balmer's formula as $n$ takes on the values $3,4,5,\dots$, notably those occurring in the visible and near ultraviolet regions of the hydrogen atomic spectrum.
+    \item \textbf{Series limit}: The wavelength of the "last" line in the Balmer series, as $n\to\infty$, of value $\SI{364.7}{\nano\meter}$.
+    \item \textbf{Rydberg formula}: The equation
+    \begin{equation*}
+        \tilde{\nu} = \frac{1}{\lambda} = \num{109680}\left( \frac{1}{n_1^2}-\frac{1}{n_2^2} \right)\si{\per\centi\meter}
+    \end{equation*}
+    for $n_1,n_2\in\N$ such that $n_2>n_1$.
+    \begin{itemize}
+        \item The Rydberg formula accounts for all the lines in the hydrogen atomic spectrum.
+    \end{itemize}
+    \item \textbf{Rydberg constant}: The constant $\SI{109677.57}{\per\centi\meter}$. \emph{Denoted by} $\bm{R_H}$.
+    \item The first four series of lines composing the hydrogen atomic spectrum are described in Table \ref{tab:spectralSeriesH}.
+    \begin{table}[h!]
+        \centering
+        \renewcommand{\arraystretch}{1.4}
+        \small
+        \begin{tabular}{lccl}
+            \toprule
+            Series name & $n_1$ & $n_2$ & Region of spectrum\\
+            \hline
+            Lyman   & 1 & $2,3,4,\dots$ & Ultraviolet\\
+            Balmer  & 2 & $3,4,5,\dots$ & Visible\\
+            Paschen & 3 & $4,5,6,\dots$ & Near infrared\\
+            Bracket & 4 & $5,6,7,\dots$ & Infrared\\
+            \toprule
+        \end{tabular}
+        \caption{Hydrogen spectral series.}
+        \label{tab:spectralSeriesH}
+    \end{table}
+    \item Rydberg found approximate empirical laws for many series of lines in many different atoms throughout the 1890s.
+    \item \textbf{Ritz combination rule}: The empirical laws for all the observed lines can be expressed as the difference between terms such as those in the Rydberg formula.
+    \item \textbf{de Broglie wavelength}: The wavelength $\lambda=h/(mv)$ corresponding to a particle of mass $m$ moving with velocity $v$.
+    \item An electron moving at $1.00\%$ the speed of light has a de Broglie wavelength comparable to those of X-rays. Thus, electrons should act like X-rays to an extent.
+    \item \textbf{X-ray diffraction}: The scattering of a beam of X-rays directed at a crystalline surface, characteristic of the atomic structure of the crystalline surface.
+    \begin{itemize}
+        \item Occurs because the interatomic spacings in the crystal are about the same as the wavelength of the X-rays.
+    \end{itemize}
+    \item The scattering of X-rays and electrons at such crystalline surfaces are very similar.
+    \item The wavelike property of electrons is used in electron microscopes.
+    \begin{itemize}
+        \item "The wavelength of the electrons can be controlled through an applied voltage, and the small de Broglie wavelengths attainable offer a more precise probe than an ordinary light microscope. In addition, in contrast to electromagnetic radiation of similar wavelengths (X-rays and ultraviolet), the electron beam can be readily focused by using electric and magnetic fields, generating sharper images" \parencite[18]{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item The Bohr model:
+    \begin{itemize}
+        \item The hydrogen atom has a central, rather massive nucleus with one associated electron. Because the nucleus is so much more massive than the electron, we can approximate it as fixed with the electron revolving around it.
+        \item The force $f$ holding the electron in a circular orbit is supplied by the Coulombic force of attraction between the proton and the electron:
+        \begin{equation*}
+            f = \frac{e^2}{4\pi\epsilon_0r^2}
+        \end{equation*}
+        \item The Coulombic force is balanced by the centrifugal force
+        \begin{equation*}
+            f = \frac{m_ev^2}{r}
+        \end{equation*}
+        \item Since $\sum f_c=0$ for a stable circular orbit, we have
+        \begin{equation*}
+            \frac{e^2}{4\pi\epsilon_0r^2} = \frac{m_ev^2}{r}
+        \end{equation*}
+        \item However, according to classical mechanics, an electron under these conditions is constantly accelerating (centripetally), so it should emit EM radiation, lose energy, and spiral into the nucleus. Thus, we make two nonclassical assumptions:
+        \begin{enumerate}
+            \item Stationary electronic orbits exist.
+            \item The de Broglie waves of the orbiting electron must be in phase, as the electron makes one complete revolution.
+        \end{enumerate}
+        \item For the wave pattern around an orbit to be stable, we must have that the circumference of the orbit is equal to an integral number of wavelengths, i.e.,
+        \begin{equation*}
+            2\pi r = n\lambda
+        \end{equation*}
+        where $n\in\N$.
+        \item Substituting the de Broglie wavelength formula into the above gives
+        \begin{align*}
+            2\pi r &= n\cdot\frac{h}{m_ev}\\
+            m_evr &= \frac{nh}{2\pi}\\
+            m_evr &= n\hbar
+        \end{align*}
+        where $n\in\N$.
+        \begin{itemize}
+            \item Since $m_evr$ is the angular momentum of the electron, another interpretation of the above (and the one more commonly attributed to Bohr) is that the angular momentum of the electron about the proton must be quantized.
+        \end{itemize}
+        \item Solving for $r$ by substituting out $v$ yields
+        \begin{equation*}
+            r = \frac{\epsilon_0h^2n^2}{\pi m_ee^2}
+        \end{equation*}
+        \begin{itemize}
+            \item Thus, the radii of the allowed \textbf{Bohr orbits} are quantized.
+        \end{itemize}
+        \item We now consider the total energy of the electron in an atom:
+        \begin{align*}
+            E &= \text{KE}+V(r)\\
+            &= \frac{1}{2}m_ev^2-\frac{e^2}{4\pi\epsilon_0r}\\
+            &= \frac{1}{2}\cdot\frac{e^2r}{4\pi\epsilon_0r^2}-\frac{e^2}{4\pi\epsilon_0r}\\
+            &= -\frac{e^2}{8\pi\epsilon_0r}\\
+            &= -\frac{m_ee^4}{8\epsilon_0^2h^2}\cdot\frac{1}{n^2}
+        \end{align*}
+        \begin{itemize}
+            \item The negative sign in this equation indicates that the energy states are bound states; the energies given are less than when the proton and electron are infinitely separated.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{First Bohr orbit}: The Bohr orbit corresponding to $n=1$, having radius $\SI{52.92}{\pico\meter}$. \emph{Denoted by} $\bm{a_0}$.
+    \item \textbf{Ground state energy}: The lowest energy, corresponding to $n=1$ in the total energy equation.
+    \item \textbf{Excited state}: The states of higher energy, i.e., those other than the ground state.
+    \begin{itemize}
+        \item Generally unstable with respect to the ground state.
+        \item At ordinary temperatures, hydrogen atoms as well as other atoms and molecules are found almost exclusively in their ground states.
+        \item An atom in an excited state will usually relax back to the ground state and give off the energy as electromagnetic radiation.
+    \end{itemize}
+    \item With respect to spectral lines, Bohr assumed that the observed spectrum of the hydrogen atom is due to transitions from one allowed energy state to another:
+    \begin{equation*}
+        \Delta E = \frac{m_ee^4}{8\epsilon_0^2h^2}\left( \frac{1}{n_1^2}-\frac{1}{n_2^2} \right) = h\nu
+    \end{equation*}
+    \item \textbf{Bohr frequency condition}: The above equation, specifically the relation $\Delta E=h\nu$.
+    \begin{itemize}
+        \item Implies that as the electron falls from one level to another, the energy evolved is given off as a photon of energy $E=h\nu$.
+        \item Making the substitution $h\nu=hc\tilde{\nu}$, we can make the theoretical prediction that spectral lines will be of wavenumber
+        \begin{equation*}
+            \tilde{\nu} = \frac{m_ee^4}{8\epsilon_0^2ch^3}\left( \frac{1}{n_1^2}-\frac{1}{n_2^2} \right)
+        \end{equation*}
+        \item It follows that we should have
+        \begin{equation*}
+            R_\infty = \frac{m_ee^4}{8\epsilon_0^2ch^3}
+        \end{equation*}
+        which we indeed do.
+    \end{itemize}
 \end{itemize}
 
 
