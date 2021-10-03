@@ -1,0 +1,55 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+
+\begin{document}
+
+
+
+
+\section{???}
+\begin{enumerate}
+    \item \marginnote{10/6:}The intensity (or emissive power) of solar radiation at the surface of the earth is $\SI[per-mode=symbol]{1.4e3}{\watt\per\square\meter}$, the distance from the center of the sun to the sun's surface is $\SI{7e8}{\meter}$, and the distance from the center of the sun to the earth is $\SI{1.5e11}{\meter}$.
+    \begin{enumerate}
+        \item Assuming that the sun is a black body, calculate the temperature at the surface of the sun in Kelvin. (Hint: The surface area of a sphere of radius $r$ is $4\pi r^2$.)
+        \item Secondly, compute the wavelength at which the emissive power at the sun's surface has its maximum. In which region of the radiation spectrum does this wavelength lie, i.e., infrared (IR), visible, or ultraviolet (UV)?
+    \end{enumerate}
+    \item 
+    \begin{enumerate}
+        \item Using Planck's formula for the energy density $\rho(\lambda,T)$, prove that the total energy density $\rho(T)$ is given by $\rho(T)=aT^4$, where $a=8\pi^5k^4/(15h^3c^3)$. (Hint: Use the integral $\int_0^\infty x^3/(\e[x]-1)\dd{x}=\pi^4/15$.)
+        \item Does this agree with the Stefan-Boltzmann law for the total emissive power?
+    \end{enumerate}
+    \item The photoelectric work function for lithium is $\SI{2.3}{\electronvolt}$.
+    \begin{enumerate}
+        \item Find the threshold frequency $\nu_t$ and the corresponding $\lambda_t$.
+        \item If UV light of wavelength $\lambda=\SI{3000}{\angstrom}$ is incident on the \ce{Li} surface, calculate the maximum kinetic energy of the electrons.
+    \end{enumerate}
+    \item 
+    \begin{enumerate}
+        \item Using the Bohr model, compute the ionization energies for \ce{He+} and \ce{Li++}.
+        \item Can the Bohr model be employed to compute the first ionization energy for \ce{He} and \ce{Li}? Explain briefly.
+    \end{enumerate}
+    \item 
+    \begin{enumerate}
+        \item An electron is confined within a region of atomic dimensions on the order of $\SI{e-10}{\meter}$. Compute the uncertainty in its momentum.
+        \item Repeat the calculation for a proton confined to a region of nuclear dimensions on the order of $\SI{e-14}{\meter}$.
+    \end{enumerate}
+    \item Use the Quantum Chemistry Toolbox in Maple to complete the worksheet "Blackbody Radiation" on Canvas and answer the following questions.
+    \begin{enumerate}
+        \item Using the interactive graph of the spectral energy density $\rho(\nu,T)$ as a function of the frequency $\nu$ and temperature $T$, determine the frequency in $\si{\hertz}$ at which the spectral energy density peaks at a temperature of $\SI{700}{\kelvin}$.
+        \item The cosmic background radiation, discovered in 1964 by Penzias and Wilson, can be explained by treating the universe as a blackbody. Using the interactive plot, determine the frequency (in $\si{\hertz}$) and wavelength (in $\si{\meter}$) at which the cosmic background radiation peaks.
+        \item In which region of the electromegnetic spectrum does the peak cosmic background radiation lie?
+    \end{enumerate}
+    \item Use the Quantum Chemistry Toolbox in Maple to complete the worksheet "Photoelectric Effect" on Canvas and answer the following questions.
+    \begin{enumerate}
+        \item Copy and complete Table 1 of the worksheet.
+        \item What is the computed average value of Planck's constant, and how does this value compare to its experimental value?
+        \item For which element is it \emph{least} difficult to eject an electron?
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}
