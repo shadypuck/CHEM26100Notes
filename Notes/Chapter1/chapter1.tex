@@ -31,7 +31,7 @@
     \begin{equation*}
         \lambda_\text{max}T = b
     \end{equation*}
-    where $b=\SI{2.898e-3}{\meter\kelvin}$ is \textbf{Wein's displacement constant}. \emph{Also known as} \textbf{Wien's displacement law}.
+    where $b=\SI{2.898e-3}{\meter\kelvin}$ is \textbf{Wien's displacement constant}. \emph{Also known as} \textbf{Wien's displacement law}.
     \begin{figure}[h!]
         \centering
         \begin{tikzpicture}
@@ -63,8 +63,8 @@
                 \node at (0,0) {${\color{rex}\blacksquare}=\SI{1000}{\kelvin}$};
             \end{scope}
         \end{tikzpicture}
-        \caption{Wein's 1st Law.}
-        \label{fig:WeinLaw1}
+        \caption{Wien's 1st Law.}
+        \label{fig:WienLaw1}
     \end{figure}
     \item Area under the curve (found with integration) is the total emissive power.
     \item We now change variables from emissive power $R$ to energy density $\rho$ in the BB cavity.
@@ -109,7 +109,7 @@
     \end{itemize}
     \item UV catastrophe: Rayleigh's formula diverges from the experimental data for short wavelength.
     \begin{itemize}
-        \item The above formula diverges to $+\infty$, driven by the $\lambda^4$ term in the denominator, as $\lambda\to 0$. However, the amount of radiation of shorter wavelengths should decrease past a point, as seen in Figure \ref{fig:WeinLaw1}.
+        \item The above formula diverges to $+\infty$, driven by the $\lambda^4$ term in the denominator, as $\lambda\to 0$. However, the amount of radiation of shorter wavelengths should decrease past a point, as seen in Figure \ref{fig:WienLaw1}.
     \end{itemize}
     \item Max Planck comes in, proposes an idea to the German acacdemy that's so radical, they think he's insane, but he's actually right and it lays a key idea for quantum mechanics.
     \item Planck's key insight: The energy levels of the oscillators are not continuous, but are quantized.
@@ -140,7 +140,7 @@
         \item Background radiation from the universe itself.
         \item $\lambda_\text{max}=\SI{7.35}{\centi\meter}$.
         \item Isotropic radio signal, that comes form everywhere.
-        \item From this, you can workout the temperature of the universe from Wein's first law.
+        \item From this, you can workout the temperature of the universe from Wien's first law.
         \item Thus, the whole universe is a blackbody with a temperature of approximately $\SI{3}{\kelvin}$.
     \end{itemize}
 \end{itemize}
@@ -286,11 +286,84 @@
 
 
 
+\section{Stern-Gerlach Experiment}
+\begin{itemize}
+    \item \marginnote{10/1:}Measurement of the magnetic dipole moment of atoms.
+    \item Nobel-prize winning experiment done by Otto Stern and W. Gerlach (1922). Stern was Gerlach's grad student.
+    \item \textbf{Magnetic dipole moment}: Think about an electron moving in a circle with velocity $v$. Then the charge creates a magnetic field $M$ perpendicular to the plane of the circle.
+    \item Thus, we want to detect the magnetic moment of atoms. They will measure this by measuring the deflection of the atoms by an \textbf{inhomogeneous} field.
+    \item \textbf{Inhomogeneous} (magnetic field): Because they're not setting up the magnetic field so that its equal everywhere in space through which the beam travels.
+    \item They put the atoms in an "oven" to get them hot, and then shoot them through a beam. The beam passes through a magnet, and if the beam has a magnetic moment, it will break up. There is a collection plate at the far end.
+    \item Effect of the $\vec{B}$ field: $PE=-\vec{M}\cdot\vec{B}=W$.
+    \item It follows that $F=-\nabla W$.
+    \item Additionally,
+    \begin{equation*}
+        F_z = M_z\pdv{B_z}{z}
+    \end{equation*}
+    \item Classical expectation: Every value of $M_z$ would occur, that is, $|M_z|\leq M$. Would lead to one continuous pile on the collection plate with a Gaussian proportionality.
+    \item Stern and Gerlach expect it to be discrete/quantized. Focused on \ce{Ag} atoms. Thought two discrete lines would be formed symmetrically about the center. Thought they would see similar results for \ce{Na}, \ce{Cs}, \ce{K}, \ce{H}.
+    \item Didn't see anything at first.
+    \item Smoked some cigars, released sulfate, and \ce{AgSO4} (black) showed up on the collection plate in 2 discrete piles.
+    \item Bohr quantization (varies from $-\ell$ to $+\ell$, where $\ell$ is orbital angular momentum). $L=\ell\hbar$ (approximately), $L_z=m\hbar$.
+    \item Actual quantum mechanics gives us $L=\sqrt{\ell(\ell+1)}\hbar$.
+    \item But this does not explain the Stern-Gerlach experiment. According to this theory...
+    \begin{itemize}
+        \item If $\ell=0$ and $m=0$, then we'll observe just 1 spot.
+        \item If $\ell=1$ and $m=-1,0,+1$, then we'll observe 3 spots.
+    \end{itemize}
+    \item But, of course, they only saw 2 spots.
+    \begin{itemize}
+        \item The first case corresponds to silver with $\ell=0$.
+        \item They were actually seeing electron spin.
+    \end{itemize}
+    \item Electron spin is later understood by S. Goudsmit and G. E. Uhlenbeck (1925).
+    \begin{itemize}
+        \item Able to show that the splitting of spectral lines when atoms are placed in $\vec{B}$ fields. The electron must have an intrinsic spin (magnetic moment $M_1$) where two values are allowed: $M_1=\pm\frac{1}{2}$.
+        \item They postulate that this is a form of intrinsic angular momentum of spin: $S=\sqrt{s(s+1)}\hbar$.
+    \end{itemize}
+    \item Total angular momentum: The vector addition of all angular momentum of the part.
+    \begin{itemize}
+        \item The angular momentum of the nuclei may be neglected. Addition of the orbital and spin angular momentum of the electrons.
+    \end{itemize}
+    \item Stern and Gerlach:
+    \begin{itemize}
+        \item The orbital angular momentum of \ce{Ag} atoms is zero.
+        \item The net spin angular momentum is $\frac{1}{2}$.
+        \item Thus, the total angular momentum $m=\pm\frac{1}{2}$. Thus, we expect two spots on the plate.
+    \end{itemize}
+    \item Note that this relates to the Pauli exclusion principle (spin implies no more than 2 electrons together), first posited in 1926.
+    \item Particle-wave duality (by Louis de Broglie): Introduces matter waves (1923-24).
+    \begin{itemize}
+        \item Einstein says $E=h\nu$. Additionally, momentum of a photon is $p=h\nu/c=h/\lambda$. Thus, this formula relates the particle (momentum) and wave (wavelength) natures of the photon.
+    \end{itemize}
+    \item de Broglie: Turns in a 4 page thesis, Paris committee will fail him, but they write to Einstein who recognizes this is really important.
+    \begin{itemize}
+        \item de Broglie defines a frequency and a wavelength for material particles $\nu=E/h$. It follows that $\lambda=h/p$. Thus, electrons have a wavelength, too.
+    \end{itemize}
+    \item \textbf{de Broglie's relationship}: The equation
+    \begin{equation*}
+        \lambda = \frac{h}{mv}
+    \end{equation*}
+    for a nonrelativistic particle.
+    \item Explanation of the Bohr atom:
+    \begin{itemize}
+        \item For the electron's orbit to be stable, an integer number of wavelengths must match the circumference of the orbit.
+        \item This is why the orbits are quantized!
+        \item Thus, $n\lambda=2\pi r$ and $L=rp$ (from classical physics), so
+        \begin{equation*}
+            L = \frac{n\lambda p}{2\pi} = \frac{nh}{2\pi} = n\hbar
+        \end{equation*}
+        as desired.
+    \end{itemize}
+\end{itemize}
+
+
+
 \section{Chapter 1: The Dawn of the Quantum Theory}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
     \item \marginnote{9/28:}\textbf{Blackbody}: A body which absorbs and emits all frequencies. \emph{Also known as} \textbf{ideal body}.
-    \item "Many theoretical physicists tried to derive expressions consistent with these experimental curves of intensity versus frequency [see Figure \ref{fig:WeinLaw1}], but they were all unsuccessful. In fact, the expression that is derived according to the laws of nineteenth century physics is" as follows \parencite[3]{bib:McQuarrieSimon}.
+    \item "Many theoretical physicists tried to derive expressions consistent with these experimental curves of intensity versus frequency [see Figure \ref{fig:WienLaw1}], but they were all unsuccessful. In fact, the expression that is derived according to the laws of nineteenth century physics is" as follows \parencite[3]{bib:McQuarrieSimon}.
     \item \textbf{Rayleigh-Jeans law}: The equation
     \begin{equation*}
         \dd{\rho(\nu,T)} = \rho_\nu(T)\dd{\nu} = \frac{8\pi k_BT}{c^3}\nu^2\dd{\nu}
@@ -321,7 +394,7 @@
     \end{equation*}
     \item Astronomers use the theory of blackbody radiation to estimate the surface temperatures of stars.
     \begin{itemize}
-        \item We can measure the electromagnetic spectrum of a star (which will follow a curve similar to one of the ones in Figure \ref{fig:WeinLaw1}).
+        \item We can measure the electromagnetic spectrum of a star (which will follow a curve similar to one of the ones in Figure \ref{fig:WienLaw1}).
         \item Then we can find $\lambda_\text{max}$. From here, all that's necessary is to plug into Wien's displacement law:
         \begin{equation*}
             T = \frac{b}{\lambda_\text{max}}
