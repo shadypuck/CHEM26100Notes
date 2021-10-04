@@ -1,0 +1,96 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{1}
+
+\begin{document}
+
+
+
+
+\chapter{The Schr\"{o}dinger Equation}
+\section{Particle-Wave Duality and Uncertainty Relations}
+\begin{itemize}
+    \item \marginnote{10/4:}Particle-wave duality (de Brogelie's original formulation):
+    \begin{align*}
+        \lambda\nu &= c&
+        E &= h\nu&
+        p &= \frac{h}{\lambda}
+    \end{align*}
+    \item \textbf{Angular frequency}: The quantity $\omega=2\pi r$.
+    \item \textbf{Wavenumber}: The quantity $k=2\pi/\lambda$.
+    \item We can create a symmetrical formulation of the de Broglie relation using these new quantities:
+    \begin{align*}
+        E &= \hbar\omega&
+        p &= \hbar k
+    \end{align*}
+    \item What is the wave that we might associate with a de Broglie particle?
+    \begin{equation*}
+        \Psi(x) = A\e[ikx-i\omega t]
+    \end{equation*}
+    \item Probability:
+    \begin{itemize}
+        \item Classically, such a wave might be associated with EM radiation hitting a surface with intensity $I=|\Psi(x)|^2=\Psi(x)\Psi^*(x)$.
+        \item As soon as we associate a particle (photon) with the wave, the intensity may be re-interpreted as the number of particles reaching the surface or the probability of a particle being at the surface.
+        \item Thus, the probability of finding a particle at the surface becomes $|\Psi(x)|^2$, as well.
+    \end{itemize}
+    \item Following de Broglie, we also associate waves with particles such as electrons.
+    \begin{itemize}
+        \item With the association of light as a particle, the particle wave duality leads to the appearance of probability.
+    \end{itemize}
+    \item What is the probability of finding the particle at the origin?
+    \begin{align*}
+        Pr &= \left| A\e[ik\cdot 0] \right|^2\\
+        &= |A|^2\\
+    \end{align*}
+    \begin{itemize}
+        \item Since the probability is not dependent on position, it is the same everywhere.
+        \item We also run into issues \textbf{normalizing} this unbounded wavefunction.
+        \item We know this particle's momentum exactly, but we know nothing about its position.
+    \end{itemize}
+    \item \textbf{Normalizing} (a wavefunction): Guaranteeing that the integral for the entire wavefunction is equal to 1.
+    \item \textbf{Free particle}: A particle that does not have constraints on where it is more likely to be.
+    \item Heisenberg's uncertainty relations are formalized in terms of matrix mechanics.
+    \begin{itemize}
+        \item We can Fourier transform the wave function of particle to convert it from a function of position to a function of momentum.
+        \item The Fourier transform will yield one spike at $\hbar k$ and will be 0 everywhere else --- just like the Dirac delta function.
+        \item Thus,
+        \begin{equation*}
+            \Psi(p) = \delta(p-\hbar k)
+        \end{equation*}
+    \end{itemize}
+    \item Consider a Gaussian wave packet at $p=0$. Then
+    \begin{equation*}
+        \phi(p) = C\e[-\frac{p^2}{2(\Delta p)^2}]
+    \end{equation*}
+    \begin{itemize}
+        \item $\Delta p$ is the standard deviation of the Gaussian/width of the distribution. It is a constant such that the probability drops to $1/\e$ of its maximum at $p=0$.
+    \end{itemize}
+    \item With the Fourier Transform of $\Psi(p)$, we obtain
+    \begin{equation*}
+        \Psi(x) = D\e[-\frac{(\Delta p)^2x^2}{2\hbar^2}]
+    \end{equation*}
+    \begin{itemize}
+        \item Thus, a Gaussian quantum function produces a Gaussian position function via an FT as well, i.e.,
+        \begin{equation*}
+            \Psi(x) = D\e[-\frac{x^2}{2(\Delta x)^2}]
+        \end{equation*}
+    \end{itemize}
+    \item Now if we set the last two equations equal to each other, we get
+    \begin{align*}
+        \frac{(\Delta p)^2}{2\hbar^2} &= \frac{1}{2(\Delta x)^2}\\
+        (\Delta p)^2(\Delta x)^2 &= \hbar^2\\
+        \Delta p\Delta x &= \hbar = \frac{h}{2\pi}
+    \end{align*}
+    \begin{itemize}
+        \item This implies that the spread of the Gaussian in momentum times the spread of the Gaussian in position is a constant.
+        \item If we make one Gaussian wave packet more specific, the other gets more spread out, and vice versa.
+        \item Note that the above equality does \emph{satisfy} the Heisenberg uncertainty principle, but it is not it itself.
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
