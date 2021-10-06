@@ -92,5 +92,111 @@
 
 
 
+\section{The Schr\"{o}dinger Equation and Particle in a Box}
+\begin{itemize}
+    \item \marginnote{10/6:}Review:
+    \begin{itemize}
+        \item de Broglie describes an electron as a free particle.
+        \begin{equation*}
+            \Psi(x) = A\e[ikx]
+        \end{equation*}
+        \item We can only observe the real part, but being able to access the complex part is important in quantum mechanics.
+    \end{itemize}
+    \item Schr\"{o}dinger was on vacation in the Swiss Alps with his mistress when he derived the wave equation.
+    \begin{itemize}
+        \item Schr\"{o}dinger realized that
+        \begin{align*}
+            \dv{\Psi(x)}{x} &= Aik\e[ikx]\\
+            -i\hbar\dv{\Psi(x)}{x} &= Ap\e[ikx]\\
+            &= p\Psi(x)
+        \end{align*}
+        \item Let's introduce operators in quantum mechanics and let $\hat{p}$ be an operator that when it acts on $\Psi(x)$, it gives the above. In other words,
+        \begin{equation*}
+            \hat{p} = -i\hbar\dv{x}
+        \end{equation*}
+        \item Thus,
+        \begin{equation*}
+            \hat{p}\Psi(x) = p\Psi(x)
+        \end{equation*}
+        \item But energy is more important than momentum, so let's introduce an energy operator $\hat{T}$ related to $\hat{p}$ by
+        \begin{equation*}
+            \hat{T} = \frac{\hat{p}^2}{2m}
+            = \frac{-\hbar^2}{2m}\dv[2]{x}
+        \end{equation*}
+        since $E=mv^2/2=p^2/(2m)$.
+        \item Thus, we have
+        \begin{equation*}
+            \hat{T}\Psi(x) = \frac{p^2}{2m}\Psi(x)
+        \end{equation*}
+        \item It follows from classical physics that the total energy operator $\hat{H}$ (the Hamiltonian) is the sum of the kinetic and potential energy operators, i.e., $\hat{H}=\hat{T}+\hat{V}$. Therefore, we must have
+        \begin{equation*}
+            \hat{H}\Psi(x) = E\Psi(x)
+        \end{equation*}
+        and that is the Schr\"{o}dinger equation.
+    \end{itemize}
+    \item The particle in a box is like a single electron in a one-dimensional chamber that runs from $-a$ to $a$ with $L=2a$ (Schr\"{o}dinger figured this out a few days later, still in the Swiss Alps).
+    \begin{itemize}
+        \item The walls are infinite and have infinite potential.
+        \item We need the boundary condition, though, to be able to solve a differential equation like the Schr\"{o}dinger equation.
+        \begin{itemize}
+            \item Fortunately, we know that at $|x|=a$, we have $\Psi(\pm a)=0$.
+            \item Another important point is that $\dv*{\Psi(x)}{x}$ at $a$ is discontinuous.
+        \end{itemize}
+        \item So we have that
+        \begin{align*}
+            -\frac{\hbar^2}{2m}\dv[2]{x}\Psi_n(x) &= E_n\Psi_n(x)\\
+            \dv[2]{x}\Psi(x) &= -k^2\Psi(x)
+        \end{align*}
+        where
+        \begin{equation*}
+            k = \sqrt{\frac{2mE}{\hbar^2}}
+        \end{equation*}
+        \item The solution of the differential equation will be of the form
+        \begin{equation*}
+            \Psi(x) = A\cos(kx)+B\sin(kx)
+        \end{equation*}
+        \item Boundary conditions 1 and 2, respectively:
+        \begin{align*}
+            0 &= \Psi(a)&
+                0 &= \Psi(-a)\\
+            &= A\cos(ka)+B\sin(ka)&
+                &= A\cos(ka)-B\sin(ka)
+        \end{align*}
+        \item Adding/subtracting the two equations yields
+        \begin{align*}
+            A\cos(ka) &= 0&
+            B\sin(ka) &= 0
+        \end{align*}
+        \item We satisfy these equations with either of 2 classes of nontrivial solutions (the trivial solution being $a=0$).
+        \begin{enumerate}
+            \item $B=0$ and $\cos(ka)=0$, i.e., $k_n=\frac{n\pi}{2a}$ for $n\in 2\N+1$.
+            \item $A=0$ and $\sin(ka)=0$, i.e., $k_n=\frac{n\pi}{2a}$ for $n\in 2\N$.
+        \end{enumerate}
+        \item Thus, either
+        \begin{equation*}
+            \Psi_n(x) = \frac{1}{\sqrt{a}}\cos\left( \frac{n\pi x}{2a} \right)
+        \end{equation*}
+        for $n\in 2\N+1$ are the \textbf{even solutions} (because cosine is an even function), and
+        \begin{equation*}
+            \Psi_n(x) = \frac{1}{\sqrt{a}}\sin\left( \frac{n\pi x}{2a} \right)
+        \end{equation*}
+        for $n\in 2\N$ are the \textbf{odd solutions} (because sine is an odd function).
+        \item Note that we derive the $1/\sqrt{a}$ coefficient by normalizing $\Psi(x)$ with
+        \begin{equation*}
+            \int_{-a}^a|\Psi(x)|^2\dd{x} = \int_{-a}^a\Psi^*(x)\Psi(x) = 1
+        \end{equation*}
+        \item The energies come out to
+        \begin{equation*}
+            E_n = \frac{\hbar^2k_n^2}{2m} = \frac{\hbar^2}{8m}\cdot\frac{\pi^2n^2}{a^2}
+        \end{equation*}
+        with the substitution $k_n=\frac{n\pi}{2a}$.
+        \begin{itemize}
+            \item Note that this means that the particle becomes more discrete the smaller the box gets (as uncertainty in position goes down, it acts more and more quantum mechanically).
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
