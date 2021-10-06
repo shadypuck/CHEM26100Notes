@@ -8,44 +8,206 @@
 
 
 
-\section{???}
+\section{Blackbodies and the Photoelectric Effect}
 \begin{enumerate}
     \item \marginnote{10/6:}The intensity (or emissive power) of solar radiation at the surface of the earth is $\SI[per-mode=symbol]{1.4e3}{\watt\per\square\meter}$, the distance from the center of the sun to the sun's surface is $\SI{7e8}{\meter}$, and the distance from the center of the sun to the earth is $\SI{1.5e11}{\meter}$.
     \begin{enumerate}
         \item Assuming that the sun is a black body, calculate the temperature at the surface of the sun in Kelvin. (Hint: The surface area of a sphere of radius $r$ is $4\pi r^2$.)
+        \begin{proof}[Answer]
+            Let
+            \begin{align*}
+                I &= \SI[per-mode=fraction]{1400}{\watt\per\square\meter}&
+                r_1 &= \SI{7e8}{\meter}&
+                r_2 &= \SI{1.5e11}{\meter}
+            \end{align*}
+            and let $\sigma=\SI{5.67e-8}{\watt\per\square\meter}$ be Stefan's constant. If $P$ is the total power radiated by the sun, we have from physics that
+            \begin{align*}
+                I &= \frac{P}{4\pi r_2^2}\\
+                P &= 4\pi r_2^2I
+            \end{align*}
+            and from quantum that
+            \begin{align*}
+                P &= R\cdot 4\pi r_1^2\\
+                &= \sigma T^4\cdot 4\pi r_1^2
+            \end{align*}
+            Thus, setting these two quantities equal to each other, we obtain
+            \begin{align*}
+                4\pi r_2^2I &= \sigma T^4\cdot 4\pi r_1^2\\
+                r_2^2I &= \sigma T^4r_1^2\\
+                T &= \sqrt[4]{\frac{r_2^2I}{\sigma r_1^2}}\\
+                \Aboxed{T &= \SI{5803}{\kelvin}}
+            \end{align*}
+        \end{proof}
         \item Secondly, compute the wavelength at which the emissive power at the sun's surface has its maximum. In which region of the radiation spectrum does this wavelength lie, i.e., infrared (IR), visible, or ultraviolet (UV)?
+        \begin{proof}[Answer]
+            If $b=\SI{2.898e-3}{\meter\kelvin}$ is Wien's displacement constant and we plug in the temperature value $T$ from part (a), then Wien's first law gives us
+            \begin{align*}
+                \lambda_\text{max}T &= b\\
+                \lambda_\text{max} &= \frac{b}{T}\\
+                \Aboxed{\lambda_\text{max} &= \SI{4.99e-7}{\meter}}
+            \end{align*}
+            This wavelength lies in the \fbox{visible} spectrum.
+        \end{proof}
     \end{enumerate}
     \item 
     \begin{enumerate}
         \item Using Planck's formula for the energy density $\rho(\lambda,T)$, prove that the total energy density $\rho(T)$ is given by $\rho(T)=aT^4$, where $a=8\pi^5k^4/(15h^3c^3)$. (Hint: Use the integral $\int_0^\infty x^3/(\e[x]-1)\dd{x}=\pi^4/15$.)
+        \begin{proof}
+            Planck's formula for the energy density is
+            \begin{equation*}
+                \dd{\rho(\lambda,T)} = \frac{8\pi hc}{\lambda^5}\cdot\frac{\dd{\lambda}}{\e[hc/\lambda kT]-1}
+            \end{equation*}
+            Thus, if we use the change of variables $x=hc/(\lambda kT)$ (also implying $\lambda=hc/(xkT)$ and $\dd{\lambda}=-hc/(x^2kT)\dd{x}$), we have that
+            \begin{align*}
+                \int_0^\infty\dd{\rho(\lambda,T)} &= \int_{\lambda=0}^\infty\frac{8\pi hc}{\lambda^5}\cdot\frac{\dd{\lambda}}{\e[hc/\lambda kT]-1}\\
+                \int_0^\infty\rho_\lambda(T)\dd{\lambda} &= \int_{x=\infty}^0\frac{8\pi hc}{\left( \frac{hc}{xkt} \right)^5}\cdot\frac{1}{\e[x]-1}\cdot-\frac{hc}{x^2kt}\dd{x}\\
+                \rho(T) &= \int_{x=\infty}^0-\frac{8\pi(hc)^2(kT)^5x^5}{(hc)^5(\e[x]-1)(x^2)(kT)}\\
+                &= \int_{x=0}^\infty\frac{8\pi(kT)^4x^3}{(hc)^3(\e[x]-1)}\\
+                &= \frac{8\pi(kT)^4}{(hc)^3}\int_0^\infty\frac{x^3}{\e[x]-1}\dd{x}\\
+                &= \frac{8\pi(kT)^4}{(hc)^3}\cdot\frac{\pi^4}{15}\\
+                &= \frac{8\pi^5k^4}{15h^3c^3}T^4\\
+                &= aT^4
+            \end{align*}
+            as desired.
+        \end{proof}
         \item Does this agree with the Stefan-Boltzmann law for the total emissive power?
+        \begin{proof}[Answer]
+            Yes --- we are given the conversion factor $\rho(\lambda,T)=4/c\cdot R(\lambda,T)$, so from the above, we should have
+            \begin{align*}
+                R(T) &= \frac{c}{4}\cdot R(\lambda,T)\\
+                &= \frac{c}{4}\cdot\frac{8\pi^5k^4}{15h^3c^3}T^4\\
+                &= \frac{2\pi^5k^4}{15h^3c^2}T^4
+            \end{align*}
+            But by plugging in the appropriate values, we can determine that
+            \begin{equation*}
+                \frac{2\pi^5k^4}{15h^3c^2} = \sigma
+            \end{equation*}
+            where $\sigma$ is Stefan's constant, giving us
+            \begin{equation*}
+                R(T) = \sigma T^4
+            \end{equation*}
+            as desired.
+        \end{proof}
     \end{enumerate}
     \item The photoelectric work function for lithium is $\SI{2.3}{\electronvolt}$.
     \begin{enumerate}
         \item Find the threshold frequency $\nu_t$ and the corresponding $\lambda_t$.
+        \begin{proof}[Answer]
+            From Einstein's annus mirabilis papers, we have that
+            \begin{align*}
+                \nu_t &= \frac{W}{h}&
+                \lambda_t &= \frac{c}{\nu_t} = \frac{ch}{W}
+            \end{align*}
+            Plugging in $W=\SI{3.685e-19}{\joule}$ and $h=\SI{6.626e-34}{\joule\per\second}$, we have that
+            \begin{align*}
+                \Aboxed{\nu_t &= \SI{5.56e14}{\hertz}}&
+                \Aboxed{\lambda_t &= \SI{5.39e-7}{\meter}}
+            \end{align*}
+        \end{proof}
         \item If UV light of wavelength $\lambda=\SI{3000}{\angstrom}$ is incident on the \ce{Li} surface, calculate the maximum kinetic energy of the electrons.
+        \begin{proof}[Answer]
+            From Einstein's annus mirabilis papers, we have that
+            \begin{align*}
+                KE_\text{max} &= h\nu-W\\
+                &= \frac{hc}{\lambda}-W\\
+                \Aboxed{KE_\text{max} &= \SI{2.941e-19}{\joule}}
+            \end{align*}
+        \end{proof}
     \end{enumerate}
     \item 
     \begin{enumerate}
-        \item Using the Bohr model, compute the ionization energies for \ce{He+} and \ce{Li++}.
+        \item Using the Bohr model, compute the ionization energies for \ce{He+} and \ce{Li^2+}.
+        \begin{proof}[Answer]
+            From the Bohr model, we have that
+            \begin{align*}
+                IE &= E_\infty-E_1\\
+                &= -\frac{m_ee^4Z^2}{8\epsilon_0^2h^2}\cdot\frac{1}{\infty^2}+\frac{m_ee^4Z^2}{8\epsilon_0^2h^2}\cdot\frac{1}{1^2}\\
+                &= \frac{m_ee^4Z^2}{8\epsilon_0^2h^2}
+            \end{align*}
+            It follows since $Z=2$ for \ce{He+} and $Z=3$ for \ce{Li^2+} that
+            \begin{align*}
+                \Aboxed{IE(\ce{He+}) &= \num{8.72e-18}}&
+                \Aboxed{IE(\ce{Li^2+}) &= \num{1.962e-19}}
+            \end{align*}
+            in units of Joules per electron.
+        \end{proof}
         \item Can the Bohr model be employed to compute the first ionization energy for \ce{He} and \ce{Li}? Explain briefly.
+        \begin{proof}[Answer]
+            No --- the Bohr model is only valid for single electron systems as it does not take into account electron-electron interactions.
+        \end{proof}
     \end{enumerate}
     \item 
     \begin{enumerate}
         \item An electron is confined within a region of atomic dimensions on the order of $\SI{e-10}{\meter}$. Compute the uncertainty in its momentum.
+        \begin{proof}[Answer]
+            From the Heisenberg uncertainty principle, we have that
+            \begin{align*}
+                \Delta x\cdot\Delta p &\geq \frac{h}{4\pi}\\
+                \Delta p &\geq \frac{h}{4\pi\Delta x}\\
+                \Aboxed{\Delta p &\geq \SI[per-mode=fraction]{5.273e-25}{\kilo\gram\meter\per\second}}
+            \end{align*}
+        \end{proof}
         \item Repeat the calculation for a proton confined to a region of nuclear dimensions on the order of $\SI{e-14}{\meter}$.
+        \begin{proof}[Answer]
+            From the Heisenberg uncertainty principle, we have that
+            \begin{align*}
+                \Delta p &\geq \frac{h}{4\pi\Delta x}\\
+                \Aboxed{\Delta p &\geq \SI[per-mode=fraction]{5.273e-21}{\kilo\gram\meter\per\second}}
+            \end{align*}
+        \end{proof}
     \end{enumerate}
     \item Use the Quantum Chemistry Toolbox in Maple to complete the worksheet "Blackbody Radiation" on Canvas and answer the following questions.
     \begin{enumerate}
         \item Using the interactive graph of the spectral energy density $\rho(\nu,T)$ as a function of the frequency $\nu$ and temperature $T$, determine the frequency in $\si{\hertz}$ at which the spectral energy density peaks at a temperature of $\SI{700}{\kelvin}$.
+        \begin{proof}[Answer]
+            \begin{equation*}
+                \boxed{\SI{5e13}{\hertz}}
+            \end{equation*}
+        \end{proof}
         \item The cosmic background radiation, discovered in 1964 by Penzias and Wilson, can be explained by treating the universe as a blackbody. Using the interactive plot, determine the frequency (in $\si{\hertz}$) and wavelength (in $\si{\meter}$) at which the cosmic background radiation peaks.
-        \item In which region of the electromegnetic spectrum does the peak cosmic background radiation lie?
+        \begin{proof}[Answer]
+            \begin{align*}
+                \Aboxed{\nu &= \SI{2e11}{\hertz}}&
+                    \lambda &= \frac{c}{\nu}\\
+                &&
+                    \Aboxed{\lambda &= \SI{1.5e-3}{\meter}}
+            \end{align*}
+        \end{proof}
+        \item In which region of the electromagnetic spectrum does the peak cosmic background radiation lie?
+        \begin{proof}[Answer]
+            In the \fbox{microwave} region.
+        \end{proof}
     \end{enumerate}
     \item Use the Quantum Chemistry Toolbox in Maple to complete the worksheet "Photoelectric Effect" on Canvas and answer the following questions.
     \begin{enumerate}
         \item Copy and complete Table 1 of the worksheet.
+        \begin{proof}[Answer]
+            ${\color{white}hi}$
+            \begin{table}[h!]
+                \centering
+                \small
+                \renewcommand{\arraystretch}{1.4}
+                \begin{tabular}{|l|l|l|l|l|l|}
+                    \hline
+                     & \ce{Au} & \ce{Mg} & \ce{Pb} & \ce{Na} & \multirow{2}{*}{Average value of $h$:}\\
+                    \cline{1-5}
+                    Threshold frequency ($\nu_0$) & $\SI{1.084e15}{\hertz}$ & $\SI{8.793e14}{\hertz}$ & $\SI{1.034e15}{\hertz}$ & $\SI{5.684e14}{\hertz}$ & \\
+                    \hline
+                    Planck's constant ($h$) & $\SI{6.681e-34}{\joule\second}$ & $\SI{6.553e-34}{\joule\second}$ & $\SI{6.717e-34}{\joule\second}$ & $\SI{6.522e-34}{\joule\second}$ & $\SI{6.618e-34}{\joule\second}$\\
+                    \hline
+                \end{tabular}
+                \caption{Photoelectric data for \ce{Au}, \ce{Mg}, \ce{Pb}, and \ce{Na}.}
+                \label{tab:photoelectricData}
+            \end{table}
+        \end{proof}
         \item What is the computed average value of Planck's constant, and how does this value compare to its experimental value?
+        \begin{proof}[Answer]
+            The computed average value of Planck's constant is \fbox{$\SI{6.618e-34}{\joule\second}$}. It is \fbox{$0.12\%$ off} from the true value of $\SI{6.626e-34}{\joule\second}$.
+        \end{proof}
         \item For which element is it \emph{least} difficult to eject an electron?
+        \begin{proof}[Answer]
+            \fbox{Sodium} --- lowest threshold frequency means least energy required to excite an electron to the infinite energy level.
+        \end{proof}
     \end{enumerate}
 \end{enumerate}
 
