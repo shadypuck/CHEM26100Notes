@@ -1,0 +1,71 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\setcounter{section}{1}
+
+\begin{document}
+
+
+
+
+\section{???}
+\begin{enumerate}
+    \item \marginnote{10/13:}
+    \vspace{-2em}
+    \begin{enumerate}
+        \item Imagine the particle in the infinite square well bouncing back and forth against the walls classically. In the absence of friction, the particle will continue to bounce back and forth with a constant speed. What is the probability $P(x)$ of finding this classical particle as a function of its position in the box?
+        \item Secondly, consider the particle to be in the quantum ground state. What is the probability $P(x)$ of finding this quantum particle as a function of its position in the box? Give a sketch.
+        \item Thirdly, consider the particle to be in the quantum state $n=2$. What is the probability $P(x)$ of finding this quantum particle as a function of its position in the box? Give a sketch.
+        \item As the quantum state $n$ of the particle approaches infinity, the energy and frequency of the particle become very large. What happens to the probability $P(x)$ of finding this quantum particle as a function of its position in the box?
+    \end{enumerate}
+    \item The spread or uncertainty in position and momentum may be computed by a mathematical measure of the deviation from the average position
+    \begin{equation}
+        \Delta x = \sqrt{\langle x^2\rangle-\langle x\rangle^2}
+    \end{equation}
+    and
+    \begin{equation}
+        \Delta p = \sqrt{\langle p^2\rangle-\langle p\rangle^2}
+    \end{equation}
+    where the notation $\langle\ \rangle$ was developed by Dirac to denote the expectation value. The text evaluates these uncertainties for a particle in the ground state of an infinite square well.
+    \begin{enumerate}
+        \item Do they satisfy the Heisenberg uncertainty relation?
+        \item Evaluate these uncertainties for a particle in the second- and fourth-excited states (the first and second even excited states) of an infinite square well. Do they satisfy the Heisenberg uncertainty relation?
+        \item Compare the uncertainties in the position and momentum for the ground, second-excited, and fourth-excited states. What would you expect to happen to the uncertainties as the state $n$ approaches infinity?
+    \end{enumerate}
+    \item Consider a particle in a one-dimensional infinite square well where the infinite walls are located and $-b$ and $+b$. Give the time-dependent form of the ground and the first-excited states.
+    \item We have been examining a one-dimensional infinite square well where the infinite walls are located at $-b$ and $+b$. The energy levels in this quantum system are non-degenerate, that is, for each energy, there is only one wave function. Let us place an infinite potential step between $-b/2$ and $+b/2$.
+    \begin{enumerate}
+        \item Is the particle more likely to be in the left or the right infinite square well?
+        \item What are the new energy levels ans wave functions of this modified system? (Hint: How are they related to the infinite square well?)
+        \item Are the energy levels degenerate, and if so, what is the degeneracy?
+        \item Are the new energies higher or lower than the box without the infinite step?
+    \end{enumerate}
+    \item Consider an electron of energy $E$ incident on the potential step where
+    \begin{equation*}
+        V(x) =
+        \begin{cases}
+            \SI{0}{\electronvolt} & x<0\\
+            \SI{8}{\electronvolt} & x>0
+        \end{cases}
+    \end{equation*}
+    Calculate the reflection coefficient $R$ and the transmission coefficient $T$
+    \begin{enumerate}
+        \item When $E=\SI{4}{\electronvolt}$;
+        \item When $E=\SI{16}{\electronvolt}$;
+        \item When $E=\SI{8}{\electronvolt}$.
+    \end{enumerate}
+    \item Use the Quantum Chemistry Toolbox in Maple to complete the worksheet "Particle in a Box" on Canvas and answer the following questions.
+    \begin{enumerate}
+        \item Based on the interactive plot, does the wave function become more classical as the quantum number $n$ increases?
+        \item Does the energy spacing between states become more or less classical as $n$ increases?
+        \item Sketch the $n=3$ state of the particle in a box and the third molecular orbital of the hydrogen chain.
+        \item What do you observe about the nodal patterns in part (c)?
+        \item Based on parts (c) and (d), are the particle-in-a-box wave functions a good model for the wave functions of the hydrogen chain?
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}
