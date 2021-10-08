@@ -4,6 +4,9 @@
 \usepackage{marginnote}
 \usepackage[style=apa]{biblatex}
 \usepackage{enumitem}
+\usepackage{scrextend}
+\usepackage[bottom]{footmisc}
+\usepackage{float}
 \usepackage{tikz}
 \usepackage{booktabs}
 \usepackage{amsmath,amssymb,amsthm}
@@ -32,6 +35,9 @@
 \DefineBibliographyStrings{english}{bibliography={References}}
 
 \setlist[itemize,3]{label={\scriptsize$\blacksquare$}}
+
+\deffootnotemark{\textsuperscript{\textup{[}\thefootnotemark\textup{]}}}
+\deffootnote[2.1em]{0em}{0em}{\textsuperscript{\thefootnote}}
 
 \usetikzlibrary{fpu,decorations.pathmorphing}
 \colorlet{blx}{blue!90!green!80}

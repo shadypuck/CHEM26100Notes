@@ -198,5 +198,157 @@
 
 
 
+\section{Potential Step}
+\begin{itemize}
+    \item \marginnote{10/8:}Particle in a box:
+    \begin{itemize}
+        \item For $n=1$, the potential is defined by one hump of a sine wave.
+        \item For $n=2$, the potential is defined by two humps.
+        \item The number of nodes is equal to the principal quantum number minus 1.
+        \item We have
+        \begin{equation*}
+            E_n = \frac{\hbar^2}{8m}\frac{\pi^2n^2}{a^2}
+        \end{equation*}
+        for $n\in\N$.
+        \item By the Heisenberg uncertainty relationship, we must have $E_1>0$. In other words, the \textbf{zero-point energy} arises from the UR.
+        \item Trend wrt. $a$: As $a\to\infty$, all of the energies become degenerate.
+        \item Trend wrt. $m$: As $m\to\infty$, $E_n\to 0$ as well.
+        \begin{itemize}
+            \item In other words, as $m\to\infty$, the particle behaves more classically!
+            \item The zero-point energy also disappears as $a\to\infty$.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Zero-point energy}: The lowest possible energy a quantum mechanical system may have.
+    \item All of that information comes from the Schr\"{o}dinger equation, so we now know much more than we used to.
+    \item Free particle vs. particle in a box:
+    \begin{itemize}
+        \item For a free particle, we have $\Psi(x)=\e[ikx]$. Boundary condition was a circle (as per the Bohr model).
+        \item In the particle in a box, we weed out all of the free particle solutions that don't match the boundary conditions. And the only solutions that match the boundary conditions are the ones that have integers for the quantum number $n$.
+        \item The only constraint is that you can retain more particles the bigger the box gets; this is why the particle gets more quantum mechanical as you shrink the box.
+    \end{itemize}
+    \item \textbf{Potential step}: Let the energy $E$ be 0 up until the origin, where it steps up to potential $V_0$.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.append style={black}
+        ]
+            \footnotesize
+            \draw (-3,-0.5) -- node[pos=0.25,left]{$0$} node[left]{\small$E$} ++(0,2);
+            \draw [grx,thick] (-2.8,0) -- node[above=1.1cm]{\small I} (0,0) node[below]{$0$} node[below=5mm]{\small$x$} -- node[right]{$V_0$} ++(0,1) -- node[above=1mm]{\small II} ++(2.8,0);
+    
+            \node [circle,fill,orx,inner sep=1.5pt,label={below:$E_0$},label={[xshift=1mm]above left:$\e[-]$}] at (-2,0.7) {}
+                edge [->,dashed] ++(-0.5,0.7)
+            ;
+        \end{tikzpicture}
+        \caption{Potential step.}
+        \label{fig:potentialStep}
+    \end{figure}
+    \begin{itemize}
+        \item We shoot a particle at a potential wall with energies varying from below the top to above the top.
+    \end{itemize}
+    \item In classical mechanics, we have
+    \begin{equation*}
+        E = \frac{p^2}{2m}+V
+    \end{equation*}
+    \begin{itemize}
+        \item In region I, there's no potential, so the total energy is all kinetic. The particle is moving with momentum $p_\text{I}=\sqrt{2mE}$.
+        \item In region II, the particle is moving with momentum $p_\text{II}=\sqrt{2m(E-V)}$.
+        \begin{itemize}
+            \item If $E_0<V$, the particle \emph{never} passes from region $\text{I}\to\text{II}$.
+            \item If $E_0>V$, the particle \emph{always} passes from $\text{I}\to\text{II}$, but has less KE in II than I\footnote{Note that the classical resolution to the case $E=V_0$ is that the particle never has $E_0=V$; it always has energy $\epsilon$ above or $\epsilon$ below $V$. However, in some sense, there \emph{is} another answer: Classical mechanics is not an "accurate" reflection of reality, and this is a place where it shows. Indeed, we \emph{need} quantum mechanics to treat this case.}.
+        \end{itemize}
+    \end{itemize}
+    \item Quantum particle motion:
+    \begin{align*}
+        -\frac{\hbar^2}{2m}\dv[2]{x}\Psi(x)+V(x)\Psi(x) &= E\Psi(x)\\
+        \dv[2]{x}\Psi(x)+k^2\Psi(x) &= 0
+    \end{align*}
+    where $k=\sqrt{2m(E-V)/\hbar^2}$.
+    \begin{itemize}
+        \item The total wave function will be the sum of the LCAOs that fit the boundary condition.
+        \item Our general solution has two parts:
+        \begin{align*}
+            \Psi_\text{I}(x)  &= A\e[i\alpha x]+B\e[-i\beta x]&
+            \Psi_\text{II}(x) &= C\e[i\alpha x]+D\e[-i\beta x]
+        \end{align*}
+        \item Two energy cases: $E>V_0$ and $E<V_0$.
+        \item $E>V_0$:
+        \begin{itemize}
+            \item We must maintain the continuity of the $\Psi(x)$ and $\dv*{\Psi(x)}{x}$ at $x=0$. This yields
+            \begin{align*}
+                A+B &= C+D&
+                i\alpha(A-B) &= i\beta(C-D)
+            \end{align*}
+            \item It follows that
+            \begin{align*}
+                A &= \frac{C(\alpha+\beta)}{2\alpha}+\frac{D(\alpha-\beta)}{2\alpha}&
+                B &= \frac{C(\alpha-\beta)}{2\alpha}+\frac{D(\alpha+\beta)}{2\alpha}
+            \end{align*}
+            \item Assume that the particles only travel from left to right in II, i.e., $D=0$.
+            \item The flux of the particle: The probability of the particle going left to right in region I is $|A|^2$. Thus, since the incident flux factors in the speed $v_I$ of the particle, the incident flux is $v_\text{I}|A|^2$. Similarly, the transmitted flux of the particle is $v_\text{II}|C|^2$.
+            \item Consequently, the reflected flux of the particles is
+            \begin{equation*}
+                R = \frac{c|B|^2}{c|A|^2} = \frac{|B|^2}{|A|^2} = \frac{(\alpha-\beta)^2}{(\alpha+\beta)^2}
+            \end{equation*}
+            Note that the speed of the particle (the speed of light, $c$) is the same in both regions.
+            \item Conclusion: There is a probability of reflection \emph{even when} $E_0>V_0$, disagreeing with classical mechanics.
+            \item Fraction of transmitted particles:
+            \begin{equation*}
+                T = \frac{v_\text{II}}{v_\text{I}}\frac{|C|^2}{|A|^2} = \frac{4\alpha\beta}{(\alpha+\beta)^2}
+            \end{equation*}
+        \end{itemize}
+        \item $E<V_0$:
+        \begin{itemize}
+            \item The continuity of $\Psi(x)$ and $\Psi'(x)$ at $x=0$ again gives us
+            \begin{align*}
+                A+B &= C+D&
+                i\alpha(A-B) &= i\beta(C-D)
+            \end{align*}
+            \item But since we have
+            \begin{equation*}
+                \beta = \frac{\sqrt{2m(E-V_0)}}{\hbar}
+            \end{equation*}
+            and $E-V_0<0$, $\beta$ will be a complex number.
+            \item Thus, to treat the real and complex portions of $\beta$ separately, we define $\beta_2$ to be a real number.
+            \item Consequently, we may write
+            \begin{equation*}
+                R = \frac{|B|^2}{|A|^2} = \frac{|\alpha-\beta|^2}{|\alpha+\beta|^2} = \frac{|\alpha-i\beta_2|^2}{|\alpha+i\beta_2|^2} = \frac{\alpha^2+\beta_2^2}{\alpha^2+\beta_2^2} = 1
+            \end{equation*}
+            \item Conclusion: When the energy of the particle is less than the energy of the potential, even quantum mechanics predicts total reflection. However, there's still something subtle happening.
+            \item Let's look at the wave function in region II:
+            \begin{equation*}
+                \Psi_\text{II} = C\e[i\beta x] = C\e[i(i\beta_2)x] = C\e[-\beta_2x]
+            \end{equation*}
+            where $\beta_2>0$ by definition.
+            \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}[
+                    every node/.append style={black}
+                ]
+                    \footnotesize
+                    \draw (-3,-0.5) -- node[pos=0.25,left]{$0$} node[left]{\small$E$} ++(0,2);
+                    \draw [grx,thick] (-2.8,0) -- (0,0) node[below]{$0$} node[below=5mm]{\small$x$} -- ++(0,1) -- ++(2.8,0);
+            
+                    \node [circle,fill,orx,inner sep=1.5pt,label={below:$E_0$},label={[xshift=1mm]above left:$\e[-]$}] at (-2,0.7) {}
+                        edge [->,dashed] ++(-0.5,0.7)
+                    ;
+            
+                    \draw [blx,semithick,densely dashed] plot[domain=0:2.2,smooth] (\x,{0.7*e^(-3*\x)});
+                    \node (a) at (1.4,0.6) {$\e[-\beta_2x]$}
+                        (a.south west) edge [->] (0.7,0.2)
+                    ;
+                \end{tikzpicture}
+                \caption{Quantum tunneling.}
+                \label{fig:quantumTunneling}
+            \end{figure}
+            \item Thus, even though the particle is reflected 100\%, it has some probability of going through the step, namely a probability that decays exponentially the farther you go into the wall.
+            \item This is \textbf{quantum tunneling}.
+            \item The particle can't ever get to $\infty$, so that's why $T=0$, but it can go into the wall for a little bit, just a sec.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
