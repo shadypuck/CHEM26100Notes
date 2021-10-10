@@ -350,5 +350,128 @@
 
 
 
+\section{MathChapter B: Probability and Statistics}
+\begin{itemize}
+    \item \marginnote{10/10:}"Consider some experiment, such as the tossing of a coin or the rolling of a die, that has $n$ possible outcomes, each with probability $p_j$, where $j=1,2,\dots,n$" \parencite[63]{bib:McQuarrieSimon}.
+    \item If the experiment is repeated indefinitely, we intuitively expect that for each $j=1,\dots,n$
+    \begin{equation*}
+        p_j = \lim_{N\to\infty}\frac{N_j}{N}
+    \end{equation*}
+    where $N_j$ is the number of times that the event $j$ occurs and $N$ is the total number of repetitions of the experiment.
+    \item The fact that $0\leq N_j\leq N$ implies that $0\leq p_j\leq 1$ by the above condition.
+    \item \textbf{Certainty}: An event $j$ such that $p_j=1$.
+    \item \textbf{Impossibility}: An event $j$ such that $p_j=0$.
+    \item \textbf{Normalization condition}: The result that
+    \begin{equation*}
+        \sum_{j=1}^np_j = 1
+    \end{equation*}
+    \begin{itemize}
+        \item This follows from the fact that $\sum_{j=1}^nN_j=N$ and the above.
+        \item The normalization condition expresses the idea that "the probability that some event occurs is a certainty" \parencite[64]{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item \textbf{Average} (of $x$): The following quantity, where we associate some number $x_j$ with each outcome $j$. \emph{Also known as} \textbf{mean} (of $x$). \emph{Denoted by} $\bm{\prb{x}}$. \emph{Given by}
+    \begin{equation*}
+        \prb{x} = \sum_{j=1}^nx_jp_j = \sum_{j=1}^nx_jp(x_j)
+    \end{equation*}
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.append style={black}
+        ]
+            \footnotesize
+            \draw (-3,0) -- (3,0);
+            \draw [-stealth] (0,0) -- (0,2.5) node[above]{$p(x)$};
+    
+            \draw [rex,thick] (-2.5,0) node[below]{$x_1$} -- ++(0,1.5);
+            \draw [rex,thick] (-1.6,0) node[below]{$x_2$} -- ++(0,1.2);
+            \draw [rex,thick] (-1,0)   node[below]{$x_3$} -- ++(0,1.7);
+            \draw [rex,thick] (1.5,0)  node[below]{$x_4$} -- ++(0,1.6);
+        \end{tikzpicture}
+        \caption{The discrete probability frequency function.}
+        \label{fig:discreteProbabilityDensity}
+    \end{figure}
+    \begin{itemize}
+        \item It is helpful to interpret a probability distribution like $p_j$ as a distribution of a unit mass along the $x$-axis in a discrete manner such that $p_j$ is the fraction of mass located at the point $x_j$.
+        \item According to this interpretation, the average value of $x$ is the center of mass of this system.
+    \end{itemize}
+    \pagebreak
+    \item \textbf{Second moment} (of the distribution $\{p_j\}$): The following quantity.
+    \begin{equation*}
+        \prb{x^2} = \sum_{j=1}^nx_j^2p_j
+    \end{equation*}
+    \begin{itemize}
+        \item Note that $\prb{x^2}\neq\prb{x}^2$.
+        \item Analogous to the moment of inertia.
+    \end{itemize}
+    \item The next quantity is physically more interesting than the second moment.
+    \item \textbf{Second central moment}: The following quantity. \emph{Also known as} \textbf{variance}. \emph{Denoted by} $\bm{\sigma_x^2}$. \emph{Given by}
+    \begin{equation*}
+        \sigma_x^2 = \prb{(x-\prb{x})^2} = \sum_{j=1}^n(x_j-\prb{x})^2p_j
+    \end{equation*}
+    \begin{itemize}
+        \item $\sigma_x^2\geq 0$ because it is a sum of positive terms.
+        \item An alternate form of $\sigma_x^2$:
+        \begin{align*}
+            \sigma_x^2 &= \sum_{j=1}^n(x_j-\prb{x})^2p_j\\
+            &= \sum_{j=1}^n(x_j^2-2\prb{x}x_j+\prb{x}^2)-p_j\\
+            &= \sum_{j=1}^nx_j^2p_j-2\prb{x}\sum_{j=1}^nx_jp_j+\prb{x}^2\sum_{j=1}^np_j\\
+            &= \prb{x^2}-2\prb{x}\cdot\prb{x}+\prb{x}^2\cdot 1\\
+            &= \prb{x^2}-\prb{x}^2
+        \end{align*}
+        \item If $\sigma_x^2=0$ or $\prb{x}^2=\prb{x^2}$, then we must have $x_j=\prb{x}$ for all $j$, i.e., the event is not really probabilistic because the event $j$ occurs on every trial.
+    \end{itemize}
+    \item \textbf{Standard deviation}: The positive square root of the variance. \emph{Denoted by} $\bm{\sigma_x}$.
+    \item Both the standard deviation and the variance are measures of the spread of the distribution about its mean.
+    \item We now step into continuous probability distributions.
+    \item \textbf{Linear mass density}: The quantity $\rho(x)$ defined by
+    \begin{equation*}
+        \dd{m} = \rho(x)\dd{x}
+    \end{equation*}
+    where $\dd{m}$ is the fraction of the mass lying between $x$ and $x+\dd{x}$.
+    \item It follows that the probability that, for example, a particle lies between positions $x$ and $x+\dd{x}$ in a box is
+    \begin{equation*}
+        \Prob(x,x+\dd{x}) = p(x)\dd{x}
+    \end{equation*}
+    \item Therefore,
+    \begin{equation*}
+        \Prob(a\leq x\leq b) = \int_a^bp(x)\dd{x}
+    \end{equation*}
+    \item Furthermore, the continuous normalization condition becomes
+    \begin{equation*}
+        \int_{-\infty}^\infty p(x)\dd{x} = 1
+    \end{equation*}
+    \item We may also analogously define
+    \begin{align*}
+        \prb{x} &= \int_{-\infty}^\infty xp(x)\dd{x}&
+        \prb{x^2} &= \int_{-\infty}^\infty x^2p(x)\dd{x}&
+        \sigma_x^2 &= \int_{-\infty}^\infty(x-\prb{x})^2p(x)\dd{x}
+    \end{align*}
+    \item \textbf{Gaussian distribution}: The most commonly occuring and the most important continuous probability distribution. \emph{Given by}
+    \begin{equation*}
+        p(x)\dd{x} = c\e[-x^2/2a^2]\dd{x}
+    \end{equation*}
+    \begin{itemize}
+        \item Note that the normalization condition implies that
+        \begin{equation*}
+            c = \frac{1}{\sqrt{2\pi a^2}}
+        \end{equation*}
+        \item We can also prove that
+        \begin{equation*}
+            \sigma_x = a
+        \end{equation*}
+        \item Thus, the standard notation for a normalized Gaussian distribution function is
+        \begin{equation*}
+            p(x)\dd{x} = \frac{1}{\sqrt{2\pi\sigma_x^2}}\e[-x^2/2\sigma_x^2]\dd{x}
+        \end{equation*}
+        \item Note that as $\sigma_x$ gets smaller, the bell curves become narrower and taller, and vice versa as it gets larger.
+        \item A more general form (one that accounts for a center at $x=\prb{x}$ as opposed to just $x=0$) is
+        \begin{equation*}
+            p(x)\dd{x} = \frac{1}{\sqrt{2\pi\sigma_x^2}}\e[-(x-\prb{x})^2/2\sigma_x^2]\dd{x}
+        \end{equation*}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
