@@ -27,13 +27,13 @@
     \end{align*}
     \item What is the wave that we might associate with a de Broglie particle?
     \begin{equation*}
-        \Psi(x) = A\e[ikx-i\omega t]
+        \psi(x) = A\e[ikx-i\omega t]
     \end{equation*}
     \item Probability:
     \begin{itemize}
-        \item Classically, such a wave might be associated with EM radiation hitting a surface with intensity $I=|\Psi(x)|^2=\Psi(x)\Psi^*(x)$.
+        \item Classically, such a wave might be associated with EM radiation hitting a surface with intensity $I=|\psi(x)|^2=\psi(x)\psi^*(x)$.
         \item As soon as we associate a particle (photon) with the wave, the intensity may be re-interpreted as the number of particles reaching the surface or the probability of a particle being at the surface.
-        \item Thus, the probability of finding a particle at the surface becomes $|\Psi(x)|^2$, as well.
+        \item Thus, the probability of finding a particle at the surface becomes $|\psi(x)|^2$, as well.
     \end{itemize}
     \item Following de Broglie, we also associate waves with particles such as electrons.
     \begin{itemize}
@@ -57,7 +57,7 @@
         \item The Fourier transform will yield one spike at $\hbar k$ and will be 0 everywhere else --- just like the Dirac delta function.
         \item Thus,
         \begin{equation*}
-            \Psi(p) = \delta(p-\hbar k)
+            \psi(p) = \delta(p-\hbar k)
         \end{equation*}
     \end{itemize}
     \item Consider a Gaussian wave packet at $p=0$. Then
@@ -67,14 +67,14 @@
     \begin{itemize}
         \item $\Delta p$ is the standard deviation of the Gaussian/width of the distribution. It is a constant such that the probability drops to $1/\e$ of its maximum at $p=0$.
     \end{itemize}
-    \item With the Fourier Transform of $\Psi(p)$, we obtain
+    \item With the Fourier Transform of $\psi(p)$, we obtain
     \begin{equation*}
-        \Psi(x) = D\e[-\frac{(\Delta p)^2x^2}{2\hbar^2}]
+        \psi(x) = D\e[-\frac{(\Delta p)^2x^2}{2\hbar^2}]
     \end{equation*}
     \begin{itemize}
         \item Thus, a Gaussian quantum function produces a Gaussian position function via an FT as well, i.e.,
         \begin{equation*}
-            \Psi(x) = D\e[-\frac{x^2}{2(\Delta x)^2}]
+            \psi(x) = D\e[-\frac{x^2}{2(\Delta x)^2}]
         \end{equation*}
     \end{itemize}
     \item Now if we set the last two equations equal to each other, we get
@@ -98,7 +98,7 @@
     \begin{itemize}
         \item de Broglie describes an electron as a free particle.
         \begin{equation*}
-            \Psi(x) = A\e[ikx]
+            \psi(x) = A\e[ikx]
         \end{equation*}
         \item We can only observe the real part, but being able to access the complex part is important in quantum mechanics.
     \end{itemize}
@@ -106,17 +106,17 @@
     \begin{itemize}
         \item Schr\"{o}dinger realized that
         \begin{align*}
-            \dv{\Psi(x)}{x} &= Aik\e[ikx]\\
-            -i\hbar\dv{\Psi(x)}{x} &= Ap\e[ikx]\\
-            &= p\Psi(x)
+            \dv{\psi(x)}{x} &= Aik\e[ikx]\\
+            -i\hbar\dv{\psi(x)}{x} &= Ap\e[ikx]\\
+            &= p\psi(x)
         \end{align*}
-        \item Let's introduce operators in quantum mechanics and let $\hat{p}$ be an operator that when it acts on $\Psi(x)$, it gives the above. In other words,
+        \item Let's introduce operators in quantum mechanics and let $\hat{p}$ be an operator that when it acts on $\psi(x)$, it gives the above. In other words,
         \begin{equation*}
             \hat{p} = -i\hbar\dv{x}
         \end{equation*}
         \item Thus,
         \begin{equation*}
-            \hat{p}\Psi(x) = p\Psi(x)
+            \hat{p}\psi(x) = p\psi(x)
         \end{equation*}
         \item But energy is more important than momentum, so let's introduce an energy operator $\hat{T}$ related to $\hat{p}$ by
         \begin{equation*}
@@ -126,11 +126,11 @@
         since $E=mv^2/2=p^2/(2m)$.
         \item Thus, we have
         \begin{equation*}
-            \hat{T}\Psi(x) = \frac{p^2}{2m}\Psi(x)
+            \hat{T}\psi(x) = \frac{p^2}{2m}\psi(x)
         \end{equation*}
         \item It follows from classical physics that the total energy operator $\hat{H}$ (the Hamiltonian) is the sum of the kinetic and potential energy operators, i.e., $\hat{H}=\hat{T}+\hat{V}$. Therefore, we must have
         \begin{equation*}
-            \hat{H}\Psi(x) = E\Psi(x)
+            \hat{H}\psi(x) = E\psi(x)
         \end{equation*}
         and that is the Schr\"{o}dinger equation.
     \end{itemize}
@@ -139,13 +139,13 @@
         \item The walls are infinite and have infinite potential.
         \item We need the boundary condition, though, to be able to solve a differential equation like the Schr\"{o}dinger equation.
         \begin{itemize}
-            \item Fortunately, we know that at $|x|=a$, we have $\Psi(\pm a)=0$.
-            \item Another important point is that $\dv*{\Psi(x)}{x}$ at $a$ is discontinuous.
+            \item Fortunately, we know that at $|x|=a$, we have $\psi(\pm a)=0$.
+            \item Another important point is that $\dv*{\psi(x)}{x}$ at $a$ is discontinuous.
         \end{itemize}
         \item So we have that
         \begin{align*}
-            -\frac{\hbar^2}{2m}\dv[2]{x}\Psi_n(x) &= E_n\Psi_n(x)\\
-            \dv[2]{x}\Psi(x) &= -k^2\Psi(x)
+            -\frac{\hbar^2}{2m}\dv[2]{x}\psi_n(x) &= E_n\psi_n(x)\\
+            \dv[2]{x}\psi(x) &= -k^2\psi(x)
         \end{align*}
         where
         \begin{equation*}
@@ -153,12 +153,12 @@
         \end{equation*}
         \item The solution of the differential equation will be of the form
         \begin{equation*}
-            \Psi(x) = A\cos(kx)+B\sin(kx)
+            \psi(x) = A\cos(kx)+B\sin(kx)
         \end{equation*}
         \item Boundary conditions 1 and 2, respectively:
         \begin{align*}
-            0 &= \Psi(a)&
-                0 &= \Psi(-a)\\
+            0 &= \psi(a)&
+                0 &= \psi(-a)\\
             &= A\cos(ka)+B\sin(ka)&
                 &= A\cos(ka)-B\sin(ka)
         \end{align*}
@@ -174,16 +174,16 @@
         \end{enumerate}
         \item Thus, either
         \begin{equation*}
-            \Psi_n(x) = \frac{1}{\sqrt{a}}\cos\left( \frac{n\pi x}{2a} \right)
+            \psi_n(x) = \frac{1}{\sqrt{a}}\cos\left( \frac{n\pi x}{2a} \right)
         \end{equation*}
         for $n\in 2\N+1$ are the \textbf{even solutions} (because cosine is an even function), and
         \begin{equation*}
-            \Psi_n(x) = \frac{1}{\sqrt{a}}\sin\left( \frac{n\pi x}{2a} \right)
+            \psi_n(x) = \frac{1}{\sqrt{a}}\sin\left( \frac{n\pi x}{2a} \right)
         \end{equation*}
         for $n\in 2\N$ are the \textbf{odd solutions} (because sine is an odd function).
-        \item Note that we derive the $1/\sqrt{a}$ coefficient by normalizing $\Psi(x)$ with
+        \item Note that we derive the $1/\sqrt{a}$ coefficient by normalizing $\psi(x)$ with
         \begin{equation*}
-            \int_{-a}^a|\Psi(x)|^2\dd{x} = \int_{-a}^a\Psi^*(x)\Psi(x) = 1
+            \int_{-a}^a|\psi(x)|^2\dd{x} = \int_{-a}^a\psi^*(x)\psi(x) = 1
         \end{equation*}
         \item The energies come out to
         \begin{equation*}
@@ -222,7 +222,7 @@
     \item All of that information comes from the Schr\"{o}dinger equation, so we now know much more than we used to.
     \item Free particle vs. particle in a box:
     \begin{itemize}
-        \item For a free particle, we have $\Psi(x)=\e[ikx]$. Boundary condition was a circle (as per the Bohr model).
+        \item For a free particle, we have $\psi(x)=\e[ikx]$. Boundary condition was a circle (as per the Bohr model).
         \item In the particle in a box, we weed out all of the free particle solutions that don't match the boundary conditions. And the only solutions that match the boundary conditions are the ones that have integers for the quantum number $n$.
         \item The only constraint is that you can retain more particles the bigger the box gets; this is why the particle gets more quantum mechanical as you shrink the box.
     \end{itemize}
@@ -260,21 +260,21 @@
     \end{itemize}
     \item Quantum particle motion:
     \begin{align*}
-        -\frac{\hbar^2}{2m}\dv[2]{x}\Psi(x)+V(x)\Psi(x) &= E\Psi(x)\\
-        \dv[2]{x}\Psi(x)+k^2\Psi(x) &= 0
+        -\frac{\hbar^2}{2m}\dv[2]{x}\psi(x)+V(x)\psi(x) &= E\psi(x)\\
+        \dv[2]{x}\psi(x)+k^2\psi(x) &= 0
     \end{align*}
     where $k=\sqrt{2m(E-V)/\hbar^2}$.
     \begin{itemize}
         \item The total wave function will be the sum of the LCAOs that fit the boundary condition.
         \item Our general solution has two parts:
         \begin{align*}
-            \Psi_\text{I}(x)  &= A\e[i\alpha x]+B\e[-i\beta x]&
-            \Psi_\text{II}(x) &= C\e[i\alpha x]+D\e[-i\beta x]
+            \psi_\text{I}(x)  &= A\e[i\alpha x]+B\e[-i\beta x]&
+            \psi_\text{II}(x) &= C\e[i\alpha x]+D\e[-i\beta x]
         \end{align*}
         \item Two energy cases: $E>V_0$ and $E<V_0$.
         \item $E>V_0$:
         \begin{itemize}
-            \item We must maintain the continuity of the $\Psi(x)$ and $\dv*{\Psi(x)}{x}$ at $x=0$. This yields
+            \item We must maintain the continuity of the $\psi(x)$ and $\dv*{\psi(x)}{x}$ at $x=0$. This yields
             \begin{align*}
                 A+B &= C+D&
                 i\alpha(A-B) &= i\beta(C-D)
@@ -299,7 +299,7 @@
         \end{itemize}
         \item $E<V_0$:
         \begin{itemize}
-            \item The continuity of $\Psi(x)$ and $\Psi'(x)$ at $x=0$ again gives us
+            \item The continuity of $\psi(x)$ and $\psi'(x)$ at $x=0$ again gives us
             \begin{align*}
                 A+B &= C+D&
                 i\alpha(A-B) &= i\beta(C-D)
@@ -317,7 +317,7 @@
             \item Conclusion: When the energy of the particle is less than the energy of the potential, even quantum mechanics predicts total reflection. However, there's still something subtle happening.
             \item Let's look at the wave function in region II:
             \begin{equation*}
-                \Psi_\text{II} = C\e[i\beta x] = C\e[i(i\beta_2)x] = C\e[-\beta_2x]
+                \psi_\text{II} = C\e[i\beta x] = C\e[i(i\beta_2)x] = C\e[-\beta_2x]
             \end{equation*}
             where $\beta_2>0$ by definition.
             \begin{figure}[H]
@@ -469,6 +469,100 @@
             p(x)\dd{x} = \frac{1}{\sqrt{2\pi\sigma_x^2}}\e[-(x-\prb{x})^2/2\sigma_x^2]\dd{x}
         \end{equation*}
     \end{itemize}
+\end{itemize}
+
+
+
+\section{Chapter 3: The Schr\"{o}dinger Equation and a Particle In a Box}
+\begin{itemize}
+    \item \textbf{Schr\"{o}dinger equation}: The fundamental equation of quantum mechanics. A differential equation whose solution $\psi(x)$ describes a particle of mass $m$ moving in a potential field described by $V(x)$. \emph{Given by}
+    \begin{equation*}
+        -\frac{\hbar^2}{2m}\dv[2]{\psi}{x}+V(x)\psi(x) = E\psi(x)
+    \end{equation*}
+    \item \textbf{Wave function}: A solution to the Schr\"{o}dinger equation. A measure of the amplitude of the matter wave. \emph{Denoted by} $\bm{\psi(x)}$
+    \item \textbf{Stationary-state wave function}: A solution to the time-independent Schr\"{o}dinger equation.
+    \item \textbf{Particle in a box}: A system consisting of a free particle of mass $m$ that is restricted to lie along a one-dimensional interval of length $a$.
+    \item \textbf{Spatial amplitude} (of a wave): The function $\psi(x)$ of position that serves as a coefficient to a time-dependent wave function.
+    \item \textbf{Operator}: A symbol that tells you to do something to whatever follows the symbol. \emph{Denoted by} a capital letter with a carat over it.
+    \item \textbf{Linear operator}: An operator $\hat{A}$ such that
+    \begin{equation*}
+        \hat{A}[c_1f_1(x)+c_2f_2(x)] = c_1\hat{A}f_1(x)+c_2\hat{A}f_2(x)
+    \end{equation*}
+    where $c_1,c_2$ are possible complex constants.
+    \item \textbf{Eigenvalue problem}: The problem of determining $\phi(x)$ and $a$ given $\hat{A}$ such that
+    \begin{equation*}
+        \hat{A}\phi(x) = a\phi(x)
+    \end{equation*}
+    \item \textbf{Eigenfunction}: The function $\phi(x)$ in an eigenvalue problem.
+    \item \textbf{Eigenvalue}: The constant $a$ in an eigenvalue problem.
+    \item \textbf{Hamiltonian operator}: The following operator. \emph{Denoted by} $\bm{\bar{H}}$. \emph{Given by}
+    \begin{equation*}
+        \bar{H} = -\frac{\hbar^2}{2m}\dv[2]{x}+V(x)
+    \end{equation*}
+    \item The substitution of the Hamiltonian operator into the Schr\"{o}dinger equation allows us to formulate the Schr\"{o}dinger equation as an eigenvalue problem.
+    \begin{itemize}
+        \item The wave function then becomes the eigenfunction and the energy, the eigenvalue of the Hamiltonian operator.
+    \end{itemize}
+    \item \textbf{Kinetic energy operator}: The following operator. \emph{Denoted by} $\bm{\hat{K}_x}$. \emph{Given by}
+    \begin{equation*}
+        \hat{K}_x = -\frac{\hbar^2}{2m}\dv[2]{x}
+    \end{equation*}
+    \begin{itemize}
+        \item Defined by taking $V(x)=0$ in the Hamiltonian.
+    \end{itemize}
+    \item \textbf{Momentum operator}: The following operator. \emph{Denoted by} $\bm{\hat{P}_x}$.
+    \begin{equation*}
+        \hat{P}_x = -i\hbar\dv{x}
+    \end{equation*}
+    \begin{itemize}
+        \item Defined by applying $K=p^2/2m$ to the kinetic energy operator to get
+        \begin{equation*}
+            \hat{P}_x^2 = -\hbar^2\dv[2]{x}
+        \end{equation*}
+        and then (noting that we define the square of an operator to be equivalent to applying the same operator successively) factoring the above into
+        \begin{equation*}
+            \hat{P}_x^2 = \hat{P}_x\hat{P}_x = -\hbar^2\dv[2]{x} = \left( -i\hbar\dv{x} \right)\left( -i\hbar\dv{x} \right)
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Free particle}: A particle that experiences no potential energy, i.e., a particle for which $V(x)=0$.
+    \item When solving the particle in a box, we say that $\psi(x)$ represents the the amplitude of the particle in some sense. More specifically, since the intensity of a wave is the square of the magnitude of the amplitude, we write that the "intensity of the particle" is proportional to $\psi^*(x)\psi(x)$.
+    \begin{itemize}
+        \item Born, a German physicist working in scattering theory, formalized this by saying that $\psi^*(x)\psi(x)\dd{x}$ is the "probability that the particle is located between $x$ and $x+\dd{x}$" \parencite[80]{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item Schr\"{o}dinger's quantization of energy arises naturally from his equation and the boundary conditions, as opposed to having to be postulated as in Bohr's model.
+    \item \textcite{bib:McQuarrieSimon} use the free-particle model to crudely explain the absorption spectrum of butadiene.
+    \item \textbf{Normalized} (wave function): A wave function of the form
+    \begin{equation*}
+        \psi_n(x) = \sqrt{\frac{2}{a}}\sin\frac{n\pi x}{a}
+    \end{equation*}
+    \begin{itemize}
+        \item "Because the Hamiltonian operator is a linear operator, if $\psi$ is a solution to $\hat{H}\psi=E\psi$, then any constant, say $A$, times $\psi$ is also a solution, and $A$ can always be chosen to produce a normalized solution to the Schr\"{o}dinger equation" \parencite[84]{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item \textbf{Correspondence principle}: Quantum mechanical results and classical mechanical results tend to agree in the limit of large quantum numbers.
+    \item Applying the statistical principles to the particle in a box, we can calculate that
+    \begin{align*}
+        \prb{x} &= \frac{a}{2}&
+            \prb{x^2} &= \frac{a^2}{3}-\frac{a^2}{2n^2\pi^2}&
+                \sigma_x^2 &= \prb{x^2}-\prb{x}^2&
+                    \sigma_x &= \frac{a}{2\pi n}\sqrt{\frac{\pi^2n^2}{3}-2}\\
+        &&
+            &&
+                &= \left( \frac{a}{2\pi n} \right)^2\left( \frac{\pi^2n^2}{3}-2 \right)
+    \end{align*}
+    \item Calculating the average energy or momentum:
+    \begin{itemize}
+        \item To calculate the average value of the physical quantity associated with an operator, we sandwich the operator between a wave function $\psi_n(x)$ and its complex conjugate $\psi_n^*(x)$.
+        \item This will be formalized later, but for now, we assume that
+        \begin{equation*}
+            \prb{s} = \int\psi_n^*(x)\hat{S}\psi_n(x)\dd{x}
+        \end{equation*}
+        where $\hat{S}$ is the quantum-mechanical operator associated with the physical quantity $s$, and $\prb{s}$ is the average value of $s$ in the state described for the wave function.
+        \item For example, the average momentum of a particle in a box in the state described by $\psi_n(x)$ is
+        \begin{equation*}
+            \prb{p} = \int_0^a\left[ \sqrt{\frac{2}{a}}\sin\frac{n\pi x}{a} \right]\left( -i\hbar\dv{x} \right)\left[ \sqrt{\frac{2}{a}}\sin\frac{n\pi x}{a} \right]\dd{x}
+        \end{equation*}
+    \end{itemize}
+    \item Note that the average momentum of a particle in a box is zero.
 \end{itemize}
 
 
