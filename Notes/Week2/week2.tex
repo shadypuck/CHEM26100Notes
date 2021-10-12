@@ -563,6 +563,101 @@
         \end{equation*}
     \end{itemize}
     \item Note that the average momentum of a particle in a box is zero.
+    \item \marginnote{10/12:}Calculating the variance $\sigma_p^2$ of the momentum of a particle in a box.
+    \begin{align*}
+        \prb{p^2} &= \int\psi_n^*\hat{P}_x^2\psi_n(x)\dd{x}\\
+        &= \frac{n^2\pi^2\hbar^2}{a^2}
+    \end{align*}
+    \begin{itemize}
+        \item It follows that $\sigma_p=n\pi\hbar/a$.
+    \end{itemize}
+    \item \textbf{Root-mean-square momentum}: The square root of $\prb{p^2}$.
+    \item "Because the variance $\sigma^2$, and hence the standard deviation $\sigma$, is a measure of the spread of a distribution about its mean value, we can interpret $\sigma$ as a measure of the uncertainty involved in any measurement" \parencite[89]{bib:McQuarrieSimon}.
+    \begin{itemize}
+        \item For the simple situation of a particle in a box, we can calculate \emph{exact} uncertainties in position and momentum $\sigma_x,\sigma_p$.
+        \begin{itemize}
+            \item We can see from these exact formulae that $\sigma_x$ is directly proportional to the length $a$ of the box, and $\sigma_p$ is inversely proportional to the length $a$ of the box.
+            \item This means that as the box gets bigger, it becomes harder to know where the particle is but its momentum becomes more certain, and vice versa as the box gets smaller.
+        \end{itemize}
+        \item From the above, it is clear that $\sigma_x$ and $\sigma_p$ have a reciprocal relation.
+        \item Indeed, taking the product $\sigma_x\sigma_p$ yields the \textbf{Heisenberg Uncertainty Principle}
+        \begin{align*}
+            \sigma_x\sigma_p &= \frac{\hbar}{2}\sqrt{\frac{\pi^2n^2}{3}-2}\\
+            &> \frac{\hbar}{2}
+        \end{align*}
+    \end{itemize}
+    \item \textbf{Free particle}: A particle that is allowed to range over the entire $x$-axis.
+    \begin{itemize}
+        \item "A free particle has a definite momentum, but its position is completely indefinite" \parencite[90]{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item The Uncertainty Principle also says that the minimum product of the two uncertainties is on the order of Planck's constant.
+    \item The particle in a three-dimensional box:
+    \begin{itemize}
+        \item If the box (a rectangular parallelepiped) has sides of length $a,b,c$, then the Schr\"{o}dinger equation for this case is
+        \begin{equation*}
+            -\frac{\hbar^2}{2m}\left( \pdv[2]{\psi}{x}+\pdv[2]{\psi}{y}+\pdv[2]{\psi}{z} \right) = E\psi(x,y,z)
+        \end{equation*}
+        where $0\leq x\leq a$, $0\leq y\leq b$, and $0\leq z\leq c$.
+        \begin{itemize}
+            \item An alternate form is
+            \begin{equation*}
+                -\frac{\hbar^2}{2m}\nabla^2\psi = E\psi
+            \end{equation*}
+        \end{itemize}
+        \item Boundary conditions:
+        \begin{itemize}
+            \item $\psi(0,y,z)=\psi(a,y,z)=0$ for all $y,z$.
+            \item $\psi(x,0,z)=\psi(x,b,z)=0$ for all $x,z$.
+            \item $\psi(x,y,0)=\psi(x,y,c)=0$ for all $x,y$.
+        \end{itemize}
+        \item Invoke the method of separation of variables, i.e., suppose
+        \begin{equation*}
+            \psi(x,y,z) = X(x)Y(y)Z(z)
+        \end{equation*}
+        \item Then
+        \begin{equation*}
+            -\frac{\hbar^2}{2m}\frac{1}{X(x)}\dv[2]{X}{x}-\frac{\hbar^2}{2m}\frac{1}{Y(y)}\dv[2]{Y}{y}-\frac{\hbar^2}{2m}\frac{1}{Z(z)}\dv[2]{Z}{z} = E
+        \end{equation*}
+        \item It follows since each of the three terms contains only one of the variables and hence each of the terms can be varied independently that each term must equal a constant. The sum of the three constants will be $E$.
+        \item But dividing the above equations into three smaller equations gives us cases entirely analogous to the one-dimensional particle in a box, meaning that
+        \begin{align*}
+            X(x) &= A_x\sin\frac{n_x\pi x}{a}&
+            Y(y) &= A_y\sin\frac{n_y\pi y}{b}&
+            Z(z) &= A_z\sin\frac{n_z\pi z}{c}
+        \end{align*}
+        for $n=1,2,3,\dots$.
+        \item Therefore, the solution is
+        \begin{equation*}
+            \psi(x,y,z) = A_xA_yA_z\sin\frac{n_x\pi x}{a}\sin\frac{n_y\pi y}{b}\sin\frac{n_z\pi z}{c}
+        \end{equation*}
+        \item The normalization constant then turns out to be
+        \begin{align*}
+            1 &= \int_0^a\int_0^b\int_0^c\psi^*(x,y,z)\psi(x,y,z)\dd{x}\dd{y}\dd{z}\\
+            A_xA_yA_z &= \sqrt{\frac{8}{abc}}
+        \end{align*}
+        \item We can now also obtain the following formula for the energies by plugging the full solution back into the original Schr\"{o}dinger equation.
+        \begin{equation*}
+            E_{n_xn_yn_z} = \frac{h^2}{8m}\left( \frac{n_x^2}{a^2}+\frac{n_y^2}{b^2}+\frac{n_z^2}{c^2} \right)
+        \end{equation*}
+        \item \textcite{bib:McQuarrieSimon} does calculations to show that $\prb{x}=(a/2,b/2,c/2)$ and $\prb{p}=0$.
+        \item Note that we have the following 3D operators:
+        \begin{itemize}
+            \item Position operator:
+            \begin{equation*}
+                \hat{\mathbf{R}} = \hat{X}\mathbf{i}+\hat{Y}\mathbf{j}+\hat{Z}\mathbf{k}
+            \end{equation*}
+            \item Momentum operator:
+            \begin{equation*}
+                \hat{\mathbf{P}} = -i\hbar\left( \mathbf{i}\pdv{x}+\mathbf{j}\pdv{y}+\mathbf{k}\pdv{z} \right)
+            \end{equation*}
+        \end{itemize}
+        \item Consider the special case where $a=b=c$. Then only one set of values $n_x,n_y,n_z$ corresponds to the lowest energy level, but \emph{three degenerate ones} correspond to the second energy level (211, 121, 112).
+        \begin{itemize}
+            \item Note that the degeneracy is introduced by the symmetry of the box and is lifted when the box becomes no longer symmetric.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Laplacian operator}: The operator $\nabla^2$.
+    \item \textbf{Separable} (operator): An operator that is the sum of multiple variably independent terms.
 \end{itemize}
 
 
