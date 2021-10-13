@@ -177,5 +177,72 @@
 
 
 
+\section{Harmonic Oscillator (cont.)}
+\begin{itemize}
+    \item \marginnote{10/13:}Assume that the $(n+1)^\text{th}$ coefficient vanishes by the recurrence relation; this causes the energy to be quantized.
+    \begin{itemize}
+        \item Therefore, $\epsilon=4n+1$.
+    \end{itemize}
+    \item For each value of $n$, there is an even Hermite polynomial\footnote{So named because they were studied by the mathematician Charles Hermite before they were utilized in Quantum Mechanics.}.
+    \begin{itemize}
+        \item Thus, our even solutions include $H_0(y)=1$, $H_2(y)=4y^2-2$, $H_4(y)=16y^4-48y^2-2$, for example.
+    \end{itemize}
+    \item Odd solutions:
+    \begin{itemize}
+        \item Let
+        \begin{equation*}
+            H(y) = \sum_{j=0}^\infty d_jy^{2j+1}
+        \end{equation*}
+        \item Our recurrence relation works out to be
+        \begin{equation*}
+            d_{j+1} = \frac{4j+3-\epsilon}{2(j+1)(2j+3)}d_j
+        \end{equation*}
+        \item Again, if it does not terminate, $d_{j+1}/d_j\approx 1/j$, so the solutions will blow up at the edges due to the high powers of $y$. Therefore, the series must truncate.
+        \item If the coefficient at $n$ exists but the next one will vanish, it must be true that $4n+3=\epsilon$.
+        \item Example odd solutions: $H_1(y)=2y$, $H_3(y)=8y^3-12y$, $H_5(y)=32y^5-160y^3+120y$.
+        \begin{itemize}
+            \item Note that you can make the coefficients pretty much of any scale because they will be normalized later as part of the wave function.
+        \end{itemize}
+    \end{itemize}
+    \item Energies and wave functions:
+    \begin{itemize}
+        \item The energy levels are $\epsilon_n=2n+1$ for $n=0,1,2,\dots$ or $E_n=(n+\frac{1}{2})\hbar\omega$ for $n=0,1,2,\dots$.
+        \item It follows that if $\psi(y)=N_y\e[-y^2/2]H_n(y)$, where
+        \begin{equation*}
+            N_y = \frac{1}{\sqrt{2^nn!\sqrt{\pi}}}
+        \end{equation*}
+        \item In terms of $x$, we get
+        \begin{equation*}
+            N_x = \sqrt[4]{\frac{\omega m}{\hbar}}N_y
+        \end{equation*}
+        \item Observations:
+        \begin{enumerate}
+            \item The energy levels are quantized (discrete).
+            \item The energy levels are equally spaced apart where $\Delta E=\hbar\nu$.
+            \item The energy levels are non-degenerate.
+            \item The zero-point energy is equal to $\hbar\omega/2$. (Recall that the finite energy is there due to the Uncertainty Relation.)
+            \item Similar to the levels discovered by Max Planck.
+        \end{enumerate}
+    \end{itemize}
+    \item Classical harmonic oscillator:
+    \begin{itemize}
+        \item Position: $x=x_0\sin(\omega t)$.
+        \item Velocity: $v=\cos x_0\sin(\omega t)$.
+        \item Energy: $E=m\omega^2x_0^2/2$.
+        \item Turning point: $x_0=\sqrt{2E/m\omega^2}$.
+        \item Probability of the oscillator being at $x$:
+        \begin{equation*}
+            P(x)\dd{x} = \frac{\frac{2\dd{x}}{v}}{T} = \frac{\dd{x}}{\pi\sqrt{x_0^2-x^2}}
+        \end{equation*}
+        \begin{itemize}
+            \item Thus, classically, the oscillator spends most of its time at the turning points (this makes intuitive sense because a pendulum slows down at the turning points, spending more time there).
+            \item In quantum mechanics, we don't have a hard turning point the way we do classically.
+            \item Classical limit of quantum theory: In higher and higher order Hermite polynomials, the probability gets pushed to the edges.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
