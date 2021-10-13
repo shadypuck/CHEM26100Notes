@@ -9,15 +9,71 @@
 
 
 
-\section{???}
+\section{Boxes and Waves}
 \begin{enumerate}
     \item \marginnote{10/13:}
     \vspace{-2em}
     \begin{enumerate}
         \item Imagine the particle in the infinite square well bouncing back and forth against the walls classically. In the absence of friction, the particle will continue to bounce back and forth with a constant speed. What is the probability $P(x)$ of finding this classical particle as a function of its position in the box?
+        \begin{proof}[Answer]
+            Let $L$ be the length of the box and let $v$ be the speed of the particle. If $0\leq x\leq L$, the probability $P(x,x+\dd{x})$ that the particle is between $x$ and $x+\dd{x}$ is equal to the time the particle spends in the sliver of the box between $x$ and $x+\dd{x}$ per unit time divided by the total time. If we let our unit of time be the amount of time it takes the particle to cross the box from end to end once, then we have
+            \begin{align*}
+                P(x,x+\dd{x}) &= \frac{t_\text{between $x$ and $x+\dd{x}$}}{t_\text{total}}\\
+                &= \frac{\dd{x}/v}{L/v}\\
+                \dd{P(x)} &= \frac{\dd{x}}{L}
+            \end{align*}
+            Note that as $\dd{x}\to 0$, $P(x)\to 0$ as well for any $x$, so technically the probability of finding the particle at any exact spot is always zero.
+        \end{proof}
         \item Secondly, consider the particle to be in the quantum ground state. What is the probability $P(x)$ of finding this quantum particle as a function of its position in the box? Give a sketch.
+        \begin{proof}[Answer]
+            If the box is of length $L=2a$, then the probability is
+            \begin{align*}
+                P(x) &= \psi^*(x)\psi(x)\\
+                \Aboxed{P(x) &= \frac{1}{a}\sin^2\left( \frac{\pi x}{2a} \right)}
+            \end{align*}
+            Sketch:
+            \begin{center}
+                \begin{tikzpicture}
+                    \footnotesize
+                    \draw [<->] (0,1.5) -- node[left=7mm]{\small$P(x)$} (0,0) -- node[below=5mm]{\small$x$} (5,0);
+                    \draw
+                        (2,0.1) -- ++(0,-0.2) node[below]{$a$}
+                        (4,0.1) -- ++(0,-0.2) node[below]{$2a$}
+                        (0.1,0.5) -- ++(-0.2,0) node[left]{$a/2$}
+                        (0.1,1) -- ++(-0.2,0) node[left]{$a$}
+                    ;
+            
+                    \draw [rex,thick] (0,0) cos (1,0.25) sin (2,0.5) cos (3,0.25) sin (4,0);
+                \end{tikzpicture}
+            \end{center}
+        \end{proof}
         \item Thirdly, consider the particle to be in the quantum state $n=2$. What is the probability $P(x)$ of finding this quantum particle as a function of its position in the box? Give a sketch.
+        \begin{proof}[Answer]
+            If the box is of length $L=2a$, then the probability is
+            \begin{align*}
+                P(x) &= \psi^*(x)\psi(x)\\
+                \Aboxed{P(x) &= \frac{1}{a}\sin^2\left( \frac{\pi x}{a} \right)}
+            \end{align*}
+            Sketch:
+            \begin{center}
+                \begin{tikzpicture}
+                    \footnotesize
+                    \draw [<->] (0,1.5) -- node[left=7mm]{\small$P(x)$} (0,0) -- node[below=5mm]{\small$x$} (5,0);
+                    \draw
+                        (2,0.1) -- ++(0,-0.2) node[below]{$a$}
+                        (4,0.1) -- ++(0,-0.2) node[below]{$2a$}
+                        (0.1,0.5) -- ++(-0.2,0) node[left]{$a/2$}
+                        (0.1,1) -- ++(-0.2,0) node[left]{$a$}
+                    ;
+            
+                    \draw [rex,thick] (0,0) cos (0.5,0.25) sin (1,0.5) cos (1.5,0.25) sin (2,0) cos (2.5,0.25) sin (3,0.5) cos (3.5,0.25) sin (4,0);
+                \end{tikzpicture}
+            \end{center}
+        \end{proof}
         \item As the quantum state $n$ of the particle approaches infinity, the energy and frequency of the particle become very large. What happens to the probability $P(x)$ of finding this quantum particle as a function of its position in the box?
+        \begin{proof}[Answer]
+            The probability $P(x)$ becomes more evenly distributed throughout the box, so the particle behaves more classically.
+        \end{proof}
     \end{enumerate}
     \item The spread or uncertainty in position and momentum may be computed by a mathematical measure of the deviation from the average position
     \begin{equation}
@@ -30,16 +86,149 @@
     where the notation $\langle\ \rangle$ was developed by Dirac to denote the expectation value. The text evaluates these uncertainties for a particle in the ground state of an infinite square well.
     \begin{enumerate}
         \item Do they satisfy the Heisenberg uncertainty relation?
+        \begin{proof}[Answer]
+            From \textcite{bib:McQuarrieSimon}, we have that
+            \begin{align*}
+                \Delta x &= \frac{a}{2\pi}\sqrt{\frac{\pi^2}{3}-2}&
+                \Delta p &= \frac{\pi\hbar}{a}
+            \end{align*}
+            These \fbox{do} obey the Heisenberg uncertainty relation since
+            \begin{equation*}
+                \Delta x\cdot\Delta p = \frac{\hbar}{2}\sqrt{\frac{\pi^2}{3}-2} \geq \frac{\hbar}{2}
+            \end{equation*}
+        \end{proof}
         \item Evaluate these uncertainties for a particle in the second- and fourth-excited states (the first and second even excited states) of an infinite square well. Do they satisfy the Heisenberg uncertainty relation?
+        \begin{proof}[Answer]
+            From \textcite{bib:McQuarrieSimon}, we have that
+            \begin{align*}
+                \Delta x &= \frac{a}{2\pi\cdot 3}\sqrt{\frac{\pi^2\cdot 3^2}{3}-2}&
+                \Delta p &= \frac{3\cdot\pi\hbar}{a}\\
+                \Delta x &= \frac{a}{2\pi\cdot 5}\sqrt{\frac{\pi^2\cdot 5^2}{3}-2}&
+                \Delta p &= \frac{5\cdot\pi\hbar}{a}
+            \end{align*}
+            These \fbox{do} obey the Heisenberg uncertainty relation since
+            \begin{align*}
+                \Delta x\cdot\Delta p &= \frac{\hbar}{2}\sqrt{\frac{\pi^2\cdot 3^2}{3}-2} \geq \frac{\hbar}{2}\\
+                \Delta x\cdot\Delta p &= \frac{\hbar}{2}\sqrt{\frac{\pi^2\cdot 5^2}{3}-2} \geq \frac{\hbar}{2}
+            \end{align*}
+        \end{proof}
         \item Compare the uncertainties in the position and momentum for the ground, second-excited, and fourth-excited states. What would you expect to happen to the uncertainties as the state $n$ approaches infinity?
+        \begin{proof}[Answer]
+            As $n\to\infty$, uncertainty in position will stay basically the same (increase slightly asymptotically), but uncertainty in momentum will diverge to $\infty$.
+        \end{proof}
     \end{enumerate}
     \item Consider a particle in a one-dimensional infinite square well where the infinite walls are located and $-b$ and $+b$. Give the time-dependent form of the ground and the first-excited states.
+    \begin{proof}[Answer]
+        We have that the time-independent forms of the ground and first-excited states are, respectively
+        \begin{align*}
+            \psi_1(x) &= \frac{1}{\sqrt{b}}\cos\left( \frac{\pi x}{2b} \right)&
+            \psi_2(x) &= \frac{1}{\sqrt{b}}\sin\left( \frac{\pi x}{b} \right)
+        \end{align*}
+        Thus, the time-dependent forms are
+        \begin{align*}
+            \psi_1(x,t) &= \frac{1}{\sqrt{b}}\cos\left( \frac{\pi x}{2b} \right)\cdot\e[-iE_1t/\hbar]&
+                \psi_2(x,t) &= \frac{1}{\sqrt{b}}\sin\left( \frac{\pi x}{b} \right)\cdot\e[-iE_2t/\hbar]\\
+            \Aboxed{\psi_1(x,t) &= \frac{1}{\sqrt{b}}\cos\left( \frac{\pi x}{2b} \right)\cdot\e[-i\hbar\pi^2t/8mb^2]}&
+                \Aboxed{\psi_2(x,t) &= \frac{1}{\sqrt{b}}\sin\left( \frac{\pi x}{b} \right)\cdot\e[-i\hbar\pi^2t/2mb^2]}
+        \end{align*}
+    \end{proof}
     \item We have been examining a one-dimensional infinite square well where the infinite walls are located at $-b$ and $+b$. The energy levels in this quantum system are non-degenerate, that is, for each energy, there is only one wave function. Let us place an infinite potential step between $-b/2$ and $+b/2$.
     \begin{enumerate}
         \item Is the particle more likely to be in the left or the right infinite square well?
-        \item What are the new energy levels ans wave functions of this modified system? (Hint: How are they related to the infinite square well?)
+        \begin{proof}[Answer]
+            Because of symmetry, the particle is \fbox{equally likely} to be in the left and right side of the well.
+        \end{proof}
+        \item What are the new energy levels and wave functions of this modified system? (Hint: How are they related to the infinite square well?)
+        \begin{proof}[Answer]
+            To derive a wave function $\psi$ pertaining to the entire system, we will modify the particle in a box procedure to derive two separate wave functions $\psi_\text{I},\psi_\text{II}$ corresponding to the two sides of the infinite potential step. Let's begin.\par
+            For the negative side (corresponding to $\psi_\text{I}$, start with the Schr\"{o}dinger equation in the form
+            \begin{equation*}
+                \dv[2]{x}\psi(x) = -k^2\psi(x)
+            \end{equation*}
+            where $k=\sqrt{2mE}/\hbar$. The general solution to this ODE will be of the form
+            \begin{equation*}
+                \psi_\text{I}(x) = A\cos(kx)+B\sin(kx)
+            \end{equation*}
+            Our boundary conditions are
+            \begin{align*}
+                0 &= \psi_\text{I}(-b)&
+                    0 &= \psi_\text{II}(-b/2)\\
+                &= A\cos(kb)-B\sin(kb)&
+                    &= A\cos(kb/2)-B\sin(kb/2)\\
+            \end{align*}
+            We can make both of the above equations equal to zero three different ways: We can let $A=B=0$, we can let $\cos(kb)=\cos(kb/2)=B=0$, and we can let $\sin(kb)=\sin(kb/2)=A=0$. We will work through each possibility in turn, either finding a nontrivial $\psi_\text{I}$ or proving that no such function exists under such conditions. Let's begin.\par
+            If $A=B=0$, then $\psi_\text{I}=0$, and we have a trivial solution.\par
+            Now suppose that $B=0$. Then to make $\cos(kb)=0$, we must have $kb=\pi n/2$ where $n$ is odd. To make $\cos(kb/2)=0$, we \emph{also} must have $kb/2=\pi n'/2$ where $n'$ is odd. But there is no pair of odd numbers $n,n'$ that satisfy both of these equations, because if there were, we would have
+            \begin{align*}
+                \frac{\pi n/2}{2} &= \frac{\pi n'}{2}\\
+                n &= 2n'
+            \end{align*}
+            implying that $n$ is even, a contradiction.\par
+            Now suppose that $A=0$. Then nontrivial solutions let $kb=\pi n'$ where $n'$ is any integer \emph{and} $kb/2=\pi n$ where $n$ is any integer. Solving this system gives $n'=2n$, which does \emph{not} break the integer condition. Thus, choosing $n$ as our quantum number (that can take on any integer value), we have as our solution
+            \begin{equation*}
+                \psi_\text{I}(x) = B\sin\left( \frac{2\pi n}{b}x \right)
+            \end{equation*}
+            which does indeed satisfy
+            \begin{equation*}
+                0 = \psi(-b) = \psi(-b/2)
+            \end{equation*}
+            It follows by a symmetric argument that we have
+            \begin{equation*}
+                \psi_\text{II}(x) = D\sin\left( \frac{2\pi n}{b}x \right)
+            \end{equation*}
+            This allows us to define
+            \begin{equation*}
+                \psi(x) =
+                \begin{cases}
+                    \psi_\text{I}(x)  & -b\leq x\leq -\frac{b}{2}\\
+                    \psi_\text{II}(x) & \frac{b}{2}\leq x\leq b\\
+                    0 & \text{otherwise}
+                \end{cases}
+            \end{equation*}
+            Before we normalize, note that by part (a), $B=D$. Thus, we can normalize as follows.
+            \begin{align*}
+                1 &= \int_{-\infty}^\infty\psi^2(x)\dd{x}\\
+                &= \int_{-b}^{-b/2}\psi_\text{I}^2(x)\dd{x}+\int_{b/2}^b\psi_\text{II}^2(x)\dd{x}\\
+                &= \int_{-b}^{-b/2}B^2\sin^2\left( \frac{2\pi n}{b}x \right)\dd{x}+\int_{b/2}^bB^2\sin^2\left( \frac{2\pi n}{b}x \right)\dd{x}\\
+                &= B^2\left( \int_{-b}^{-b/2}\frac{1-\cos\left( \frac{4\pi n}{b}x \right)}{2}\dd{x}+\int_{b/2}^b\frac{1-\cos\left( \frac{4\pi n}{b}x \right)}{2}\dd{x} \right)\\
+                &= B^2\left( \left[ \frac{x}{2}-\frac{b}{8\pi n}\sin\left( \frac{4\pi n}{b}x \right) \right]_{-b}^{-b/2}+\left[ \frac{x}{2}-\frac{b}{8\pi n}\sin\left( \frac{4\pi n}{b}x \right) \right]_{b/2}^b \right)\\
+                &= B^2\left( \left[ \frac{b}{4} \right]+\left[ \frac{b}{4} \right] \right)\\
+                B &= \sqrt{\frac{2}{b}}
+            \end{align*}
+            Thus, our wave function for this system is
+            \begin{equation*}
+                \boxed{\psi(x) = \sqrt{\frac{2}{b}}\sin\left( \frac{2\pi n}{b}x \right)}
+            \end{equation*}
+            where $n=1,2,3,\dots$, and defined as on the piecewise domain above.\par
+            Considering that we substituted $k=2\pi n/b$ in the above derivation, the energy levels for this system will be
+            \begin{align*}
+                \frac{2\pi n}{b} &= \sqrt{\frac{2mE_n}{\hbar^2}}\\
+                \frac{4\pi^2n^2}{b^2} &= \frac{2mE_n}{\hbar^2}\\
+                E_n &= \frac{2\pi^2n^2\hbar^2}{mb^2}\\
+                \Aboxed{E_n &= \frac{n^2h^2}{2mb^2}}
+            \end{align*}
+        \end{proof}
         \item Are the energy levels degenerate, and if so, what is the degeneracy?
+        \begin{proof}[Answer]
+            \fbox{Yes.} We have the two linearly independent piecewise solutions
+            \begin{align*}
+                \psi(x) &=
+                \begin{cases}
+                    \psi_\text{I}(x)  & -b\leq x\leq -\frac{b}{2}\\
+                    \psi_\text{II}(x) & \frac{b}{2}\leq x\leq b
+                \end{cases}&
+                \psi(x) &=
+                \begin{cases}
+                    \psi_\text{I}(x)  & -b\leq x\leq -\frac{b}{2}\\
+                    -\psi_\text{II}(x) & \frac{b}{2}\leq x\leq b
+                \end{cases}
+            \end{align*}
+            so the degeneracy is \fbox{2}.
+        \end{proof}
         \item Are the new energies higher or lower than the box without the infinite step?
+        \begin{proof}[Answer]
+            By comparing the results from part (b) to those from the pure particle in a box, the energy levels are more spread apart by a factor of 16. Therefore, the new energies are most certainly \fbox{higher} than the box without the infinite step.
+        \end{proof}
     \end{enumerate}
     \item Consider an electron of energy $E$ incident on the potential step where
     \begin{equation*}
@@ -52,16 +241,115 @@
     Calculate the reflection coefficient $R$ and the transmission coefficient $T$
     \begin{enumerate}
         \item When $E=\SI{4}{\electronvolt}$;
+        \begin{proof}[Answer]
+            For $E<V$, we automatically have
+            \begin{align*}
+                \Aboxed{R &= 1}&
+                \Aboxed{T &= 0}
+            \end{align*}
+        \end{proof}
         \item When $E=\SI{16}{\electronvolt}$;
+        \begin{proof}[Answer]
+            We have that
+            \begin{align*}
+                \alpha &= \frac{\sqrt{2m\cdot 16}}{\hbar}&
+                    \beta &= \frac{\sqrt{2m\cdot 8}}{\hbar}\\
+                &= \frac{4}{\hbar}\sqrt{2m}&
+                    &= \frac{4}{\hbar}\sqrt{m}
+            \end{align*}
+            Thus, we have that
+            \begin{align*}
+                R &= \frac{(\alpha-\beta)^2}{(\alpha+\beta)^2}&
+                    T &= \frac{4\alpha\beta}{(\alpha+\beta)^2}\\
+                &= \frac{\left( \frac{4}{\hbar}\sqrt{2m}-\frac{4}{\hbar}\sqrt{m} \right)^2}{\left( \frac{4}{\hbar}\sqrt{2m}+\frac{4}{\hbar}\sqrt{m} \right)^2}&
+                    &= \frac{4\cdot\frac{4}{\hbar}\sqrt{2m}\cdot\frac{4}{\hbar}\sqrt{m}}{\left( \frac{4}{\hbar}\sqrt{2m}+\frac{4}{\hbar}\sqrt{m} \right)^2}\\
+                &= \frac{2m-2m\sqrt{2}+m}{2m+2m\sqrt{2}+m}&
+                    &= \frac{4m\sqrt{2}}{2m+2m\sqrt{2}+m}\\
+                &= \frac{3-2\sqrt{2}}{3+2\sqrt{2}}&
+                    &= \frac{4\sqrt{2}}{3+2\sqrt{2}}\\
+                \Aboxed{R &= 17-12\sqrt{2}}&
+                    \Aboxed{T &= 12\sqrt{2}-16}
+            \end{align*}
+        \end{proof}
         \item When $E=\SI{8}{\electronvolt}$.
+        \begin{proof}[Answer]
+            We have that
+            \begin{align*}
+                \alpha &= \frac{\sqrt{2m\cdot 8}}{\hbar}&
+                    \beta &= \frac{\sqrt{2m\cdot 0}}{\hbar}\\
+                &= \frac{4}{\hbar}\sqrt{m}&
+                    &= 0
+            \end{align*}
+            Thus, we have that
+            \begin{align*}
+                R &= \frac{(\alpha-\beta)^2}{(\alpha+\beta)^2}&
+                    T &= \frac{4\alpha\beta}{(\alpha+\beta)^2}\\
+                &= \frac{\left( \frac{4}{\hbar}\sqrt{m}-0 \right)^2}{\left( \frac{4}{\hbar}\sqrt{m}+0 \right)^2}&
+                    &= \frac{4\cdot\frac{4}{\hbar}\sqrt{m}\cdot 0}{\left( \frac{4}{\hbar}\sqrt{m}+0 \right)^2}\\
+                \Aboxed{R &= 1}&
+                    \Aboxed{T &= 0}
+            \end{align*}
+        \end{proof}
     \end{enumerate}
     \item Use the Quantum Chemistry Toolbox in Maple to complete the worksheet "Particle in a Box" on Canvas and answer the following questions.
     \begin{enumerate}
         \item Based on the interactive plot, does the wave function become more classical as the quantum number $n$ increases?
+        \begin{proof}[Answer]
+            \fbox{Yes.} It predicts an increasingly "continuous" probability distribution, wherein the particle is equally likely to be found anywhere.
+        \end{proof}
         \item Does the energy spacing between states become more or less classical as $n$ increases?
+        \begin{proof}[Answer]
+            \fbox{Less classical.} Higher energy states are spaced farther apart.
+        \end{proof}
         \item Sketch the $n=3$ state of the particle in a box and the third molecular orbital of the hydrogen chain.
+        \begin{proof}[Answer]
+            ${\color{white}hi}$
+            \begin{figure}[H]
+                \centering
+                \begin{subfigure}[b]{0.4\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \footnotesize
+                        \draw [->] (0,0) -- (0,2.5) node[above]{\small$P(x)$};
+                        \draw [<->] (-3,0) -- (3,0) node[right]{\small$x$};
+                        \draw
+                            (0.1,1) -- ++(-0.2,0) node[left]{$1$}
+                            (0.1,2) -- ++(-0.2,0) node[left]{$2$}
+                        ;
+                        \foreach \x in {-2.5,-2,...,2.5} {
+                            \draw (\x,0.1) -- ++(0,-0.2);
+                        }
+                        \node [below] at (-2,-0.1) {$-0.4$};
+                        \node [below] at (-1,-0.1) {$-0.2$};
+                        \node [below] at (-0,-0.1) {$0$};
+                        \node [below] at (1,-0.1)  {$0.2$};
+                        \node [below] at (2,-0.1)  {$0.4$};
+            
+                        \draw [rex,thick,xshift=-2.5cm,xscale={2.5/2},yscale=4] (0,0) cos ({1/3},0.25) sin ({2/3},0.5) cos ({3/3},0.25) sin ({4/3},0) cos ({5/3},0.25) sin ({6/3},0.5) cos ({7/3},0.25) sin ({8/3},0) cos ({9/3},0.25) sin ({10/3},0.5) cos ({11/3},0.25) sin ({12/3},0);
+                    \end{tikzpicture}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.4\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \foreach \x in {0,0.67,...,4} {
+                            \shade [ball color=gray!50] (\x,0) circle (2.5mm);
+                        }
+            
+                        \fill [opacity=0.5,rex] (-0.4,0) to[out=90,in=90,out looseness=1.5,in looseness=0.7] (1,0) to[out=-90,in=-90,out looseness=0.7,in looseness=1.5] cycle;
+                        \fill [opacity=0.5,rex] (3.7,0) to[out=90,in=90,out looseness=1.5,in looseness=0.7] (2.35,0) to[out=-90,in=-90,out looseness=0.7,in looseness=1.5] cycle;
+                        \fill [opacity=0.5,orx] (1.1,0) to[out=90,in=90,looseness=1.1] (2.25,0) to[out=-90,in=-90,looseness=1.1] cycle;
+                    \end{tikzpicture}
+                \end{subfigure}
+            \end{figure}
+        \end{proof}
         \item What do you observe about the nodal patterns in part (c)?
+        \begin{proof}[Answer]
+            They correspond to each other (both in terms of number and placement).
+        \end{proof}
         \item Based on parts (c) and (d), are the particle-in-a-box wave functions a good model for the wave functions of the hydrogen chain?
+        \begin{proof}[Answer]
+            \fbox{Yes.}
+        \end{proof}
     \end{enumerate}
 \end{enumerate}
 
