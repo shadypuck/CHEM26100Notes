@@ -1,0 +1,73 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\setcounter{section}{2}
+
+\begin{document}
+
+
+
+
+\section{Harmonic Oscillators and Diatomics}
+\begin{enumerate}
+    \item \marginnote{10/20:}Consider an electron with total energy $E$ incident from \emph{left to right} across a potential "drop" where
+    \begin{equation*}
+        V(x) =
+        \begin{cases}
+            V_0 & x<0\\
+            0   & x>0
+        \end{cases}
+    \end{equation*}
+    \begin{enumerate}
+        \item Give an expression for the wave function in each of the two regions.
+        \item Which coefficient in the wave functions from (a) is zero? Explain briefly why.
+        \item Using continuity of the wave function and its derivative at $x=0$, derive an expression for the reflection coefficient.
+        \item Calculate the reflection coefficient $R$ when $V_0=\SI{8}{\electronvolt}$ and $E=\SI{16}{\electronvolt}$.
+        \item Compare this result with the result from problem 5b of Problem Set 2.
+        \item From your result in (e), explain whether the degree of reflection depends on both the direction (step or "drop") \emph{and} magnitude of the potential change or only the magnitude of the change.
+    \end{enumerate}
+    \item A good approximation to the intermolecular potential for a diatomic molecule is the Morse potential
+    \begin{equation*}
+        V(x) = D(1-\e[-\beta x])^2
+    \end{equation*}
+    where $x$ is the displacement from the equilibrium bond length.
+    \begin{enumerate}
+        \item Compute the Taylor series expansion of the Morse potential about $x=0$ through second order.
+        \item Comparing the result with the potential for the harmonic oscillator, give an expression for the harmonic force constant $k$ in terms of $D$ and $\beta$.
+        \item Given that $D=\SI{7.31e-19}{\joule\per molecule}$ and $\beta=\SI{1.81e10}{\per\meter}$ for \ce{HCl}, calculate the force constant for \ce{HCl}.
+    \end{enumerate}
+    \item In the infrared spectrum of \ce{H{}^{79}Br}, chemists find an intense line at $\SI{2630}{\per\centi\meter}$. For \ce{H{}^{79}Br}, calculate
+    \begin{enumerate}
+        \item The force constant.
+        \item The period of vibration.
+        \item The zero-point energy.
+    \end{enumerate}
+    \item Using the fact that the wave functions of the harmonic oscillator are either even or odd, show that the average values (or expectation values) of odd powers of position $x$ and momentum $p$ vanish, that is
+    \begin{align*}
+        \prb{x^k} &= 0&
+        \prb{p^k} &= 0
+    \end{align*}
+    when $k$ is odd.
+    \item For the ground state of the harmonic oscillator\dots
+    \begin{enumerate}
+        \item Evaluate the Heisenberg uncertainty relation where the spread (or uncertainty) in position and momentum may be computed by
+        \begin{align*}
+            (\Delta x)^2 &= \int\psi^*(x)(x-\prb{x})^2\psi(x)\dd{x}&
+            (\Delta p)^2 &= \int\psi^*(x)(\hat{p}-\prb{\hat{p}}^2)\psi(x)\dd{x}
+        \end{align*}
+        Use the results of Exercise 5.17 in \textcite{bib:McQuarrieSimon} to evaluate the necessary integrals.
+        \item In terms of the uncertainty relation, what is special about the harmonic oscillator?
+    \end{enumerate}
+    \item Using the expectation values from the previous problem, show for the ground state of the harmonic oscillator that the average values of the kinetic and the potential energies are equal to one half of the total energy, i.e.,
+    \begin{equation*}
+        \prb{T} = \prb{V} = \frac{E_0}{2}
+    \end{equation*}
+    This relation, known as the \textbf{virial theorem}, is true for all states of the harmonic oscillator.
+    \item Use the Quantum Chemistry Toolbox in Maple to answer the lettered questions in the worksheet "Harmonic Oscillator" on Canvas.
+\end{enumerate}
+
+
+
+
+\end{document}
