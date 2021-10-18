@@ -1,0 +1,127 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{3}
+
+\begin{document}
+
+
+
+
+\chapter{Vibrational Motion and the Harmonic Oscillator}
+\section{Rotational Motion}
+\begin{itemize}
+    \item \marginnote{10/18:}Consider the diatomic molecule \ce{AB} at a distance $r_0$ apart rotating about its center of mass.
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.3\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \footnotesize
+                \draw (0,0) node[circle,fill=rex,inner sep=1.5pt,label={below:$A$}]{}
+                    -- node[pos=0.65,fill,inner sep=1.5pt,label={below:CM}]{}
+                    (10:2) node[circle,fill=blx,inner sep=1.5pt,label={below:$B$}]{}
+                ;
+                \draw [decorate,decoration=brace] (100:0.2) -- node[above=2pt]{$r_0$} ++(10:2);
+            \end{tikzpicture}
+            \caption{Diatomic.}
+            \label{fig:partRota}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.3\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \footnotesize
+                \draw [semithick,-latex] (10:2) -- ++(100:0.5);
+                \draw (0,0) node[fill,inner sep=1.5pt,label={left:origin}]{}
+                    --
+                    (10:2) node[circle,fill=blx!65!rex,inner sep=1.5pt,label={right:$\mu$}]{}
+                ;
+                \draw [decorate,decoration={brace,mirror}] (-80:0.2) -- node[below=2pt]{$r_0$} ++(10:2);
+            \end{tikzpicture}
+            \caption{An equivalent system.}
+            \label{fig:partRotb}
+        \end{subfigure}
+        \caption{Diatomic rotation.}
+        \label{fig:partRot}
+    \end{figure}
+    \begin{itemize}
+        \item To simplify the problem, replace the two particles rotating about the center of mass with one particle of reduced mass $\mu$ rotating about the center of mass with lever arm $r_0$.
+    \end{itemize}
+    \item Classically, the kinetic energy of the translational motion is
+    \begin{equation*}
+        T = \frac{L^2}{2I}
+    \end{equation*}
+    where $I=\mu r_0^2$ and $L=p\times r_0=pr_0$ (for this kind of rotation; see Figure \ref{fig:partRotb}).
+    \item To further talk about this problem, we should introduce \textbf{spherical coordinates}.
+    \item \textbf{Spherical coordinates}: The coordinate system $(r,\theta,\phi)$ related to the Cartesian coordinates $(x,y,z)$ by
+    \begin{align*}
+        x &= r\sin\theta\cos\phi&
+        y &= r\sin\theta\sin\phi&
+        z &= r\cos\theta
+    \end{align*}
+    \item Classically, we will have
+    \begin{equation*}
+        H = \frac{1}{2\mu}(p_x^2+p_y^2+p_z^2)+V(x,y,z)
+    \end{equation*}
+    in Cartesian coordinates.
+    \item In spherical coordinates, this becomes
+    \begin{equation*}
+        H = \frac{1}{2\mu}\left( p_r^2+\frac{L^2}{r^2} \right)+V(r)
+    \end{equation*}
+    \item Thus, in quantum mechanics, we get
+    \begin{align*}
+        \hat{H} &= \frac{1}{2\mu}(\hat{p}_x^2+\hat{p}_y^2+\hat{p}_z^2)+V(x,y,z)\\
+        &= \frac{1}{2\mu}\left( \hat{p}_r^2+\frac{\hat{L}^2}{r^2} \right)+V(r)
+    \end{align*}
+    \item Thus, we have in spherical coordinates that
+    \begin{equation*}
+        \hat{T}\psi = -\frac{\hbar^2}{2\mu}\left[ \frac{1}{r^2}\pdv{r}\left( r^2\pdv{r}\psi \right)+\frac{1}{r^2\sin\theta}\left( \pdv{\theta}\left( \sin\theta\pdv{\theta}\psi \right) \right)+\frac{1}{r^2\sin^2\theta}\pdv[2]{\phi}\psi \right]
+    \end{equation*}
+    \item 2D rigid rotor:
+    \begin{itemize}
+        \item Let the system from Figure \ref{fig:partRotb} be confined to rotating in two dimensions.
+        \item This simplifies the problem since both the $\pdv*{r}$ and $\pdv*{\theta}$ terms in the kinetic energy operator disappear (since, respectively, the particle is at a fixed distance from the center of mass and it cannot move out of the 2D plane).
+        \item Thus, our Schr\"{o}dinger equation for this system is
+        \begin{equation*}
+            -\frac{\hbar^2}{2\mu r_0^2}\pdv[2]{\phi}\psi(\phi) = E\psi(\phi)
+        \end{equation*}
+        \item Solution: Let $\psi(\phi)=\e[im\phi]$; then
+        \begin{equation*}
+            E_m = \frac{\hbar^2m^2}{2\mu r_0^2}
+        \end{equation*}
+        \begin{itemize}
+            \item $m=0,1,2,\dots$ is a new quantum number.
+            \item $m$ doesn't go to infinity because $|m|$ is bounded by $\ell$ (the total angular momentum).
+        \end{itemize}
+        \item Remembering our original restriction, we have that this math describes the system from Figure \ref{fig:partRota} but confined to rotate in the $xy$ plane with angular momentum in the $z$ direction.
+        \begin{itemize}
+            \item Thus, for example, the energies of the system from Figure \ref{fig:partRota} are dependent on $m$ and $I=\mu r_0^2$.
+        \end{itemize}
+        \item Such a system occurs in physical reality when we put the diatomic in an external field, or attach to it a big functional group.
+        \item Zero point energy: $m=0$ does not violate the UR since we still have $\Delta L\Delta\theta\geq\hbar/2$ (as everything is still rotating in the sense that we have equal probability of the particle being everywhere [as opposed to more localized/normal rotation with higher values of $m$]).
+    \end{itemize}
+    \item 3D rigid rotor:
+    \begin{itemize}
+        \item Assume that the potential energy is zero on the surface of the sphere (so we basically have a particle on a sphere).
+        \item Then
+        \begin{equation*}
+            \hat{H} = \frac{\hat{L}^2}{2\mu r_0^2} = \frac{\hat{L}^2}{2I}
+        \end{equation*}
+        \item Solving $\hat{H}\psi=E\psi$ asserts that the eigenfunctions of the Hamiltonian are the spherical harmonics $Y_{\ell m}(\theta,\phi)$.
+        \item Energy:
+        \begin{equation*}
+            E_\ell = \frac{\hbar^2}{2I}\ell(\ell+1)
+        \end{equation*}
+        where $\ell=0,1,2,\dots$.
+        \item Recall that $m$ corresponds to the projection of angular momentum onto the $z$-axis, so that
+        \begin{equation*}
+            m = -\ell,\dots,+\ell
+        \end{equation*}
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
