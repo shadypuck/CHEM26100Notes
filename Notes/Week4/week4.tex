@@ -123,6 +123,92 @@
 
 
 
+\section{Hydrogen Atom}
+\begin{itemize}
+    \item \marginnote{10/20:}Microwaves (for food) excite the rotational motion of water molecules.
+    \item Spherical harmonics: The solution of $\psi_{lm}(\theta,\phi)=Y_{lm}(\theta,\phi)$, where $l,m$ are quantum numbers.
+    \item $E_l=\hbar^2/2I\cdot l(l+1)$ for $l=0,1,2,\dots$.
+    \item Form of the spherical harmonics:
+    \begin{equation*}
+        Y(\theta,\phi) = P_{lm}(\cos\theta)\e[im\phi]
+    \end{equation*}
+    where $P_{lm}(cos\theta)$ is a polynomial.
+    \item The polynomials $P_{lm}(\cos\theta)$ are the associated Legendre polynomials.
+    \item When $m=0$, we have the Legendre polynomials.
+    \begin{itemize}
+        \item The differential equation describing these is
+        \begin{equation*}
+            \dv{x}\left( (1-x^2)\dv{x}P_l(x)+l(l+1)P_l(x) \right) = 0
+        \end{equation*}
+        \item The Legendre polynomials converge very quickly to functions on $[-1,1]$.
+        \item People map these polynomials onto other domains, too, to solve a variety of problems.
+        \item Legendre polynomials have more of their roots at the boundaries --- since the boundary conditions are the most important part of solving a differential equation, it makes sense that accurate representations would sample near the boundary more.
+        \item Examples:
+        \begin{align*}
+            P_0(x) &= 1&
+            P_1(x) &= x\\
+            P_2(x) &= \frac{3}{2}x^2-\frac{1}{2}&
+            P_3(x) &= \frac{5}{2}x^3-\frac{3}{2}x
+        \end{align*}
+    \end{itemize}
+    \item Consider \ce{HCl}.
+    \begin{itemize}
+        \item For it,
+        \begin{equation*}
+            \frac{\hbar^2}{2I} = \SI{1.3e-3}{\electronvolt}
+        \end{equation*}
+        \item Rotational spectral lines may arise from different values of the quantum number $l$.
+        \item The molecule vibrates in harmonic oscillation with spacings $\approx\SI{0.1}{\electronvolt}$ (it's not strictly rigid).
+        \item Rovibrational spectra includes both forms of movement.
+        \begin{itemize}
+            \item Very high precision.
+            \item Very big in the 90s.
+        \end{itemize}
+        \item Electronic spectra: A few electron volts.
+    \end{itemize}
+    \item The hydrogen atom.
+    \begin{itemize}
+        \item Two generalizations of the 3D rigid rotor combine to treat the hydrogen atom:
+        \begin{enumerate}
+            \item An addition of the kinetic energy in the radial direction $\hat{r}$.
+            \item An addition of the Coulomb potential.
+        \end{enumerate}
+        \item Schr\"{o}dinger equation:
+        \begin{equation*}
+            \hat{H}\psi(r,\theta,\phi) = E\psi(r,\theta,\phi)
+        \end{equation*}
+        where
+        \begin{gather*}
+            \hat{H} = \frac{1}{2\mu}\left( \hat{p}_r^2+\frac{\hat{L}^2}{r^2} \right)+V(r)\\
+            \hat{p}_r^2 = -\frac{\hbar^2}{r^2}\pdv{r}\left( r^2\pdv{r}\psi(r) \right)\\
+            V(r) = -\frac{e(eZ)}{4\pi\epsilon_0r}
+        \end{gather*}
+        \item Because the particle has spherical symmetry (that it, does not depend on $\theta$ or $\phi$), the wave function is separable, that is, it may be written as a product
+        \begin{equation*}
+            \psi(r,\theta,\phi) = R_n(r)Y_{lm}(\theta,\phi)
+        \end{equation*}
+        \item Note that there is no analytic solution to the Schr\"{o}dinger equation in Cartesian coordinates --- we need spherical coordinates to take advantage of the spherical symmetry.
+        \item Substitution into the Schr\"{o}dinger equation yields
+        \begin{equation*}
+            \left( \frac{1}{2\mu}\left( \hat{p}_r^2+\frac{\hat{L}^2}{r^2} \right)+V(r) \right)R(r)Y(\theta,\phi) = ER(r)Y(\theta,\phi)
+        \end{equation*}
+        where $\mu$ is the reduced mass of the electron and the nucleus (which is approximately the mass of the electron).
+        \item But since
+        \begin{equation*}
+            \frac{1}{2\mu r^2}\hat{L}^2Y_{lm}(\theta,\phi) = \frac{l(l+1)}{2\mu r^2}\hbar^2Y_{lm}(\theta,\phi)
+        \end{equation*}
+        we have that
+        \begin{equation*}
+            \frac{1}{2\mu}\left( \hat{p}_r^2+\frac{l(l+1)\hbar^2}{r^2}+V(r) \right)R_n(r) = E_nR_n(r)
+        \end{equation*}
+        \begin{itemize}
+            \item We have reduced the three-dimensional case of the hydrogen atom to a one-dimensional differential equation.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+
 \section{Chapter 5: The Harmonic Oscillator and the Rigid Rotator --- Two Spectroscopic Models}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
@@ -230,6 +316,7 @@
         as desired.
     \end{proof}
 \end{enumerate}
+
 
 
 
