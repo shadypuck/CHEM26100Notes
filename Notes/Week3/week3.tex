@@ -9,7 +9,7 @@
 
 
 
-\chapter{Mathematical Formulation of Quantum Mechanics}
+\chapter{Vibrational Motion and the Harmonic Oscillator}
 \section{Vibrational Motion and the Harmonic Oscillator}
 \begin{itemize}
     \item \marginnote{10/11:}Suppose we have an attractive force $F$ proportional to the displacement $x$ from the center of a system
@@ -240,6 +240,525 @@
             \item Classical limit of quantum theory: In higher and higher order Hermite polynomials, the probability gets pushed to the edges.
         \end{itemize}
     \end{itemize}
+\end{itemize}
+
+
+
+\section{Chapter 4: Some Postulates and General Principles of Quantum Mechanics}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{10/19:}\textbf{Dynamical variable}: A quantity dealt with by classical mechanics, e.g., position, momentum, angular momentum, and energy.
+    \item \textbf{Observable}: A measurable dynamical variable.
+    \item "The classical-mechanical state of a particle at any particular time is specified completely by the three position coordinates $(x,y,z)$ and the three momenta $(p_x,p_y,p_z)$ or velocities $(v_x,v_y,v_z)$ at that time. The time evolution of the system is governed by Netwon's equation" $F=ma$ applied separately in each dimension \parencite[115]{bib:McQuarrieSimon}.
+    \item \textbf{Trajectory} (of a classical particle): The three-dimensional path of the particle described by the initial conditions and Newton's laws.
+    \begin{itemize}
+        \item A particle's trajectory completely describes its state.
+    \end{itemize}
+    \item However, since the Uncertainty Principle decrees that we cannot specify the position and momentum of a \emph{microscopic}\footnote{Note that classical mechanics still describes \emph{macroscopic} bodies perfectly well.} particle to any desired precision, we have our first postulate of quantum mechanics.
+    \begin{postulate}
+        The state of a quantum-mechanical system is completely specified by a function $\psi(x)$ that depends upon the coordinate of the particle. All possible information about the system can be derived from $\psi(x)$. This function, called the wave function or the state function, has the important property that $\psi^*(x)\psi(x)\dd{x}$ is the probability that the particle lies in the interval $\dd{x}$, located at the position $x$.
+    \end{postulate}
+    \begin{itemize}
+        \item We will use one-dimensional notation, but note that what is stated in the postulates is equally applicable to two or three dimensions.
+        \item "If there is more than one particle, say two, then $\psi^*(x_1,x_2)\psi(x_1,x_2)\dd{x_1}\dd{x_2}$ is the probability that particle 1 lies in the interval $\dd{x_1}$ located at $x_1$, and that particle 2 lies in the interval $\dd{x_2}$ located at $x_2$" \parencite[116]{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item \textbf{Normalizable} (function): A function $\psi(x)$ for which the following integral converges.
+    \begin{equation*}
+        \int_\text{all space}\psi^*(x)\psi(x)\dd{x}
+    \end{equation*}
+    \item \textbf{Well-behaved} (function): A function $\psi(x)$ such that it and its first derivative are single-valued, continuous, and finite.
+    \item Every state function must be normalizable and well-behaved.
+    \item We now formalize the notion that classical mechanical quantities have analogous linear operators in quantum mechanics.
+    \begin{postulate}
+        To every observable in classical mechanics, there corresponds a linear Hermitian operator in quantum mechanics.
+    \end{postulate}
+    \begin{table}[h!]
+        \centering
+        \renewcommand{\arraystretch}{1.4}
+        \small
+        \begin{tabular}{ll|ll}
+            \toprule
+            \multicolumn{2}{c|}{\textbf{OBSERVABLE}} & \multicolumn{2}{c}{\textbf{OPERATOR}}\\
+            \textbf{Name} & \textbf{Symbol} & \textbf{Symbol} & \textbf{Operation}\\
+            \midrule
+            Position & $x$ & $\hat{X}$ & Multiply by $x$\\
+             & $\mathbf{r}$ & $\mathbf{\hat{R}}$ & Multiply by $\mathbf{r}$\\
+            \hline
+            \rule{0pt}{6mm}Momentum & $p_x$ & $\hat{P}_x$ & $-i\hbar\dfrac{\partial}{\partial x}$\\
+            \rule{0pt}{7mm} & $\mathbf{p}$ & $\mathbf{\hat{P}}$ & $-i\hbar\left( \mathbf{i}\dfrac{\partial}{\partial x}+\mathbf{j}\dfrac{\partial}{\partial y}+\mathbf{k}\dfrac{\partial}{\partial z} \right)$\\
+            \hline
+            \rule{0pt}{6mm}Kinetic energy & $K_x$ & $\hat{K}_x$ & $-\dfrac{\hbar^2}{2m}\dfrac{\partial^2}{\partial x^2}$\\
+            \rule{0pt}{7mm} & $K$ & $\hat{K}$ & $-\dfrac{\hbar^2}{2m}\nabla^2$\\
+            \hline
+            Potential energy & $V(x)$ & $\hat{V}(\hat{x})$ & Multiply by $V(x)$\\
+             & $V(x,y,z)$ & $\hat{V}(\hat{x},\hat{y},\hat{z})$ & Multiply by $V(x,y,z)$\\
+            \hline
+            \rule{0pt}{6mm}Total energy & $E$ & $\hat{H}$ & $-\dfrac{\hbar^2}{2m}\nabla^2+V(x,y,z)$\\
+            \hline
+            \rule{0pt}{6mm}Angular momentum & $L_x=yp_z-zp_y$ & $\hat{L}_x$ & $-i\hbar\left( y\dfrac{\partial}{\partial z}-z\dfrac{\partial}{\partial y} \right)$\\
+            \rule{0pt}{7mm} & $L_y=zp_x-xp_z$ & $\hat{L}_y$ & $-i\hbar\left( z\dfrac{\partial}{\partial x}-x\dfrac{\partial}{\partial z} \right)$\\
+            \rule{0pt}{7mm} & $L_z=xp_y-yp_x$ & $\hat{L}_z$ & $-i\hbar\left( x\dfrac{\partial}{\partial y}-y\dfrac{\partial}{\partial x} \right)$\\
+            \bottomrule
+        \end{tabular}
+        \caption{Classical-mechanical observables and their corresponding quantum-mechanical operators.}
+        \label{tab:observablesOperators}
+    \end{table}
+    \begin{itemize}
+        \item Note that we derive the expressions for $L_x,L_y,L_z$ in Table \ref{tab:observablesOperators} from $\mathbf{r}\times\mathbf{p}$.
+    \end{itemize}
+    \item If an eigenvalue problem is two-fold degenerate with linearly independent solutions $\phi_1,\phi_2$, then any linear combination of $\phi_1,\phi_2$ is also a solution.
+    \item Although each observable has a corresponding operator by Postulate 2, only eigenvalues of our operators are actually observable.
+    \begin{postulate}
+        In any measurement of the observable associated with the operator $\hat{A}$, the only values that will ever be observed are the eigenvalues $a_n$, which satisfy the eigenvalue equation
+        \begin{equation*}
+            \hat{A}\psi_n = a_n\psi_n
+        \end{equation*}
+    \end{postulate}
+    \item We now formally introduce the method for finding the average values of observables.
+    \begin{postulate}
+        If a system is in a state described by a normalized wave function $\psi$, then the average value of the observable corresponding to $\hat{A}$ is given by
+        \begin{equation*}
+            \prb{a} = \int_\text{all space}\psi^*(x)\hat{A}\psi(x)\dd{x}
+        \end{equation*}
+    \end{postulate}
+    \item Note that we can prove from Postulate 4 that $\sigma$ for any observable is zero, i.e., that we \emph{can} only observe the eigenvalues.
+    \item We now postulate the time-dependent Schr\"{o}dinger equation\footnote{Note that just like Newton's laws, we cannot derive this --- we can only show that data is consistent with it.}.
+    \begin{postulate}
+        The wave function (or state function) of a system evolves in time according to the time-dependent Schr\"{o}dinger equation
+        \begin{equation*}
+            \hat{H}\psi(x,t) = i\hbar\pdv{\psi(x,t)}{t}
+        \end{equation*}
+    \end{postulate}
+    \item Relating the time-dependent and time-independent Schr\"{o}dinger equations.
+    \begin{itemize}
+        \item Consider a system where $\hat{H}$ does not explicitly contain time.
+        \item In such a case, we may use separation of variables and let
+        \begin{equation*}
+            \psi(x,t) = \psi(x)f(t)
+        \end{equation*}
+        \item Substituting in the above and dividing by $\psi(x)f(t)$ allows us to fully separate the variables:
+        \begin{align*}
+            \hat{H}\psi(x)f(t) &= i\hbar\dv{\psi(x)f(t)}{t}\\
+            f(t)\hat{H}\psi(x) &= i\hbar\psi(x)\dv{f(t)}{t}\\
+            \frac{1}{\psi(x)}\hat{H}\psi(x) &= \frac{i\hbar}{f(t)}\dv{f(t)}{t}
+        \end{align*}
+        \item But if two functions of entirely different variables are equal, the individual functions must both be constant. If we let the constant they are both equal to be $E$, then we obtain
+        \begin{align*}
+            \frac{1}{\psi(x)}\hat{H}\psi(x) &= E&
+                \frac{i\hbar}{f(t)}\dv{f(t)}{t} &= E\\
+            \hat{H}\psi(x) &= E\psi(x)&
+                \dv{f(t)}{t} &= \frac{1}{-i^{-1}\hbar}Ef(t)\\
+            &&
+                &= -\frac{i}{\hbar}Ef(t)\\
+            &&
+                f(t) &= \e[-iEt/\hbar]
+        \end{align*}
+        \item The left equation above is the time-independent Schr\"{o}dinger equation, and the right equation allows us to define the general form of a time-dependent wave function as follows.
+        \begin{align*}
+            \psi(x,t) &= \psi(x)f(t)\\
+            &= \psi(x)\e[-iEt/\hbar]
+        \end{align*}
+    \end{itemize}
+    \item Note, however, that even the time-\emph{dependent} Schr\"{o}dinger equation gives stationary-state probability densities and averages:
+    \begin{align*}
+        \psi_n^*(x,t)\psi_n(x,t)\dd{x} &= \psi^*(x)\e[iE_nt/\hbar]\psi_n(x)\e[-iE_nt/\hbar]\dd{x}\\
+        &= \psi_n^*(x)\psi_n(x)\dd{x}
+    \end{align*}
+    \item \textbf{Stationary-state} (wave function): The $\psi_n(x)$ in the above equation.
+    \item It follows from postulate 3 that the eigenvalues of quantum mechanical operators must be real (not complex) if they are to, indeed, to be observable.
+    \begin{itemize}
+        \item A consequence of this is that any two eigenfunctions $\psi_m(x),\psi_n(x)$ where $m\neq n$ of quantum-mechanical operators are \textbf{orthogonal}.
+    \end{itemize}
+    \item \textbf{Orthogonal} (wave functions): Two wave functions $\psi_m(x),\psi_n(x)$ such that
+    \begin{equation*}
+        \int_{-\infty}^\infty\psi_m^*(x)\psi_n(x) = 0
+    \end{equation*}
+    \item \textbf{Orthonormal} (set of wave functions): A set of wave functions that are both normalized and mutually orthogonal.
+    \begin{itemize}
+        \item In other words, a set $\psi_1,\dots,\psi_n$ of wave functions is orthonormal iff
+        \begin{equation*}
+            \int_{-\infty}^\infty\psi_i^*\psi_j\dd{x} = \delta_{ij}
+        \end{equation*}
+        for all $1\leq i,j\leq n$.
+    \end{itemize}
+    \item Note that if a quantum-mechanical operator $\hat{A}$ is to have real eigenvalues, it must satisfy the equation
+    \begin{equation*}
+        \int_\text{all space}f^*(x)\hat{A}g(x)\dd{x} = \int_\text{all space}g(x)[\hat{A}f]^*(x)\dd{x}
+    \end{equation*}
+    where $f,g$ are any two state functions.
+    \begin{itemize}
+        \item \textcite{bib:McQuarrieSimon} does a worked example of applying the above equation to the momentum operator in the context of the solutions to the one-dimensional harmonic oscillator problem.
+    \end{itemize}
+    \item \textbf{Hermitian} (operator): An operator that satisfies the previous equation.
+    \item \textbf{Commutator} (of $\hat{A},\hat{B}$): The operator defined as follows. \emph{Denoted by} $\bm{[\hat{A},\hat{B}]}$. \emph{Given by}
+    \begin{equation*}
+        [\hat{A},\hat{B}] = \hat{A}\hat{B}-\hat{B}\hat{A}
+    \end{equation*}
+    \begin{itemize}
+        \item We can show that $\hat{A}$ and $\hat{B}$ commute iff the commutator is equal to the zero operator.
+    \end{itemize}
+    \item Relating the Uncertainty Principle and the commutator (without proof):
+    \begin{itemize}
+        \item Consider two operators $\hat{A},\hat{B}$ and the standard deviations $\sigma_a,\sigma_b$ corresponding to the uncertainties in the observed values of their respective physical quantities.
+        \item It follows from the fact that
+        \begin{equation*}
+            \sigma_a^2 = \prb{A^2}-\prb{A}^2 = \int\psi^*(x)\hat{A}^2\psi(x)\dd{x}-\left[ \int\psi^*(x)\hat{A}\psi(x)\dd{x} \right]^2
+        \end{equation*}
+        (and similarly for $\sigma_b$) that
+        \begin{equation*}
+            \sigma_a\sigma_b \geq \frac{1}{2}\left| \int\psi^*(x)[\hat{A},\hat{B}]\psi(x)\dd{x} \right|
+        \end{equation*}
+    \end{itemize}
+    \item Results from the above.
+    \begin{itemize}
+        \item If $\hat{A},\hat{B}$ commute, there is no restriction on the uncertainties in the measurements of $a$ and $b$.
+        \item If $\hat{A},\hat{B}$ do not commute, there will be a restriction on the precision to which we can measure $a$ and $b$, namely that as our measurements of one get more precise, our measurements of the other necessarily get less precise.
+        \item In particular, if we consider the case of $\hat{X},\hat{P}_x$ (the operators corresponding to the standard uncertainty relation), we have that
+        \begin{align*}
+            \hat{P}_x\hat{X}\psi(x) &= \left( -i\hbar\dv{x} \right)x\psi(x)&
+                \hat{X}\hat{P}_x &= x\left( -i\hbar\dv{x} \right)\psi(x)\\
+            &= -i\hbar\psi(x)-i\hbar x\dv{\psi}{x}&
+                &= -i\hbar x\dv{\psi}{x}
+        \end{align*}
+        so the corresponding commutator is
+        \begin{align*}
+            [\hat{P}_x,\hat{X}] &= \hat{P}_x\hat{X}-\hat{X}\hat{P}_x\\
+            &= \left[ -i\hbar\hat{I}-i\hbar x\dv{x} \right]-\left[ -i\hbar x\dv{x} \right]\\
+            &= -i\hbar\hat{I}
+        \end{align*}
+        so
+        \begin{align*}
+            \sigma_p\sigma_x &\geq \frac{1}{2}\left| \int\psi^*(x)(-i\hbar\hat{I})\psi(x)\dd{x} \right|\\
+            &= \frac{1}{2}\left| -i\hbar\int\psi^*(x)\psi(x)\dd{x} \right|\\
+            &= \frac{1}{2}\left| -i\hbar\cdot 1 \right|\\
+            &= \frac{\hbar}{2}
+        \end{align*}
+        which is the typical formulation of the Heisenberg Uncertainty Relation.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{MathChapter D: Spherical Coordinates}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item We can integrate products of multiple variables one at a time and multiply the results instead of taking a traditional triple integral.
+    \item Example:
+    \begin{itemize}
+        \item To find the volume of a sphere of radius $a$ with a triple integral, we'd traditionally do the following.
+        \begin{align*}
+            V &= \int_0^{2\pi}\int_0^\pi\int_0^ar^2\sin\theta\dd{r}\dd{\theta}\dd{\phi}\\
+            &= \int_0^{2\pi}\int_0^\pi\frac{a^3}{3}\sin\theta\dd{\theta}\dd{\phi}\\
+            &= \int_0^{2\pi}\frac{a^3}{3}\cdot 2\dd{\phi}\\
+            &= \frac{4}{3}\pi a^3
+        \end{align*}
+        \item However, we can alternatively do the following.
+        \begin{align*}
+            V &= \int_0^{2\pi}\int_0^\pi\int_0^ar^2\sin\theta\dd{r}\dd{\theta}\dd{\phi}\\
+            &= \frac{a^3}{3}\int_0^{2\pi}\int_0^\pi\sin\theta\dd{\theta}\dd{\phi}\\
+            &= \frac{a^3}{3}\cdot 2\int_0^{2\pi}\dd{\phi}\\
+            &= \frac{a^3}{3}\cdot 2\cdot 2\pi\\
+            &= \left( \int_0^ar^2\dd{r} \right)\left( \int_0^\pi\sin\theta\dd{\theta} \right)\left( \int_0^{2\pi}\dd{\phi} \right)
+        \end{align*}
+    \end{itemize}
+    \item In fact, to generalize, we can express an integral of the form
+    \begin{equation*}
+        I = \int_0^\infty\int_0^\pi\int_0^{2\pi}F(r,\theta,\phi)r^2\sin\theta\dd{r}\dd{\theta}\dd{\phi}
+    \end{equation*}
+    as an operator
+    \begin{equation*}
+        I = \int_0^\infty\dd{r}r^2\int_0^\pi\dd{\theta}\sin\theta\int_0^{2\pi}\dd{\phi}F(r,\theta,\phi)
+    \end{equation*}
+    where we understand each integral to act on everything that lies to its right, i.e., "we first integrate $F(r,\theta,\phi)$ over $\phi$ from 0 to $2\pi$, then multiply the result by $\sin\theta$ and integrate over $\theta$ from 0 to $\phi$, and finally multiply the result by $r^2$ and integrate over $r$ from 0 to $\infty$" \parencite[150]{bib:McQuarrieSimon}.
+    \item If our integrand is spherically symmetric, i.e., $F(r,\theta,\phi)=f(r)$, then
+    \begin{equation*}
+        I = \int_0^\infty\dd{r}r^2\int_0^\pi\dd{\theta}\sin\theta\int_0^{2\pi}\dd{\theta}f(r)
+        = \int_0^\infty f(r)4\pi r^2\dd{r}
+    \end{equation*}
+    \begin{itemize}
+        \item In other words, we take a one-dimensional integral, but multiply the integrand by a factor of $4\pi r^2\dd{r}$, which is the volume of a spherical shell of radius $r$ and thickness $\dd{r}$.
+    \end{itemize}
+    \item On the other hand, we can also hold $r$ constant and integrate over the surface of a sphere of unit radius.
+    \begin{itemize}
+        \item In this case, we sum pieces of differential surface area
+        \begin{equation*}
+            \dd{A} = \sin\theta\dd{\theta}\dd{\phi}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Solid angle}: The solid enclosed by the surface that connects the origin and the area $\dd{A}$.
+    \begin{itemize}
+        \item In the same way that a complete angle of the unit circle is $2\pi$, a complete solid angle is $4\pi$.
+        \item We often denote a complete solid angle by $\dd{\Omega}$. Thus, we can write
+        \begin{equation*}
+            \int_\text{sphere}\dd{\Omega} = 4\pi
+        \end{equation*}
+    \end{itemize}
+    \item The quantum theory of the hydrogen atom frequently involves angular integrals of the form
+    \begin{equation*}
+        I = \int_0^\pi\dd{\theta}\sin\theta\int_0^{2\pi}\dd{\phi}F(\theta,\phi)
+    \end{equation*}
+\end{itemize}
+
+
+
+\section{Chapter 5: The Harmonic Oscillator and the Rigid Rotator --- Two Spectroscopic Models}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \textbf{Hooke's law}: The equation describing the motion of a spring whose restoring force is directly proportional to its displacement from equilibrium. \emph{Given by}
+    \begin{equation*}
+        f = -kx
+    \end{equation*}
+    \item \textbf{Force constant} (of a spring): The positive proportionality constant $k$ in the Hooke's law description of the spring.
+    \item The general solution to $ma=f=-kx$ is
+    \begin{equation*}
+        x(t) = c_1\sin\omega t+c_2\cos\omega t
+    \end{equation*}
+    where $\omega=\sqrt{k/m}$.
+    \begin{itemize}
+        \item This solution can be rewritten in the form
+        \begin{equation*}
+            x(t) = A\sin(\omega t+\phi)
+        \end{equation*}
+        \item Thus, the displacement oscillates sinusoidally, or harmonically, with a natural frequency $\omega$, an amplitude $A$, and a phase angle $\phi$.
+    \end{itemize}
+    \item Additionally, since $f=-\dv*{V}{x}$ where $V$ is the potential energy of the system, we have that
+    \begin{align*}
+        -\dv{V}{x} &= -kx\\
+        V(x) &= \frac{1}{2}kx^2+C
+    \end{align*}
+    where $C$ is an arbitrary constant used to fix the zero energy.
+    \item Kinetic and potential energy:
+    \begin{itemize}
+        \item If $x(t)=A\cos\omega t$, then
+        \begin{align*}
+            K &= \frac{1}{2}m\left( \dv{x}{t} \right)^2&
+                V &= \frac{1}{2}k[x(t)]^2\\
+            &= \frac{1}{2}m\omega^2A^2\sin^2\omega t&
+                &= \frac{1}{2}kA^2\cos^2\omega t
+        \end{align*}
+        \item It follows that the total energy is
+        \begin{align*}
+            E &= K+V\\
+            &= \frac{1}{2}m\omega^2A^2\sin^2\omega t+\frac{1}{2}kA^2\cos^2\omega t\\
+            &= \frac{1}{2}kA^2(\sin^2\omega t+\cos^2\omega t)\\
+            &= \frac{1}{2}kA^2
+        \end{align*}
+        \item Since the total energy is constant, the system is \textbf{conservative}.
+    \end{itemize}
+    \item \textbf{Conservative system}: A system in which the total energy is conserved.
+    \item We now analyze a harmonic oscillator classically.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \footnotesize
+            \draw [stealth-stealth] (0,3) -- (0,0) -- (5,0) node[right]{$x$};
+    
+            \draw [semithick,decorate,decoration={coil,segment length=2mm,aspect=0.5,amplitude=1.8mm}] (1.5,2) -- (4,2);
+            \draw [dashed] (1.5,0) node[below]{$x_1$} -- ++(0,2) node[circle,fill,ball color=blx,inner sep=2mm,label={above:$m_1$}]{};
+            \draw [dashed] (4,0)   node[below]{$x_2$} -- ++(0,2) node[circle,fill,ball color=blx,inner sep=2mm,label={above:$m_2$}]{};
+            \draw [decorate,decoration={brace}] (1.5,2.7) -- node[above=2pt]{$l_0$} (4,2.7);
+        \end{tikzpicture}
+        \caption{Harmonically oscillating diatomic molecule.}
+        \label{fig:harmonicDiatomic}
+    \end{figure}
+    \begin{itemize}
+        \item We have two equations of motion, one for each mass.
+        \begin{align*}
+            m_1\dv[2]{x_1}{t} &= k(x_2-x_1-l_0)&
+                m_2\dv[2]{x_2}{t} &= -k(x_2-x_1-l_0)
+        \end{align*}
+        \item If we add them, we get the equation
+        \begin{equation*}
+            \dv[2]{t}(m_1x_1+m_2x_2) = 0
+        \end{equation*}
+        which tells us that the center of mass of the system is not accelerating.
+        \item Thus, the motion of the two-body system must depend only on the relative separation of the two masses, or on the \textbf{relative coordinate}
+        \begin{equation*}
+            x = x_2-x_1-l_0
+        \end{equation*}
+        \item Indeed, subtracting the initial two equations and substituting for both the relative coordinate and \textbf{reduced mass}
+        \begin{equation*}
+            \frac{1}{\mu} = \frac{1}{m_1}+\frac{1}{m_2}
+        \end{equation*}
+        gives us
+        \begin{align*}
+            \dv[2]{x_2}{t}-\dv[2]{x_1}{t} &= -\frac{k}{m_2}(x_2-x_1-l_0)-\frac{k}{m_1}(x_2-x_1-l_0)\\
+            \dv[2]{t}(x_2-x_1) &= -k\left( \frac{1}{m_1}+\frac{1}{m_2} \right)(x_2-x_1-l_0)\\
+            \mu\dv[2]{x}{t}+kx &= 0
+        \end{align*}
+        \item Conclusion: The kinematics of a diatomic harmonic oscillator are identical to those of a single ball on a spring except with the reduced mass and relative coordinate.
+    \end{itemize}
+    \item "Generally, if the potential energy depends upon only the \emph{relative} distances between two bodies, then we can introduce relative coordinates such as $x_2-x_1$ and reduce a two-body problem to a one-body problem" \parencite[163]{bib:McQuarrieSimon}.
+    \item Note that while the harmonic oscillator potential may be a terrible approximation of the exponential curve of bond energy overall, it is a very good approximation in the region of the minimum, which is the physically important region for many molecules at room temperature. In particular, the approximation works well for oscillators of small amplitude.
+    \item \textbf{Equilibrium bond length}: The bond length at the minimum potential energy of a molecule.
+    \item \textcite{bib:McQuarrieSimon} goes through the Taylor series derivation of Hooke's law for diatomic molecules.
+    \begin{itemize}
+        \item Additional result: The force constant is equal to the curvature of $V(l)$ at the minimum.
+    \end{itemize}
+    \item \textbf{Anharmonic term}: A term in the Taylor series expansion of a potential energy curve about the minimum of degree greater than two.
+    \item \textbf{Morse potential}: An approximation of an intermolecular potential energy curve. \emph{Given by}
+    \begin{equation*}
+        V(l) = D(1-\e[-\beta(l-l_0)])^2
+    \end{equation*}
+    \begin{itemize}
+        \item $D$ is the dissociation energy of the molecule measured from the minimum of $V(l)$.
+        \item $\beta$ is a measure of the curvature of $V(l)$ at its minimum.
+        \item \textcite{bib:McQuarrieSimon} derives from the Taylor series expansion of the Morse potential about $V(l_0)$ that the force constant $k=2D\beta^2$.
+    \end{itemize}
+    \item We are now ready to discuss a quantum-mechanical harmonic oscillator.
+    \item Because of our prior simplification of a two-body harmonic oscillator to a single particle of reduced mass $\mu$ moving in a potential field described by $V(x)=kx^2/2$, we have that the Schr\"{o}dinger equation for a one-dimensional harmonic oscillator is
+    \begin{align*}
+        -\frac{\hbar^2}{2\mu}\dv[2]{\psi}{x}+V(x)\psi(x) &= E\psi(x)\\
+        \dv[2]{\psi}{x}+\frac{2\mu}{\hbar^2}\left( E-\frac{1}{2}kx^2 \right)\psi(x) &= 0
+    \end{align*}
+    \begin{itemize}
+        \item This differential equation does not have constant coefficients, so we need a new, custom method to solve it.
+        \item Indeed, when solved, well-behaved solutions can be obtained only if the energy is restricted to the quantized values
+        \begin{equation*}
+            E_v = \hbar\omega\left( v+\frac{1}{2} \right)
+            = h\nu\left( v+\frac{1}{2} \right)
+        \end{equation*}
+        where $\omega=\sqrt{k/\mu}$, $\nu=\omega/2\pi$, and $v=0,1,2,\dots$.
+        \item Note that these energy levels are equally spaced apart (see Figure \ref{fig:parabolicPotentiala}).
+        \item Note the nonzero zero-point energy --- since $E=p^2/2\mu+kx^2/2$, we cannot have $E=0$ as this would imply that $0=0\cdot 0=(\Delta x)(\Delta p)<\hbar/2$, violating the Uncertainty Principle.
+    \end{itemize}
+    \item \textbf{Selection rule}: A criterion that narrows the states between which a quantum system can move.
+    \item \textcite{bib:McQuarrieSimon} will later prove that the harmonic oscillator model allows transitions only between adjacent energy states.
+    \begin{itemize}
+        \item Thus, the only frequency absorbed or emitted by a diatomic harmonic oscillator should be
+        \begin{align*}
+            \nu_\text{obs} &= \frac{\Delta E}{h}\\
+            &= \frac{E_{v+1}-E_v}{h}\\
+            &= \frac{h\nu}{h}\\
+            &= \frac{1}{2\pi}\sqrt{\frac{k}{\mu}}
+        \end{align*}
+        \item We can convert to wavenumbers by dividing the above by $c$.
+    \end{itemize}
+    \item \textbf{Fundamental vibration frequency}: The single frequency absorbed or emitted by a diatomic molecule.
+    \begin{itemize}
+        \item We can use the fundamental vibration frequency and the above equation to calculate the force constant of the attraction.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} will later prove that the dipole moment of the molecule must change as the molecule vibrates in order for it to absorb infrared radiation.
+    \item As a last note, be aware that although deviations from the prediction do crop up, they can be systematically corrected for.
+    \item Harmonic oscillator wave functions:
+    \begin{equation*}
+        \psi_v(x) = N_vH_v(\sqrt{\alpha}x)\e[-\alpha x^2/2]
+    \end{equation*}
+    \begin{itemize}
+        \item We have
+        \begin{align*}
+            \alpha &= \frac{\sqrt{k\mu}}{\hbar}&
+            N_v &= \frac{1}{\sqrt{2^vv!}}\sqrt[4]{\frac{\alpha}{\pi}}
+        \end{align*}
+        where $N_v$ is a normalization constant and $H_v(\sqrt{\alpha}x)$ is the $v^\text{th}$-degree \textbf{Hermite polynomial} in $\sqrt{\alpha}x$.
+    \end{itemize}
+    \item \textbf{Hermite polynomials}: A classical orthogonal polynomial sequence. \emph{Examples}
+    \begin{table}[h!]
+        \centering
+        \small
+        \renewcommand{\arraystretch}{1.2}
+        \begin{tabular}{ll}
+            \toprule
+            $H_0(\xi)=1$ & $H_1(\xi)=2\xi$\\
+            $H_2(\xi)=4\xi^2-2$ & $H_3(\xi)=8\xi^3-12\xi$\\
+            $H_4(\xi)=16\xi^4-48\xi^2+12$ & $H_5(\xi)=32\xi^5-160\xi^3+120\xi$\\
+            \bottomrule
+        \end{tabular}
+        \caption{The first few Hermite polynomials.}
+        \label{tab:hermitePolynomials}
+    \end{table}
+    \item The polynomials in Table \ref{tab:hermitePolynomials} allow us to generate the first few wave functions.
+    \begin{table}[h!]
+        \centering
+        \small
+        \renewcommand{\arraystretch}{1.6}
+        \begin{tabular}{ll}
+            \toprule
+            $\psi_0(x)=\sqrt[4]{\dfrac{\alpha}{\pi}}\e[-\alpha x^2/2]$ & $\psi_1(x)=\sqrt[4]{\dfrac{4\alpha^3}{\pi}}x\e[-\alpha x^2/2]$\\
+            $\psi_2(x)=\sqrt[4]{\dfrac{\alpha}{4\pi}}(2\alpha x^2-1)\e[-\alpha x^2/2]$ & $\psi_3(x)=\sqrt[4]{\dfrac{\alpha^3}{9\pi}}(2\alpha x^3-3x)\e[-\alpha x^2/2]$\\
+            \bottomrule
+        \end{tabular}
+        \caption{The first few harmonic-oscillator wave functions.}
+        \label{tab:harmonicWaveFunction}
+    \end{table}
+    \item When graphed, the above wave functions and their corresponding probabilities look like the following.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[scale=1.5]
+            \small
+            \draw (0,-1) -- ++(0,5) node[below left]{$v$};
+            \draw (6,-1) -- ++(0,5) node[below right]{$E$};
+    
+            \footnotesize
+            \draw
+                (0,3) node[right=1mm]{$\psi_3(x)$} -- ++(-0.1,0) node[left]{3}
+                (0,2) node[right=1mm]{$\psi_2(x)$} -- ++(-0.1,0) node[left]{2}
+                (0,1) node[right=1mm]{$\psi_1(x)$} -- ++(-0.1,0) node[left]{1}
+                (0,0) node[right=1mm]{$\psi_0(x)$} -- ++(-0.1,0) node[left]{0}
+            ;
+            \draw
+                (6,3) node[left=1mm]{$|\psi_3(x)|^2$} -- ++(0.1,0)  node[right]{$\dfrac{7}{2}h\nu$}
+                (6,2) node[left=1mm]{$|\psi_2(x)|^2$} -- ++(0.1,0)  node[right]{$\dfrac{5}{2}h\nu$}
+                (6,1) node[left=1mm]{$|\psi_1(x)|^2$} -- ++(0.1,0)  node[right]{$\dfrac{3}{2}h\nu$}
+                (6,0) node[left=1mm]{$|\psi_0(x)|^2$} -- ++(0.1,0)  node[right]{$\dfrac{1}{2}h\nu$}
+                (6,-1) -- ++(0.1,0) node[right]{0}
+            ;
+    
+            \draw
+                (1,3)  -- ++(1.9,0)
+                (1,2)  -- ++(1.9,0)
+                (1,1)  -- ++(1.9,0)
+                (1,0)  -- ++(1.9,0)
+                (1,-1) -- ++(1.9,0)
+            ;
+            \draw
+                (5,3)  -- ++(-1.9,0)
+                (5,2)  -- ++(-1.9,0)
+                (5,1)  -- ++(-1.9,0)
+                (5,0)  -- ++(-1.9,0)
+                (5,-1) -- ++(-1.9,0)
+            ;
+    
+            \draw [blx,semithick]
+                (1.3,4) parabola bend (1.95,-1) (2.6,4)
+                (4.7,4) parabola bend (4.05,-1) (3.4,4)
+            ;
+    
+            \begin{scope}[grx,thick,xshift=1.95cm]
+                \draw [yshift=0cm] plot[domain=-0.95:0.95,samples=500,smooth] (\x,{0.4*e^(-15*\x*\x)});
+                \draw [yshift=1cm] plot[domain=-0.95:0.95,samples=500,smooth] (\x,{3*\x*e^(-15*\x*\x)});
+                \draw [yshift=2cm] plot[domain=-0.95:0.95,samples=500,smooth] (\x,{0.35*(60*\x*\x-1)*e^(-15*\x*\x)});
+                \draw [yshift=3cm] plot[domain=-0.95:0.95,samples=500,smooth] (\x,{1.6*(60*\x*\x*\x-3*\x)*e^(-15*\x*\x)});
+            \end{scope}
+            \begin{scope}[grx,thick,xshift=4.05cm]
+                \draw [yshift=0cm] plot[domain=-0.95:0.95,samples=500,smooth] (\x,{0.4*(e^(-15*\x*\x))^2});
+                \draw [yshift=1cm] plot[domain=-0.95:0.95,samples=500,smooth] (\x,{33*(\x*e^(-15*\x*\x))^2});
+                \draw [yshift=2cm] plot[domain=-0.95:0.95,samples=500,smooth] (\x,{0.3*((60*\x*\x-1)*e^(-15*\x*\x))^2});
+                \draw [yshift=3cm] plot[domain=-0.95:0.95,samples=500,smooth] (\x,{6*((60*\x*\x*\x-3*\x)*e^(-15*\x*\x))^2});
+            \end{scope}
+        \end{tikzpicture}
+        \caption{Harmonic-oscillator wave functions and probability densities.}
+        \label{fig:harmonicPrbDensity}
+    \end{figure}
+    \begin{itemize}
+        \item Notice how the probability distributions are slowly converging to the classical limit of a parabola of peaks.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} proves that a couple of the given wave functions satisfy the relevant Schr\"{o}dinger equation, are normalized, and are orthogonal.
+    \item Hermite polynomials are even functions if $v$ is even and odd functions if $v$ is odd.
+    \begin{itemize}
+        \item Thus, $\psi_v$ is even when $v$ is even, and odd when $v$ is odd.
+        \item It follows that $\psi_v^2$ is even for any $v$ (since the square of either an odd or even function is even).
+    \end{itemize}
+    \item Consequently, since $x\psi_v^2(x)$ is odd, we have that
+    \begin{equation*}
+        \prb{x} = \int_{-\infty}^\infty\psi_v(x)x\psi_v(x)\dd{x} = 0
+    \end{equation*}
+    for a harmonic operator
+    \item Similarly, since the derivative of an even function is odd and the product of an even and odd function is odd, we have that
+    \begin{equation*}
+        \prb{p} = \int_{-\infty}^\infty\psi_v(x)\left( -i\hbar\dv{x} \right)\psi_v(x)\dd{x} = 0
+    \end{equation*}
+    for a harmonic operator.
 \end{itemize}
 
 

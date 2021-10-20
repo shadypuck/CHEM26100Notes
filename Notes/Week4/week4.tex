@@ -9,7 +9,7 @@
 
 
 
-\chapter{Vibrational Motion and the Harmonic Oscillator}
+\chapter{The Hydrogen Atom and Angular Momentum}
 \section{Rotational Motion}
 \begin{itemize}
     \item \marginnote{10/18:}Consider the diatomic molecule \ce{AB} at a distance $r_0$ apart rotating about its center of mass.
@@ -121,6 +121,115 @@
     \end{itemize}
 \end{itemize}
 
+
+
+\section{Chapter 5: The Harmonic Oscillator and the Rigid Rotator --- Two Spectroscopic Models}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{10/19:}\textbf{Rigid-rotator model}: Two point masses $m_1$ and $m_2$ at fixed distances $r_1$ and $r_2$ from their center of mass.
+    \begin{itemize}
+        \item Since the vibrational amplitude of a rotating molecule is small compared to its amplitude, this is a good model.
+    \end{itemize}
+    \item Kinetic energy of the rigid rotator:
+    \begin{align*}
+        K &= \frac{1}{2}m_1v_1^2+\frac{1}{2}m_2v_2^2\\
+        &= \frac{1}{2}(m_1r_1^2+m_2r_2^2)\omega^2\\
+        &= \frac{1}{2}I\omega^2
+    \end{align*}
+    \begin{itemize}
+        \item Note that
+        \begin{align*}
+            I &= m_1r_1^2+m_2r_2^2\\
+            &= \mu r^2
+        \end{align*}
+        (see Problem \ref{prb:5-29}).
+    \end{itemize}
+    \item It follows that we the two-body problem of the rigid rotator is equivalent to the one-body problem of a single body of mass $\mu$ rotating at a distance $r$ from a fixed center.
+    \item Since there are no external forces on the rigid rotator (we're not applying any electric or magnetic fields), the energy of the molecule is solely kinetic (i.e., there is no potential energy term in the Hamiltonian).
+    \begin{itemize}
+        \item Thus, for a rigid rotator,
+        \begin{equation*}
+            \hat{H} = \hat{K} = -\frac{\hbar^2}{2\mu}\nabla^2
+        \end{equation*}
+    \end{itemize}
+    \item Since this particle has a natural center of spherical symmetry, we opt for spherical coordinates. However, this necessitates expressing $\nabla^2$ as the following.
+    \begin{equation*}
+        \nabla^2 = \frac{1}{r^2}\pdv{r}\left( r^2\pdv{r} \right)_{\theta,\phi}+\frac{1}{r^2\sin\theta}\pdv{\theta}\left( \sin\theta\pdv{\theta} \right)_{r,\phi}+\frac{1}{r^2\sin^2\theta}\left( \pdv[2]{\phi} \right)_{r,\theta}
+    \end{equation*}
+    \begin{itemize}
+        \item See Problem \ref{prb:5-32} for a derivation.
+    \end{itemize}
+    \item With respect to the rigid rotator, $r$ is constant. Thus,
+    \begin{gather*}
+        \nabla^2 = \frac{1}{r^2}\frac{1}{\sin\theta}\pdv{\theta}\left( \sin\theta\pdv{\theta} \right)+\frac{1}{r^2}\frac{1}{\sin^2\theta}\pdv[2]{\phi}\\
+        \bar{H} = -\frac{\hbar^2}{2I}\left[ \frac{1}{\sin\theta}\pdv{\theta}\left( \sin\theta\pdv{\theta} \right)+\frac{1}{\sin^2\theta}\left( \pdv[2]{\phi} \right) \right]\\
+        \bar{L}^2 = -\hbar^2\left[ \frac{1}{\sin\theta}\pdv{\theta}\left( \sin\theta\pdv{\theta} \right)+\frac{1}{\sin^2\theta}\left( \pdv[2]{\phi} \right) \right]
+    \end{gather*}
+    \begin{itemize}
+        \item Note that since both $\theta$ and $\phi$ are unitless, the units of angular momentum for quantum system are $\hbar$.
+    \end{itemize}
+    \item Rigid-rotator wave functions are customarily denoted by $Y(\theta,\phi)$.
+    \item In solving $\hat{H}Y(\theta,\phi)=EY(\theta,\phi)$, it will be useful to multiply the original Schr\"{o}dinger equation by $\sin^2\theta$ and let $\beta=2IE/\hbar^2$ to obtain the partial differential equation
+    \begin{equation*}
+        \sin\theta\pdv{\theta}\left( \sin\theta\pdv{Y}{\theta} \right)+\pdv[2]{Y}{\phi}+(\beta\sin^2\theta)Y = 0
+    \end{equation*}
+    \begin{itemize}
+        \item The solutions to the above equation are intimately linked to those for the hydrogen atom.
+        \item Solving the above equation yields the condition that $\beta=J(J+1)$ for $J=0,1,2,\dots$. Therefore,
+        \begin{equation*}
+            E_J = \frac{\hbar^2}{2I}J(J+1)
+        \end{equation*}
+        for $J=0,1,2,\dots$.
+        \begin{itemize}
+            \item Each energy level has a degeneracy $g_J=2J+1$ as well.
+        \end{itemize}
+    \end{itemize}
+    \item Once again, electromagnetic radiation can cause a rigid rotator to undergo transitions from one state to another subject to the selection rules that only transitions between adjacent states are allowed and the molecule must possess a permanent dipole moment.
+    \item As before, we can calculate
+    \begin{equation*}
+        \Delta E = \frac{h^2}{4\pi^2I}(J+1)
+    \end{equation*}
+    and the frequencies at which absorption transitions occur are
+    \begin{equation*}
+        \nu = \frac{h}{4\pi^2I}(J+1)
+    \end{equation*}
+    for $J=0,1,2,\dots$.
+    \item It follows from reduced mass, bond length, and moment of inertia data that the frequencies typically lie in the microwave region.
+    \item \textbf{Microwave spectroscopy}: The direct study of rotational transitions.
+    \item \textbf{Rotational constant} (of a molecule): The following quantity. \emph{Given by}
+    \begin{equation*}
+        B = \frac{h}{8\pi^2I}
+    \end{equation*}
+    \begin{itemize}
+        \item We often write the absorption frequencies as $\nu=2B(J+1)$.
+    \end{itemize}
+    \item The spacing of lines in a microwave spectrum is $2B$.
+    \item Like IR spectroscopy can be used to determine the force constants of molecular attractions in diatomics, microwave spectroscopy can be used to determine the bond lengths of diatomics.
+\end{itemize}
+
+
+\subsection*{Problems}
+\begin{enumerate}[label={\textbf{5-\arabic*.}},ref={5-\arabic*}]
+    \setcounter{enumi}{28}
+    \item \label{prb:5-29}Show that the moment of inertia for a rigid rotator can be written as $I=\mu r^2$ where $r=r_1+r_2$ (the fixed separation of the two masses) and $\mu$ is the reduced mass.
+    \begin{proof}[Answer]
+        First, note that $m_1r_1=m_2r_2$ for such a rotation about the center of mass. Then
+        \begingroup
+        \allowdisplaybreaks
+        \begin{align*}
+            I &= \mu r^2\\
+            &= \frac{m_1m_2}{m_1+m_2}(r_1+r_2)^2\\
+            &= \frac{m_1m_2r_1}{m_1r_1+m_2r_1}(r_1+r_2)^2\\
+            &= \frac{m_1m_2r_1}{m_2r_2+m_2r_1}(r_1+r_2)^2\\
+            &= \frac{m_1r_1}{r_2+r_1}(r_1+r_2)^2\\
+            &= m_1r_1(r_1+r_2)\\
+            &= m_1r_1^2+m_1r_1r_2\\
+            &= m_1r_1^2+m_2r_2^2
+        \end{align*}
+        \endgroup
+        as desired.
+    \end{proof}
+\end{enumerate}
 
 
 
