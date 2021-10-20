@@ -21,11 +21,73 @@
     \end{equation*}
     \begin{enumerate}
         \item Give an expression for the wave function in each of the two regions.
+        \begin{proof}[Answer]
+            If region I is $(-\infty,0)$ and region II is $(0,\infty)$, then
+            \begin{align*}
+                \Aboxed{\psi_\text{I}(x)  &= A\e[i\alpha x]+B\e[-i\alpha x]}&
+                \Aboxed{\psi_\text{II}(x) &= C\e[i\beta x]+D\e[-i\beta x]}
+            \end{align*}
+        \end{proof}
         \item Which coefficient in the wave functions from (a) is zero? Explain briefly why.
+        \begin{proof}[Answer]
+            As written, we will have $\boxed{D=0}$. This is because while the particle travels left to right in regions I and II (so $A,C\neq 0$) and there may be reflection back into region I at the intersection (so potentially $B\neq 0$), there is no particle in region II traveling right to left nor is there a barrier that could reflect some of the particle backwards.
+        \end{proof}
         \item Using continuity of the wave function and its derivative at $x=0$, derive an expression for the reflection coefficient.
+        \begin{proof}[Answer]
+            It follows from the continuity of the wave function \emph{itself} at $x=0$ that
+            \begin{equation*}
+                A+B = A\e[i\alpha(0)]+B\e[-i\beta(0)]
+                = \psi_\text{I}(0)
+                = \psi_\text{II}(0)
+                = C\e[i\alpha(0)]
+                = C
+            \end{equation*}
+            Similarly, it follows from the continuity of the \emph{derivative} of the wave function at $x=0$ that
+            \begin{equation*}
+                i\alpha A-i\alpha B = \dv{x}(A\e[i\alpha x]+B\e[-i\alpha x])_{x=0}
+                = \left( \dv{\psi_\text{I}}{x} \right)_{x=0}
+                = \left( \dv{\psi_\text{II}}{x} \right)_{x=0}
+                = \dv{x}(C\e[i\beta x])_{x=0}
+                = i\beta C
+            \end{equation*}
+            Thus, we have that
+            \begin{align*}
+                A &= \frac{C(\alpha+\beta)}{2\alpha}&
+                B &= \frac{C(\alpha-\beta)}{2\alpha}
+            \end{align*}
+            We know that the probability of the particle going left to right in region I is $|A|^2$ and that the probability of the particle going from right to left in region I is $|B|^2$. Thus, since the incident/reflected flux factors in the speed $c$ of the particle in either direction, the respective fluxes are $c|A|^2$ and $c|B|^2$. But this implies that
+            \begin{align*}
+                R &= \frac{c|B|^2}{c|A|^2}\\
+                &= \frac{|B|^2}{|A|^2}\\
+                \Aboxed{R &= \frac{(\alpha-\beta)^2}{(\alpha+\beta)^2}}
+            \end{align*}
+        \end{proof}
         \item Calculate the reflection coefficient $R$ when $V_0=\SI{8}{\electronvolt}$ and $E=\SI{16}{\electronvolt}$.
+        \begin{proof}[Answer]
+            We have that
+            \begin{align*}
+                \alpha &= \frac{\sqrt{2m\cdot(16-8)}}{\hbar}&
+                    \beta &= \frac{\sqrt{2m\cdot 16}}{\hbar}\\
+                &= \frac{4}{\hbar}\sqrt{m}&
+                    &= \frac{4}{\hbar}\sqrt{2m}
+            \end{align*}
+            Thus, we have that
+            \begin{align*}
+                R &= \frac{(\alpha-\beta)^2}{(\alpha+\beta)^2}\\
+                &= \frac{(\frac{4}{\hbar}\sqrt{m}-\frac{4}{\hbar}\sqrt{2m})^2}{(\frac{4}{\hbar}\sqrt{m}+\frac{4}{\hbar}\sqrt{2m})^2}\\
+                &= \frac{m-2m\sqrt{2}+2m}{m+2m\sqrt{2}+2m}\\
+                &= \frac{3-2\sqrt{2}}{3+2\sqrt{2}}\\
+                \Aboxed{R &= 17-12\sqrt{2}}
+            \end{align*}
+        \end{proof}
         \item Compare this result with the result from problem 5b of Problem Set 2.
+        \begin{proof}[Answer]
+            The answers are \fbox{identical}.
+        \end{proof}
         \item From your result in (e), explain whether the degree of reflection depends on both the direction (step or "drop") \emph{and} magnitude of the potential change or only the magnitude of the change.
+        \begin{proof}[Answer]
+            Since the answer in part (e) matches that of a setup with the same magnitude but opposite direction, the degree of reflection depends \fbox{solely on the magnitude of the potential change}, not the direction (step or drop).
+        \end{proof}
     \end{enumerate}
     \item A good approximation to the intermolecular potential for a diatomic molecule is the Morse potential
     \begin{equation*}
@@ -34,14 +96,74 @@
     where $x$ is the displacement from the equilibrium bond length.
     \begin{enumerate}
         \item Compute the Taylor series expansion of the Morse potential about $x=0$ through second order.
+        \begin{proof}[Answer]
+            Since
+            \begin{align*}
+                V(0) &= D(1-\e[-\beta(0)])^2&
+                    V'(0) &= 2D(1-\e[-\beta(0)])\cdot\beta\e[-\beta(0)]\\
+                &= 0&
+                    &= 0
+            \end{align*}
+            \begin{align*}
+                V''(0) &= -2D\beta^2\e[-\beta(0)]+4D\beta^2\e[-2\beta(0)]\\
+                &= 2D\beta^2
+            \end{align*}
+            we have that
+            \begin{align*}
+                \tilde{V} &= V(0)+V'(0)x+\frac{1}{2}V''(0)x^2\\
+                \Aboxed{\tilde{V} &= D\beta^2x^2}
+            \end{align*}
+        \end{proof}
         \item Comparing the result with the potential for the harmonic oscillator, give an expression for the harmonic force constant $k$ in terms of $D$ and $\beta$.
+        \begin{proof}[Answer]
+            For a harmonic oscillator, we have $V(x)=kx^2/2$. Setting this equal to the above, we have that
+            \begin{align*}
+                \frac{1}{2}kx^2 &= D\beta^2x^2\\
+                \Aboxed{k &= 2D\beta^2}
+            \end{align*}
+        \end{proof}
         \item Given that $D=\SI{7.31e-19}{\joule\per molecule}$ and $\beta=\SI{1.81e10}{\per\meter}$ for \ce{HCl}, calculate the force constant for \ce{HCl}.
+        \begin{proof}[Answer]
+            Plugging the given values into the equation from part (b) gives
+            \begin{equation*}
+                \boxed{k = \SI[per-mode=symbol]{479}{\newton\per\meter}}
+            \end{equation*}
+        \end{proof}
     \end{enumerate}
     \item In the infrared spectrum of \ce{H{}^{79}Br}, chemists find an intense line at $\SI{2630}{\per\centi\meter}$. For \ce{H{}^{79}Br}, calculate
     \begin{enumerate}
         \item The force constant.
+        \begin{proof}[Answer]
+            Let $m_{\ce{H}}=1.0$ and let $m_{\ce{Br}}=79.0$. Then
+            \begin{align*}
+                \mu &= \frac{m_{\ce{H}}m_{\ce{Br}}}{m_{\ce{H}}+m_{\ce{Br}}}\cdot\frac{\SI{e-3}{\kilo\gram}}{\SI{6.02e23}{\atomicmassunit}}\\
+                &= \SI{1.64e-27}{\kilo\gram}
+            \end{align*}
+            Let $\bar{\nu}_\text{obs}=\SI{2.630e5}{\per\meter}$. Then
+            \begin{align*}
+                \bar{\nu}_\text{obs} &= \frac{1}{2\pi c}\sqrt{\frac{k}{\mu}}\\
+                k &= (2\pi c\bar{\nu}_\text{obs})^2\mu\\
+                \Aboxed{k &= \SI[per-mode=symbol]{403}{\newton\per\meter}}
+            \end{align*}
+        \end{proof}
         \item The period of vibration.
+        \begin{proof}[Answer]
+            We have that
+            \begin{align*}
+                \frac{2\pi}{T} &= \omega = \sqrt{\frac{k}{\mu}}\\
+                T &= 2\pi\sqrt{\frac{\mu}{k}}\\
+                \Aboxed{T &= \SI{1.27e-14}{\second}}
+            \end{align*}
+        \end{proof}
         \item The zero-point energy.
+        \begin{proof}[Answer]
+            We have that
+            \begin{align*}
+                E_0 &= \frac{1}{2}\hbar\omega\\
+                &= \frac{1}{2}\hbar\sqrt{\frac{k}{\nu}}\\
+                \Aboxed{E_0 &= \SI{2.61e-20}{\joule}}
+            \end{align*}
+        \end{proof}
     \end{enumerate}
     \item Using the fact that the wave functions of the harmonic oscillator are either even or odd, show that the average values (or expectation values) of odd powers of position $x$ and momentum $p$ vanish, that is
     \begin{align*}
@@ -49,22 +171,110 @@
         \prb{p^k} &= 0
     \end{align*}
     when $k$ is odd.
+    \begin{proof}[Answer]
+        Since Hermite polynomials $H_v(\xi)$ are even functions if $v$ is even and odd functions if $v$ is odd, and $\psi_v$ is the product of all even functions and a Hermite polynomial for all $v$, we know that the parity of the Hermite polynomial determines the parity of $\psi_v$ for all $v$. Thus, $\psi_v$ is even when $v$ is even, and odd when $v$ is odd.\par
+        Since the square of either an odd or an even function is even, $\psi_v^2$ is even for all $v$. Additionally, $x^k$ is odd for all $k$. Thus, $x^k\psi_v^2$ is odd for all $k,v$. But this means that
+        \begin{equation*}
+            \prb{x^k} = \int_{-\infty}^\infty\psi_v(x)x^k\psi_v(x)\dd{x} = 0
+        \end{equation*}
+        as desired.\par
+        Similarly, since the derivative of an even function is odd and vice versa, we know that all odd-order derivatives of $\psi_v$ have opposite parity to $\psi_v$. But this implies that the product of $\psi_v$ and an odd-order derivative of $\psi_v$ is always odd. It follows that
+        \begin{equation*}
+            \prb{p^k} = \int_{-\infty}^\infty\psi_v(x)\left( -i\hbar\dv{x} \right)^k\psi_v(x)\dd{x} = 0
+        \end{equation*}
+        as desired.
+    \end{proof}
     \item For the ground state of the harmonic oscillator\dots
     \begin{enumerate}
         \item Evaluate the Heisenberg uncertainty relation where the spread (or uncertainty) in position and momentum may be computed by
         \begin{align*}
             (\Delta x)^2 &= \int\psi^*(x)(x-\prb{x})^2\psi(x)\dd{x}&
-            (\Delta p)^2 &= \int\psi^*(x)(\hat{p}-\prb{\hat{p}}^2)\psi(x)\dd{x}
+            (\Delta p)^2 &= \int\psi^*(x)(\hat{p}-\prb{\hat{p}})^2\psi(x)\dd{x}
         \end{align*}
         Use the results of Exercise 5.17 in \textcite{bib:McQuarrieSimon} to evaluate the necessary integrals.
+        \begin{proof}[Answer]
+            We have from \textcite{bib:McQuarrieSimon} that $\prb{x}=0$. Thus,
+            \begingroup
+            \allowdisplaybreaks
+            \begin{align*}
+                (\Delta x)^2 &= \int\psi_0^*(x)(x-\prb{x})^2\psi_0(x)\dd{x}\\
+                &= \int_{-\infty}^\infty\sqrt[4]{\frac{\alpha}{\pi}}\e[-\alpha x^2/2]x^2\sqrt[4]{\frac{\alpha}{\pi}}\e[-\alpha x^2/2]\dd{x}\\
+                &= \sqrt{\frac{\alpha}{\pi}}\int_{-\infty}^\infty x^2\e[-\alpha x^2]\dd{x}\\
+                &= \sqrt{\frac{\alpha}{\pi}}\cdot\frac{1}{2\alpha}\sqrt{\frac{\pi}{\alpha}}\\
+                &= \frac{1}{2\alpha}\\
+                \Delta x &= \sqrt{\frac{1}{2\alpha}}
+            \end{align*}
+            Additionally, we have that $\prb{p}=0$. Thus,
+            \begin{align*}
+                (\Delta p)^2 &= \int\psi_0^*(x)(\hat{p}-\prb{\hat{p}})^2\psi_0(x)\dd{x}\\
+                &= \int_{-\infty}^\infty\sqrt[4]{\frac{\alpha}{\pi}}\e[-\alpha x^2/2]\left( -i\hbar\dv{x} \right)^2\sqrt[4]{\frac{\alpha}{\pi}}\e[-\alpha x^2/2]\dd{x}\\
+                &= -\hbar^2\sqrt{\frac{\alpha}{\pi}}\int_{-\infty}^\infty\e[-\alpha x^2/2]\dv{x}(-\alpha x\e[-\alpha x^2/2])\dd{x}\\
+                &= -\hbar^2\sqrt{\frac{\alpha}{\pi}}\int_{-\infty}^\infty\e[-\alpha x^2/2](-\alpha\e[-\alpha x^2/2]+\alpha^2x^2\e[-\alpha x^2/2])\dd{x}\\
+                &= \hbar^2\sqrt{\frac{\alpha^3}{\pi}}\int_{-\infty}^\infty(1-\alpha x^2)\e[-\alpha x^2]\dd{x}\\
+                &= \hbar^2\sqrt{\frac{\alpha^3}{\pi}}\cdot\frac{1}{2}\sqrt{\frac{\pi}{\alpha}}\\
+                &= \frac{1}{2}\alpha\hbar^2\\
+                \Delta p &= \hbar\sqrt{\frac{\alpha}{2}}
+            \end{align*}
+            \endgroup
+            Therefore, we have
+            \begin{equation*}
+                \Delta x\cdot\Delta p = \frac{\hbar}{2} \geq \frac{\hbar}{2}
+            \end{equation*}
+        \end{proof}
         \item In terms of the uncertainty relation, what is special about the harmonic oscillator?
+        \begin{proof}[Answer]
+            The product of the uncertainties is \emph{exactly} $\hbar/2$, as opposed to some number greater than it. In other words, it can be described as precisely as any quantum system.
+        \end{proof}
     \end{enumerate}
     \item Using the expectation values from the previous problem, show for the ground state of the harmonic oscillator that the average values of the kinetic and the potential energies are equal to one half of the total energy, i.e.,
     \begin{equation*}
         \prb{T} = \prb{V} = \frac{E_0}{2}
     \end{equation*}
     This relation, known as the \textbf{virial theorem}, is true for all states of the harmonic oscillator.
+    \begin{proof}[Answer]
+        Invoking the definitions of $\prb{T}$ and $\prb{V}$ and substituting from Problem 5a, we have that
+        \begingroup
+        \allowdisplaybreaks
+        \begin{align*}
+            \prb{T} &= \int\psi_0^*(x)\hat{H}\psi_0(x)\dd{x}&
+                \prb{V} &= \int\psi_0^*(x)\hat{V}\psi_0(x)\dd{x}\\
+            &= \frac{1}{2\mu}\int\psi_0^*(x)\hat{p}^2\psi_0(x)\dd{x}&
+                &= \frac{1}{2}k\int\psi_0^*(x)x^2\psi_0(x)\dd{x}\\
+            &= \frac{1}{2\mu}\cdot\frac{1}{2}\alpha\hbar^2&
+                &= \frac{1}{2}k\cdot\frac{1}{2\alpha}\\
+            &= \frac{\hbar^2}{4\mu}\cdot\frac{\sqrt{k\mu}}{\hbar}&
+                &= \frac{k}{4}\cdot\frac{\hbar}{\sqrt{k\mu}}\\
+            &= \frac{\hbar}{4}\sqrt{\frac{k}{\mu}}&
+                &= \frac{\hbar}{4}\sqrt{\frac{k}{\mu}}
+        \end{align*}
+        \endgroup
+        Thus, we have shown that $\prb{T}=\prb{V}$. To complete the proof, we have that
+        \begin{equation*}
+            \prb{T} = \prb{V}
+            = \frac{\hbar}{4}\sqrt{\frac{k}{\mu}}
+            = \frac{\frac{\hbar\omega}{2}}{2}
+            = \frac{\hbar\omega\left( 0+\frac{1}{2} \right)}{2}
+            = \frac{E_0}{2}
+        \end{equation*}
+        as desired.
+    \end{proof}
     \item Use the Quantum Chemistry Toolbox in Maple to answer the lettered questions in the worksheet "Harmonic Oscillator" on Canvas.
+    \begin{proof}[Answer]
+        ${\color{white}hi}$
+        \begin{figure}[H]
+            \centering
+            \small
+            \renewcommand{\arraystretch}{1.4}
+            \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                \textbf{Molecule} & \textbf{Reduced Mass ($\bm{\mu}$)} & \textbf{Spring Constant ($\bm{k}$)} & \textbf{Angular Frequency ($\bm{\omega}$)} & \textbf{Energy Spacing ($\bm{\Delta E}$)}\\ \hline
+                \ce{HF} & $\SI{1.59e-27}{\kilo\gram}$ & $\SI[per-mode=symbol]{1110}{\joule\per\square\meter}$ & $\SI{8.36e14}{\hertz}$ & $\SI{8.81e-20}{\joule}$\\ \hline
+                \ce{N2} & $\SI{1.16e-26}{\kilo\gram}$ & $\SI[per-mode=symbol]{3130}{\joule\per\square\meter}$ & $\SI{5.19e14}{\hertz}$ & $\SI{5.47e-20}{\joule}$\\ \hline
+                \ce{CO} & $\SI{1.14e-26}{\kilo\gram}$ & $\SI[per-mode=symbol]{2390}{\joule\per\square\meter}$ & $\SI{4.58e14}{\hertz}$ & $\SI{4.83e-20}{\joule}$\\ \hline
+            \end{tabular}
+        \end{figure}
+        ${\color{white}hi}$
+    \end{proof}
 \end{enumerate}
 
 
