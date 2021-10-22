@@ -209,6 +209,88 @@
 
 
 
+\section{Hydrogen Atom (cont.)}
+\begin{itemize}
+    \item \marginnote{10/22:}We want to solve the SE $\hat{H}\psi_n=E\psi_n$ for the hydrogen atom.
+    \item To exploit the spherical symmetry of the hydrogen atom, we use $(r,\theta,\phi)$.
+    \item Thus, our Hamiltonian is equal to
+    \begin{equation*}
+        \hat{H} = \frac{1}{2\mu}\left( \hat{p}_r^2+\frac{\hat{L}^2}{r^2} \right)+V(r)
+    \end{equation*}
+    \begin{itemize}
+        \item Since $V$ is just a function of $r$, the wave function is separable: $\psi(r,\theta,\phi)=R_n(r)Y_{l,m}(\theta,\phi)$.
+        \item "Whenever you have a separation of variables additively in the Hamiltonian, you have a separation of variables multiplicatively in the wave function."
+    \end{itemize}
+    \item Substitute the wave function into the Schr\"{o}dinger equation:
+    \begin{align*}
+        \left( \frac{1}{2\mu}\left( \hat{p}_r^2+\frac{\hat{L}^2}{r^2} \right)+V(r) \right)R_n(r)Y_{lm}(\theta,\phi) &= ER_n(r)Y_{lm}(\theta,\phi)\\
+        \left( \frac{1}{2\mu}\left( \hat{p}_r^2+\frac{l(l+1)\hbar^2}{r^2}\right)+V(r) \right)R_n(r)Y_{lm}(\theta,\phi) &= ER_n(r)Y_{lm}(\theta,\phi)\\
+        \left( \frac{1}{2\mu}\left( \hat{p}_r^2+\frac{l(l+1)\hbar^2}{r^2} \right)+V(r) \right)R_n(r) &= E_{nl}R_n(r)
+    \end{align*}
+    \item Noting that we only care about the behavior of the differential equation on $[0,\infty)$, specifically at really large distances, we perform an asymptotic analysis.
+    \begin{equation*}
+        \lim_{r\to\infty}\left( \frac{1}{2\mu}\hat{p}_r^2 \right)R(r) = ER(r)
+    \end{equation*}
+    \item Plugging in the value of the momentum operator, we have that
+    \begin{align*}
+        -\frac{\hbar^2}{2\mu}\dv[2]{r}R(r) &= ER(r)\\
+        R(r) &= \e[-\alpha r]
+    \end{align*}
+    where $\alpha=i\hbar/\sqrt{2\mu E}$.
+    \item But we want to multiply $\e[-\alpha r]$ by some type of polynomial. Namely, \textbf{Laguerre polynomials}.
+    \begin{itemize}
+        \item These polynomials may be found by expanding a power series.
+        \item Let
+        \begin{equation*}
+            L\left( \frac{\alpha r}{n} \right) = \sum_{j=0}^\infty c_j\left( \frac{\alpha r}{n} \right)^j
+        \end{equation*}
+        \item A recursion relation may be found.
+        \item The quantization of energy in the hydrogen atom again arises from the truncation of the polynomials.
+    \end{itemize}
+    \item Thus, the general solution of $R_{nl}(r)$ is
+    \begin{equation*}
+        R_{nl}(r) = \left( \frac{\alpha r}{n} \right)^lL_{n+1,2l+1}\left( \frac{\alpha r}{n} \right)\e[-\alpha r/2n]
+    \end{equation*}
+    \item Energy levels:
+    \begin{equation*}
+        E_n = -\frac{\mu}{2\hbar^2}\left( \frac{(Ze)e}{4\pi\epsilon} \right)^2\frac{1}{n^2}
+    \end{equation*}
+    \begin{itemize}
+        \item These are the discrete energies of Bohr!
+    \end{itemize}
+    \item But now we also have the electron's probability distributions, i.e., the ground state wave function is
+    \begin{equation*}
+        \psi(r,\theta,\phi) = \frac{1}{\sqrt{\pi}}\left( \frac{Z}{a_0} \right)^{3/2}\e[-Zr/a_0]
+    \end{equation*}
+    \item Thus, we can now take a look at the probabilities.
+    \emph{picture}
+    \begin{itemize}
+        \item The probability is
+        \begin{equation*}
+            \text{Pr} = |\psi(r,\theta,\phi)|^2r^2\sin\theta
+        \end{equation*}
+        \item The radial probability is
+        \begin{equation*}
+            \text{Pr}(r) = r^2|R_{nl}(r)|^2
+        \end{equation*}
+        \begin{itemize}
+            \item The radial probability peaks at $a_0$, the \textbf{Bohr radius}.
+            \item Thus, the Bohr radius (the radius of the circular orbit of Bohr's hydrogen electron) is just the most probable distance from the nucleus!
+        \end{itemize}
+    \end{itemize}
+    \item The average distance from the nucleus (the expectation value of $r$) is
+    \begin{align*}
+        \prb{r} &= \int_0^\infty\text{Pr}(r)r\dd{r}\\
+        &= \int_0^\infty\psi^*(r)r\psi(r)\dd{r}
+    \end{align*}
+    \begin{itemize}
+        \item Note we also find that $\prb{\hat{H}}=E$, so there is no uncertainty in the energy.
+    \end{itemize}
+    \item Note that in some ways, quantum mechanics is more certain than classical mechanics since, for instance, in quantum we know the energy exactly.
+\end{itemize}
+
+
+
 \section{Chapter 5: The Harmonic Oscillator and the Rigid Rotator --- Two Spectroscopic Models}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
