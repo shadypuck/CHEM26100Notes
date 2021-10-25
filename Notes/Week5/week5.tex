@@ -1,0 +1,116 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{4}
+
+\begin{document}
+
+
+
+
+\chapter{Approximate Solutions of the Schr\"{o}dinger Equation}
+\section{Approximation Methods}
+\begin{itemize}
+    \item \marginnote{10/25:}The \textbf{variational method} and \textbf{perturbation theory} are two methods of approximating solutions to Schr\"{o}dinger equations describing systems more complex than the hydrogen atom.
+    \item To begin our investigation of the variational method, we will look at the particle in a box.
+    \begin{itemize}
+        \item Consider a Hamiltonian for an electron in a box of length $L=\SI{2}{\atomicunit}$ centered around $x=0$.
+        \begin{itemize}
+            \item Note that we take the electron as the fundamental mass, $\hbar$ as the fundamental unit of energy time, and the charge of the electron as the fundamental unit of charge, and the Bohr radius as the fundamental unit of length.
+        \end{itemize}
+        \item Our Hamiltonian is
+        \begin{equation*}
+            H\psi(x) = -\frac{\hbar^2}{2m}\dv[2]{x}\psi(x)
+        \end{equation*}
+        or, in atomic units,
+        \begin{equation*}
+            H\psi(x) = -\frac{1}{2}\dv[2]{x}\psi(x)
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Variational theorem}: The expectation value of our Hamiltonian with respect to a trial wave function produces an approximate energy. Moreover\footnote{We will prove that the approximate energy is an upper bound on the ground state energy in the homework.},
+    \begin{equation*}
+        E_\text{approx} \geq E_\text{gr. st.}
+    \end{equation*}
+    \item \textbf{Variational method}: Take $\psi_\text{trial}=\sum_na_n\ket{\psi_n}$ where $\psi_n$ is a trial wave function and the $a_j$'s are parameters of the wave function which we want to optimize to lower $E_\text{trial}$.
+    \begin{itemize}
+        \item Dirac's ket describes an abstract state of the particle (possibly position, possibly its Fourier transform, momentum).
+    \end{itemize}
+    \item Back to the particle in a box:
+    \begin{itemize}
+        \item A possible trial wave function (that satisfies the boundary conditions) is
+        \begin{equation*}
+            \psi_\text{tr} = (1+x)(1-x) = 1-x^2
+        \end{equation*}
+        \item The energy of $\psi_\text{tr}$ may be evaluated as follows.
+        \begin{align*}
+            E &= \frac{\int\psi_\text{tr}^*(x)\hat{H}\psi_\text{tr}(x)\dd{x}}{\int\psi_\text{tr}^*(x)\psi_\text{tr}(x)\dd{x}}\\
+            &= \frac{\int_{-1}^1(1-x^2)\left( -\frac{1}{2}\dv[2]{x} \right)(1-x^2)\dd{x}}{\int_{-1}^1(1-x^2)(1-x^2)\dd{x}}\\
+            &= \frac{\int_{-1}^1(1-x^2)\dd{x}}{\int_{-1}^1(1-x^2)(1-x^2)\dd{x}}\\
+            &= \frac{4/3}{16/15}\\
+            &= \frac{5}{4}\\
+            &= \SI{1.25}{\atomicunit}
+        \end{align*}
+        \item From the exact solution to the particle in a box
+        \begin{equation*}
+            E_1 = 1.23370055 < 1.25 = E_\text{trial}
+        \end{equation*}
+        so the variational theorem is satisfied.
+        \item Next step: Trial wave function as a linear combination is $\psi_\text{tr}(x)=c_1\psi_1(x)+c_2\psi_2(x)$.
+        \item Plugging this into the SE yields
+        \begin{equation*}
+            c_1(\hat{H}-E)\psi_1(x)+c_2(\hat{H}-E)\psi_2(x) = 0
+        \end{equation*}
+        \begin{itemize}
+            \item $\psi_1,\psi_2$ span the (Hilbert) space of solutions.
+        \end{itemize}
+        \item To solve the above equation, multiply by $\psi_1(x)$ and integrate to obtain
+        \begin{equation*}
+            c_1\int_{-1}^1\psi_1^*(x)(\hat{H}-E)\psi_1(x)\dd{x}+c_2\int_{-1}^1\psi_1^*(x)(\hat{H}-E)\psi_2(x)\dd{x} = 0
+        \end{equation*}
+        and multiply by $\psi_2(x)$ an integrate to obtain
+        \begin{equation*}
+            c_1\int_{-1}^1\psi_2^*(x)(\hat{H}-E)\psi_1(x)\dd{x}+c_2\int_{-1}^1\psi_2^*(x)(\hat{H}-E)\psi_2(x)\dd{x} = 0
+        \end{equation*}
+        \item Substituting, we have
+        \begin{align*}
+            c_1(H_{11}-ES_{11})+c_2(H_{12}-ES_{12}) &= 0&
+            c_1(H_{21}-ES_{21})+c_2(H_{22}-ES_{22}) &= 0
+        \end{align*}
+        \item In matrix form, the above two equations become
+        \begin{align*}
+            \begin{pmatrix}
+                H_{11} & H_{12}\\
+                H_{21} & H_{22}\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                c_1\\
+                c_2\\
+            \end{pmatrix}
+            -E
+            \begin{pmatrix}
+                S_{11} & S_{12}\\
+                S_{21} & S_{22}\\
+            \end{pmatrix}
+            \begin{pmatrix}
+                c_1\\
+                c_2\\
+            \end{pmatrix}
+            &=
+            \begin{pmatrix}
+                0\\
+                0\\
+            \end{pmatrix}\\
+            \mathbb{H}\vec{c}-E\mathbb{S}\vec{c} &= 0
+        \end{align*}
+        \begin{itemize}
+            \item We get a matrix that the same dimension as the size of the expansion (in the first case, we had a $1\times 1$ matrix).
+            \item $\mathbb{S}$ is the overlap matrix because the wave functions aren't normalized.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
