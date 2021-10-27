@@ -330,8 +330,8 @@
     \item With respect to the rigid rotator, $r$ is constant. Thus,
     \begin{gather*}
         \nabla^2 = \frac{1}{r^2}\frac{1}{\sin\theta}\pdv{\theta}\left( \sin\theta\pdv{\theta} \right)+\frac{1}{r^2}\frac{1}{\sin^2\theta}\pdv[2]{\phi}\\
-        \bar{H} = -\frac{\hbar^2}{2I}\left[ \frac{1}{\sin\theta}\pdv{\theta}\left( \sin\theta\pdv{\theta} \right)+\frac{1}{\sin^2\theta}\left( \pdv[2]{\phi} \right) \right]\\
-        \bar{L}^2 = -\hbar^2\left[ \frac{1}{\sin\theta}\pdv{\theta}\left( \sin\theta\pdv{\theta} \right)+\frac{1}{\sin^2\theta}\left( \pdv[2]{\phi} \right) \right]
+        \hat{H} = -\frac{\hbar^2}{2I}\left[ \frac{1}{\sin\theta}\pdv{\theta}\left( \sin\theta\pdv{\theta} \right)+\frac{1}{\sin^2\theta}\left( \pdv[2]{\phi} \right) \right]\\
+        \hat{L}^2 = -\hbar^2\left[ \frac{1}{\sin\theta}\pdv{\theta}\left( \sin\theta\pdv{\theta} \right)+\frac{1}{\sin^2\theta}\left( \pdv[2]{\phi} \right) \right]
     \end{gather*}
     \begin{itemize}
         \item Note that since both $\theta$ and $\phi$ are unitless, the units of angular momentum for quantum system are $\hbar$.
@@ -397,6 +397,111 @@
         \endgroup
         as desired.
     \end{proof}
+    \item \label{prb:5-30}Consider the transformation from Cartesian coordinates to plane polar coordinates where
+    \begin{align*}
+        x &= r\cos\theta&
+            r &= \sqrt{x^2+y^2}\\
+        y &= r\sin\theta&
+            \theta &= \tan^{-1}\left( \frac{y}{x} \right)
+    \end{align*}
+    If a function $f(r,\theta)$ depends upon the polar coordinates $r$ and $\theta$, then the chain rule of partial differentiation says that\footnote{Note that the subscript means that the subscripted variable is held constant.}
+    \begin{equation*}
+        \left( \pdv{f}{x} \right)_y = \left( \pdv{f}{r} \right)_\theta\left( \pdv{r}{x} \right)_y+\left( \pdv{f}{\theta} \right)_r\left( \pdv{\theta}{x} \right)_y
+    \end{equation*}
+    and that
+    \begin{equation*}
+        \left( \pdv{f}{y} \right)_x = \left( \pdv{f}{r} \right)_\theta\left( \pdv{r}{y} \right)_x+\left( \pdv{f}{\theta} \right)_r\left( \pdv{\theta}{y} \right)_x
+    \end{equation*}
+    For simplicity, we will assume that $r$ is constant so that we can ignore terms involving derivatives with respect to $r$. In other words, we will consider a particle that is constrained to move on the circumference of a circle. This system is sometimes called a \textbf{particle on a ring}. Using the above equations, show that
+    \begin{align*}
+        \left( \pdv{f}{x} \right)_y &= -\frac{\sin\theta}{r}\left( \pdv{f}{\theta} \right)_r&
+        \left( \pdv{f}{y} \right)_x &= \frac{\cos\theta}{r}\left( \pdv{f}{\theta} \right)_r
+    \end{align*}
+    for $r$ fixed. Now apply the above equations again to show that
+    \begin{align*}
+        \left( \pdv[2]{f}{x} \right)_y &= \left[ \pdv{x}\left( \pdv{f}{x} \right)_y \right]\\
+        &= \left[ \pdv{\theta}\left( \pdv{f}{x} \right)_y \right]_r\left( \pdv{\theta}{x} \right)_y\\
+        &= \left\{ \pdv{\theta}\left[ -\frac{\sin\theta}{r}\left( \pdv{f}{\theta} \right)_r \right] \right\}_r\left( -\frac{\sin\theta}{r} \right)\\
+        &= \frac{\sin\theta\cos\theta}{r^2}\left( \pdv{f}{\theta} \right)_r+\frac{\sin^2\theta}{r^2}\left( \pdv[2]{f}{\theta} \right)_r
+    \end{align*}
+    for $r$ fixed. Similarly, show that
+    \begin{equation*}
+        \left( \pdv[2]{f}{y} \right)_x = -\frac{\sin\theta\cos\theta}{r^2}\left( \pdv{f}{\theta} \right)_r+\frac{\cos^2\theta}{r^2}\left( \pdv[2]{f}{\theta} \right)_r
+    \end{equation*}
+    and that
+    \begin{equation*}
+        \nabla^2f = \pdv[2]{f}{x}+\pdv[2]{f}{y} \longrightarrow \frac{1}{r^2}\left( \pdv[2]{f}{\theta} \right)_r
+    \end{equation*}
+    both for $r$ fixed. Now show that the Schr\"{o}dinger equation for a particle of mass $m$ constrained to move on a circle of radius $r$ (see Problem \ref{prb:3-28}) is
+    \begin{equation*}
+        -\frac{\hbar^2}{2I}\pdv[2]{\psi(\theta)}{\theta} = E\psi(\theta)
+    \end{equation*}
+    where $I=mr^2$ is the moment of inertia and $0\leq\theta\leq 2\pi$.
+    \begin{proof}[Answer]
+        We have that
+        \begin{align*}
+            \left( \pdv{\theta}{x} \right)_y &= \pdv{x}\left( \tan^{-1}\left( \frac{y}{x} \right) \right)&
+                \left( \pdv{\theta}{y} \right)_y &= \pdv{y}\left( \tan^{-1}\left( \frac{y}{x} \right) \right)\\
+            &= \frac{1}{\left( \frac{y}{x} \right)^2+1}\cdot y\cdot -\frac{1}{x^2}&
+                &= \frac{1}{\left( \frac{y}{x} \right)^2+1}\cdot\frac{1}{x}\\
+            &= -\frac{y}{x^2+y^2}&
+                &= \frac{x}{x^2+y^2}\\
+            &= -\frac{r\sin\theta}{r^2}&
+                &= \frac{r\cos\theta}{r^2}\\
+            &= -\frac{\sin\theta}{r}&
+                &= \frac{\cos\theta}{r}
+        \end{align*}
+        This combined with the fact that $r$ is constant yields
+        \begin{align*}
+            \left( \pdv{f}{x} \right)_y &= \left( \pdv{f}{r} \right)_\theta\left( \pdv{r}{x} \right)_y+\left( \pdv{f}{\theta} \right)_r\left( \pdv{\theta}{x} \right)_y&
+                \left( \pdv{f}{y} \right)_x &= \left( \pdv{f}{r} \right)_\theta\left( \pdv{r}{y} \right)_x+\left( \pdv{f}{\theta} \right)_r\left( \pdv{\theta}{y} \right)_x\\
+            &= 0\cdot\left( \pdv{r}{x} \right)_y+\left( \pdv{f}{\theta} \right)_r\cdot -\frac{\sin\theta}{r}&
+                &= 0\cdot\left( \pdv{r}{y} \right)_x+\left( \pdv{f}{\theta} \right)_r\frac{\cos\theta}{r}\\
+            &= -\frac{\sin\theta}{r}\left( \pdv{f}{\theta} \right)_r&
+                &= \frac{\cos\theta}{r}\left( \pdv{f}{\theta} \right)_r
+        \end{align*}
+        as desired.\par
+        The rest of the differential equation derivations follow fairly easy with simple calculus rules.\par
+        As for the Schr\"{o}dinger equation, we know that there is no potential field for this particle. Additionally, although we could choose to express $\psi$ as a function of $x,y$, owing to the radial symmetry, we choose to express it as a function of $r,\theta$. In fact, we need only express $\psi$ as a function of $\theta$ since $r$ is invariant throughout the chosen free space. Thus, expanding from the general form, we get
+        \begin{align*}
+            \hat{H}\psi(\theta) &= E\psi(\theta)\\
+            \left( -\frac{\hbar^2}{2m}\nabla^2 \right)\psi(\theta) &= E\psi(\theta)\\
+            -\frac{\hbar^2}{2m}\cdot\frac{1}{r^2}\left( \pdv[2]{\psi(\theta)}{\theta} \right)_r &= E\psi(\theta)\\
+            -\frac{\hbar^2}{2I}\pdv[2]{\psi(\theta)}{\theta} &= E\psi(\theta)
+        \end{align*}
+        as desired.
+    \end{proof}
+    \item \label{prb:5-31}Generalize Problem \ref{prb:5-30} to the case of a particle moving in a plane under the influence of a central force; in other words, convert
+    \begin{equation*}
+        \nabla^2 = \pdv[2]{x}+\pdv[2]{y}
+    \end{equation*}
+    to plane polar coordinates, this time without assuming that $r$ is constant. Use the method of separation of variables to separate the equation for this problem. Solve the angular equation.
+    \begin{proof}[Answer]
+        We have
+        \begin{align*}
+            \pdv{r}{x} &= \frac{1}{2\sqrt{x^2+y^2}}\cdot 2x&
+                \pdv{r}{y} &= \frac{1}{2\sqrt{x^2+y^2}}\cdot 2y\\
+            &= \frac{x}{r}&
+                &= \frac{y}{r}\\
+            &= \cos\theta&
+                &= \sin\theta
+        \end{align*}
+        Thus
+        \begin{align*}
+            \pdv{f}{x} &= \cos\theta\pdv{f}{r}-\frac{\sin\theta}{r}\pdv{f}{\theta}&
+            \pdv{f}{y} &= \sin\theta\pdv{f}{r}+\frac{\cos\theta}{r}\pdv{f}{\theta}
+        \end{align*}
+        Also note that
+        \begin{align*}
+            \pdv[2]{f}{x} &= \pdv{x}\left( \pdv{f}{x} \right)\\
+            &= \pdv{\theta}\left( \pdv{f}{x} \right)\pdv{\theta}{x}+\pdv{r}\left( \pdv{f}{x} \right)\pdv{r}{x}
+        \end{align*}
+        The rest of the expansions are routine, leading to
+        \begin{equation*}
+            \nabla^2f = \pdv[2]{u}{r}+\frac{1}{r}\pdv{u}{r}+\frac{1}{r^2}\pdv[2]{u}{\theta}
+        \end{equation*}
+    \end{proof}
+    \item \label{prb:5-32}Using Problems \ref{prb:5-30} and \ref{prb:5-31} as a guide, convert $\nabla^2$ from three-dimensional Cartesian coordinates to spherical coordinates.
 \end{enumerate}
 
 

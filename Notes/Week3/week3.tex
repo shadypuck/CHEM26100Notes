@@ -762,6 +762,52 @@
 \end{itemize}
 
 
+\subsection*{Problems}
+\begin{enumerate}[label={\textbf{3-\arabic*.}},ref={3-\arabic*}]
+    \setcounter{enumi}{27}
+    \item \label{prb:3-28}\marginnote{10/26:}The Schr\"{o}dinger equation for a particle of mass $m$ constrained to move on a circle of radius $a$ is
+    \begin{equation*}
+        -\frac{\hbar^2}{2I}\dv[2]{\psi}{\theta} = E\psi(\theta)
+    \end{equation*}
+    where $I=ma^2$ is the moment of inertia and $0\leq\theta\leq 2\pi$ is the angle that describes the position of the particle around the ring. Show by direct substitution that the solutions to this equation are
+    \begin{equation*}
+        \psi(\theta) = A\e[in\theta]
+    \end{equation*}
+    where $n=\pm\sqrt{2IE}/\hbar$. Argue that the appropriate boundary condition is $\psi(\theta)=\psi(\theta+2\pi)$ and use this condition to show that
+    \begin{equation*}
+        E = \frac{n^2\hbar^2}{2I}
+    \end{equation*}
+    where $n=0,\pm 1,\pm 2,\dots$. Show that the normalization constant $A$ is $1/\sqrt{2\pi}$. Discuss how you might use these results for a free-electron model of benzene.
+    \begin{proof}[Answer]
+        We have that
+        \begin{align*}
+            E(A\e[in\theta]) &= -\frac{\hbar^2}{2I}\dv[2]{\theta}(A\e[in\theta])\\
+            &= \frac{An^2\hbar^2}{2I}\e[in\theta]\\
+            &= \frac{2IEA\hbar^2}{2\hbar^2I}\e[in\theta]\\
+            &= EA\e[in\theta]
+        \end{align*}
+        so the given wave wave function is a solution to the given Schr\"{o}dinger equation, as desired.\par
+        Since the free space is a 2D ring into which all wave functions must "fit," i.e., align in phase, it is necessary that $\psi(\theta)=\psi(\theta+2\pi)$. Substituting in our solutions, we have that
+        \begin{align*}
+            A\e[in\theta] &= A\e[in(\theta+2\pi)]\\
+            &= A\e[in\theta]\e[2\pi in]\\
+            \e[2\pi in] &= 1\\
+            n &= 0,\pm 1,\pm 2,\dots
+        \end{align*}
+        as desired.\par
+        As for the normalization constant, we have that
+        \begin{align*}
+            1 &= \int_0^{2\pi}\psi^*(\theta)\psi(\theta)\dd{\theta}\\
+            &= \int_0^{2\pi}(A\e[-in\theta])(A\e[in\theta])\dd{\theta}\\
+            &= A^2\int_0^{2\pi}1\dd{\theta}\\
+            A &= \frac{1}{\sqrt{2\pi}}
+        \end{align*}
+        as desired.\par
+        This could potentially be used for a free-electron model of benzene by looking at the energy levels and associated probability densities and overlaying them on the benzene ring.
+    \end{proof}
+\end{enumerate}
+
+
 
 
 \end{document}
