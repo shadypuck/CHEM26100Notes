@@ -112,5 +112,101 @@
 
 
 
+\section{Variational Method}
+\begin{itemize}
+    \item \marginnote{10/27:}Approximating the ground state energy with some trial wave function and applying
+    \begin{equation*}
+        E_\text{approx} = \frac{\int\psi_\text{tr}^*\hat{H}\psi_\text{tr}\dd{x}}{\int\psi_\text{tr}^*\psi_\text{tr}\dd{x}}
+    \end{equation*}
+    where
+    \begin{equation*}
+        \psi_\text{tr} = \sum_nc_n\psi_n(x)
+    \end{equation*}
+    \item Example 2:
+    \item For our second term, we need another even function (since the ground state wavefunction is even). Thus, choose
+    \begin{equation*}
+        \psi_\text{tr}(x) = c_1(1-x^2)+c_2(1-x^2)x^2
+    \end{equation*}
+    \begin{itemize}
+        \item Think about this in the context of power series --- we have $(1-x^2)$ times an even power series expansion $(c_1+c_2x^2)$.
+    \end{itemize}
+    \item To find $c_1,c_2$, we could plug into the approximation integral and minimize.
+    \item Alternatively, we can use matrices. We essentially project the Schr\"{o}dinger equation onto the space of the two wave functions.
+    \item Take $\hat{H}\psi=E\psi$ and expand it to $\hat{H}(c_1\psi_1+c_2\psi_2)=E(c_1\psi_1+c_2\psi_2)$. In matrix form, $\mathbb{H}\vec{c}=E\mathbb{S}\vec{c}$.
+    \item We have an overlap matrix $\mathbb{S}$ because our wave functions aren't normalized. If the basis \emph{is} orthonormal, $\mathbb{S}$ collapses to the identity matrix.
+    \begin{itemize}
+        \item Each $s_{ij}$ equals
+        \begin{equation*}
+            s_{ij} = \int\psi_i^*\psi_j\dd{x}
+        \end{equation*}
+        \item If $\psi_1,\psi_2$ is orthonormal, then $s_{ij}=\delta_{ij}$.
+    \end{itemize}
+    \item The elements of the Hamiltonian matrix:
+    \begin{align*}
+        H_{11} &= \int\psi_1^*(x)\hat{H}\psi_1(x)\dd{x}&
+            H_{12} &= \int\psi_1^*(x)\hat{H}\psi_2(x)\dd{x}\\
+        &= \frac{4}{3}&
+            &= \frac{8}{15}
+    \end{align*}
+    \begin{align*}
+        H_{21} &= \frac{8}{15}&
+        H_{22} &= \frac{44}{105}
+    \end{align*}
+    \begin{itemize}
+        \item Notice that $\mathbb{H}$ is symmetric with $H_{12}=H_{21}$.
+    \end{itemize}
+    \item Elements of the overlap matrix:
+    \begin{align*}
+        S_{11} &= \frac{16}{15}&
+        S_{12} &= \frac{32}{105}
+    \end{align*}
+    \begin{align*}
+        S_{21} &= \frac{32}{105}&
+        S_{22} &= \frac{16}{315}
+    \end{align*}
+    \begin{itemize}
+        \item Notice that $\mathbb{S}$ is symmetric with $S_{12}=S_{21}$.
+    \end{itemize}
+    \item Note that there are multiple ways to solve $\mathbb{H}\vec{c}=E\mathbb{S}\vec{c}$; \textcite{bib:McQuarrieSimon} only teaches one. Thus, you can get computers to do the math and solve far bigger systems than you could by hand.
+    \item Solving $\mathbb{H}\vec{c}=E\mathbb{S}\vec{c}$ with the textbook method:
+    \begin{itemize}
+        \item Rewrite as $(\mathbb{H}-E\mathbb{S})\vec{c}=0$. Find the null space of $\mathbb{H}-E\mathbb{S}$.
+        \item Since the determinant is the product of the eigenvalues, $\det(\mathbb{H}-E\mathbb{S})=(E_1-E)(E_2-E)$.
+        \item This determinant is equal to zero only when $E=E_1$ or $E=E_2$.
+        \begin{itemize}
+            \item The energy is becoming quantized because of the linear algebra!
+        \end{itemize}
+        \item Now taking $\det(\mathbb{H}-E\mathbb{S})$ gives a characteristic polynomial in $E$.
+        \renewcommand{\arraystretch}{1.6}
+        \begin{align*}
+            0 &=
+            \begin{vmatrix}
+                \frac{4}{3}-\frac{16}{15}E & \frac{4}{15}-\frac{16}{105}E\\
+                \frac{4}{15}-\frac{16}{105}E & \frac{44}{105}-\frac{16}{315}E\\
+            \end{vmatrix}\\
+            &= \frac{256}{525}-\frac{2048}{4725}E+\frac{1024}{33075}E^2
+        \end{align*}
+        \item Solving the quadratic gives us
+        \begin{equation*}
+            E = 7\pm\frac{\sqrt{133}}{2}
+        \end{equation*}
+        \item Thus,
+        \begin{align*}
+            E_1 &= \SI{1.233718705}{\atomicunit}&
+            E_2 &= \SI{12.766}{\atomicunit}
+        \end{align*}
+        \begin{itemize}
+            \item Notice that the $E_1$ we found is only \emph{marginally} greater than the real value of $E_1$. Our value is accurate to four decimal places!
+        \end{itemize}
+        \item Solving for $\vec{c}$ with $E_1$ gives us
+        \begin{align*}
+            \vec{c}_1 &= \num{-0.9764}&
+            \vec{c}_2 &= \num{0.2156}
+        \end{align*}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
