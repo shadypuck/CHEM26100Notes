@@ -14,7 +14,36 @@
     \item \marginnote{10/27:}The $J=0$ to $J=1$ transition for carbon monoxide (\ce{{}^{12}C{}^{16}O}) occurs at $\SI{1.153e5}{\mega\hertz}$.
     \begin{enumerate}
         \item Calculate the value of the bond length in carbon monoxide.
+        \begin{proof}[Answer]
+            Let $\nu=\SI{1.153e11}{\hertz}$. We have from \textcite{bib:McQuarrieSimon} that
+            \begin{equation*}
+                \nu = \frac{h}{4\pi^2I}(0+1)
+            \end{equation*}
+            for the transition from $J=0$ to $J=1$. Thus,
+            \begin{equation*}
+                I = \frac{h}{4\pi^2\nu} = \SI{1.456e-46}{\kilo\gram\meter\squared}
+            \end{equation*}
+            This combined with the fact that the reduced mass is
+            \begin{equation*}
+                \mu = \frac{12\cdot 16}{12+16} = \SI{1.140e-26}{\kilo\gram}
+            \end{equation*}
+            and that $I=\mu r^2$ tells us that
+            \begin{equation*}
+                \boxed{r = \SI{1.130e-10}{\meter}}
+            \end{equation*}
+        \end{proof}
         \item Predict the $J=1$ to $J=2$ transition for carbon monoxide.
+        \begin{proof}[Answer]
+            From \textcite{bib:McQuarrieSimon}, we have that the $J=0\to 1$ and $J=1\to 2$ transitions are, respectively,
+            \begin{align*}
+                \nu_0 &= \frac{h}{4\pi^2I}(0+1)&
+                \nu_1 &= \frac{h}{4\pi^2I}(1+1)
+            \end{align*}
+            Thus, $\nu_1=2\nu_0$, so
+            \begin{equation*}
+                \boxed{\nu_1 = \SI{2.306e11}{\hertz}}
+            \end{equation*}
+        \end{proof}
     \end{enumerate}
     \item The harmonic oscillator has a finite zero-point energy because of the uncertainty relation. In contrast, the lowest possible energy for the 2D rigid rotor is zero.
     \begin{enumerate}
@@ -22,16 +51,139 @@
         \begin{equation*}
             (\Delta L_z)^2 = \prb{\hat{L}_z^2}-\prb{\hat{L}_z}^2
         \end{equation*}
+        \begin{proof}[Answer]
+            Since this is the ground state $m=0$, we have that
+            \begin{align*}
+                \prb{\hat{L}_z} &= \int_0^{2\pi}\psi^*(\phi)\hat{L}_z\psi(\phi)\dd{\phi}\\
+                &= \int_0^{2\pi}\left( \frac{1}{\sqrt{2\pi}}\e[-i(0)\phi] \right)\left( -i\hbar\pdv{\phi} \right)\left( \frac{1}{\sqrt{2\pi}}\e[i(0)\phi] \right)\dd{\phi}\\
+                &= \frac{1}{2\pi}\int_0^{2\pi}(1)\cdot -i\hbar \cdot 0\dd{\phi}\\
+                \Aboxed{\prb{\hat{L}_z} &= 0}
+            \end{align*}
+            and that
+            \begin{align*}
+                \prb{\hat{L}_z^2} &= \int_0^{2\pi}\psi^*(\phi)\hat{L}_z^2\psi(\phi)\dd{\phi}\\
+                &= \int_0^{2\pi}\left( \frac{1}{\sqrt{2\pi}}\e[-i(0)\phi] \right)\left( -i\hbar\pdv{\phi} \right)^2\left( \frac{1}{\sqrt{2\pi}}\e[i(0)\phi] \right)\dd{\phi}\\
+                &= \frac{1}{2\pi}\int_0^{2\pi}(1)\cdot -i\hbar \cdot 0\dd{\phi}\\
+                &= 0
+            \end{align*}
+            so
+            \begin{align*}
+                (\Delta L_z)^2 &= \prb{\hat{L}_z^2}-\prb{\hat{L}_z}^2\\
+                &= 0-0\\
+                \Aboxed{\Delta L_z &= 0}
+            \end{align*}
+        \end{proof}
         \item In words, describe the uncertainty in position.
+        \begin{proof}[Answer]
+            Since the uncertainty in angular momentum is 0, the uncertainty in position (the Fourier transform of the uncertainty in position) is \fbox{infinite}.
+        \end{proof}
         \item Using your answers to (a) and (b), explain briefly why the 2D rigid rotor can have a vanishing zero-point energy and yet still remain consistent with the uncertainty relation.
+        \begin{proof}[Answer]
+            It is consistent with the uncertainty relation because we have total certainty in one term and zero certainty in the other.
+        \end{proof}
     \end{enumerate}
     \item For the ground state of the hydrogen atom, compute
     \begin{enumerate}
         \item The \emph{average} distance from the nucleus for finding the electron.
+        \begin{proof}[Answer]
+            We have that
+            \begin{align*}
+                \prb{r} &= \int_0^\infty\psi_{100}^*(r)r\psi_{100}(r)4\pi r^2\dd{r}\\
+                &= \int_0^\infty\left( \frac{1}{\sqrt{\pi}}\left( \frac{1}{a_0} \right)^{3/2}\e[-r/a_0] \right)r\left( \frac{1}{\sqrt{\pi}}\left( \frac{1}{a_0} \right)^{3/2}\e[-r/a_0] \right)4\pi r^2\dd{r}\\
+                &= 4a_0\int_0^\infty\sigma^3\e[-2\sigma]\dd{\sigma}\\
+                &= 4a_0\left[ -\frac{1}{2}\sigma^3\e[-2\sigma]\bigg|_0^\infty+\frac{3}{2}\int_0^\infty\sigma^2\e[-2\sigma]\dd{\sigma} \right]\\
+                &= 4a_0\left[ \frac{3}{2}\cdot\frac{2}{2}\cdot\frac{1}{2}\int_0^\infty\e[-2\sigma]\dd{\sigma} \right]\\
+                &= 4a_0\cdot\frac{3}{8}\\
+                \Aboxed{\prb{r} &= \frac{3}{2}a_0}
+            \end{align*}
+        \end{proof}
         \item The \emph{most probable} distance from the nucleus for finding the electron.
+        \begin{proof}[Answer]
+            We have from \textcite[211]{bib:McQuarrieSimon} that the probability that the electron is between $r$ and $r+\dd{r}$ is
+            \begin{equation*}
+                \Prob(r) = \frac{4}{a_0^3}r^2\e[-2r/a_0]
+            \end{equation*}
+            We want to find the point where $\dv*{\Prob(r)}{r}=0$, as this will be the maximum. We can do this as follows.
+            \begin{align*}
+                0 &= \dv{r}\left( \frac{4}{a_0^3}r^2\e[-2r/a_0] \right)\\
+                &= \frac{4}{a_0^3}\left( 2r\e[-2r/a_0]-\frac{2r^2}{a_0}\e[-2r/a_0] \right)\\
+                &= \e[-2r/a_0]-\frac{r}{a_0}\e[-2r/a_0]\\
+                \frac{r}{a_0} &= 1\\
+                \Aboxed{r &= a_0}
+            \end{align*}
+        \end{proof}
         \item Repeat the calculation for the second excited state ($n=3$ and $l=0$) and compare your results with the ground state.
+        \begin{proof}[Answer]
+            \underline{Average distance from the nucleus}: We have that
+            \begin{align*}
+                \prb{r} ={}& \int_0^\infty\psi_{300}^*(r)r\psi_{300}(r)4\pi r^2\dd{r}\\
+                \begin{split}
+                    ={}& \int_0^\infty\left( \frac{1}{81\sqrt{3\pi}}\left( \frac{1}{a_0} \right)^{3/2}\left[ 27-18\left( \frac{r}{a_0} \right)+2\left( \frac{r}{a_0} \right)^2 \right]\e[-r/3a_0] \right)r\\
+                    & \cdot\left( \frac{1}{81\sqrt{3\pi}}\left( \frac{1}{a_0} \right)^{3/2}\left[ 27-18\left( \frac{r}{a_0} \right)+2\left( \frac{r}{a_0} \right)^2 \right]\e[-r/3a_0] \right)4\pi r^2\dd{r}
+                \end{split}\\
+                ={}& \frac{1}{3^9\pi}\left( \frac{1}{a_0} \right)^3\int_0^\infty\left( [27-18\sigma+2\sigma^2]\e[-\sigma/3] \right)\sigma a_0\left( [27-18\sigma+2\sigma^2]\e[-\sigma/3] \right)4\pi(\sigma a_0)^2a_0\dd{\sigma}\\
+                ={}& \frac{4a_0}{3^9}\int_0^\infty([27-18\sigma+2\sigma^2]\e[-\sigma/3])\sigma^3([27-18\sigma+2\sigma^2]\e[-\sigma/3])\dd{\sigma}\\
+                ={}& \frac{4a_0}{3^9}\int_0^\infty(27-18\sigma+2\sigma^2)^2\sigma^3\e[-2\sigma/3]\dd{\sigma}\\
+                ={}& \frac{4a_0}{3^9}\int_0^\infty(4\sigma^7-72\sigma^6+432\sigma^5-972\sigma^4+729\sigma^3)\e[-2\sigma/3]\dd{\sigma}\\
+                \begin{split}
+                    ={}& \frac{4a_0}{3^9}\left[ 4\int_0^\infty\sigma^7\e[-2\sigma/3]\dd{\sigma}-72\int_0^\infty\sigma^6\e[-2\sigma/3]\dd{\sigma}+432\int_0^\infty\sigma^5\e[-2\sigma/3]\dd{\sigma}\right.\\
+                    & \left.-972\int_0^\infty\sigma^4\e[-2\sigma/3]\dd{\sigma}+729\int_0^\infty\sigma^3\e[-2\sigma/3]\dd{\sigma} \right]
+                \end{split}\\
+                ={}& \frac{4a_0}{3^9}\left[ 4\cdot\frac{7!}{(2/3)^7}\cdot\frac{3}{2}-72\cdot\frac{6!}{(2/3)^6}\cdot\frac{3}{2}+432\cdot\frac{5!}{(2/3)^5}\cdot\frac{3}{2}-972\cdot\frac{4!}{(2/3)^4}\cdot\frac{3}{2}+729\cdot\frac{3!}{(2/3)^3}\cdot\frac{3}{2} \right]\\
+                \Aboxed{\prb{r} ={}& 13.5a_0}
+            \end{align*}\par
+            \underline{Most probable distance from the nucleus}: We have from \textcite{bib:McQuarrieSimon} that
+            \begin{align*}
+                R_{30}(r) &= -\sqrt{\frac{(3-0-1)!}{2\cdot 3[(3+0)!]^3}}\left( \frac{2}{3a_0} \right)^{0+3/2}r^0\e[-r/3a_0]L_{3+0}^{2\cdot 0+1}\left( \frac{2r}{3a_0} \right)\\
+                &= -\sqrt{\frac{2}{6^4}}\left( \frac{2}{3a_0} \right)^{3/2}\e[-\sigma/3]L_3^1\left( \frac{2\sigma}{3} \right)\\
+                &= -\frac{1}{27\sqrt{3}a_0^{3/2}}\e[-\sigma/3]\left[ -3!\left( 3-3\left( \frac{2\sigma}{3} \right)+\frac{1}{2}\left( \frac{2\sigma}{3} \right)^2 \right) \right]\\
+                &= -\frac{1}{27\sqrt{3}a_0^{3/2}}\e[-\sigma/3]\left[ -\frac{4}{3}\sigma^2+12\sigma-18 \right]\\
+                &= \frac{1}{81\sqrt{3}a_0^{3/2}}(4\sigma^2-36\sigma+54)\e[-\sigma/3]
+            \end{align*}
+            Thus,
+            \begin{align*}
+                \Prob(r) &= [R_{30}(r)]^2r^2\\
+                &= \left[ \frac{1}{3^9a_0^3}(16\sigma^4-288\sigma^3+1728\sigma^2-3888\sigma+2916)\e[-2\sigma/3] \right](a_0\sigma)^2\\
+                &= \frac{1}{3^9a_0}(16\sigma^6-288\sigma^5+1728\sigma^4-3888\sigma^3+2916\sigma^2)\e[-2\sigma/3]
+            \end{align*}
+            so
+            \begin{align*}
+                0 ={}& \dv{\Prob(r)}{r}\\
+                \begin{split}
+                    ={}& \frac{1}{3^9a_0}(96\sigma^5-1440\sigma^4+6912\sigma^3-11664\sigma^2+5832\sigma)\e[-2\sigma/3]\\
+                    &-\frac{2}{3^{10}a_0}(16\sigma^6-288\sigma^5+1728\sigma^4-3888\sigma^3+2916\sigma^2)\e[-2\sigma/3]
+                \end{split}\\
+                ={}& \frac{8}{3^{10}a_0}x(-4\sigma^5+108\sigma^4-972\sigma^3+3564\sigma^2-5103\sigma+2187)\e[-2\sigma/3]\\
+                ={}& -4\sigma^5+108\sigma^4-972\sigma^3+3564\sigma^2-5103\sigma+2187
+            \end{align*}
+            Solving this polynomial for its zeroes, and knowing that the most probable distance is going to be the zero of greatest magnitude (orbital penetration peaks will necessarily be smaller than the farthest one out), we have that the the most probable distance is
+            \begin{align*}
+                \sigma &= 13.704\\
+                \Aboxed{r &= 13.704a_0}
+            \end{align*}
+        \end{proof}
     \end{enumerate}
     \item Using non-relativistic quantum mechanics, compute the ratio of the ground-state energy of hydrogen to that of atomic tritium.
+    \begin{proof}[Answer]
+        We have from class that
+        \begin{align*}
+            E_1 &= -\frac{\mu}{2\hbar^2}\left( \frac{(1e)e}{4\pi\epsilon_0} \right)^2\frac{1}{1^2}\\
+            &= -\frac{\mu e^4}{8h^2\epsilon_0^2}
+        \end{align*}
+        Thus, since
+        \begin{align*}
+            \mu_{\ce{H}} &= \frac{m_em_p}{m_e+m_p}&
+                \mu_{\ce{T}} &= \frac{m_e(3m_p)}{m_3+3m_p}\\
+            &= \SI{9.11e-31}{\kilo\gram}&
+                &= \SI{9.12e-31}{\kilo\gram}
+        \end{align*}
+        Therefore, we have that
+        \begin{align*}
+            \frac{E_{1_{\ce{H}}}}{E_{1_{\ce{T}}}} &= \frac{-\frac{\mu_{\ce{H}}e^4}{8h^2\epsilon_0^2}}{-\frac{\mu_{\ce{T}}e^4}{8h^2\epsilon_0^2}}\\
+            &= \frac{\mu_{\ce{H}}}{\mu_{\ce{T}}}\\
+            \Aboxed{E_{1_{\ce{H}}}:E_{1_{\ce{T}}} &= 0.999}
+        \end{align*}
+    \end{proof}
     \item The Hamiltonian operator for a hydrogen atom in a magnetic field where the field is in the $z$-direction is given by
     \begin{equation*}
         \hat{H} = \hat{H}_0+\frac{\beta_BB_z}{\hbar}\hat{L}_z
@@ -39,11 +191,28 @@
     where $\hat{H}_0$ is the Hamiltonian operator in the absence of the magnetic field, $B_z$ is the $z$-component of the magnetic field, and $\beta_B$ is a constant called the Bohr magneton.
     \begin{enumerate}
         \item Show that the wave functions of the Schr\"{o}dinger equation for a hydrogen atom in a magnetic field are the same as those for the hydrogen atom in the absence of the field.
+        \begin{proof}[Answer]
+            We have from \textcite[201]{bib:McQuarrieSimon} that $\hat{L}_z=m\hbar$ for $m=0,\pm 1,\pm 2,\dots$. Thus, the solutions to $\hat{H}\psi=E\psi$ will be the solutions to
+            \begin{align*}
+                \left( \hat{H}_0+\frac{\beta_BB_z}{\hbar}\hat{L}_z \right)\psi &= E\psi\\
+                \hat{H}_0\psi+\beta_BB_zm\psi &= E\psi\\
+                \hat{H}_0\psi &= (E-\beta_BB_zm)\psi
+            \end{align*}
+            i.e., the original wave functions but with a different constant (which will lead to a different energy).
+        \end{proof}
         \item Show that the energy associated with the wave function $\psi_{n,l,m}$ is
         \begin{equation*}
             E = E_n^{(0)}+\beta_BB_zm
         \end{equation*}
         where $E_n^{(0)}$ is the energy in the absence of the field and $m$ is the magnetic quantum number.
+        \begin{proof}[Answer]
+            Since we have $\hat{H}_0\psi=E_n^{(0)}\psi$ originally and $\hat{H}_0\psi=(E-\beta_BB_zm)\psi$ from part (a), it follows that
+            \begin{align*}
+                E-\beta_BB_zm &= E_n^{(0)}\\
+                E &= E_n^{(0)}+\beta_BB_zm
+            \end{align*}
+            as desired.
+        \end{proof}
     \end{enumerate}
 \end{enumerate}
 
