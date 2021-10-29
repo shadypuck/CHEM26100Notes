@@ -208,5 +208,95 @@
 
 
 
+\section{Perturbation Theory}
+\begin{itemize}
+    \item \marginnote{10/29:}Consider the Hamiltonian
+    \begin{equation*}
+        \hat{H} = \hat{H}_0+\lambda\hat{V}
+    \end{equation*}
+    where $\hat{H}_0$ is the reference hamiltonian, $\hat{V}$ is the perturbation, and $\lambda$ is the perturbation parameter.
+    \item The energy may be expressed as a Taylor series expansion in $\lambda$:
+    \begin{equation*}
+        E(\lambda) = E(0)+\lambda\dv{E}{\lambda}\bigg|_0+\frac{\lambda^2}{2}\dv[2]{E}{x}\bigg|_0+\cdots
+    \end{equation*}
+    \begin{itemize}
+        \item If $\lambda$ is sufficiently small, we can get good approximations without resorting to higher order derivatives.
+    \end{itemize}
+    \item It follows that our reference energy is
+    \begin{equation*}
+        E(0) = \int\psi_0^*\hat{H}_0\psi_0\dd{x}
+    \end{equation*}
+    \item We now have that
+    \begin{equation*}
+        E(\lambda) = \int\psi^*(\lambda)\hat{H}(\lambda)\psi(\lambda)\dd{x}
+    \end{equation*}
+    \item We also have from differentiating that
+    \begingroup
+    \allowdisplaybreaks
+    \begin{align*}
+        \dv{E}{\lambda} &= \int\dv{\psi}{\lambda}\hat{H}\psi(\lambda)\dd{x}+\int\psi^*(\lambda)\hat{H}^*\dv{\psi}{\lambda}\dd{x}+\int\psi^*\dv{\hat{H}}{\lambda}\psi(\lambda)\dd{x}\\
+        &= E\int\dv{\psi^*}{\lambda}\psi(\lambda)\dd{x}+E\int\psi^*(\lambda)\dv{\psi}{\lambda}\dd{x}+\int\psi^*\dv{\hat{H}}{\lambda}\psi(\lambda)\dd{x}\\
+        &= E\dv{\lambda}\left( \int\psi^*(\lambda)\psi(\lambda)\dd{x} \right)+\int\psi^*\hat{H}\psi\dd{x}\\
+        &= \int\psi^*(\lambda)\dv{\hat{H}}{\lambda}\psi(\lambda)\dd{x}\\
+        &= \int\psi^*(\lambda)\hat{V}\psi(\lambda)\dd{x}
+    \end{align*}
+    \endgroup
+    \begin{itemize}
+        \item Note that the commutativity of $\hat{H}$ follows from the fact that it's a Hermitian operator.
+    \end{itemize}
+    \item It follows that
+    \begin{equation*}
+        \dv{E}{\lambda}\bigg|_{\lambda=0} = \int\psi_0^*V\psi_0\dd{x}
+    \end{equation*}
+    \begin{itemize}
+        \item Richard Feynman worked this out for his undergraduate thesis at MIT. This laid the foundation of quantum electrodynamics, for which he would eventually win the Nobel prize.
+        \item This is known as the \textbf{Hellmann-Feynman theorem} (1939).
+        \item Note that the second derivative of $E(\lambda)$ unfortunately depends on $\dv*{\psi}{\lambda}$.
+    \end{itemize}
+    \item Many electron molecules: The Helium atom.
+    \begin{itemize}
+        \item We have $\hat{H}\psi=E\psi$ where
+        \begin{equation*}
+            \hat{H} = -\frac{1}{2}\hat{\nabla_1}^2-\frac{1}{2}\hat{\nabla}_2^2-\frac{Z}{r_1}-\frac{Z}{r_2}+\frac{1}{r_{12}}
+        \end{equation*}
+        \begin{itemize}
+            \item Note that the $\nabla$'s are Laplacians.
+            \item This equation takes into account the kinetic and potential energy of two electrons, plus the electron-electron repulsion.
+        \end{itemize}
+        \item Solve using perturbation theory. Our reference Hamiltonian is
+        \begin{equation*}
+            \hat{H}_0 = \hat{H}_{\ce{He+}_1}+\hat{H}_{\ce{He+}_2} = \underbrace{-\frac{1}{2}\hat{\nabla}_1^2-\frac{Z}{r_1}}_{\ce{He+}_1}\underbrace{-\frac{1}{2}\hat{\nabla}_2^2-\frac{Z}{r_2}}_{\ce{He+}_2}
+        \end{equation*}
+        \begin{itemize}
+            \item I.e., it's the sum of the Hamiltonians of two helium ions (one-electron systems like hydrogen).
+        \end{itemize}
+        \item Since $\hat{V}=+1/r_{12}$, we have that
+        \begin{equation*}
+            \hat{H}(1) = \hat{H}_0+\hat{V}
+        \end{equation*}
+        is the hamiltonian of the atom.
+        \item Now we look for the solution to $\hat{H}_0\psi_0+E_0\psi_0$.
+        \item We know that
+        \begin{equation*}
+            \psi_0 = \psi_{1s}(r_1\theta_1\phi_1)\psi_{1s}(r_2\theta_2\psi_2)
+        \end{equation*}
+        \begin{itemize}
+            \item The fact that only two electrons fit in an orbital emerges naturally from the quantum mechanics!
+        \end{itemize}
+        \item We also know that
+        \begin{equation*}
+            E_0 = -\frac{Z^2}{2n^2}-\frac{Z^2}{2n^2} = -\SI{4}{\atomicunit}
+        \end{equation*}
+        \item Thus, by perturbation theory,
+        \begin{align*}
+            \dv{E}{\lambda}\bigg|_{\lambda=0} &= \int\psi_0^*\hat{V}\psi_0\dd{\vec{r}_1}\dd{\vec{r}_2}\\
+            &= \int\text{1s}^*(1)\text{1s}^*(2)\hat{V}\text{1s}(1)\text{1s}(2)\dd{1}\dd{2}\\
+            &= \frac{5}{8}Z
+        \end{align*}
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
