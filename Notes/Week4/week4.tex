@@ -506,5 +506,195 @@
 
 
 
+\section{Chapter 6: The Hydrogen Atom}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{10/29:}Idealize the hydrogen atom to a proton fixed at the origin and an electron of mass $m_e$ interacting with the proton through a Coulombic potential
+    \begin{equation*}
+        V(r) = -\frac{e^2}{4\pi\epsilon_0r}
+    \end{equation*}
+    \item Because of the spherical geometry of the model, we opt for spherical coordinates.
+    \item The appropriate Hamiltonian is thus
+    \begin{equation*}
+        \hat{H} = -\frac{\hbar}{2m_e}\nabla^2-\frac{e^2}{4\pi\epsilon_0r}
+    \end{equation*}
+    \item Expressing the Laplacian in spherical coordinates gives us
+    \begin{equation*}
+        \left\{ -\frac{\hbar^2}{2m_e}\left[ \frac{1}{r^2}\pdv{r}\left( r^2\pdv{\psi}{r} \right)+\frac{1}{r^2\sin\theta}\pdv{\theta}\left( \sin\theta\pdv{\psi}{\theta} \right)+\frac{1}{r^2\sin^2\theta}\pdv[2]{\psi}{\phi} \right]-\frac{e^2}{4\pi\epsilon_0r} \right\}\psi(r,\theta,\phi) = E\psi(r,\theta,\phi)
+    \end{equation*}
+    as the Schr\"{o}dinger equation for the hydrogen atom.
+    \item Multiply through by $2m_er^2$ and move all terms over to the lefthand side of the equality to get the above equation into the following separable form.
+    \begin{equation*}
+        \left\{ -\hbar^2\left( \pdv{r}r^2\pdv{\psi}{r} \right)-\hbar^2\left[ \frac{1}{\sin\theta}\left( \pdv{\theta}\sin\theta\pdv{\psi}{\theta} \right)+\frac{1}{\sin^2\theta}\pdv[2]{\psi}{\phi} \right]-2m_er^2\left[ \frac{e^2}{4\pi\epsilon_0r}+E \right] \right\}\psi(r,\theta,\phi) = 0
+    \end{equation*}
+    \item Since all the $\theta,\phi$ dependence occurs within the large square brackets, assume that
+    \begin{equation*}
+        \psi(r,\theta,\phi) = R(r)Y(\theta,\phi)
+    \end{equation*}
+    \item Substituting into the differential equation and separating terms (dividing by $R(r)Y(\theta,\phi)$) yields
+    \begin{equation*}
+        -\frac{\hbar^2}{R(r)}\left[ \dv{r}\left( r^2\dv{R}{r} \right)+\frac{2m_er^2}{\hbar^2}\left( \frac{e^2}{4\pi\epsilon_0r}+E \right)R(r) \right]-\frac{\hbar^2}{Y(\theta,\phi)}\left[ \frac{1}{\sin\theta}\pdv{\theta}\left( \sin\theta\pdv{Y}{\theta} \right)+\frac{1}{\sin^2\theta}\pdv[2]{Y}{\phi} \right] = 0
+    \end{equation*}
+    \item All terms containing $r$ are in the first set of square brackets, and all terms containing $\theta,\phi$ are in the second set of square brackets. Since the above equation must hold for all $r,\theta,\phi$, and $r,\theta,\phi$ are independent variables, we must have that varying $r$ while holding $\theta,\phi$ constant does not change the $r$ term of the above equation (as this would violate the equality). Similarly, changing $\theta,\phi$ must not change the $\theta,\phi$ term. Therefore, we may let
+    \begin{gather*}
+        -\beta = -\frac{1}{R(r)}\left[ \dv{r}\left( r^2\dv{R}{r} \right)+\frac{2m_er^2}{\hbar^2}\left( \frac{e^2}{4\pi\epsilon_0r}+E \right)R(r) \right]\\
+        \beta = -\frac{1}{Y(\theta,\phi)}\left[ \frac{1}{\sin\theta}\pdv{\theta}\left( \sin\theta\pdv{Y}{\theta} \right)+\frac{1}{\sin^2\theta}\pdv[2]{Y}{\phi} \right]
+    \end{gather*}
+    where $\beta$ is a \textbf{separation constant} into which we have incorporated $\hbar^2$.
+    \item \textbf{Radial equation}: The first equation above.
+    \item \textbf{Angular equation}: The second equation above after having been multiplied by $\sin^2\theta Y(\theta,\phi)$. \emph{Given by}
+    \begin{equation*}
+        \sin\theta\pdv{\theta}\left( \sin\theta\pdv{Y}{\theta}+\pdv[2]{Y}{\phi}+\beta\sin^2\theta Y \right) = 0
+    \end{equation*}
+    \begin{itemize}
+        \item Note that this is identical to the partial differential equation derived in Chapter 5 for the rigid rotator.
+        \item Thus, the angular parts of hydrogen atomic orbitals are also rigid-rotator wave functions.
+    \end{itemize}
+    \item \textbf{Spherical harmonic}: A wave function of the rigid rotator.
+    \item We now solve the angular equation.
+    \item Invoking separation of variables again with $Y(\theta,\phi)=\Theta(\theta)\Phi(\phi)$ yields
+    \begin{equation*}
+        \frac{\sin\theta}{\Theta(\theta)}\dv{\theta}\left( \sin\theta\dv{\Theta}{\theta} \right)+\beta\sin\theta+\frac{1}{\Phi(\phi)}\dv[2]{\Phi}{\phi} = 0
+    \end{equation*}
+    \item We now introduce a new separation constant (written in a form that predicts future algebraic manipulations) to get
+    \begin{gather*}
+        \frac{\sin\theta}{\Theta(\theta)}\dv{\theta}\left( \sin\theta\dv{\Theta}{\theta} \right)+\beta\sin^2\theta = m^2\\
+        \frac{1}{\Phi(\phi)}\dv[2]{\Phi}{\phi} = -m^2
+    \end{gather*}
+    \item Solving the bottom equation above gives solutions
+    \begin{align*}
+        \Phi(\phi) &= A_m\e[im\phi]&
+        \Phi(\phi) &= A_{-m}\e[-im\phi]
+    \end{align*}
+    where the constants $A_m,A_{-m}$ may depend on the value of $m$.
+    \item From the domain of $\phi$, we have the boundary condition $\Phi(\phi+2\pi)=\Phi(\phi)$.
+    \item This yields
+    \begin{align*}
+        A_m\e[im(\phi+2\pi)] &= A_m\e[im\phi]&
+            A_{-m}\e[-im(\phi+2\pi)] &= A_{-m}\e[-im\phi]\\
+        \e[i2\pi m] &= 1&
+            \e[-i2\pi m] &= 1
+    \end{align*}
+    from which it follows that we must have
+    \begin{align*}
+        1+0i &= 1\\
+        &= \e[\pm i2\pi m]\\
+        &= \cos(2\pi m)\pm i\sin(2\pi m)
+    \end{align*}
+    \item Therefore, $m=0,\pm 1,\pm 2,\dots$.
+    \item It follows that we can express the solutions to the bottom angular equation in the more compact form
+    \begin{equation*}
+        \Phi_m(\phi) = A_m\e[im\phi]
+    \end{equation*}
+    where $m=0,\pm 1,\pm 2,\dots$.
+    \item Normalizing gives us the coefficient $A_m$:
+    \begin{align*}
+        1 &= \int_0^{2\pi}\Phi_m^*(\phi)\Phi_m(\phi)\dd{\phi}\\
+        &= \int_0^{2\pi}(A_m\e[-im\phi])(A_m\e[im\phi])\dd{\phi}\\
+        &= A_m^2\int_0^{2\pi}1\dd{\phi}\\
+        A_m &= \frac{1}{\sqrt{2\pi}}
+    \end{align*}
+    \item Thus, the normalized wave functions of $\Phi(\phi)$ are
+    \begin{equation*}
+        \Phi(\phi) = \frac{1}{\sqrt{2\pi}}\e[im\phi]
+    \end{equation*}
+    for $m=0,\pm 1,\pm 2,\dots$.
+    \item We now direct our attention to solving the differential equation containing $\Theta(\theta)$.
+    \item Let $x=\cos\theta$ and $P(x)=\Theta(\theta)$. Substituting, we have (see Problem \ref{prb:6-2})
+    \begin{equation*}
+        (1-x^2)\dv[2]{P}{x}-2x\dv{P}{x}+\left[ \beta-\frac{m^2}{1-x^2} \right]P(x) = 0
+    \end{equation*}
+    where $m=0,\pm 1,\pm 2,\dots$.
+    \begin{itemize}
+        \item Note that since $x=\cos\theta$, $0\leq\theta\leq\pi$, the range of $x$ is $-1\leq x\leq 1$.
+    \end{itemize}
+    \item Solving the above equation gives \textbf{Legendre's equation}.
+    \item \textbf{Legendre's equation}: The following equation. \emph{Given by}
+    \begin{equation*}
+        (1-x^2)\dv[2]{P}{x}-2x\dv{P}{x}+\left[ l(l+1)-\frac{m^2}{1-x^2} \right]P(x) = 0
+    \end{equation*}
+    \begin{itemize}
+        \item The key difference between Legendre's equation and the previous one is that solving the previous one finds $\beta$ equal to $l(l+1)$ with $l=0,1,2,\dots$ and $|m|\leq l$ if the solutions are to remain finite.
+    \end{itemize}
+    \item \textbf{Legendre polynomials}: The solutions to Legendre's equation when $m=0$. \emph{Denoted by} $\bm{P_l(x)}$.
+    \begin{table}[h!]
+        \centering
+        \small
+        \renewcommand{\arraystretch}{1.4}
+        \begin{tabular}{l}
+            \toprule
+            $P_0(x)=1$\\
+            $P_1(x)=x$\\
+            $P_2(x)=\frac{1}{2}(3x^2-1)$\\
+            $P_3(x)=\frac{1}{2}(5x^3-3x)$\\
+            $P_4(x)=\frac{1}{8}(35x^4-30x^2+3)$\\
+            \bottomrule
+        \end{tabular}
+        \caption{The first few Legendre polynomials.}
+        \label{tab:legendrePolynomials}
+    \end{table}
+    \begin{itemize}
+        \item Notice that $P_l(x)$ is an even function if $l$ is even and an odd function if $l$ is odd.
+        \item The factors in front of $P_l(x)$ are chosen such that $P_l(1)=1$.
+        \item The Legendre polynomials are orthogonal: If $l\neq n$, then
+        \begin{equation*}
+            \int_{-1}^1P_l(x)P_n(x)\dd{x} = 0
+        \end{equation*}
+        \item We have that
+        \begin{equation*}
+            \int_{-1}^1[P_l(x)]^2\dd{x} = \frac{2}{2l+1}
+        \end{equation*}
+        for each $l$, so the normalization constant of $P_l(x)$ is
+        \begin{equation*}
+            \sqrt{\frac{2l+l}{2}}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Associated Legendre functions}: The solutions to Legendre's equation when $m\neq 0$. \emph{Denoted by} $\bm{P_l^{|m|}(x)}$. \emph{Given by}
+    \begin{equation*}
+        P_l^{|m|}(x) = (1-x^2)^{|m|/2}\dv[|m|]{x}P_l(x)
+    \end{equation*}
+    \begin{itemize}
+        \item Note that only the magnitude of $m$ is present because $m^2$ is the only form of $m$ present in Legendre's equation.
+    \end{itemize}
+\end{itemize}
+
+
+\subsection*{Exercises}
+\subsection*{Problems}
+\begin{enumerate}[label={\textbf{6-\arabic*.}},ref={6-\arabic*}]
+    \stepcounter{enumi}
+    \item \label{prb:6-2}In terms of the variable $\theta$, Legendre's equation is
+    \begin{equation*}
+        \sin\theta\dv{\theta}\left( \sin\theta\dv{\Theta(\theta)}{\theta} \right)+(\beta\sin^2\theta-m^2)\Theta(\theta) = 0
+    \end{equation*}
+    Let $x=\cos\theta$ and $P(x)=\Theta(\theta)$. Show that
+    \begin{equation*}
+        (1-x^2)\dv[2]{P(x)}{x}-2x\dv{P(x)}{x}+\left[ \beta-\frac{m^2}{1-x^2} \right]P(x) = 0
+    \end{equation*}
+    \begin{proof}[Answer]
+        If $\cos\theta=\frac{x}{1}$, then
+        \begin{equation*}
+            \sin\theta = \sqrt{1-x^2}
+        \end{equation*}
+        Additionally,
+        \begin{equation*}
+            \dv{\Theta}{\theta} = \dv{P}{\theta}
+            = \dv{P}{x}\dv{x}{\theta}
+            = -\sin\theta\dv{P}{x}
+            = -\sqrt{1-x^2}\dv{P}{x}
+        \end{equation*}
+        Therefore, we have by substitution and simplification that
+        \begin{align*}
+            0 &= \sqrt{1-x^2}\dv{\theta}\left( \sqrt{1-x^2}\cdot -\sqrt{1-x^2}\dv{P}{x} \right)+(\beta^2(1-x^2)-m^2)P(x)\\
+            &= \sqrt{1-x^2}\dv{x}\left( -(1-x^2)\dv{P}{x} \right)\dv{x}{\theta}+(\beta^2(1-x^2)-m^2)P(x)\\
+            &= (1-x^2)\dv{x}\left( (1-x^2)\dv{P}{x} \right)+(\beta^2(1-x^2)-m^2)P(x)\\
+            &= (1-x^2)\left[ (1-x^2)\dv[2]{P}{x}-2x\dv{P}{x} \right]+(\beta^2(1-x^2)-m^2)P(x)\\
+            &= (1-x^2)\dv[2]{P}{x}-2x\dv{P}{x}+\left[ \beta^2-\frac{m^2}{1-x^2} \right]P(x)
+        \end{align*}
+    \end{proof}
+\end{enumerate}
+
+
+
 
 \end{document}
