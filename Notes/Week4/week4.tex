@@ -656,6 +656,76 @@
     \begin{itemize}
         \item Note that only the magnitude of $m$ is present because $m^2$ is the only form of $m$ present in Legendre's equation.
     \end{itemize}
+    \begin{table}[h!]\marginnote{10/30:}
+        \centering
+        \small
+        \renewcommand{\arraystretch}{1.4}
+        \begin{tabular}{lll}
+            \toprule
+            \textbf{Function} & \textbf{$\bm{x}$-coordinates} & \textbf{$\bm{\theta}$-coordinates}\\
+            \midrule
+            $P_0^0(x)$ & $1$ & $1$\\
+            $P_1^0(x)$ & $x$ & $\cos\theta$\\
+            $P_1^1(x)$ & $\sqrt{1-x^2}$ & $\sin\theta$\\
+            $P_2^0(x)$ & $\frac{1}{2}(3x^2-1)$ & $\frac{1}{2}(3\cos^2\theta-1)$\\
+            $P_2^1(x)$ & $3x\sqrt{1-x^2}$ & $3\cos\theta\sin\theta$\\
+            $P_2^2(x)$ & $3(1-x^2)$ & $3\sin^2\theta$\\
+            $P_3^0(x)$ & $\frac{1}{2}(5x^2-3x)$ & $\frac{1}{2}(5\cos^2\theta-3\cos\theta)$\\
+            $P_3^1(x)$ & $\frac{3}{2}(5x^2-1)\sqrt{1-x^2}$ & $\frac{3}{2}(5\cos^2\theta-1)\sin\theta$\\
+            $P_3^2(x)$ & $15x(1-x^2)$ & $15\cos\theta\sin^2\theta$\\
+            $P_3^3(x)$ & $15\sqrt{1-x^2}$ & $15\sin^2\theta$\\
+            \bottomrule
+        \end{tabular}
+        \caption{The first few associated Legendre functions.}
+        \label{tab:associatedLegendreFunctions}
+    \end{table}
+    \item Relating the normalization and orthogonality conditions back to the variable of interest ($\theta$), we have (for the Legendre polynomials) that
+    \begin{equation*}
+        \int_0^\pi P_l(\cos\theta)P_n(\cos\theta)\sin\theta\dd{\theta} = \frac{2\delta_{ln}}{2l+1}
+    \end{equation*}
+    \item Similarly, for the associated Legendre functions, we have that
+    \begin{equation*}
+        \int_0^\pi P_l^{|m|}(\cos\theta)P_n^{|m|}(\cos\theta)\sin\theta\dd{\theta} = \frac{2}{2l+1}\frac{(l+|m|)!}{(l-|m|)!}\delta_{ln}
+    \end{equation*}
+    \begin{itemize}
+        \item Thus, the normalization constant for the associated Legendre functions is
+        \begin{equation*}
+            N_{lm} = \sqrt{\frac{2l+1}{2}\frac{(l-|m|)!}{(l+|m|)!}}
+        \end{equation*}
+    \end{itemize}
+    \item Thus, the normalized wave functions of $\Theta(\theta)$ are
+    \begin{equation*}
+        \Theta(\theta) = N_{lm}P_l^{|m|}(\cos\theta)
+    \end{equation*}
+    for $l=0,1,2,\dots$ and $m=0,\pm 1,\dots,\pm l$.
+    \item \textbf{Spherical harmonics}: The orthonormal set of angular wave functions of the hydrogen atom. \emph{Given by}
+    \begin{equation*}
+        Y_l^m(\theta,\phi) = \Theta(\theta)\Phi(\phi)
+        = \sqrt{\frac{2l+1}{4\pi}\frac{(l-|m|)!}{(l+|m|)!}}P_l^{|m|}(\cos\theta)\e[im\phi]
+    \end{equation*}
+    \begin{itemize}
+        \item Note that $l=0,1,2,\dots$ and $m=0,\pm 1,\dots,\pm l$.
+        \item The orthonormality condition:
+        \begin{equation*}
+            \int_0^\pi\dd{\theta}\sin\theta\int_0^{2\pi}\dd{\phi}Y_l^m(\theta,\phi)^*Y_n^k(\theta,\phi) = \delta_{ln}\delta_{mk}
+        \end{equation*}
+    \end{itemize}
+    \begin{table}[h!]
+        \centering
+        \small
+        \renewcommand{\arraystretch}{2.5}
+        \begin{tabular}{ll}
+            \toprule
+            $Y_0^0=\dfrac{1}{\sqrt{4\pi}}$ & $Y_2^1=\sqrt{\dfrac{15}{8\pi}}\sin\theta\cos\theta\e[i\phi]$\\
+            $Y_1^0=\sqrt{\dfrac{3}{4\pi}}\cos\theta$ & $Y_2^{-1}=\sqrt{\dfrac{15}{8\pi}}\sin\theta\cos\theta\e[-i\phi]$\\
+            $Y_1^1=\sqrt{\dfrac{3}{8\pi}}\sin\theta\e[i\phi]$ & $Y_2^2=\sqrt{\dfrac{15}{32\pi}}\sin^2\theta\e[2i\phi]$\\
+            $Y_1^{-1}=\sqrt{\dfrac{3}{8\pi}}\sin\theta\e[-i\phi]$ & $Y_2^{-2}=\sqrt{\dfrac{15}{32\pi}}\sin^2\theta\e[-2i\phi]$\\
+            $Y_2^0=\sqrt{\dfrac{5}{16\pi}}(3\cos^2\theta-1)$ & \\
+            \bottomrule
+        \end{tabular}
+        \caption{The first few spherical harmonics.}
+        \label{tab:sphericalHarmonics}
+    \end{table}
 \end{itemize}
 
 
@@ -663,7 +733,7 @@
 \subsection*{Problems}
 \begin{enumerate}[label={\textbf{6-\arabic*.}},ref={6-\arabic*}]
     \stepcounter{enumi}
-    \item \label{prb:6-2}In terms of the variable $\theta$, Legendre's equation is
+    \item \label{prb:6-2}\marginnote{10/29:}In terms of the variable $\theta$, Legendre's equation is
     \begin{equation*}
         \sin\theta\dv{\theta}\left( \sin\theta\dv{\Theta(\theta)}{\theta} \right)+(\beta\sin^2\theta-m^2)\Theta(\theta) = 0
     \end{equation*}
