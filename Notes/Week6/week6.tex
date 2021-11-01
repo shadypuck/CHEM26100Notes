@@ -1,0 +1,115 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{5}
+
+\begin{document}
+
+
+
+
+\chapter{Multi-electron Atoms and Molecules}
+\section{Many-electron Atoms and Molecules}
+\begin{itemize}
+    \item \marginnote{11/1:}Picking up from last time, since $Z=2$ for helium,
+    \begin{equation*}
+        \dv{E}{\lambda}\bigg|_{\lambda=0} = \frac{5}{8}Z = \frac{5}{4}
+    \end{equation*}
+    \item Additionally,
+    \begin{equation*}
+        E_{\ce{He}} = -Z^2+\frac{5}{8}Z = -4+\frac{5}{4} = \SI{-2.75}{\atomicunit}
+    \end{equation*}
+    \begin{itemize}
+        \item The first equality is the ground state energy of two-electron atoms or ions.
+    \end{itemize}
+    \item Summary:
+    \begin{itemize}
+        \item Zeroeth-order Perturbation Theory approximation: $E_0=\SI{-4}{\atomicunit}$
+        \item First-order approximation: $E_0+E'=\SI{-2.75}{\atomicunit}$
+        \item Second-order: $E_0+E'+\frac{1}{2}E''=\SI{-2.9077}{\atomicunit}$
+        \item Thirteenth-order: $\SI{-2.90372433}{\atomicunit}$
+    \end{itemize}
+    \item Variational calculation of Helium:
+    \begin{itemize}
+        \item Simplest: $\psi_0(12)=\text{1s}(1)\text{1s}(2)$. Gives $E=\SI{-2.75}{\atomicunit}$
+        \item Trial $\psi$ with one parameter: $\psi_0(1,2)=\tilde{\text{1s}}(1)\tilde{\text{1s}}(2)$, where $\tilde{\text{1s}}(1)=\sqrt{Z^3/\pi}\e[-Zr_1]$. Energy: $E=\SI{-2.8477}{\atomicunit}$
+    \end{itemize}
+    \item Ionization energy.
+    \begin{itemize}
+        \item Simplest approximation:
+        \begin{align*}
+            \text{IE} &= E_{\ce{He+}}-E_{\ce{He}}\\
+            &= -2-(-2.75)\\
+            &= \SI{0.75}{\atomicunit}\\
+            &= \SI[per-mode=symbol]{1969}{\kilo\joule\per\mole}
+        \end{align*}
+        \item Exact number:
+        \begin{align*}
+            \text{IE} &= E_{\ce{He+}}-E_{\ce{He}}\\
+            &= -2-(\num{-2.903724})\\
+            &= \SI{0.9033}{\atomicunit}\\
+            &= \SI[per-mode=symbol]{2372}{\kilo\joule\per\mole}
+        \end{align*}
+    \end{itemize}
+    \item Optimal orbitals (Hartree-Fock): Optimizing the orbitals to lower the energy as much as possible.
+    \begin{itemize}
+        \item $\psi(12)=\phi(r_1)\phi(r_2)$.
+        \item The orbital energies converge to
+        \begin{equation*}
+            E_\text{HF} = \SI{-2.8617}{\atomicunit}
+        \end{equation*}
+    \end{itemize}
+    \item Allow the $\psi(12)$ to move beyond a simple product of orbitals (Hylleras (1930)).
+    \begin{itemize}
+        \item $\psi(r_1,r_2,r_{12})=\e[-Zr_1]\e[-Zr_2](1+cr_{12})$.
+        \item Accounting for the electron-electron repulsion (the \textbf{electron correlation energy}) gives us an energy much better than the Hartree-Fock calculation:
+        \begin{equation*}
+            E = \SI{-2.8913}{\atomicunit}
+        \end{equation*}
+        \item Pekeris (1959): Did a variational calculation with 1078 parameters. Was working at IBM, who told him to do something with their newest computer that would be impressive to the world. Pekeris tackled this, and got
+        \begin{equation*}
+            E = \SI{-2.903724375}{\atomicunit}
+        \end{equation*}
+        which is even more accurate than 13th order perturbation theory.
+        \begin{itemize}
+            \item This value cannot be accurately measured to this precision in the laboaratory. Additionally, relativistic quantum mechanics (using the Dirac equation of which the Schr\"{o}dinger equation is only a part) predicts a value that diverges from this one around the fifth decimal point, and this is the experimentally verifiable value.
+            \item This is important because scientists want to figure out how accurately can we account for the electron cusp.
+        \end{itemize}
+    \end{itemize}
+    \item To summarize, the improvement tiers are
+    \begin{enumerate}
+        \item \ce{H} orbitals.
+        \item MO picture (Hartree-Fock).
+        \item Solution of the Schr\"{o}dinger equation (electron correlation).
+    \end{enumerate}
+    \item Recall that the electron has spin (from the Stern-Gerlach and Uhlenbeck-Goudsmit experiments).
+    \begin{itemize}
+        \item This is analogous to orbital angular momentum:
+        \begin{align*}
+            \hat{L}^2Y_{lm} &= l(l+1)\hbar^2Y_{lm}&
+            \hat{L_z}Y_{lm} &= m\hbar Y_{lm}
+        \end{align*}
+        \item These two operators give rise to
+        \begin{align*}
+            \hat{S}^2\sigma &= s(s+1)\hbar^2\sigma&
+            \hat{S}_z\sigma &= m_s\hbar\sigma
+        \end{align*}
+        where $\sigma$ is the spin eigenfunction, $s$ is the total spin angular momentum quantum number, and $m_s$ is the spin quantum number.
+        \item We have $\sigma=\alpha$ or $\sigma=\beta$ where $\alpha$ represents "up" and $\beta$ represents "down."
+        \item $m_s=\pm 1/2$ where $s=1/2$, so $m_s=-s,s$.
+        \item Spin eigenfunctions are orthonormal, i.e.,
+        \begin{align*}
+            \int\alpha^*\alpha &= \int\beta^*\beta = 1&
+            \int\alpha^*\beta &= \int\beta^*\alpha = 0
+        \end{align*}
+        \item Hence, each electron has four degrees of freedom (three spatial and one spin).
+        \item This gives rise to a \textbf{spin orbital} $\psi(x,y,z,\sigma)=\phi(x,y,z)\sigma$, which is the product of the spin and spatial orbitals.
+    \end{itemize}
+    \item In fact, our ability to calculate the energy of the helium atom was complete luck --- we cannot calculate the energy of any other element on the periodic table without accounting for spin.
+\end{itemize}
+
+
+
+
+\end{document}
