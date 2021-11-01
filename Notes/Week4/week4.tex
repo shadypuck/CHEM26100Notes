@@ -726,10 +726,20 @@
         \caption{The first few spherical harmonics.}
         \label{tab:sphericalHarmonics}
     \end{table}
+    \item \marginnote{10/31:}Recalling the definition of $\hat{L}^2$ from Chapter 5, we have that
+    \begin{align*}
+        \beta &= -\frac{1}{Y_l^m(\theta,\phi)}\left[ \frac{1}{\sin\theta}\pdv{\theta}\left( \sin\theta\pdv{Y_l^m(\theta,\phi)}{\theta} \right)+\frac{1}{\sin^2\theta}\pdv[2]{Y_l^m(\theta,\phi)}{\phi} \right]\\
+        \hbar^2l(l+1)Y_l^m(\theta,\phi) &= -\hbar^2\left[ \frac{1}{\sin\theta}\pdv{\theta}\left( \sin\theta\pdv{\theta} \right)+\frac{1}{\sin^2\theta}\pdv[2]{\phi} \right]Y_l^m(\theta,\phi)\\
+        \hat{L}^2Y_l^m(\theta,\phi) &= \hbar^2l(l+1)Y_l^m(\theta,\phi)
+    \end{align*}
+    \begin{itemize}
+        \item Implication: The spherical harmonics are eigenfunctions of $\hat{L}^2$.
+        \item Additionally, the square of the angular momentum $L^2$ can only have the values given by $\hbar^2l(l+1)$ for $l=0,1,2,\dots$.
+        \item We can also adapt the above to reflect energy with $\hat{H}=\hat{L}^2/2I$.
+    \end{itemize}
 \end{itemize}
 
 
-\subsection*{Exercises}
 \subsection*{Problems}
 \begin{enumerate}[label={\textbf{6-\arabic*.}},ref={6-\arabic*}]
     \stepcounter{enumi}
