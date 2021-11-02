@@ -809,7 +809,183 @@
         \end{equation*}
         \begin{itemize}
             \item The $L_{n+l}^{2l+1}(2r/na_0)$ are the \textbf{associated Laguerre polynomials}.
+            \begin{table}[h!]\marginnote{11/2:}
+                \centering
+                \small
+                \renewcommand{\arraystretch}{1.4}
+                \begin{tabular}{lll}
+                    \toprule
+                    $n=1$ & $l=0$ & $L_1^1(x)=-1$\\
+                    \hline
+                    $n=2$ & $l=0$ & $L_2^1(x)=-2!(2-x)$\\
+                          & $l=1$ & $L_3^3(x)=-3!$\\
+                    \hline
+                    $n=3$ & $l=0$ & $L_3^1(x)=-3!(3-3x+\frac{1}{2}x^2)$\\
+                          & $l=1$ & $L_4^3(x)=-4!(4-x)$\\
+                          & $l=2$ & $L_5^5(x)=-5!$\\
+                    \hline
+                    $n=4$ & $l=0$ & $L_4^1(x)=-4!(4-6x+2x^2-\frac{1}{6}x^3)$\\
+                          & $l=1$ & $L_5^3(x)=-5!(10-5x+\frac{1}{2}x^2)$\\
+                          & $l=2$ & $L_6^5(x)=-6!(6-x)$\\
+                          & $l=3$ & $L_7^7(x)=-7!$\\
+                    \bottomrule
+                \end{tabular}
+                \caption{The first few associated Laguerre polynomials.}
+                \label{tab:associatedLaguerrePolynomials}
+            \end{table}
+            \item The combinatorial factors in Table \ref{tab:associatedLaguerrePolynomials} just guarantee that the $R_{nl}(r)$ are normalized.
         \end{itemize}
+    \end{itemize}
+    \item We can now construct the complete hydrogen atomic wave functions as
+    \begin{equation*}
+        \psi_{nlm}(r,\theta,\phi) = R_{nl}(r)Y_l^m(\theta,\phi)
+    \end{equation*}
+    \begin{table}[h!]
+        \centering
+        \small
+        \renewcommand{\arraystretch}{2.5}
+        \begin{tabular}{llll}
+            \toprule
+            $n=1$ & $l=0$ & $m=0$ & $\psi_{100}=\dfrac{1}{\sqrt{\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}\e[-\sigma]$\\
+            $n=2$ & $l=0$ & $m=0$ & $\psi_{200}=\dfrac{1}{\sqrt{32\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}(2-\sigma)\e[-\sigma/2]$\\
+                  & $l=1$ & $m=0$ & $\psi_{210}=\dfrac{1}{\sqrt{32\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}\sigma\e[-\sigma/2]\cos\theta$\\
+                  & $l=1$ & $m=\pm 1$ & $\psi_{21\pm 1}=\dfrac{1}{\sqrt{64\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}\sigma\e[-\sigma/2]\sin\theta\e[\pm i\phi]$\\
+            $n=3$ & $l=0$ & $m=0$ & $\psi_{300}=\dfrac{1}{81\sqrt{3\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}(27-18\sigma+2\sigma^2)\e[-\sigma/3]$\\
+                  & $l=1$ & $m=0$ & $\psi_{310}=\dfrac{\sqrt{2}}{81\sqrt{\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}(6\sigma-\sigma^2)\e[-\sigma/3]\cos\theta$\\
+                  & $l=1$ & $m=\pm 1$ & $\psi_{31\pm 1}=\dfrac{1}{81\sqrt{\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}(6\sigma-\sigma^2)\e[-\sigma/3]\sin\theta\e[\pm i\phi]$\\
+                  & $l=2$ & $m=0$ & $\psi_{320}=\dfrac{1}{81\sqrt{6\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}\sigma^2\e[-\sigma/3](3\cos^2\theta-1)$\\
+                  & $l=2$ & $m=\pm 1$ & $\psi_{32\pm 1}=\dfrac{1}{81\sqrt{\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}\sigma^2\e[-\sigma/3]\sin\theta\cos\theta\e[\pm i\phi]$\\
+                  & $l=2$ & $m=\pm 2$ & $\psi_{32\pm 2}=\dfrac{1}{162\sqrt{\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}\sigma^2\e[-\sigma/3]\sin^2\theta\e[\pm 2i\phi]$\\
+            \bottomrule
+        \end{tabular}
+        \caption{The first few complete hydrogenlike atomic wave functions.}
+        \label{tab:hydrogenWavefunctions}
+    \end{table}
+    \begin{itemize}
+        \item Note that in Table \ref{tab:hydrogenWavefunctions}, $Z$ is the atomic number of the nucleus and $\sigma=Zr/a_0$ where $a_0$ is the Bohr radius.
+        \item The orthonormality condition is
+        \begin{equation*}
+            \int_0^\infty\dd{r}r^2\int_0^\pi\dd{\theta}\sin\theta\int_0^{2\pi}\dd{\phi}\psi_{n'l'm'}^*(r,\theta,\phi)\psi_{nlm}(r,\theta,\phi) = \delta_{nn'}\delta_{ll'}\delta_{mm'}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Principal quantum number}: The quantum number $n$.
+    \begin{itemize}
+        \item $n=1,2,\dots$.
+        \item The energy of the hydrogen atom depends on $n$.
+    \end{itemize}
+    \item \textbf{Angular momentum quantum number}: The quantum number $l$.
+    \begin{itemize}
+        \item $l=0,1,\dots,n-1$.
+        \item The angular momentum of the electron about the proton is determined by $l$ through $|L|=\hbar\sqrt{l(l+1)}$.
+        \item When $l=0,1,2,3$, it is customary to denote the value of $l$ with the letters $s,p,d,f$, respectively.
+        \begin{itemize}
+            \item After 3, we continue alphabetically past $f$.
+            \item The origin of $s,p,d,f$ is historic from the designation of the observed spectral lines of atomic sodium; $s,p,d,f$ stand for sharp, principal, diffuse, and fundamental, respectively.
+        \end{itemize}
+        \item A wave function with $n=1$ and $l=0$ is called a $1s$ wave function; a wave function with $n=2$ and $l=0$ is called a $2s$ wave function, and so on and so forth.
+    \end{itemize}
+    \item \textbf{Magnetic quantum number}: The quantum number $m$.
+    \begin{itemize}
+        \item $m=0,\pm 1,\pm 2,\dots,\pm l$.
+        \item So named because "the energy of a hydrogen atom in a magnetic field depends on $m$" \parencite[209]{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item \textbf{Zeeman effect}: In the absence of a magnetic field, energy levels are $2l+1$-fold degenerate; in the presence of a magnetic field, however, the energy levels split.
+    \begin{itemize}
+        \item In the magnetic field case, $E$ is a function of both $n$ and $m$.
+    \end{itemize}
+    \item Since the radial wave functions are normalized, we have that
+    \begin{equation*}
+        \int_0^\infty[R_{nl}(r)]^2r^2\dd{r} = 1
+    \end{equation*}
+    \begin{itemize}
+        \item It follows that the probability that the $nl$ electron lies between $r$ and $r+\dd{r}$ is
+        \begin{equation*}
+            \Prob = [R_{nl}(r)]^2r^2\dd{r}
+        \end{equation*}
+        \item Alternatively, we can consider the full wave functions to learn that
+        \begin{equation*}
+            \Prob = r^2\dd{r}\int_0^\pi\dd{\theta}\sin\theta\int_0^{2\pi}\dd{\phi}\psi_{nlm}^*(r,\theta,\phi)\psi_{nlm}(r,\theta,\phi)
+        \end{equation*}
+        \item For any specific example, these two equations will be in agreement.
+    \end{itemize}
+    \item The number of radial nodes is equal to $n-l-1$.
+    \item \textbf{Orbital}: An atomic wave function.
+    \item The above radial probability functions can be used to calculate average values of $r$ via
+    \begin{equation*}
+        \prb{r}_{nl} = \int_0^\infty rR_{nl}^*(r)R_{nl}(r)\dd{r}
+    \end{equation*}
+    \begin{itemize}
+        \item Using general properties of the associated Laguerre polynomials, we can show that
+        \begin{equation*}
+            \prb{r}_{ns} = \frac{3}{2}a_0n^2
+        \end{equation*}
+    \end{itemize}
+    \item We can calculate the most probable value of $r$ for an $nl$ wave function by differentiating the probability function and setting it equal to zero and then maximizing over the possible values.
+    \item $p$ orbitals.
+    \begin{itemize}
+        \item Considers the $p_z$ orbital corresponding to $Y_1^0$, which is real.
+        \item Covers tangent sphere picture, probability density plot, and contour map representations of atomic orbitals.
+        \item When $m\neq 0$, the angular wave functions $Y_1^{\pm 1}$ are complex.
+        \item To make them real, note that $|Y_1^1|^2=|Y_1^{-1}|^2$, so the probability densities and hence energies are the same.
+        \item It follows that any linear combination of these two wave functions is another energy eigenfunction with the same energy, so take
+        \begin{align*}
+            p_x &= \frac{1}{\sqrt{2}}(Y_1^1+Y_1^{-1})&
+            p_y &= \frac{1}{\sqrt{2}i}(Y_1^1-Y_1^{-1})
+        \end{align*}
+    \end{itemize}
+    \item $d$ orbitals.
+    \begin{itemize}
+        \item We can take analogous linear combination to find real solutions (see Table \ref{tab:hydrogenRealWavefunctions}).
+    \end{itemize}
+    \begin{table}[h!]
+        \centering
+        \small
+        \renewcommand{\arraystretch}{2.5}
+        \begin{tabular}{llll}
+            \toprule
+            $n=1$ & $l=0$ & $m=0$ & $\psi_{1s}=\dfrac{1}{\sqrt{\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}\e[-\sigma]$\\
+            $n=2$ & $l=0$ & $m=0$ & $\psi_{2s}=\dfrac{1}{4\sqrt{2\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}(2-\sigma)\e[-\sigma/2]$\\
+                  & $l=1$ & $m=0$ & $\psi_{2p_z}=\dfrac{1}{4\sqrt{2\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}\sigma\e[-\sigma/2]\cos\theta$\\
+                  & $l=1$ & $m=\pm 1$ & $\psi_{2p_x}=\dfrac{1}{4\sqrt{2\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}\sigma\e[-\sigma/2]\sin\theta\cos\phi$\\
+                  &       &           & $\psi_{2p_y}=\dfrac{1}{4\sqrt{2\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}\sigma\e[-\sigma/2]\sin\theta\sin\phi$\\
+            $n=3$ & $l=0$ & $m=0$ & $\psi_{3s}=\dfrac{1}{81\sqrt{3\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}(27-18\sigma+2\sigma^2)\e[-\sigma/3]$\\
+                  & $l=1$ & $m=0$ & $\psi_{3p_z}=\dfrac{\sqrt{2}}{81\sqrt{\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}(6\sigma-\sigma^2)\e[-\sigma/3]\cos\theta$\\
+                  & $l=1$ & $m=\pm 1$ & $\psi_{3p_x}=\dfrac{1}{81\sqrt{\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}(6\sigma-\sigma^2)\e[-\sigma/3]\sin\theta\cos\phi$\\
+                  &       &           & $\psi_{3p_y}=\dfrac{1}{81\sqrt{\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}(6\sigma-\sigma^2)\e[-\sigma/3]\sin\theta\sin\phi$\\
+                  & $l=2$ & $m=0$ & $\psi_{3d_{z^2}}=\dfrac{1}{81\sqrt{6\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}\sigma^2\e[-\sigma/3](3\cos^2\theta-1)$\\
+                  & $l=2$ & $m=\pm 1$ & $\psi_{3d_{xz}}=\dfrac{\sqrt{2}}{81\sqrt{\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}\sigma^2\e[-\sigma/3]\sin\theta\cos\theta\cos\phi$\\
+                  &       &           & $\psi_{3d_{yz}}=\dfrac{\sqrt{2}}{81\sqrt{\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}\sigma^2\e[-\sigma/3]\sin\theta\cos\theta\sin\phi$\\
+                  & $l=2$ & $m=\pm 2$ & $\psi_{3d_{x^2-y^2}}=\dfrac{1}{81\sqrt{2\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}\sigma^2\e[-\sigma/3]\sin^2\theta\cos 2\phi$\\
+                  &       &           & $\psi_{3d_{xy}}=\dfrac{1}{81\sqrt{2\pi}}\left( \dfrac{Z}{a_0} \right)^{3/2}\sigma^2\e[-\sigma/3]\sin^2\theta\sin 2\phi$\\
+            \bottomrule
+        \end{tabular}
+        \caption{The first few complete real hydrogenlike atomic wave functions.}
+        \label{tab:hydrogenRealWavefunctions}
+    \end{table}
+    \item "There is no fundamental reason to choose these linear combinations of spherical harmonics over the spherical harmonic themselves, but most chemists use the five $d$ orbitals given\dots because the functions\dots are real and have directional properties consistent with molecular structures" \parencite[218]{bib:McQuarrieSimon}.
+    \item The Schr\"{o}dinger equation of the helium atom is
+    \begin{equation*}
+        \begin{split}
+            &\left( -\frac{\hbar^2}{2M}\nabla^2-\frac{\hbar^2}{2m_e}\nabla_1^2-\frac{\hbar^2}{2m_e}\nabla_2^2 \right)\psi(\mathbf{R},\mathbf{r}_1,\mathbf{r}_2)\\
+            &\quad +\left( -\frac{2e^2}{4\pi\epsilon_0|\mathbf{R}-\mathbf{r}_1|}-\frac{2e^2}{4\pi\epsilon_0|\mathbf{R}-\mathbf{r}_2|}+\frac{e^2}{4\pi\epsilon_0|\mathbf{r}_1-\mathbf{r}_2|} \right)\psi(\mathbf{R},\mathbf{r}_1,\mathbf{r}_2) = E)\psi(\mathbf{R},\mathbf{r}_1,\mathbf{r}_2)
+        \end{split}
+    \end{equation*}
+    \begin{itemize}
+        \item $\mathbf{R}$ is the position of the helium nucleus.
+        \item $\mathbf{r}_1,\mathbf{r}_2$ are the positions of the two electrons.
+        \item $M$ is the mass of the nucleus.
+        \item $m_e$ is the electronic mass.
+        \item $\nabla^2$ is the Laplacian operator with respect to the position of the nucleus.
+        \item $\nabla_1^2,\nabla_2^2$ are the Laplacian operators with respect to the positions of the electrons.
+    \end{itemize}
+    \item The above Schr\"{o}dinger equation describes a three body problem and thus is not solveable.
+    \item By fixing the nucleus at the center of a spherical coordinate system (as is justifiable since $M>>m_e$), we can simplify the Schr\"{o}dinger equation to
+    \begin{equation*}
+        -\frac{\hbar^2}{2m_e}(\nabla_1^2+\nabla_2^2)\psi(\mathbf{r}_1,\mathbf{r}_2)-\frac{2e^2}{4\pi\epsilon_0}\left( \frac{1}{r_1}+\frac{1}{r_2} \right)\psi(\mathbf{r}_1,\mathbf{r}_2)+\frac{e^2}{4\pi\epsilon_0|\mathbf{r}_1-\mathbf{r}_2|}\psi(\mathbf{r}_1,\mathbf{r}_2) = E\psi(\mathbf{r}_1,\mathbf{r}_2)
+    \end{equation*}
+    \item \textbf{Interelectronic repulsion term}: The $e^2/4\pi\epsilon_0|\mathbf{r}_1-\mathbf{r}_2|$ term in the Schr\"{o}dinger equation of the helium atom.
+    \begin{itemize}
+        \item This term makes it so that even this equation is still not solveable.
     \end{itemize}
 \end{itemize}
 
