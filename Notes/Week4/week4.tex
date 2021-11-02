@@ -737,6 +737,80 @@
         \item Additionally, the square of the angular momentum $L^2$ can only have the values given by $\hbar^2l(l+1)$ for $l=0,1,2,\dots$.
         \item We can also adapt the above to reflect energy with $\hat{H}=\hat{L}^2/2I$.
     \end{itemize}
+    \item \marginnote{11/1:}We can apply partial differentiation to convert the expressions for $\hat{L}_x,\hat{L}_y,\hat{L}_z$ in Table \ref{tab:observablesOperators} to spherical coordinates.
+    \begin{itemize}
+        \item Doing so yields complex expressions for $\hat{L}_x$ and $\hat{L}_y$, but a simple expression for $\hat{L}_z$:
+        \begin{equation*}
+            \hat{L}_z = -i\hbar\dv{\phi}
+        \end{equation*}
+    \end{itemize}
+    \item The spherical harmonics are eigenfunctions of $\hat{L}_z$:
+    \begin{align*}
+        \hat{L}_zY_l^m(\theta,\phi) &= -i\hbar\dv{\phi}(N_{lm}P_l^{|m|}(\cos\theta)\e[im\phi])\\
+        &= -i\hbar N_{lm}P_l^{|m|}(\cos\theta)\dv{\phi}(\e[im\phi])\\
+        &= m\hbar N_{lm}P_l^{|m|}(\cos\theta)\e[im\phi]\\
+        &= m\hbar Y_l^m(\theta,\phi)
+    \end{align*}
+    \begin{itemize}
+        \item It follows that $L_z$ is quantized by $m\hbar$.
+        \item This implies that $\hbar$ is a fundamental measure of the angular momentum of a quantum mechanical system.
+        \item Note that the spherical harmonics are not eigenfunctions of $\hat{L}_x$ or $\hat{L}_y$.
+    \end{itemize}
+    \item The last two results imply that we can determine precise values of $L^2$ and $L_z$ simultaneously, and that $\hat{L}^2,\hat{L}_z$ commute.
+    \item Proving that $|m|<l$.
+    \begin{itemize}
+        \item We have that
+        \begin{align*}
+            \hat{L}_z^2Y_l^m(\theta,\phi) &= m^2\hbar^2Y_l^m(\theta,\phi)&
+            \hat{L}^2Y_l^m(\theta,\phi) &= l(l+1)\hbar^2Y_l^m(\theta,\phi)
+        \end{align*}
+        \item Subtracting and substituting $\hat{L}^2=\hat{L}_x^2+\hat{L}_y^2+\hat{L}_z^2$ yields
+        \begin{align*}
+            (\hat{L}^2-\hat{L}_z^2)Y_l^m(\theta,\phi) &= [l(l+1)-m^2]\hbar^2Y_l^m(\theta,\phi)\\
+            (\hat{L}_x^2+\hat{L}_y^2)Y_l^m(\theta,\phi) &= [l(l+1)-m^2]\hbar^2Y_l^m(\theta,\phi)
+        \end{align*}
+        \item It follows since $m,l\in\Z$ that
+        \begin{align*}
+            0 &\leq L_x^2+L_y^2 = [l(l+1)-m^2]\hbar^2\\
+            0 &\leq l(l+1)-m^2\\
+            m^2 &\leq l(l+1)\\
+            |m| &\leq l
+        \end{align*}
+        as desired.
+    \end{itemize}
+    \item Consider the case $l=1$.
+    \begin{itemize}
+        \item In this case, $L^2=2\hbar^2$ and $L_z=-\hbar,0,\hbar$.
+        \item It follows from the first condition that $|L|=\sqrt{L^2}=\sqrt{2}\hbar$, i.e., the magnitude of the angular momentum vector is $\sqrt{2}\hbar$.
+        \item Since $L$ and $L_z$ have differing magnitudes, their vectors cannot point in the same direction.
+        \item Since $\hat{L}^2$ commutes with each of $\hat{L}_x,\hat{L}_y,\hat{L}_z$ individually but the three directional components don't commute among themselves, it is possible to measure the values of $L^2$ and any directional component simultaneously to any precision, but this leads to complete uncertainty in the other two directional components.
+        \item This combined with the fact that $\prb{L_x}=\prb{L_y}=0$ leads to this nice interpretation: Imagine $\mathbf{L}$ processing around a cone whose axis is the $z$-axis. We know that the height of $\mathbf{L}$ (its $z$-coordinate) never changes, but the $x,y$-coordinates could be anywhere.
+    \end{itemize}
+    \item Solving the radial equation.
+    \begin{itemize}
+        \item Energy is quantized by
+        \begin{equation*}
+            E_n = -\frac{m_ee^4}{8\epsilon_0^2h^2n^2}
+            = -\frac{m_ee^4}{32\pi^2\epsilon_0^2\hbar^2n^2}
+            = -\frac{e^2}{8\pi\epsilon_0a_0n^2}
+        \end{equation*}
+        for $n=1,2,\dots$ where $a_0$ is the Bohr radius.
+        \begin{itemize}
+            \item Note that these energies are identical to those predicted by the Bohr model, even though the electron here is not restricted to sharply defined circular orbits but rather is described by $\psi(r,\theta,\phi)$.
+        \end{itemize}
+        \item We also have the condition
+        \begin{equation*}
+            0 \leq l \leq n-1
+        \end{equation*}
+        on the quantum number $n$.
+        \item Thus, the radial wave functions depend on the quantum numbers $n$ and $l$ as follows.
+        \begin{equation*}
+            R_{nl}(r) = -\sqrt{\frac{(n-l-1)!}{2n[(n+l)!]^3}}\left( \frac{2}{na_0} \right)^{l+3/2}r^l\e[-r/na_0]L_{n+l}^{2l+1}\left( \frac{2r}{na_0} \right)
+        \end{equation*}
+        \begin{itemize}
+            \item The $L_{n+l}^{2l+1}(2r/na_0)$ are the \textbf{associated Laguerre polynomials}.
+        \end{itemize}
+    \end{itemize}
 \end{itemize}
 
 
