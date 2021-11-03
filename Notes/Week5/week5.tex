@@ -298,5 +298,95 @@
 
 
 
+\section{Chapter 7: Approximation Methods}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{11/2:}Although the Schr\"{o}dinger equation cannot be solved exactly for any system more complicated than the hydrogen atom, we can use either the \textbf{variational method} or \textbf{perturbation theory} to approximate solutions to Schr\"{o}dinger equations to almost any desired accuracy.
+    \item We begin with the variational method.
+    \item If the ground-state wave function and corresponding energy of some arbitrary system are $\psi_0$ and $E_0$, respectively, then
+    \begin{align*}
+        \hat{H}\psi_0 &= E_0\psi_0\\
+        \psi_0^*\hat{H}\psi_0 &= \psi_0^*E_0\psi_0\\
+        \int\psi_0^*\hat{H}\psi_0\dd{\tau} &= E_0\int\psi_0^*\psi_0\dd{\tau}\\
+        E_0 &= \frac{\int\psi_0^*\hat{H}\psi_0\dd{\tau}}{\int\psi_0^*\psi_0\dd{\tau}}
+    \end{align*}
+    where $\dd{\tau}$ represents the appropriate volume element for integrating over all space.
+    \item \textbf{Variational principle}: If $\phi$ is any function, then
+    \begin{equation*}
+        \frac{\int\phi^*\hat{H}\phi\dd{\tau}}{\int\phi^*\phi\dd{\tau}} = E_\phi
+        \geq E_0
+        = \frac{\int\psi_0^*\hat{H}\psi_0\dd{\tau}}{\int\psi_0^*\psi_0\dd{\tau}}
+    \end{equation*}
+    and $E_\phi=E_0$ iff $\phi=\psi_0$\footnote{See Problem \ref{prb:7-1} for a proof of the variational principle.}.
+    \item Essentially, the variational method consists of choosing a trial function $\phi$ that depends on \textbf{variational parameters} (numbers) so that $E_\phi$ depends on the variational parameters, too, and minimizing $E_\phi$ over the parameters.
+    \item \textcite{bib:McQuarrieSimon} does a worked example with the ground state of the hydrogen atom, comparing answers with the exact solution.
+    \begin{itemize}
+        \item Uses the formula for $E_\phi$ to directly express it in terms of the variational parameter and then differentiates to find the maxima.
+        \item Applied to a case that can be solved exactly, the variational method with a trial wave function of the appropriate form will give the exact solution.
+    \end{itemize}
+    \item Estimating the ground state energy of a helium atom, and deriving effective nuclear charge.
+    \begin{itemize}
+        \item Consider the Hamiltonian for helium from the end of Chapter 6.
+        \item It can be written in the form
+        \begin{equation*}
+            \hat{H} = \hat{H}_{\ce{H}}(1)+\hat{H}_{\ce{H}}(2)+\frac{e^2}{4\pi\epsilon_0}\frac{1}{r_{12}}
+        \end{equation*}
+        where $\hat{H}_{\ce{H}}(j)$, $j=1,2$, is the Hamiltonian operator for a single electron around a helium nucleus.
+        \item Ignoring the interelectron repulsion term gives us a separable wave function of the form
+        \begin{equation*}
+            \phi_0(\mathbf{r}_1,\mathbf{r}_2) = \psi_{1s}(\mathbf{r}_1)\psi_{1s}(\mathbf{r}_2)
+        \end{equation*}
+        \item We use the above as our trial wave function with $Z$ (see Table \ref{tab:hydrogenRealWavefunctions}) as our variational parameter.
+        \item Minimizing gives us $Z_\text{min}=27/16$ and a fairly good $E_\text{min}$ value.
+        \item Note that $Z_\text{min}$ can naturally be interpreted as the \textbf{effective nuclear charge}.
+        \item Since $Z_\text{min}<2$, we have that each electron partially \textbf{screens} the nucleus from the other.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} arrives at the two linear algebraic equations Mazziotti did by expanding $\int\phi\hat{H}\phi\dd{\tau}$ with $\phi=c_1f_1+c_2f_2$, applying the condition that $H$ is Hermitian from Chapter 4 to show that $H_{ij}=H_{ji}$ and $S_{ij}=S_{ji}$, and differentiating the resulting energy function with respect to $c_1$ and then with respect to $c_2$.
+    \item \textbf{Matrix elements}: The quantities $H_{ij}$ and $S_{ij}$.
+    \item \textbf{Secular determinant}: A determinant of the form
+    \begin{equation*}
+        \begin{vmatrix}
+            H_{11}-ES_{11} & \cdots & H_{1n}-ES_{1n}\\
+            \vdots &  & \vdots\\
+            H_{n1}-ES_{n1} & \cdots & H_{nn}-ES_{nn}\\
+        \end{vmatrix}
+    \end{equation*}
+    \begin{itemize}
+        \item There exists a solution to the linear algebraic equations iff the secular determinant vanishes (equals 0).
+    \end{itemize}
+    \item \textbf{Secular equation}: The equation obtained by expanding the secular determinant.
+    \begin{itemize}
+        \item The smaller root of a second-degree secular equation is an upper bound on the ground state energy.
+        \item The larger root of a second-degree secular equation is an upper bound on the energy of the first excited state (albeit usually a crude one; we do not investigate methods of approximating energies other than that of the ground state here).
+    \end{itemize}
+    \item Normalizing the trial wave function.
+    \begin{itemize}
+        \item Since the linear system is homogenous, all of the $c_1$ terms (for example) can be expressed as a linear combination of all of the other terms.
+        \item From here, we can find the ratios $c_2/c_1,c_3/c_1,\dots,c_N/c_1$.
+        \item Thus, we simply integrate the modulus squared of our trial wave function with $c_1$ free and set the result equal to 1. Solving for $c_1$ normalizes the equation.
+    \end{itemize}
+    \item Note that trial wave functions can be linear combinations of functions that also contain variational parameters, but minimization here must be done numerically as the system is no longer linear.
+    \item We now discuss perturbation theory.
+    \item Suppose we cannot solve the Schr\"{o}dinger equation $\hat{H}\psi=E\psi$ but we can solve $\hat{H}^{(0)}\psi^{(0)}=E^{(0)}\psi^{(0)}$, which corresponds to a system that is in some sense similar to the unsolvable system. Then let $\hat{H}=\hat{H}^{(0)}+\hat{H}^{(1)}$.
+    \item \textbf{Unperturbed Hamiltonian operator}: The Hamiltonian operator corresponding to the system we can solve exactly. \emph{Denoted by} $\bm{\hat{H}^{(0)}}$.
+    \item \textbf{Perturbation}: The difference between the Hamiltonian operator we cannot solve and the unperturbed Hamiltonian operator. \emph{Denoted by} $\bm{\hat{H}^{(1)}}$.
+    \item In perturbation theory, we let
+    \begin{align*}
+        \psi &= \psi^{(0)}+\psi^{(1)}+\psi^{(2)}+\cdots&
+        E &= E^{(0)}+E^{(1)}+E^{(2)}+\cdots
+    \end{align*}
+    where $\psi^{(1)},\psi^{(2)},\dots$ and $E^{(1)},E^{(2)},\dots$ are successive corrections to $\psi^{(0)}$ and $E^{(0)}$, respectively.
+    \item We can show (see Problem \ref{prb:7-19}) that
+    \begin{equation*}
+        E^{(1)} = \int\psi^{(0)*}\hat{H}^{(1)}\psi^{(0)}\dd{\tau}
+    \end{equation*}
+    \begin{itemize}
+        \item Note that we can (although we will not here) derive explicit expressions for higher order corrections. These do get messy though.
+    \end{itemize}
+    \item Uses perturbation theory to derive the energy of a particle in a one-dimensional slanted box, and separately the energy of a Helium electron.
+\end{itemize}
+
+
+
 
 \end{document}
