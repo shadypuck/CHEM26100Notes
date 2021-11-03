@@ -1,0 +1,50 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\setcounter{section}{4}
+
+\begin{document}
+
+
+
+
+\section{Exact and Approximate Solutions to the Schr\"{o}dinger Equation}
+\begin{enumerate}
+    \item \marginnote{11/3:}In the book \emph{Flatland}, Edwin Abbott explores the amazement of the inhabitants of a two-dimensional world when they are visited by a three-dimensional sphere. In class, we developed the Schr\"{o}dinger equation for an atom in three dimensions. Consider how a two-dimensional atom would differ from a three-dimensional atom.
+    \begin{enumerate}
+        \item Express the Schr\"{o}dinger equation in the Cartesian coordinates $x$ and $y$.
+        \item Re-express the Schr\"{o}dinger equation in the polar coordinates $r$ and $\phi$.
+        \item Factoring the wave function $\psi(r,\phi)$ as $R(r)Q(\phi)$, separate the Schr\"{o}dinger equation into a Schr\"{o}dinger equation for $R(r)$ with quantum numbers $n$ and $m$ and a Schr\"{o}dinger equation for $Q(\phi)$ with quantum number $m$.
+        \item Solve the Schr\"{o}dinger equation for $Q(\phi)$ and explain its connection with the two-dimensional rigid rotor.
+        \item For \emph{only} $n=1$ and $m=0$, solve the Schr\"{o}dinger equation for the ground-state energy and wave function.
+        \item What is the ratio of the ground-state energy of the two-dimensional hydrogen atom to the ground-state energy of the three-dimensional hydrogen atom?
+        \item On the same figure, draw (or graph electronically) as a function of $r$ the probability for finding the electron in the ground state of the 3D hydrogen atom as well as the probability for finding the electron in the ground state of the 2D hydrogen atom. Briefly compare and contrast these two probability distributions.
+    \end{enumerate}
+    \item Using your lecture notes and Problem 7-1 as a guide, give a proof of the variational theorem, i.e., that\dots
+    \begin{enumerate}
+        \item The energy from a trial wave function will always be greater than or equal to the exact ground-state energy.
+        \item The energy from a trial wave function, constrained to be orthogonal to the exact ground-state wave function, will always be greater than or equal to the exact energy of the first excited state.
+    \end{enumerate}
+    \item Consider a particle in a box in the interval $[-a,a]$.
+    \begin{enumerate}
+        \item Use the trial wave function
+        \begin{equation*}
+            \psi_t = x(a^2-x^2)
+        \end{equation*}
+        to obtain an approximate energy for the first excited state of the box as a function of $a$.
+        \item Why does this function give an approximation to the first excited state rather than the ground state?
+        \item Use the more accurate trial wave function
+        \begin{equation*}
+            \psi_t = c_1x(a^2-x^2)+c_2x^3(a^2-x^2)
+        \end{equation*}
+        to obtain an approximate energy for the first excited state of the box as a function of $a$.
+        \item Compare the approximate energies with the exact energy (including their dependence on $a$) and the approximate wave functions with the exact wave functions. (Hint: In comparing the wave functions, you may want to select $a=1$.)
+    \end{enumerate}
+    \item Use the Quantum Chemistry Toolbox in Maple to answer the lettered questions in the worksheet "Variational Methods" on Canvas.
+\end{enumerate}
+
+
+
+
+\end{document}
