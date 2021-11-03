@@ -111,5 +111,119 @@
 
 
 
+\section{Many-electron Atoms and Molecules / Spin}
+\begin{itemize}
+    \item \marginnote{11/3:}\textbf{Spin orbital}: A spatial orbital augmented with a spin eigenfunction. \emph{Given by}
+    \begin{equation*}
+        \psi(x,y,z,\sigma) = \phi(x,y,z)\sigma
+    \end{equation*}
+    \item Key idea: Electrons are indistinguishable, i.e., if $\psi(1,2,\dots,N)$ where each number represents the three spatial coordinates of an electron, the $N$ electrons in $\psi$ must be indistinguishable.
+    \item There are two possible ways to achieve \emph{mathematical} indistinguishability.
+    \begin{enumerate}
+        \item We can require that
+        \begin{equation*}
+            \psi(1,2,3,\dots,N) = \psi(2,1,3,\dots,N)
+        \end{equation*}
+        \begin{itemize}
+            \item Essentially, this is a symmetric permutation of all pairs of particles.
+        \end{itemize}
+        \item We can alternatively require that
+        \begin{equation*}
+            \psi(1,2,3,\dots,N) = -\psi(2,1,3,\dots,N)
+        \end{equation*}
+        \begin{itemize}
+            \item Because the probability is invariant to the sign (think about taking the modulus squared and how that eliminates sign considerations).
+            \item Essentially, this is an antisymmetric permutation of all pairs of particles.
+        \end{itemize}
+    \end{enumerate}
+    \item Experimental observation shows two types of particles in nature.
+    \begin{enumerate}
+        \item Bozons (symmetric permutations).
+        \item Fermions (antisymmetric permutations).
+    \end{enumerate}
+    \item Electrons are Fermions.
+    \item $\Prob=\psi^*(1,2,\dots,N)\psi(1,2,\dots,N)$ tells us the probability of finding the $N$ electrons at the positions specified by 1 through $N$.
+    \item Example (helium):
+    \begin{itemize}
+        \item We had $\psi(1,2)=1s\alpha(1)1s\beta(2)$.
+        \item But since the electrons are distinguishable here, we have to make them indistinguishable by letting
+        \begin{align*}
+            \psi(1,2) &= 1s\alpha(1)12\beta(2)-1s\alpha(2)1s\beta(1)\\
+            &= 1s(1)1s(2)[\alpha(1)\beta(2)-\alpha(2)\beta(1)]
+        \end{align*}
+        \begin{itemize}
+            \item Here, we've separated out the spatial and spin parts.
+        \end{itemize}
+    \end{itemize}
+    \item How to represent antisymmetry.
+    \begin{itemize}
+        \item Grassmann Wedge Product (1850s): Herman de Grassmann was studying linear algebra and would learn about higher dimensional spaces in his dreams.
+        \item de Grassman says
+        \begin{align*}
+            \psi(1,2) &= 1s\alpha(1)\wedge 1s\beta(2)\\
+            \frac{1}{2!}(1s\alpha(1)1s\beta(2)-1s\alpha(2)1s\beta(1))
+        \end{align*}
+        where $\wedge$ is the wedge product, a tensor product.
+        \begin{itemize}
+            \item We can normalize the above by substituting $\sqrt{2!}$ for $2!$.
+        \end{itemize}
+        \item Slater determinant (1930): Took
+        \begin{equation*}
+            \psi(1,2) = \frac{1}{\sqrt{2!}}
+            \begin{vmatrix}
+                1s\alpha(1) & 1s\beta(1)\\
+                1s\alpha(2) & 1s\beta(2)\\
+            \end{vmatrix}
+        \end{equation*}
+    \end{itemize}
+    \item We now consider lithium.
+    \begin{itemize}
+        \item Let's put 3 electrons in a single orbital:
+        \begin{equation*}
+            \psi(1,2,3) = 1s\alpha(1)\wedge 1s\beta(2)\wedge 1s\beta(3)
+        \end{equation*}
+        \begin{itemize}
+            \item $1s\beta(2)\wedge 1s\beta(3)$ will vanish as per Grassmann algebra since the electrons have the same spin state. In general, $\phi\wedge\phi=0$.
+        \end{itemize}
+        \item Thus, in general,
+        \begin{equation*}
+            \psi(1,2,3) = \sqrt{3!}(1s\alpha(1)\wedge 1s\beta(2)\wedge 2s\alpha(3))
+        \end{equation*}
+        or, using the Slater determinant,
+        \begin{equation*}
+            \psi(1,2,3) = \frac{1}{\sqrt{3!}}
+            \begin{vmatrix}
+                1s\alpha(1) & 1s\beta(1) & 2s\alpha(1)\\
+                1s\alpha(2) & 1s\beta(2) & 2s\alpha(2)\\
+                1s\alpha(3) & 1s\beta(3) & 2s\alpha(3)\\
+            \end{vmatrix}
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Pauli exclusion principle}: Each electron must occupy a distinct spin orbital, that is, it must have a distinct set of 4 quantum numbers $n,l,m,m_s$.
+    \begin{itemize}
+        \item Emerges naturally from the quantum mechanics as per the above.
+    \end{itemize}
+    \item What if electrons were bozons?
+    \begin{itemize}
+        \item Then
+        \begin{equation*}
+            \psi(1,2,3) = 1s\alpha(1)\vee 1s\beta(2)\vee 2s\alpha(3)
+        \end{equation*}
+        where $\vee$ is the bozonic operator, i.e., the symmetric wedge product, which denotes the positive sum of all permutations.
+        \item We have
+        \begin{align*}
+            \phi(1)\vee\phi(2) &= \phi(1)\phi(2)+\phi(2)\phi(1)\\
+            &= 2\phi(1)\phi(2)
+        \end{align*}
+        \item Thus, we could put an infinite number of electrons in the same orbital (all electrons could occupy the same orbital) if electrons were bozons, and our shell structure would disintegrate.
+        \begin{itemize}
+            \item Everything would also merge; we could not form matter as we know it.
+        \end{itemize}
+    \end{itemize}
+    \item Sodium atoms are bozons.
+\end{itemize}
+
+
+
 
 \end{document}
