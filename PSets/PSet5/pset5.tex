@@ -14,17 +14,382 @@
     \item \marginnote{11/3:}In the book \emph{Flatland}, Edwin Abbott explores the amazement of the inhabitants of a two-dimensional world when they are visited by a three-dimensional sphere. In class, we developed the Schr\"{o}dinger equation for an atom in three dimensions. Consider how a two-dimensional atom would differ from a three-dimensional atom.
     \begin{enumerate}
         \item Express the Schr\"{o}dinger equation in the Cartesian coordinates $x$ and $y$.
+        \begin{proof}[Answer]
+            Since the mass of the proton is far greater than the mass of the electron, we approximate it as fixed at the origin. Thus, we need only account for the kinetic and potential energy of the electron. Naturally, the kinetic energy of the electron will be given by
+            \begin{equation*}
+                \hat{T} = -\frac{\hbar^2}{2m}\nabla^2
+            \end{equation*}
+            where $m$ is the mass of the electron and $\nabla^2$ is the Laplacian in two-dimensional Cartesian coordinates. Similarly, since the electron and proton have the same charge $e$, they will interact through a potential field given by
+            \begin{equation*}
+                V(r) = -\frac{e^2}{4\pi\epsilon_0\sqrt{x^2+y^2}}
+            \end{equation*}
+            where $\sqrt{x^2+y^2}$ is the distance of the electron from the proton (fixed at the origin). It follows that the complete Hamiltonian is given by
+            \begin{equation*}
+                \hat{H} = \hat{T}+V
+            \end{equation*}
+            so our Schr\"{o}dinger equation is
+            \begin{align*}
+                \hat{H}\psi &= E\psi\\
+                \Aboxed{\left[ -\frac{\hbar^2}{2m}\left( \pdv[2]{x}+\pdv[2]{y} \right)-\frac{e^2}{4\pi\epsilon_0\sqrt{x^2+y^2}} \right]\psi(x,y) &= E\psi(x,y)}
+            \end{align*}
+        \end{proof}
         \item Re-express the Schr\"{o}dinger equation in the polar coordinates $r$ and $\phi$.
+        \begin{proof}[Answer]
+            We will construct this expression from the ground up without motivating our steps. The motivation should be clear by the end when everything comes together. Let's begin.\par
+            Consider the following picture.
+            \begin{center}
+                \begin{tikzpicture}
+                    \footnotesize
+                    \draw [->] (-2,0) -- node[pos=0.6875,below]{$x$} (2,0) coordinate (x);
+                    \draw [->] (0,-2) -- (0,2);
+
+                    \draw [semithick] (1.5,0) -- node[right]{$y$} (1.5,1);
+                    \draw [thick] (0,0) coordinate (O) -- node[above]{$r$} (1.5,1) coordinate (P) node[circle,fill,inner sep=1.5pt]{} pic[draw,angle eccentricity=1.3,pic text={$\phi$}]{angle=x--O--P};
+                \end{tikzpicture}
+            \end{center}
+            Then $r=\sqrt{x^2+y^2}$ and $\phi=\tan^{-1}(y/x)$ ($x=r\cos\phi$ and $y=r\sin\phi$ will also be useful). It follows that
+            \begin{align*}
+                \pdv{r}{x} &= \pdv{x}(\sqrt{x^2+y^2})&
+                    \pdv{r}{y} &= \pdv{y}(\sqrt{x^2+y^2})\\
+                &= \pdv{u}(\sqrt{u})\cdot\pdv{x}(x^2+y^2)&
+                    &= \pdv{u}(\sqrt{u})\cdot\pdv{y}(x^2+y^2)\\
+                &= \frac{1}{2\sqrt{u}}\cdot 2x&
+                    &= \frac{1}{2\sqrt{u}}\cdot 2y\\
+                &= \frac{x}{\sqrt{x^2+y^2}}&
+                    &= \frac{y}{\sqrt{x^2+y^2}}\\
+                &= \frac{x}{r}&
+                    &= \frac{y}{r}\\
+                &= \cos\phi&
+                    &= \sin\phi
+            \end{align*}
+            and
+            \begin{align*}
+                \pdv{\phi}{x} &= \pdv{x}(\tan^{-1}\left( \frac{y}{x} \right))&
+                    \pdv{\phi}{y} &= \pdv{y}(\tan^{-1}\left( \frac{y}{x} \right))\\
+                &= \frac{1}{1+(y/x)^2}\cdot-\frac{y}{x^2}&
+                    &= \frac{1}{1+(y/x)^2}\cdot\frac{1}{x}\\
+                &= -\frac{y}{x^2+y^2}&
+                    &= \frac{x}{x^2+y^2}\\
+                &= -\frac{r\sin\phi}{r^2}&
+                    &= -\frac{r\cos\phi}{r^2}\\
+                &= -\frac{\sin\phi}{r}&
+                    &= \frac{\cos\phi}{r}
+            \end{align*}
+            Let $\psi$ be a function of $r$ and $\phi$. Then by the chain rule for partial differentiation,
+            \begin{align*}
+                \pdv{\psi}{x} &= \pdv{\psi}{r}\pdv{r}{x}+\pdv{\psi}{\phi}\pdv{\phi}{x}&
+                    \pdv{\psi}{y} &= \pdv{\psi}{r}\pdv{r}{y}+\pdv{\psi}{\phi}\pdv{\phi}{y}\\
+                &= \pdv{\psi}{r}\cdot\cos\phi+\pdv{\psi}{\phi}\cdot-\frac{\sin\phi}{r}&
+                    &= \pdv{\psi}{r}\cdot\sin\phi+\pdv{\psi}{\phi}\cdot\frac{\cos\phi}{r}\\
+                &= \cos\phi\pdv{\psi}{r}-\frac{\sin\phi}{r}\pdv{\psi}{\phi}&
+                    &= \sin\phi\pdv{\psi}{r}+\frac{\cos\phi}{r}\pdv{\psi}{\phi}
+            \end{align*}
+            Additionally, we have that
+            \begin{align*}
+                \pdv{r}(\pdv{\psi}{x}) &= \pdv{r}(\cos\phi\pdv{\psi}{r}-\frac{\sin\phi}{r}\pdv{\psi}{\phi})\\
+                &= \pdv{r}(\cos\phi\pdv{\psi}{r})-\pdv{r}(\frac{\sin\phi}{r}\pdv{\psi}{\phi})\\
+                &= \left[ 0\cdot\pdv{\psi}{r}+\cos\phi\pdv[2]{\psi}{r} \right]-\left[ -\frac{\sin\phi}{r^2}\pdv{\psi}{\phi}+\frac{\sin\phi}{r}\pdv{\psi}{r}{\phi} \right]\\
+                &= \cos\phi\pdv[2]{\psi}{r}+\frac{\sin\phi}{r^2}\pdv{\psi}{\phi}-\frac{\sin\phi}{r}\pdv{\psi}{r}{\phi}
+            \end{align*}
+            and
+            \begin{align*}
+                \pdv{\phi}(\pdv{\psi}{x}) &= \pdv{\phi}(\cos\phi\pdv{\psi}{r}-\frac{\sin\phi}{r}\pdv{\psi}{\phi})\\
+                &= \pdv{\phi}(\cos\phi\pdv{\psi}{r})-\pdv{\phi}(\frac{\sin\phi}{r}\pdv{\psi}{\phi})\\
+                &= \left[ -\sin\phi\pdv{\psi}{r}+\cos\phi\pdv{\psi}{\phi}{r} \right]-\left[ \frac{\cos\phi}{r}\pdv{\psi}{\phi}+\frac{\sin\phi}{r}\pdv[2]{\psi}{\phi} \right]\\
+                &= -\sin\phi\pdv{\psi}{r}+\cos\phi\pdv{\psi}{\phi}{r}-\frac{\cos\phi}{r}\pdv{\psi}{\phi}-\frac{\sin\phi}{r}\pdv[2]{\psi}{\phi}
+            \end{align*}
+            so
+            \begin{align*}
+                \pdv{r}(\pdv{\psi}{x})\pdv{r}{x} &= \left[ \cos\phi\pdv[2]{\psi}{r}+\frac{\sin\phi}{r^2}\pdv{\psi}{\phi}-\frac{\sin\phi}{r}\pdv{\psi}{r}{\phi} \right]\cdot\cos\phi\\
+                &= \cos^2\phi\pdv[2]{\psi}{r}+\frac{\sin\phi\cos\phi}{r^2}\pdv{\psi}{\phi}-\frac{\sin\phi\cos\phi}{r}\pdv{\psi}{r}{\phi}
+            \end{align*}
+            and
+            \begin{align*}
+                \pdv{\phi}(\pdv{\psi}{x})\pdv{\phi}{x} &= \left[ -\sin\phi\pdv{\psi}{r}+\cos\phi\pdv{\psi}{\phi}{r}-\frac{\cos\phi}{r}\pdv{\psi}{\phi}-\frac{\sin\phi}{r}\pdv[2]{\psi}{\phi} \right]\cdot-\frac{\sin\phi}{r}\\
+                &= \frac{\sin^2\phi}{r}\pdv{\psi}{r}-\frac{\sin\phi\cos\phi}{r}\pdv{\psi}{\phi}{r}+\frac{\sin\phi\cos\phi}{r^2}\pdv{\psi}{\phi}+\frac{\sin^2\phi}{r^2}\pdv[2]{\psi}{\phi}
+            \end{align*}
+            Thus,
+            \begin{align*}
+                \pdv[2]{\psi}{x} ={}& \pdv{x}(\pdv{\psi}{x})\\
+                ={}& \pdv{r}(\pdv{\psi}{x})\pdv{r}{x}+\pdv{\phi}(\pdv{\psi}{x})\pdv{\phi}{x}\\
+                \begin{split}
+                    ={}& \left[ \cos^2\phi\pdv[2]{\psi}{r}+\frac{\sin\phi\cos\phi}{r^2}\pdv{\psi}{\phi}-\frac{\sin\phi\cos\phi}{r}\pdv{\psi}{r}{\phi} \right]\\
+                    & +\left[ \frac{\sin^2\phi}{r}\pdv{\psi}{r}-\frac{\sin\phi\cos\phi}{r}\pdv{\psi}{\phi}{r}+\frac{\sin\phi\cos\phi}{r^2}\pdv{\psi}{\phi}+\frac{\sin^2\phi}{r^2}\pdv[2]{\psi}{\phi} \right]
+                \end{split}\\
+                ={}& \cos^2\phi\pdv[2]{\psi}{r}+\frac{2\sin\phi\cos\phi}{r^2}\pdv{\psi}{\phi}-\frac{2\sin\phi\cos\phi}{r}\pdv{\psi}{r}{\phi}+\frac{\sin^2\phi}{r}\pdv{\psi}{r}+\frac{\sin^2\phi}{r^2}\pdv[2]{\psi}{\phi}
+            \end{align*}
+            Furthermore, we have that
+            \begin{align*}
+                \pdv{r}(\pdv{\psi}{y}) &= \pdv{r}(\sin\phi\pdv{\psi}{r}+\frac{\cos\phi}{r}\pdv{\psi}{\phi})\\
+                &= \pdv{r}(\sin\phi\pdv{\psi}{r})+\pdv{r}(\frac{\cos\phi}{r}\pdv{\psi}{\phi})\\
+                &= \left[ 0\cdot\pdv{\psi}{r}+\sin\phi\pdv[2]{\psi}{r} \right]+\left[ -\frac{\cos\phi}{r^2}\pdv{\psi}{\phi}+\frac{\cos\phi}{r}\pdv{\psi}{r}{\phi} \right]\\
+                &= \sin\phi\pdv[2]{\psi}{r}-\frac{\cos\phi}{r^2}\pdv{\psi}{\phi}+\frac{\cos\phi}{r}\pdv{\psi}{r}{\phi}
+            \end{align*}
+            and
+            \begin{align*}
+                \pdv{\phi}(\pdv{\psi}{y}) &= \pdv{\phi}(\sin\phi\pdv{\psi}{r}+\frac{\cos\phi}{r}\pdv{\psi}{\phi})\\
+                &= \pdv{\phi}(\sin\phi\pdv{\psi}{r})+\pdv{\phi}(\frac{\cos\phi}{r}\pdv{\psi}{\phi})\\
+                &= \left[ \cos\phi\pdv{\psi}{r}+\sin\phi\pdv{\psi}{\phi}{r} \right]+\left[ -\frac{\sin\phi}{r}\pdv{\psi}{\phi}+\frac{\cos\phi}{r}\pdv[2]{\psi}{\phi} \right]\\
+                &= \cos\phi\pdv{\psi}{r}+\sin\phi\pdv{\psi}{\phi}{r}-\frac{\sin\phi}{r}\pdv{\psi}{\phi}+\frac{\cos\phi}{r}\pdv[2]{\psi}{\phi}
+            \end{align*}
+            so
+            \begin{align*}
+                \pdv{r}(\pdv{\psi}{y})\pdv{r}{y} &= \left[ \sin\phi\pdv[2]{\psi}{r}-\frac{\cos\phi}{r^2}\pdv{\psi}{\phi}+\frac{\cos\phi}{r}\pdv{\psi}{r}{\phi} \right]\cdot\sin\phi\\
+                &= \sin^2\phi\pdv[2]{\psi}{r}-\frac{\sin\phi\cos\phi}{r^2}\pdv{\psi}{\phi}+\frac{\sin\phi\cos\phi}{r}\pdv[2]{\psi}{r}{\phi}
+            \end{align*}
+            and
+            \begin{align*}
+                \pdv{\phi}(\pdv{\psi}{y})\pdv{\phi}{y} &= \left[ \cos\phi\pdv{\psi}{r}+\sin\phi\pdv{\psi}{\phi}{r}-\frac{\sin\phi}{r}\pdv{\psi}{\phi}+\frac{\cos\phi}{r}\pdv[2]{\psi}{\phi} \right]\cdot\frac{\cos\phi}{r}\\
+                &= \frac{\cos^2\phi}{r}\pdv{\psi}{r}+\frac{\sin\phi\cos\phi}{r}\pdv{\psi}{\phi}{r}-\frac{\sin\phi\cos\phi}{r^2}\pdv{\psi}{\phi}+\frac{\cos^2\phi}{r^2}\pdv[2]{\psi}{\phi}
+            \end{align*}
+            Thus,
+            \begin{align*}
+                \pdv[2]{\psi}{y} ={}& \pdv{y}(\pdv{\psi}{y})\\
+                ={}& \pdv{r}(\pdv{\psi}{y})\pdv{r}{y}+\pdv{\phi}(\pdv{\psi}{y})\pdv{\phi}{y}\\
+                \begin{split}
+                    ={}& \left[ \sin^2\phi\pdv[2]{\psi}{r}-\frac{\sin\phi\cos\phi}{r^2}\pdv{\psi}{\phi}+\frac{\sin\phi\cos\phi}{r}\pdv[2]{\psi}{r}{\phi} \right]\\
+                    & +\left[ \frac{\cos^2\phi}{r}\pdv{\psi}{r}+\frac{\sin\phi\cos\phi}{r}\pdv{\psi}{\phi}{r}-\frac{\sin\phi\cos\phi}{r^2}\pdv{\psi}{\phi}+\frac{\cos^2\phi}{r^2}\pdv[2]{\psi}{\phi} \right]
+                \end{split}\\
+                ={}& \sin^2\phi\pdv[2]{\psi}{r}-\frac{2\sin\phi\cos\phi}{r^2}\pdv{\psi}{\phi}+\frac{2\sin\phi\cos\phi}{r}\pdv[2]{\psi}{r}{\phi}+\frac{\cos^2\phi}{r}\pdv{\psi}{r}+\frac{\cos^2\phi}{r^2}\pdv[2]{\psi}{\phi}
+            \end{align*}
+            It follows by combining the last two results that
+            \begin{align*}
+                \begin{split}
+                    \pdv[2]{\psi}{x}+\pdv[2]{\psi}{y} ={}& \left[ \cos^2\phi\pdv[2]{\psi}{r}+\frac{2\sin\phi\cos\phi}{r^2}\pdv{\psi}{\phi}-\frac{2\sin\phi\cos\phi}{r}\pdv{\psi}{r}{\phi}+\frac{\sin^2\phi}{r}\pdv{\psi}{r}+\frac{\sin^2\phi}{r^2}\pdv[2]{\psi}{\phi} \right]\\
+                    & +\left[ \sin^2\phi\pdv[2]{\psi}{r}-\frac{2\sin\phi\cos\phi}{r^2}\pdv{\psi}{\phi}+\frac{2\sin\phi\cos\phi}{r}\pdv[2]{\psi}{r}{\phi}+\frac{\cos^2\phi}{r}\pdv{\psi}{r}+\frac{\cos^2\phi}{r^2}\pdv[2]{\psi}{\phi} \right]
+                \end{split}\\
+                ={}& (\cos^2\phi+\sin^2\phi)\pdv[2]{\psi}{r}+\frac{\sin^2\phi+\cos^2\phi}{r}\pdv{\psi}{r}+\frac{\sin^2\phi+\cos^2\phi}{r^2}\pdv[2]{\psi}{\phi}\\
+                ={}& \pdv[2]{\psi}{r}+\frac{1}{r}\pdv{\psi}{r}+\frac{1}{r^2}\pdv[2]{\psi}{\phi}
+            \end{align*}
+            Therefore, from the above and one of our substitutions from the picture, we have that
+            \begin{align*}
+                \left[ -\frac{\hbar^2}{2m}\left( \pdv[2]{x}+\pdv[2]{y} \right)-\frac{e^2}{4\pi\epsilon_0\sqrt{x^2+y^2}} \right]\psi(x,y) &= E\psi(x,y)\\
+                \Aboxed{\left[ -\frac{\hbar^2}{2m}\left( \pdv[2]{r}+\frac{1}{r}\pdv{r}+\frac{1}{r^2}\pdv[2]{\phi} \right)-\frac{e^2}{4\pi\epsilon_0r} \right]\psi(r,\phi) &= E\psi(r,\phi)}
+            \end{align*}
+        \end{proof}
         \item Factoring the wave function $\psi(r,\phi)$ as $R(r)Q(\phi)$, separate the Schr\"{o}dinger equation into a Schr\"{o}dinger equation for $R(r)$ with quantum numbers $n$ and $m$ and a Schr\"{o}dinger equation for $Q(\phi)$ with quantum number $m$.
+        \begin{proof}[Answer]
+            We have from part (b) that
+            \begin{align*}
+                0 &= \left( \pdv[2]{r}+\frac{1}{r}\pdv{r}+\frac{1}{r^2}\pdv[2]{\phi} \right)\psi(r,\phi)+\frac{2m}{\hbar^2}\left[ \frac{e^2}{4\pi\epsilon_0r}+E \right]\psi(r,\phi)\\
+                &= \pdv[2]{r}(R(r)Q(\phi))+\frac{1}{r}\pdv{r}(R(r)Q(\phi))+\frac{1}{r^2}\pdv[2]{\phi}(R(r)Q(\phi))+\frac{2m}{\hbar^2}\left[ \frac{e^2}{4\pi\epsilon_0r}+E \right]R(r)Q(\phi)\\
+                &= Q(\phi)\pdv[2]{R}{r}+\frac{Q(\phi)}{r}\pdv{R}{r}+\frac{R(r)}{r^2}\pdv[2]{Q}{\phi}+\frac{2m}{\hbar^2}\left[ \frac{e^2}{4\pi\epsilon_0r}+E \right]R(r)Q(\phi)\\
+                &= \frac{r^2}{R(r)}\pdv[2]{R}{r}+\frac{r}{R(r)}\pdv{R}{r}+\frac{1}{Q(\phi)}\pdv[2]{Q}{\phi}+\frac{2mr^2}{\hbar^2}\left[ \frac{e^2}{4\pi\epsilon_0r}+E \right]
+            \end{align*}
+            Since $r$ and $\phi$ are independent variables, it follows that we may let
+            \begin{align*}
+                \Aboxed{m^2 &= \frac{r^2}{R(r)}\dv[2]{R}{r}+\frac{r}{R(r)}\dv{R}{r}+\frac{2mr^2}{\hbar^2}\left[ \frac{e^2}{4\pi\epsilon_0r}+E_n \right]}&
+                \Aboxed{-m^2 &= \frac{1}{Q(\phi)}\dv[2]{Q}{\phi}}
+            \end{align*}
+        \end{proof}
         \item Solve the Schr\"{o}dinger equation for $Q(\phi)$ and explain its connection with the two-dimensional rigid rotor.
+        \begin{proof}[Answer]
+            % Suppose $Q(\phi)=A\e[\alpha\phi]$. Then
+            % \begin{align*}
+            %     \dv[2]{\phi}(A\e[\alpha\phi]) &= -m^2A\e[\alpha\phi]\\
+            %     A\alpha^2\e[\alpha\phi] &= -m^2A\e[\alpha\phi]\\
+            %     \alpha^2 &= -m^2\\
+            %     \alpha &= \pm im
+            % \end{align*}
+            % It follows that
+            % \begin{equation*}
+            %     \boxed{Q(\phi) = A\e[\pm im\phi]}
+            % \end{equation*}
+            % Furthermore, since $Q$ must be single-valued, we must have that $Q(\phi+2\pi)=Q(\phi)$. Thus, it must be that
+            % \begin{align*}
+            %     A\e[\pm im(\phi+2\pi)] &= A\e[\pm im\phi]\\
+            %     \e[\pm i2\pi m] &= 1\\
+            %     \cos(2\pi m)\pm i\sin(2\pi m) &= 1+0i\\
+            %     \Aboxed{m &= 0,\pm 1,\pm 2,\dots}
+            % \end{align*}
+
+
+            We have from part (c) that
+            \begin{equation*}
+                \dv[2]{Q}{\phi}+m^2Q(\phi) = 0
+            \end{equation*}
+            Taking an operator perspective, we can factor this differential equation to
+            \begin{equation*}
+                \left( \dv{\phi}+im \right)\left( \dv{\phi}-im \right)Q = 0
+            \end{equation*}
+            Thus, a solution $Q$ to this differential equation will be in the null space of $\dv*{\phi}-im$ or, since the operators commute, in the null space of $\dv*{\phi}+im$. Solving the differential equation corresponding to each operator independently yields
+            \begin{align*}
+                \dv{Q}{\phi} &= imQ&
+                    \dv{Q}{\phi} &= -im\phi\\
+                \ln Q &= im\phi+C_1&
+                    \ln Q &= -im\phi+C_2\\
+                Q(\phi) &= A_1\e[im\phi]&
+                    Q(\phi) &= A_2\e[-im\phi]
+            \end{align*}
+            Clearly, any linear combination of these solutions will be a solution as well, so the complete general solution is
+            \begin{equation*}
+                Q(\phi) = A_1\e[im\phi]+A_2\e[-im\phi]
+            \end{equation*}
+            Furthermore, since $Q$ must be single-valued, we must have that $Q(\phi+2\pi)=Q(\phi)$. Thus, it must be that
+            \begin{align*}
+                A_1\e[im(\phi+2\pi)]+A_2\e[-im(\phi+2\pi)] &= A_1\e[im\phi]+A_2\e[-im\phi]\\
+                A_1\e[im\phi]\e[i2\pi m]+A_2\e[-im\phi]\e[-i2\pi m] &= A_1\e[im\phi]+A_2\e[-im\phi]\\
+            \end{align*}
+            Since $A_1$ and $A_2$ are independent variables, we must have that
+            \begin{align*}
+                A_1\e[im\phi]\e[i2\pi m] &= A_1\e[im\phi]&
+                    A_2\e[-im\phi]\e[-i2\pi m] &= A_2\e[-im\phi]\\
+                \e[i2\pi m] &= 1&
+                    \e[-i2\pi m] &= 1\\
+                \cos(2\pi m)+i\sin(2\pi m) &= 1+0i&
+                    \cos(2\pi m)-i\sin(2\pi m) &= 1+0i\\
+                m &= 0,\pm 1,\pm 2,\dots&
+                    m &= 0,\pm 1,\pm 2,\dots
+            \end{align*}
+            i.e., that overall,
+            \begin{equation*}
+                \boxed{m = 0,\pm 1,\pm 2,\dots}
+            \end{equation*}
+            Thus, the general solution can be written as one equation
+            \begin{equation*}
+                \boxed{Q(\phi) = A\e[im\phi]}
+            \end{equation*}
+            Indeed, these results show that the angular wave functions of this system are identical to those of the rigid rotor, as we would expect considering that both systems describe a quantum particle at some invariant distance from the nucleus.
+        \end{proof}
         \item For \emph{only} $n=1$ and $m=0$, solve the Schr\"{o}dinger equation for the ground-state energy and wave function.
+        \begin{proof}[Answer]
+            Let $m=0$. Then the radial equation from part (c) can be written in the form
+            \begin{equation*}
+                \frac{r^2}{R(r)}\dv[2]{R}{r}+\frac{r}{R(r)}\dv{R}{r}+\frac{2mr^2}{\hbar^2}\left[ \frac{e^2}{4\pi\epsilon_0r}+E_1 \right] = 0
+            \end{equation*}
+            which after multiplying through by $R(r)/r^2$ becomes
+            \begin{equation*}
+                \dv[2]{R}{r}+\frac{1}{r}\dv{R}{r}+\frac{2m}{\hbar^2}\left[ \frac{e^2}{4\pi\epsilon_0r}+E_1 \right]R(r) = 0
+            \end{equation*}
+            Performing an asymptotic analysis (i.e., taking the limit as $r\to\infty$) causes all terms with $r$ in the denominator to go to zero, leaving us with
+            \begin{equation*}
+                \dv[2]{R}(r)+\frac{2mE_1}{\hbar^2}R(r) = 0
+            \end{equation*}
+            Solving this equation by the method of part (d) gives
+            \begin{equation*}
+                R(r) = B\e[ir\sqrt{2mE_1}/\hbar]
+            \end{equation*}
+            as the $n=1$ solution. Thus, since
+            \begin{align*}
+                \dv{R}{r} &= \frac{Bi\sqrt{2mE_1}}{\hbar}\e[ir\sqrt{2mE_1}/\hbar]&
+                \dv[2]{R}{r} &= -\frac{2mE_1B}{\hbar^2}\e[ir\sqrt{2mE_1}/\hbar]
+            \end{align*}
+            plugging our solution back into the original differential equation yields
+            \begin{align*}
+                0 &= r^2\dv[2]{R}{r}+r\dv{R}{r}+\frac{2mr^2}{\hbar^2}\left[ \frac{e^2}{4\pi\epsilon_0r}+E_1 \right]R(r)\\
+                &= r^2\left( -\frac{2mE_1B}{\hbar^2}\e[ir\sqrt{2mE_1}/\hbar] \right)+r\left( \frac{Bi\sqrt{2mE_1}}{\hbar}\e[ir\sqrt{2mE_1}/\hbar] \right)+\frac{2mr^2}{\hbar^2}\left[ \frac{e^2}{4\pi\epsilon_0r}+E_1 \right]B\e[ir\sqrt{2mE_1}/\hbar]\\
+                &= \frac{Bir\sqrt{2mE_1}}{\hbar}\e[ir\sqrt{2mE_1}/\hbar]+\frac{2Bmre^2}{4\pi\epsilon_0\hbar^2}\e[ir\sqrt{2mE_1}/\hbar]
+            \end{align*}
+            Cancelling terms from the above, we have
+            \begin{align*}
+                i\sqrt{2mE_1} &= -\frac{me^2}{2\pi\epsilon_0\hbar}\\
+                -2mE_1 &= \frac{m^2e^4}{4\pi^2\epsilon_0^2\hbar^2}\\
+                &= -\frac{me^4}{8\pi^2\epsilon_0^2\hbar^2}\\
+                \Aboxed{E_1 &= -\frac{e^2}{2\pi\epsilon_0a_0}}
+            \end{align*}
+            where $a_0=4\pi\epsilon_0\hbar^2/me^2$ is the Bohr radius.\par
+            It follows that the ground-state wave function is
+            \begin{align*}
+                \psi(r,\phi) &= B\e[ir\sqrt{2m\cdot -me^4/8\pi^2\epsilon_0^2\hbar^2}/\hbar]A\e[i(0)\phi]\\
+                &= C\e[-rme^2/2\pi\epsilon_0\hbar^2]\\
+                &= C\e[-2r/a_0]
+            \end{align*}
+            where we bundle the two constants $A,B$ into the constant $C=AB$. We can determine the value of $C$ by normalizing as follows.
+            \begin{align*}
+                1 &= \int_0^{2\pi}\dd{\phi}\int_0^\infty\dd{r}rC^2\e[-4r/a_0]\\
+                &= C^2\int_0^{2\pi}\dd{\phi}\left[ -\frac{ra_0}{4}\e[-4r/a_0]\bigg|_0^\infty+\frac{a_0}{4}\int_0^\infty\e[-4r/a_0]\dd{r} \right]\\
+                &= C^2\int_0^{2\pi}\dd{\phi}\left[ -\frac{ra_0}{4}\e[-4r/a_0]-\frac{a_0^2}{16}\e[-4r/a_0] \right]_0^\infty\\
+                &= \frac{C^2a_0^2}{16}\cdot 2\pi\\
+                C &= \sqrt{\frac{2}{\pi}}\frac{2}{a_0}
+            \end{align*}
+            It follows that
+            \begin{equation*}
+                \boxed{\psi(r,\phi) = \sqrt{\frac{2}{\pi}}\frac{2}{a_0}\e[-2r/a_0]}
+            \end{equation*}
+        \end{proof}
         \item What is the ratio of the ground-state energy of the two-dimensional hydrogen atom to the ground-state energy of the three-dimensional hydrogen atom?
+        \begin{proof}[Answer]
+            From part (e) and class,
+            \begin{align*}
+                \frac{E_\text{2D}}{E_\text{3D}} &= \frac{-\frac{e^2}{2\pi\epsilon_0a_0}}{-\frac{e^2}{8\pi\epsilon_0a_0(1)^2}}\\
+                \Aboxed{E_\text{2D}:E_\text{3D} &= 4}
+            \end{align*}
+        \end{proof}
         \item On the same figure, draw (or graph electronically) as a function of $r$ the probability for finding the electron in the ground state of the 3D hydrogen atom as well as the probability for finding the electron in the ground state of the 2D hydrogen atom. Briefly compare and contrast these two probability distributions.
+        \begin{proof}[Answer]
+            It follows from part (e) that
+            \begin{equation*}
+                R(r) = \frac{4}{a_0}\e[-2r/a_0]
+            \end{equation*}
+            We also know that
+            \begin{equation*}
+                R_{1s}(r) = \frac{2}{a_0^{3/2}}\e[-r/a_0]
+            \end{equation*}
+            Thus, the radial probability densities are
+            \begin{align*}
+                [R(r)]^2r &= \frac{16r}{a_0^2}\e[-4r/a_0]&
+                [R_{1s}(r)]^2r^2 &= \frac{4r^2}{a_0^3}\e[-2r/a_0]
+            \end{align*}
+            Therefore, we have that
+            \begin{center}
+                \begin{tikzpicture}
+                    \footnotesize
+                    \draw [<->] (0,2) -- (0,0) -- node[below]{$r$} (4,0);
+
+                    \draw [blx,thick] plot[domain=0:3.9,samples=500] (\x,{16*\x*e^(-4*\x)});
+                    \draw [rex,thick] plot[domain=0:3.9,samples=500] (\x,{4*\x^2*e^(-2*\x)});
+                \end{tikzpicture}
+            \end{center}
+            where the blue line corresponds to $R(r)$ and the red line corresponds to $R_{1s}(r)$. The probability densities follow the same general trend, but are normalized differently and peak at different places, meaning the electrons differ in terms of their most probable distance from the nucleus. In fact, the most probable distance from the nucleus for the planar atom is one-fourth the Bohr radius.
+        \end{proof}
     \end{enumerate}
     \item Using your lecture notes and Problem 7-1 as a guide, give a proof of the variational theorem, i.e., that\dots
     \begin{enumerate}
         \item The energy from a trial wave function will always be greater than or equal to the exact ground-state energy.
+        \begin{proof}[Answer]
+            Let $\hat{H}\psi_0=E_0\psi_0$ where $\psi_0$ is the ground-state wave function and $E_0$ is the ground-state energy, and let $\phi$ be a trial wave function meant to approximate $\psi_0$. Since the $\psi_n$ are orthonormal,
+            $\phi=\sum_ic_i\psi_i$ where each $c_i$ is a constant. It follows since the $\psi_n$ are orthonormal that for each $n$,
+            \begin{align*}
+                \int\psi_n^*\phi\dd{\tau} &= \int\sum_ic_i\psi_n^*\psi_i\dd{\tau}\\
+                &= \sum_i\int c_i\psi_n^*\psi_i\dd{\tau}\\
+                &= c_n\int\psi_n^*\psi_n\dd{\tau}\\
+                &= c_n\cdot 1\\
+                &= c_n
+            \end{align*}
+            Thus,
+            \begin{align*}
+                E_\phi &= \frac{\int\phi^*\hat{H}\phi\dd{\tau}}{\int\phi^*\phi\dd{\tau}}\\
+                &= \frac{\int\sum_ic_i^*\psi_i^*\hat{H}\sum_ic_i\psi_i\dd{\tau}}{\int\sum_nc_n^*\psi_n^*\phi\dd{\tau}}\\
+                &= \frac{\int\sum_ic_i^*\psi_i^*\sum_jc_jE_j\psi_j\dd{\tau}}{\sum_nc_n^*\int\psi_n^*\phi\dd{\tau}}\\
+                &= \frac{\sum_i\sum_jc_i^*c_jE_j\int\psi_i^*\psi_j\dd{\tau}}{\sum_nc_n^*c_n}\\
+                &= \frac{\sum_nc_n^*c_nE_n}{\sum_nc_n^*c_n}
+            \end{align*}
+            It follows that
+            \begin{equation*}
+                E_\phi-E_0 = \frac{\sum_nc_n^*c_nE_n}{\sum_nc_n^*c_n}-E_0\frac{\sum_nc_n^*c_n}{\sum_nc_n^*c_n} = \frac{\sum_nc_n^*c_n(E_n-E_0)}{\sum_nc_n^*c_n}
+            \end{equation*}
+            where each $c_n^*c_n=|c_n|^2$ is nonnegative and $E_n- E_0$ is nonnegative because no energy can be lower than the ground-state energy, implying that the entire right term of the above equation is nonnegative. Thus, $E_\phi\geq E_0$, as desired.
+        \end{proof}
         \item The energy from a trial wave function, constrained to be orthogonal to the exact ground-state wave function, will always be greater than or equal to the exact energy of the first excited state.
+        \begin{proof}[Answer]
+            Let $\hat{H}\psi_n=E_n\psi_n$ be a system of interest, and let $\phi$ be a trial wave function such that
+            \begin{equation*}
+                \int\psi_0^*\phi\dd{\tau} = 0
+            \end{equation*}
+            Thus, if $\phi=\sum_ic_i\psi_i$, then by part (a),
+            \begin{equation*}
+                c_0 = \int\psi_0^*\phi\dd{\tau} = 0
+            \end{equation*}
+            It follows that
+            \begin{equation*}
+                E_\phi = \frac{\sum_{i=1}^nc_i^*c_iE_i}{\sum_{i=1}^nc_i^*c_i}
+            \end{equation*}
+            so that
+            \begin{equation*}
+                E_\phi-E_1 = \frac{\sum_{i=1}^nc_i^*c_i(E_i-E_1)}{\sum_{i=1}^nc_i^*c_i} \geq 0
+            \end{equation*}
+            as desired.
+        \end{proof}
     \end{enumerate}
     \item Consider a particle in a box in the interval $[-a,a]$.
     \begin{enumerate}
@@ -33,15 +398,120 @@
             \psi_t = x(a^2-x^2)
         \end{equation*}
         to obtain an approximate energy for the first excited state of the box as a function of $a$.
+        \begin{proof}[Answer]
+            We have that
+            \begin{align*}
+                \int\psi_t^*\hat{H}\psi_t\dd{\tau} &= \int_{-a}^a(a^2x-x^3)\left( -\frac{1}{2}\pdv[2]{x} \right)(a^2x-x^3)\dd{x}\\
+                &= \int_{-a}^a(a^2x-x^3)(3x)\dd{x}\\
+                &= \int_{-a}^a(3a^2x^2-3x^4)\dd{x}\\
+                &= \frac{4a^5}{5}
+            \end{align*}
+            and that
+            \begin{align*}
+                \int\psi_t^*\psi_t\dd{\tau} &= \int_{-a}^ax(a^2-x^2)x(a^2-x^2)\dd{x}\\
+                &= \int_{-a}^a(a^4x^2-2a^2x^4+x^6)\dd{x}\\
+                &= \frac{16}{105}a^7
+            \end{align*}
+            so
+            \begin{align*}
+                E_{\psi_t} &= \frac{\int\psi_t^*\hat{H}\psi_t\dd{\tau}}{\int\psi_t^*\psi_t\dd{\tau}}\\
+                &= \frac{4a^5/5}{16a^7/105}\\
+                \Aboxed{E_{\psi_t} &= \frac{21}{4a^2}\,\si{\atomicunit}}
+            \end{align*}
+        \end{proof}
         \item Why does this function give an approximation to the first excited state rather than the ground state?
+        \begin{proof}[Answer]
+            It is an odd function, like the first excited state, while the ground state is even.
+        \end{proof}
         \item Use the more accurate trial wave function
         \begin{equation*}
             \psi_t = c_1x(a^2-x^2)+c_2x^3(a^2-x^2)
         \end{equation*}
         to obtain an approximate energy for the first excited state of the box as a function of $a$.
+        \begin{proof}[Answer]
+            We have the following matrix entries, calculated in the same manner as $H_{11}$ above. Note that we only perform three explicit calculations per matrix since our operators are Hermitian.
+            \begin{align*}
+                H_{11} &= \int_{-a}^ax(a^2-x^2)\hat{H}x(a^2-x^2)\dd{x}&
+                    H_{12} &= \int_{-a}^ax(a^2-x^2)\hat{H}x^3(a^2-x^2)\dd{x}\\
+                &= \frac{4a^5}{5}&
+                    &= \frac{12a^7}{35}
+            \end{align*}
+            \begin{align*}
+                H_{21} &= H_{12}&
+                    H_{22} &= \int_{-a}^ax^3(a^2-x^2)\hat{H}x^3(a^2-x^2)\dd{x}\\
+                &= \frac{12a^7}{35}&
+                    &= \frac{92a^9}{315}
+            \end{align*}
+            \begin{align*}
+                S_{11} &= \int_{-a}^ax(a^2-x^2)x(a^2-x^2)\dd{x}&
+                    S_{12} &= \int_{-a}^ax(a^2-x^2)x^3(a^2-x^2)\dd{x}\\
+                &= \frac{16a^7}{105}&
+                    &= \frac{16a^9}{315}
+            \end{align*}
+            \begin{align*}
+                S_{21} &= S_{12}&
+                    S_{22} &= \int_{-a}^ax^3(a^2-x^2)x^3(a^2-x^2)\dd{x}\\
+                &= \frac{16a^9}{315}&
+                    &= \frac{16a^{11}}{693}
+            \end{align*}
+            Thus, we are looking to solve the secular determinant/equation
+            \begin{align*}
+                0 &=
+                \begin{vmatrix}
+                    H_{11}-ES_{11} & H_{12}-ES_{12}\\
+                    H_{21}-ES_{21} & H_{22}-ES_{22}\\
+                \end{vmatrix}\\
+                &=
+                \begin{vmatrix}
+                    \frac{4a^5}{5}-E\frac{16a^7}{105} & \frac{12a^7}{35}-E\frac{16a^9}{315}\\
+                    \frac{12a^7}{35}-E\frac{16a^9}{315} & \frac{92a^9}{315}-E\frac{16a^{11}}{693}\\
+                \end{vmatrix}\\
+                &= \left( \frac{4a^5}{5}-E\frac{16a^7}{105} \right) \left(  \frac{92a^9}{315}-E\frac{16a^{11}}{693}\right)-\left( \frac{12a^7}{35}-E\frac{16a^9}{315} \right)^2\\
+                &= \frac{1024a^{18}}{1091475}E^2-\frac{2048a^{16}}{72765}E+\frac{256a^{14}}{2205}\\
+                % &= \frac{2^{10}a^{18}}{3^45^27^211^1}E^2-\frac{2^{11}a^{16}}{3^35^17^211^1}E+\frac{2^8a^{14}}{3^25^17^2}\\
+                % &= \frac{2^2a^4}{3^25^111^1}E^2-\frac{2^3a^2}{3^111^1}E+\frac{1}{1}\\
+                % &= a^4E^2-30a^2E+\frac{3^25^111^1}{2^2}\\
+                &= 4a^4E^2-120a^2E+495
+            \end{align*}
+            which we can do with the quadratic formula, getting
+            \begin{align*}
+                E &= \frac{30+9\sqrt{5}}{2a^2}&
+                E &= \frac{30-9\sqrt{5}}{2a^2}
+            \end{align*}
+            It follows that the energy of the first excited state (the smaller of the two values above) is approximately
+            \begin{equation*}
+                \boxed{E = \frac{4.94}{a^2}\,\si{\atomicunit}}
+            \end{equation*}
+        \end{proof}
         \item Compare the approximate energies with the exact energy (including their dependence on $a$) and the approximate wave functions with the exact wave functions. (Hint: In comparing the wave functions, you may want to select $a=1$.)
+        \begin{proof}[Answer]
+            We have from class that the exact energy is
+            \begin{equation*}
+                E_1 = \frac{\pi^2(2)^2}{8a^2} = \frac{\num{4.934802}}{a^2}\,\si{\atomicunit}
+            \end{equation*}
+            Thus, the dependence on $a$ is identical between the approximations and the exact solution and the first and second approximations have percent error $\SI{6.39}{\percent}$ and $\SI{0.105}{\percent}$, respectively.\par
+            As to the wave functions, the exact wave functions are sinusoidal while the approximate wave functions are third- and fifth-order polynomials, respectively, that very closely follow (especially in the optimized second case) the trajectory of the exact wave functions.
+        \end{proof}
     \end{enumerate}
     \item Use the Quantum Chemistry Toolbox in Maple to answer the lettered questions in the worksheet "Variational Methods" on Canvas.
+    \begin{enumerate}
+        \item Now what happens as you increase $N$? Do you get better approximations to the ground and first excited state, consistent with the Variational Theorem? To answer this, set $N=5$ in the Maple input and recalculate the approximate energies.
+        \begin{proof}[Answer]
+            The \fbox{approximations get much better}. For $N=5$, we have percent errors $\SI{0.004}{\percent}$ and $\SI{0.225}{\percent}$ for $E_0$ and $E_1$, respectively, compared with $\SI{0.523}{\percent}$ and $\SI{6.948}{\percent}$, respectively, for $N=2$.
+        \end{proof}
+        \item Is the spacing between adjacent energy levels evenly spaced, as seen in the harmonic oscillator? What happens to this spacing as energy increases?
+        \begin{proof}[Answer]
+            \fbox{No}. As the energy increases, the \fbox{spacing decreases}.
+        \end{proof}
+        \item Are there an infinite number of "bound" vibrational energy levels, as seen in the harmonic oscillator? If not, how many bounds states does \ce{HCl} have?
+        \begin{proof}[Answer]
+            \fbox{No}. As we can see from the second plot, only \fbox{12} energy levels exist with $E<0$.
+        \end{proof}
+        \item For each series, does the energy decrease variationally as the size of the basis increases? Which series of basis sets gave rise to better energies? What did you notice regarding the time required to carry out each calculation as the size of the basis set increased?
+        \begin{proof}[Answer]
+            \fbox{Yes}, the energy does decrease variationally as the size of the basis increases. The \fbox{second} series gave rise to better energies. The time required to carry out the calculations with longer basis sets was \fbox{greater}.
+        \end{proof}
+    \end{enumerate}
 \end{enumerate}
 
 
