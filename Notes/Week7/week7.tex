@@ -1,0 +1,157 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{6}
+
+\begin{document}
+
+
+
+
+\chapter{Molecular Spectroscopy and Group Theory}
+\section{Hydrogen Molecule}
+\begin{itemize}
+    \item \marginnote{11/8:}Reviews what would happen if electrons were bozons.
+    \begin{itemize}
+        \item The wave function $\psi$ of the lithium atom would be
+        \begin{equation*}
+            \psi(123) = 1s\alpha(1)\vee 1s\alpha(2)\vee 1s\alpha(3)
+        \end{equation*}
+        \item Reviews wedge products.
+        \item Conclusion: All electrons could occupy the same orbital.
+    \end{itemize}
+    \item A sodium atom (the nucleus and the electrons jointly) acts like a bozon.
+    \begin{itemize}
+        \item At temperatures on the order of microkelvin, $10^{11}$ atoms have been placed in the same ground-state orbital.
+        \item These substances are known as \textbf{Bose-Einstein condensates}.
+        \item We use a magnetic field to confine the atoms to a harmonic potential. Since the atoms form a Gaussian curve at the bottom of said potential, they are all in the ground state (see Figure \ref{fig:harmonicPrbDensity}).
+        \item Evaporative cooling and laser cooling allow you to reach such temperatures.
+        \item Fermionic atoms cannot condense in such a way (because of the Pauli Exclusion Principle).
+        \item Superconductivity is a condensation phenomena.
+        \item Bose-Einstein condensates were predicted by Einstein in the 1930s but not experimentally verified until the 1990s.
+        \item A very dilute gas was used here. In such a condition, the atoms feel the statistics force of the wedge product which forces them into such a state.
+    \end{itemize}
+    \item Consider the Boron atom:
+    \begin{itemize}
+        \item It has 5 electrons.
+        \item It's electron configuration is $1s^22s^2sp^1$.
+        \item It's wave function is
+        \begin{equation*}
+            \psi(12345) = 1s\alpha(1)\wedge 1s\beta(2)\wedge 2s\alpha(3)\wedge 2s\beta(4)\wedge 2p\alpha(5)
+        \end{equation*}
+        \begin{itemize}
+            \item Recall that this is not the exact wave function; this is still a product of hydrogenlike orbitals at the Hartree-Fock level.
+            \item More general wave functions can be used to obtain more accurate results.
+        \end{itemize}
+    \end{itemize}
+    \item Consider the diatomic molecule \ce{H2}.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[scale=1.5]
+            \footnotesize
+            \coordinate (HA) at (0,0);
+            \coordinate (HB) at (2,0);
+            \coordinate (e1) at (0.3,1);
+            \coordinate (e2) at (1.7,1);
+    
+            \draw
+                (HA)
+                    -- node[below]{$R$} (HB)
+                    -- node[right]{$r_{2\text{B}}$} (e2)
+                    -- node[above]{$r_{12}$} (e1)
+                    -- node[left]{$r_{1\text{A}}$} cycle
+                (HA) -- node[pos=0.3,above=2pt]{$r_{2\text{A}}$} (e2)
+                (e1) -- node[pos=0.7,above=1pt]{$r_{1\text{B}}$} (HB)
+            ;
+    
+            \node [circle,fill=rex,inner sep=2pt,label={below:\ce{H_A}}] at (HA) {};
+            \node [circle,fill=rex,inner sep=2pt,label={below:\ce{H_B}}] at (HB) {};
+            \node [circle,fill=grx,inner sep=1.5pt,label={above:$\e_1$}] at (e1) {};
+            \node [circle,fill=grx,inner sep=1.5pt,label={above:$\e_2$}] at (e2) {};
+        \end{tikzpicture}
+        \caption{\ce{H2} distances.}
+        \label{fig:H2Distances}
+    \end{figure}
+    \begin{itemize}
+        \item We have hydrogen atoms \ce{H_A} and \ce{H_B}, separated by a distance $R$.
+        \item We have electrons $\e_1$ and $\e_2$.
+        \item The distance from object $i$ to $j$ where $i,j=\text{A},\text{B},1,2$ and $i\neq j$ is $r_{ij}$.
+        \item Hamiltonian:
+        \begin{equation*}
+            \hat{H} = -\frac{1}{2}(\nabla_1^2+\nabla_2^2)-\frac{1}{r_{1\text{A}}}-\frac{1}{r_{1\text{B}}}-\frac{1}{r_{2\text{A}}}-\frac{1}{r_{2\text{B}}}+\frac{1}{r_{12}}+\frac{1}{R}
+        \end{equation*}
+    \end{itemize}
+    \item This is pretty complicated.
+    \item Thus, let's start with the hydrogen molecular ion (\ce{H2+}).
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[scale=1.5]
+            \footnotesize
+            \coordinate (HA) at (0,0);
+            \coordinate (HB) at (1,0);
+            \coordinate (e1) at (0.5,1);
+    
+            \draw
+                (HA)
+                -- node[below]{$R$} (HB)
+                -- node[right]{$r_\text{B}$} (e1)
+                -- node[left]{$r_\text{A}$} cycle
+            ;
+    
+            \node [circle,fill=rex,inner sep=2pt,label={below:\ce{H_A}}] at (HA) {};
+            \node [circle,fill=rex,inner sep=2pt,label={below:\ce{H_B}}] at (HB) {};
+            \node [circle,fill=grx,inner sep=1.5pt,label={above:$\e_1$}] at (e1) {};
+        \end{tikzpicture}
+        \caption{\ce{H2+} distances.}
+        \label{fig:H2plusDistances}
+    \end{figure}
+    \begin{itemize}
+        \item Hamiltonian:
+        \begin{equation*}
+            \hat{H} = -\frac{1}{2}\nabla^2-\frac{1}{r_\text{A}}-\frac{1}{r_\text{B}}+\frac{1}{R}
+        \end{equation*}
+        \item This \emph{can} be solved exactly in cylindrical coordinates, but it's nasty.
+        \item Thus, let's approximate with the following variational wave function (originally by Heitler and London in the 1960s).
+        \begin{equation*}
+            \psi(1) = c_11s_\text{A}+c_21s_\text{B}
+        \end{equation*}
+        \begin{itemize}
+            \item Albeit simple, this wave function gives pretty good results.
+        \end{itemize}
+        \item By the variational principle, $\mathbb{H}\vec{c}=E\mathbb{S}\vec{c}$, or
+        \begin{equation*}
+            \begin{vmatrix}
+                H_{\text{A}\text{A}}-ES_{\text{A}\text{A}} & H_{\text{A}\text{B}}-ES_{\text{A}\text{B}}\\
+                H_{\text{B}\text{A}}-ES_{\text{B}\text{A}} & H_{\text{B}\text{B}}-ES_{\text{B}\text{B}}\\
+            \end{vmatrix}
+            = 0
+        \end{equation*}
+        solves for $E$.
+        \item We have that
+        \begin{align*}
+            H_{\text{A}\text{A}} = H_{\text{B}\text{B}} &= \int\dd{\vec{r}}1s_\text{A}^*\hat{H}1s_\text{A} = \int\dd{\vec{r}}1s_\text{B}^*\hat{H}1s_\text{B}\\
+            H_{\text{A}\text{B}} = H_{\text{B}\text{A}} &= \int\dd{\vec{r}}1s_\text{A}^*\hat{H}1s_\text{B} = \int\dd{\vec{r}}1s_\text{B}^*\hat{H}1s_\text{A}\\
+            S_{\text{A}\text{A}} = S_{\text{B}\text{B}} &= \int\dd{\vec{r}}1s_\text{A}^*1s_\text{A} = \int\dd{\vec{r}}1s_\text{B}^*1s_\text{B}\\
+            S_{\text{A}\text{B}} = S_{\text{B}\text{A}} &= \int\dd{\vec{r}}1s_\text{A}^*1s_\text{B} = \int\dd{\vec{r}}1s_\text{B}^*1s_\text{A}
+        \end{align*}
+        \item We can show that
+        \begin{align*}
+            H_{\text{A}\text{A}} = H_{\text{B}\text{B}} &= E_{1s}+J\\
+            H_{\text{A}\text{B}} = H_{\text{B}\text{A}} &= E_{1s}\mathbb{S}+K
+        \end{align*}
+        where $J$ is the \textbf{Coulomb integral}
+        \begin{equation*}
+            J = \int\dd{\vec{r}}1s_\text{A}^*\left( -\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{A}
+        \end{equation*}
+        and $K$ is the \textbf{exchange integral}
+        \begin{equation*}
+            K = \int\dd{\vec{r}}1s_\text{B}^*\left( -\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{A}
+        \end{equation*}
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
