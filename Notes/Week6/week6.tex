@@ -3,6 +3,7 @@
 \pagestyle{main}
 \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
 \setcounter{chapter}{5}
+\setcounter{postulate}{5}
 
 \begin{document}
 
@@ -221,6 +222,178 @@
         \end{itemize}
     \end{itemize}
     \item Sodium atoms are bozons.
+\end{itemize}
+
+
+
+\section{Chapter 8: Multielectron Atoms}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{11/7:}\textbf{Atomic units}: A system of units widely adopted for atomic and molecular calculations to simplify the equations.
+    \begin{table}[H]
+        \centering
+        \small
+        \renewcommand{\arraystretch}{1.4}
+        \begin{tabular}{lll}
+            \toprule
+            Property & Atomic unit & SI Equivalent\\
+            \midrule
+            mass & mass of an electron, $m_e$ & $\SI{9.1094e-31}{\kilo\gram}$\\
+            charge & charge on a proton, $e$ & $\SI{1.6022e-19}{\coulomb}$\\
+            angular momentum & reduced Planck constant, $\hbar$ & $\SI{1.0546e-34}{\joule\second}$\\
+            distance & Bohr radius, $a_0=4\pi\epsilon_0\hbar^2/m_ee^2$ & $\SI{5.2918e-11}{\meter}$\\
+            energy & $e^2/4\pi\epsilon_0a_0=E_\text{h}$ & $\SI{4.3597e-18}{\joule}$\\
+            permittivity & $4\pi\epsilon_0$ & $\SI{1.1127e-10}{\square\coulomb\per\joule\per\meter}$\\
+            \bottomrule
+        \end{tabular}
+        \caption{Atomic units and their SI equivalents.}
+        \label{tab:atomicUnits}
+    \end{table}
+    \item \textbf{Hartree}: The atomic unit of energy. \emph{Denoted by} $\bm{E}_\textbf{h}$.
+    \begin{itemize}
+        \item Note that in atomic units, the ground-state energy of a hydrogen atom (in the fixed nucleus approximation) is $-E_\text{h}/2$.
+    \end{itemize}
+    \item Another good reason to use atomic units is that we are still refining the values of $m_e$, $e$, $\hbar$, etc., so results computed in atomic units will hold even as these constants evolve.
+    \item Both perturbation theory and the variational method can yield excellent results for helium.
+    \item \textbf{Slater orbital}\footnote{First introduced by American physicist John Slater in the 1930s.}: An orbital of the following form. \emph{Denoted by} $\bm{S_{nlm}(r,\theta,\phi)}$. \emph{Given by}
+    \begin{equation*}
+        S_{nlm}(r,\theta,\phi) = N_{nl}r^{n-1}\e[-\zeta r]Y_l^m(\theta,\phi)\footnotemark
+    \end{equation*}
+    \footnotetext{$\zeta$ is the Greek "zeta."}
+    where $N_{nl}=(2\zeta)^{n+1/2}/\sqrt{(2n)!}$ and the $Y_l^m(\theta,\phi)$ are the spherical harmonics.
+    \begin{itemize}
+        \item The parameter $\zeta$ is arbitrary, i.e., not necessarily $Z/n$ as in hydrogenlike orbitals.
+        \item The radial components of the Slater orbitals do not have nodes like the hydrogenlike orbitals.
+    \end{itemize}
+    \item \textbf{Orbital}: A one-electron wave function.
+    \item \textbf{Hartree-Fock limit}: The best value of the energy that can be obtained using a trial function of the form of a product of orbitals.
+    \item As such, it is advantageous to generalize our trial wave functions past simple products of orbitals.
+    \begin{itemize}
+        \item Better wave functions typically include the interelectronic distance.
+    \end{itemize}
+    \item This realization led scientists to abandon the orbital concept altogether in favor of finding Hartree-Fock orbitals (because they are still a useful model) and correcting them using an approach such as perturbation theory.
+    \item Self-consistent field method for finding the Hartree-Fock orbitals (of helium).
+    \begin{itemize}
+        \item Write $\psi(\mathbf{r}_1,\mathbf{r}_2)$ as a product of orbitals $\phi(\mathbf{r}_1)\phi(\mathbf{r}_2)$.
+        \item It follows that the potential energy that electron 1 experiences at point $\mathbf{r}_1$ due to electron 2 is
+        \begin{equation*}
+            V_1^\text{eff}(\mathbf{r}_1) = \int\phi^*(\mathbf{r}_2)\frac{1}{r_{12}}\phi(\mathbf{r}_2)\dd{\mathbf{r}_2}
+        \end{equation*}
+        where the superscript "eff" emphasizes that $V_1^\text{eff}(\mathbf{r}_1)$ is an effective, or average, potential.
+        \item This allows us to define the effective one-electron Hamiltonian for electron 1 by
+        \begin{equation*}
+            \hat{H}_1^\text{eff}(\mathbf{r}_1) = -\frac{1}{2}\nabla_1^2-\frac{2}{r_1}+V_1^\text{eff}(\mathbf{r}_1)
+        \end{equation*}
+        \item Using this Hamiltonian and the corresponding Schr\"{o}dinger equation, we can determine $\phi(\mathbf{r}_1)$, given an estimate for $\phi(\mathbf{r}_2)$. Since there is analogous Schr\"{o}dinger equation for $\phi(\mathbf{r}_2)$, the self-consistent field method consists of starting with a guess for $\phi(\mathbf{r}_2)$, calculating from that $\phi(\mathbf{r}_1)$, calculating from that a better guess for $\phi(\mathbf{r}_2)$, and so on and so forth until the two wave equations are reasonably close, or \textbf{self-consistent}.
+        \item In practice, linear combinations of Slater orbitals are used for each $\phi(\mathbb{r})$.
+    \end{itemize}
+    \item \textbf{Uncorrelated} (electrons): A set of electrons that are taken to be independent of each other, or at least to interact only through some average (or effective) potential.
+    \begin{itemize}
+        \item Uncorrelated electrons occupy mathematically separable orbitals, as in $\psi(\mathbf{r}_1,\mathbf{r}_2)=\phi(\mathbf{r}_1)\phi(\mathbf{r}_2)$.
+    \end{itemize}
+    \item \textbf{Correlation energy}: The difference between the exact energy and the Hartree-Fock approximation energy. \emph{Denoted by} $\textbf{CE}$.
+    \item \textbf{Spin quantum number}: The fourth quantum number, which represents the $z$-component of the electron spin angular momentum. \emph{Denoted by} $\bm{m_s}$. \emph{Given by}
+    \begin{equation*}
+        m_s = \pm\frac{1}{2}\,\si{\atomicunit}
+    \end{equation*}
+    \begin{itemize}
+        \item Uhlenbeck and Goudsmit first suggested in 1925 that electrons behave like spinning tops having $z$-components of spin angular momentum $\pm\hbar/2$ to explain the phenomena of sodium having a doublet in its atomic spectrum where quantum theory predicts it should have a singlet.
+    \end{itemize}
+    \item We graft spin onto quantum theory in an ad hoc manner here. This will suit our purposes.
+    \begin{itemize}
+        \item Note, however, that Dirac developed in the 1930s a relativistic extension of quantum mechanics in which spin arises in a perfectly natural way.
+    \end{itemize}
+    \item As part of this grafting, we \emph{define} the \textbf{spin operators} $\hat{S}^2$ and $\hat{S}_z$ in an analogous manner to how we defined the angular momentum operators $\hat{L}^2$ and $\hat{L}_z$, except that we introduce half-integral angular momentum for electron spin: Indeed, let
+    \begin{align*}
+        \hat{S}^2\alpha &= \frac{1}{2}\left( \frac{1}{2}+1 \right)\hbar^2\alpha&
+        \hat{S}^2\beta  &= \frac{1}{2}\left( \frac{1}{2}+1 \right)\hbar^2\beta
+    \end{align*}
+    and let
+    \begin{align*}
+        \hat{S}_z\alpha &= m_s\alpha = \frac{1}{2}\hbar\alpha&
+        \hat{S}_z\beta  &= m_2\beta  = -\frac{1}{2}\hbar\beta
+    \end{align*}
+    \begin{itemize}
+        \item We can formally associate $\alpha=Y_{1/2}^{1/2}$ and $\beta=Y_{1/2}^{-1/2}$ in analogy with $\hat{L}^2$ and $\hat{L}_z$, but we do not have to.
+        \item To continue the analogy, we can actually say that the square of the \emph{spin} angular momentum is $S^2=\hbar^2s(s+1)$, where $s=\pm 1/2$.
+        \item Since $s$ cannot assume large values like $l$ and thus cannot approach a classical limit, spin is strictly nonclassical.
+    \end{itemize}
+    \item \textbf{Spin eigenfunctions}: The functions $\alpha$ and $\beta$.
+    \item The spin operators are Hermitian, so $\alpha,\beta$ are orthonormal.
+    \begin{itemize}
+        \item Formally,
+        \begin{align*}
+            \int\alpha^*(\sigma)\alpha(\sigma)\dd{\sigma} &= \int\beta^*(\sigma)\beta(\sigma)\dd{\sigma} = 1\\
+            \int\alpha^*(\sigma)\beta(\sigma)\dd{\sigma} &= \int\beta^*(\sigma)\alpha(\sigma)\dd{\sigma} = 0
+        \end{align*}
+        where $\sigma$ is the \textbf{spin variable}, an object with no classical analog.
+    \end{itemize}
+    \item We now include the spin function with the spatial wave function and postulate that the two are independent so that one of the following two cases holds.
+    \begin{align*}
+        \psi(x,y,z,\sigma) &= \psi(x,y,z)\alpha(\sigma)&
+        \psi(x,y,z,\sigma) &= \psi(x,y,z)\beta(\sigma)
+    \end{align*}
+    \item \textbf{Spin orbital}: The complete one-electron wave function $\psi$ dependent on $x,y,z,\sigma$.
+    \item For example, the first two spin orbitals of a hydrogenlike atom are
+    \begin{align*}
+        \psi_{100\frac{1}{2}} &= \sqrt{\frac{Z^3}{\pi}}\e[-Zr]\alpha&
+        \psi_{100-\frac{1}{2}} &= \sqrt{\frac{Z^3}{\pi}}\e[-Zr]\beta
+    \end{align*}
+    \begin{itemize}
+        \item Note that these orbitals are orthonormal since
+        \begin{equation*}
+            \int\psi_{100\frac{1}{2}}^*(\mathbf{r},\sigma)\psi_{100\frac{1}{2}}(\mathbf{r},\sigma)4\pi r^2\dd{r}\dd{\sigma} = \int_0^\infty\frac{Z^3}{\pi}\e[-2Zr]4\pi r^2\dd{r}\int\alpha^*\alpha\dd{\sigma} = 1
+        \end{equation*}
+        and similarly for $\psi_{100-\frac{1}{2}}$, and since
+        \begin{equation*}
+            \int\psi_{100\frac{1}{2}}^*(\mathbf{r},\sigma)\psi_{100-\frac{1}{2}}(\mathbf{r},\sigma)4\pi r^2\dd{r}\dd{\sigma} = \int_0^\infty\frac{Z^3}{\pi}\e[-2Zr]4\pi r^2\dd{r}\int\alpha^*\beta\dd{\sigma} = 0
+        \end{equation*}
+    \end{itemize}
+    \item \textbf{Pauli Exclusion Principle} (elementary): No two electrons in an atom can have the same values of all four quantum numbers.
+    \item Consider the helium atom.
+    \begin{itemize}
+        \item Let $\psi(1,2)=1s\alpha(1)1s\beta(2)$ where $1s\alpha$ and $1s\beta$ represent $\psi_{100\frac{1}{2}}$ and $\psi_{100-\frac{1}{2}}$, respectively, and 1 and 2 represent all four coordinates (3 spatial plus 1 spin) of electrons 1 and 2, respectively.
+        \item Similarly, $\psi(2,1)=1s\alpha(2)1s\beta(1)$.
+        \item Since no known experiment can distinguish one electron from another, $\psi(1,2)=\psi(2,1)$.
+        \item Formally, we must consider the two possible states
+        \begin{align*}
+            \psi_1 &= \psi(1,2)+\psi(2,1)&
+            \psi_2 &= \psi(1,2)-\psi(2,1)
+        \end{align*}
+        of two indistinguishable electrons.
+        \item Experimentally, $\psi_2$ describes the ground state of helium since $\psi_2(1,2)=-\psi_2(2,1)$, so $\psi_2$ is \textbf{antisymmetric}.
+        \item Note that the normalization constant of $\psi_2$ is $1/\sqrt{2}$.
+    \end{itemize}
+    \item \textbf{Antisymmetric wave function}: A wave function that changes sign when two electrons are interchanged.
+    \item The importance of antisymmetry is captured by the following more fundamental statement of the Pauli Exclusion Principle.
+    \begin{postulate}
+        All electronic wave functions must be antisymmetric under the interchange of any two electrons.
+    \end{postulate}
+    \item We were able to ignore spin in previous treatments of helium since $\psi_2$ can be factored into a spatial and a spin part, and any contributions from spin cancel under a Hamiltonian that does not contain any spin operators.
+    \begin{itemize}
+        \item Note that factorization of $\psi^*\hat{H}\psi$ and $\psi^*\psi$ does not occur in general, but does occur for two-electron systems.
+    \end{itemize}
+    \item \textbf{Determinantal wave function}: A wave function given by the determinant of a matrix whose entries are individual spin orbitals.
+    \begin{itemize}
+        \item Since the determinant representation changes signs when two rows are interchanged (representing interchanging two electrons) and is equal to zero under repeated rows/columns (representing multiple electrons in the same spin orbital), the determinant representation is antisymmetric and satisfies the Pauli Exclusion Principle, respectively.
+    \end{itemize}
+    \item \textbf{Normalized $\bm{N}$-electron determinantal wave function}: The normalized determinantal wave function
+    \begin{equation*}
+        \psi(1,\dots,N) = \frac{1}{\sqrt{N!}}
+        \begin{vmatrix}
+            u_1(1) & \cdots & u_N(1)\\
+            \vdots & \ddots & \vdots\\
+            u_1(N) & \cdots & u_N(N)\\
+        \end{vmatrix}
+    \end{equation*}
+    where the $u$'s are orthonormal spin orbitals.
+    \item \textbf{Fock operator}: The more general effective Hamiltonian operator used for self-consistent field solutions to systems more complex than helium. \emph{Denoted by} $\bm{\hat{F}_i}$.
+    \item \textbf{Hartree-Fock orbital}: An eigenfunction of the Fock operator. \emph{Denoted by} $\bm{\phi_i}$.
+    \item \textbf{Orbital energy}: An eigenvalue of the Fock operator. \emph{Denoted by} $\bm{\epsilon_i}$.
+    \begin{itemize}
+        \item Alternatively, the energy of a Hartree-Fock orbital.
+        \item $\epsilon_i$ approximates the ionization energy of an electron from the $i^\text{th}$ orbital.
+    \end{itemize}
 \end{itemize}
 
 
