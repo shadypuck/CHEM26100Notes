@@ -114,7 +114,8 @@
         \end{proof}
         \item Compare the uncertainties in the position and momentum for the ground, second-excited, and fourth-excited states. What would you expect to happen to the uncertainties as the state $n$ approaches infinity?
         \begin{proof}[Answer]
-            As $n\to\infty$, uncertainty in position will stay basically the same (increase slightly asymptotically), but uncertainty in momentum will diverge to $\infty$.
+            From the ground to the second-excited to the fourth-excited state, uncertainty in position increases slightly each time and uncertainty in momentum increases linearly.\par
+            As $n\to\infty$, uncertainty in position will approach the asymptotic limit of $\frac{a}{2\sqrt{3}}$, but uncertainty in momentum will diverge to $\infty$.
         \end{proof}
     \end{enumerate}
     \item Consider a particle in a one-dimensional infinite square well where the infinite walls are located and $-b$ and $+b$. Give the time-dependent form of the ground and the first-excited states.
@@ -185,7 +186,7 @@
                     0 & \text{otherwise}
                 \end{cases}
             \end{equation*}
-            Before we normalize, note that by part (a), $B=D$. Thus, we can normalize as follows.
+            Before we normalize, note that by part (a), $|B|^2=|D|^2$. Thus, we can normalize as follows.
             \begin{align*}
                 1 &= \int_{-\infty}^\infty\psi^2(x)\dd{x}\\
                 &= \int_{-b}^{-b/2}\psi_\text{I}^2(x)\dd{x}+\int_{b/2}^b\psi_\text{II}^2(x)\dd{x}\\
@@ -193,7 +194,7 @@
                 &= B^2\left( \int_{-b}^{-b/2}\frac{1-\cos\left( \frac{4\pi n}{b}x \right)}{2}\dd{x}+\int_{b/2}^b\frac{1-\cos\left( \frac{4\pi n}{b}x \right)}{2}\dd{x} \right)\\
                 &= B^2\left( \left[ \frac{x}{2}-\frac{b}{8\pi n}\sin\left( \frac{4\pi n}{b}x \right) \right]_{-b}^{-b/2}+\left[ \frac{x}{2}-\frac{b}{8\pi n}\sin\left( \frac{4\pi n}{b}x \right) \right]_{b/2}^b \right)\\
                 &= B^2\left( \left[ \frac{b}{4} \right]+\left[ \frac{b}{4} \right] \right)\\
-                B &= \sqrt{\frac{2}{b}}
+                B &= \pm\sqrt{\frac{2}{b}}
             \end{align*}
             Thus, our wave function for this system is
             \begin{equation*}
