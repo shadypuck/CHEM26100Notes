@@ -103,7 +103,7 @@
             \begin{equation*}
                 \Prob(r) = \frac{4}{a_0^3}r^2\e[-2r/a_0]
             \end{equation*}
-            We want to find the point where $\dv*{\Prob(r)}{r}=0$, as this will be the maximum. We can do this as follows.
+            We want to find the point where $\dv*{\Prob(r)}{r}=0$, as this will be the maximum. Note that we know that $\Prob(r)$ takes on positive values, and we know that $\Prob(0)=\Prob(\infty)=0$, so we need not consider the boundary points. We can do this as follows.
             \begin{align*}
                 0 &= \dv{r}\left( \frac{4}{a_0^3}r^2\e[-2r/a_0] \right)\\
                 &= \frac{4}{a_0^3}\left( 2r\e[-2r/a_0]-\frac{2r^2}{a_0}\e[-2r/a_0] \right)\\
@@ -158,8 +158,8 @@
             \end{align*}
             Solving this polynomial for its zeroes, and knowing that the most probable distance is going to be the zero of greatest magnitude (orbital penetration peaks will necessarily be smaller than the farthest one out), we have that the the most probable distance is
             \begin{align*}
-                \sigma &= 13.704\\
-                \Aboxed{r &= 13.704a_0}
+                \sigma &= 13.074\\
+                \Aboxed{r &= 13.074a_0}
             \end{align*}
         \end{proof}
     \end{enumerate}
