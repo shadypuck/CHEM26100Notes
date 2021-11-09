@@ -1,0 +1,46 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\setcounter{section}{5}
+
+\begin{document}
+
+
+
+
+\section{Perturbation Corrections and Atomic and Molecular Orbitals}
+\begin{enumerate}
+    \item \marginnote{11/10:}Consider an electron in a potential with a Hamiltonian
+    \begin{equation*}
+        H = H_0+\lambda V
+    \end{equation*}
+    where
+    \begin{equation*}
+        H_0 = -\frac{\hbar^2}{2m}\dv[2]{x}+\frac{1}{2}x^2
+    \end{equation*}
+    and the perturbative term $V=x^2$.
+    \begin{enumerate}
+        \item Compute the first-order correction to the energy for the ground- and the first-excited states for $\lambda=1/5$.
+        \item Optimize the $\alpha$ in the trial wave function $\e[-\alpha x^2/2]$ to estimate the ground-state energy of this system for $\lambda=1/5$.
+        \item Which approximation yields a better estimate for the ground-state energy?
+    \end{enumerate}
+    \item 
+    \begin{enumerate}
+        \item Using the $1s$, $2s$, and $2p$ orbitals, give all electronic configurations for the carbon atom where both the $1s$ and the $2s$ orbitals are filled.
+        \item Which configuration has the lowest energy according to Hund's rule?
+        \item For this configuration, express the molecular wave function in Grassmann product notation (i.e., with $\wedge$'s).
+    \end{enumerate}
+    \item Using the worksheet "Molecular Orbitals" with the Quantum Chemistry Toolbox for Maple, answer the following questions.
+    \begin{enumerate}
+        \item In performing the geometry optimization of hydrogen fluoride, what is the computed bond length in the STO-3G basis set, and how does this bond length compare to the experimental bond length?
+        \item What is the computed dipole moment of the molecule in Debyes, and is this result consistent with the experimental dipole moment in Debyes? (Hint: Search the \href{https://cccbdb.nist.gov/exp1x.asp}{NIST database}.)
+        \item Draw a molecular orbital (MO) diagram for hydrogen fluoride.
+        \item Based on the results from the worksheet, provide a sketch of each MO, and explain which atomic orbitals (AOs) contribute significantly to each MO. Are these results consistent with your MO diagram?
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}
