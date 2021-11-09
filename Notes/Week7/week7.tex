@@ -153,5 +153,92 @@
 
 
 
+\section{Chapter 9: The Chemical Bond --- Diatomic Molecules}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item Quantum mechanics was the first theory to explain why atoms combined to form a stable bond.
+    \item Since \ce{H2+} has the simplest chemical bond, we will discuss it in detail.
+    \begin{itemize}
+        \item The ideas developed will be applicable to more complex molecules, motivating molecular orbitals.
+    \end{itemize}
+    \item Describes the Hamiltonian for \ce{H2}, as in the discussion associated with Figure \ref{fig:H2Distances}.
+    \item \textbf{Born-Oppenheimer approximation}: The approximation of neglecting the nuclear motion, allowing us to ignore $\nabla_{A,B}$ terms.
+    \begin{itemize}
+        \item We can correct for the BO approximation using perturbation theory, but realistically we don't really need to (corrections are on the order of the mass ratio $10^{-3}$).
+    \end{itemize}
+    \item \textbf{Molecular-orbital theory}: The method we will use to describe the bonding properties of molecules.
+    \item \textbf{Molecular orbital}: A single-electron wave function corresponding to a molecule.
+    \item Like we constructed atomic wave functions in terms of determinants involving atomic orbitals, we will construct molecular wave functions in terms of determinants involving molecular orbitals.
+    \item Note that \ce{H2+} is a stable, well-studied species in real life.
+    \item Although the Schr\"{o}dinger equation for \ce{H2+} can be solved exactly within the BO approximation, the solutions are not easy to use and their mathematical form gives little physical insight into how and why bonding occurs.
+    \begin{itemize}
+        \item Thus, we use approximate solutions that provide good physical insight and are in good agreement with experimental observations.
+    \end{itemize}
+    \item As a first trial wave function $\psi(r_A,r_B;R)$, use
+    \begin{equation*}
+        \psi_\pm = c_11s_\text{A}\pm c_21s_\text{B}
+    \end{equation*}
+    where $1s_\text{A,B}$ are the hydrogen atomic orbitals centered on nuclei A and B, respectively.
+    \begin{itemize}
+        \item By symmetry, $c_1=c_2$ for \ce{H2+}.
+    \end{itemize}
+    \item \textbf{LCAO molecular orbital}: A molecular orbital that is a linear combination of atomic orbitals.
+    \item \textbf{Overlap integral}: The following integral. \emph{Denoted by} $\bm{S}$. \emph{Given by}
+    \begin{equation*}
+        S = \int\dd{\mathbf{r}}nl_\text{A}^*nl_\text{B}
+        = \int\dd{\mathbf{r}}nl_\text{B}^*nl_\text{A}
+        = \int\dd{\mathbf{r}}nl_\text{A}nl_\text{B}
+    \end{equation*}
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \footnotesize
+                \node (A) [circle,fill=rex,inner sep=2pt,label={above:A}] at (0,-0.5) {};
+                \node (B) [circle,fill=rex,inner sep=2pt,label={above:B}] at (2,-0.5) {}
+                    edge [<->] node[below]{$R$} (A)
+                ;
+    
+                \draw [blx,thick] plot [domain=-1.5:1.5,smooth,samples=100] (\x,{e^(-2*\x*\x)});
+                \draw [blx,thick] plot [domain=-1.5:1.5,smooth,samples=100] ({\x+2},{e^(-2*\x*\x)});
+            \end{tikzpicture}
+            \caption{Small overlap.}
+            \label{fig:overlapIntegrala}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \footnotesize
+                \node (A) [circle,fill=rex,inner sep=2pt,label={above:A}] at (0,-0.5) {};
+                \node (B) [circle,fill=rex,inner sep=2pt,label={above:B}] at (1,-0.5) {}
+                    edge [<->] node[below]{$R$} (A)
+                ;
+    
+                \draw [blx,thick] plot [domain=-1.5:1.5,smooth,samples=100] (\x,{e^(-2*\x*\x)});
+                \draw [blx,thick] plot [domain=-1.5:1.5,smooth,samples=100] ({\x+1},{e^(-2*\x*\x)});
+            \end{tikzpicture}
+            \caption{Large overlap.}
+            \label{fig:overlapIntegralb}
+        \end{subfigure}
+        \caption{Overlap integral vs. internuclear distance.}
+        \label{fig:overlapIntegral}
+    \end{figure}
+    \begin{itemize}
+        \item So named because it is only significant where there is a large overlap between the two hydrogenlike atomic orbitals.
+        \item As $R\to 0$, $S\to 1$. As $R\to\infty$, $S\to 0$.
+    \end{itemize}
+    \item The overlap integral when $nl=1s$ can be evaluated analytically, giving
+    \begin{equation*}
+        S(R) = \e[-R]\left( 1+R+\frac{R^2}{3} \right)
+    \end{equation*}
+    \item It follows that the normalized $\psi_\pm$ are
+    \begin{equation*}
+        \psi_\pm = \frac{1}{\sqrt{2(1\pm S)}}(1s_\text{A}\pm 1s_\text{B})
+    \end{equation*}
+\end{itemize}
+
+
+
 
 \end{document}
