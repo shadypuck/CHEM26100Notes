@@ -140,7 +140,7 @@
             H_{\text{A}\text{A}} = H_{\text{B}\text{B}} &= E_{1s}+J\\
             H_{\text{A}\text{B}} = H_{\text{B}\text{A}} &= E_{1s}\mathbb{S}+K
         \end{align*}
-        where $J$ is the \textbf{Coulomb integral}
+        where $E_{1s}$ is the energy of the $1s$ orbital of the hydrogen atom, $J$ is the \textbf{Coulomb integral}
         \begin{equation*}
             J = \int\dd{\vec{r}}1s_\text{A}^*\left( -\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{A}
         \end{equation*}
@@ -153,10 +153,169 @@
 
 
 
+\section{The Hydrogen Molecular Ion}
+\begin{itemize}
+    \item \marginnote{11/10:}Continuing from last time, the determinant for the equation $\mathbb{H}\vec{c}_n=E_n\mathbb{S}\vec{c}_n$ is
+    \begin{equation*}
+        \begin{vmatrix}
+            E_{1s}+J-E & E_{1s}S+K\\
+            E_{1s}S+K & E_{1s}+J-E\\
+        \end{vmatrix}
+    \end{equation*}
+    \item Therefore, the characteristic polynomial is a quadratic equation in $E$.
+    \item Solving said quadratic gives us
+    \begin{equation*}
+        E_\pm = E_{1s}+\frac{J\pm K}{1\pm S}
+    \end{equation*}
+    where
+    \begin{align*}
+        J(R) &= \e[-2R]\left( 1+\frac{1}{R} \right)&
+        S(R) &= \e[-R]\left( 1+R+\frac{R^2}{3} \right)&
+        K(R) &= \frac{S(R)}{R}-\e[-R](1+R)
+    \end{align*}
+    \item We then determine $\vec{c}_n$ in the two different cases. But this yields
+    \begin{equation*}
+        |c_1| = |c_2| = k
+    \end{equation*}
+    \item Therefore,
+    \begin{equation*}
+        \psi_\pm = k(1s_\text{A}\pm 1s_\text{B})
+    \end{equation*}
+    \begin{figure}[H]
+        \centering
+        \footnotesize
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \path (-1,0) -- (5,0);
+                \draw [stealth-stealth] (0,2) -- node[left]{$\psi_+$} (0,0) -- (4,0);
+    
+                \node (A) [circle,fill=rex,inner sep=2pt,label={below:A}] at (1,0) {};
+                \node (B) [circle,fill=rex,inner sep=2pt,label={below:B}] at (3,0) {}
+                    edge [semithick,decorate,decoration={brace,raise=2pt}] node[below=4pt]{$R$} (A)
+                ;
+    
+                \draw [blx,thick] plot[domain=0.1:3.9,samples=500,smooth] (\x,{e^(-1*abs(\x-1))+e^(-1*abs(\x-3))});
+            \end{tikzpicture}
+            \caption{Sum wave function.}
+            \label{fig:H2plusBondinga}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \path (-1,0) -- (5,0);
+                \draw [stealth-stealth] (0,2) -- node[left]{$\psi_-$} (0,-2);
+                \draw [-stealth] (0,0) -- (4,0);
+    
+                \node (A) [circle,fill=rex,inner sep=2pt,label={below:A}] at (1,0) {};
+                \node (B) [circle,fill=rex,inner sep=2pt,label={below:B}] at (3,0) {}
+                    edge [semithick,decorate,decoration={brace,raise=1cm}] node[below=1.1cm]{$R$} (A)
+                ;
+    
+                \draw [blx,thick] plot[domain=0.1:3.9,samples=500,smooth] (\x,{e^(-1*abs(\x-1))-e^(-1*abs(\x-3))});
+            \end{tikzpicture}
+            \caption{Difference wave function.}
+            \label{fig:H2plusBondingb}
+        \end{subfigure}\\[2em]
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \path (-1,0) -- (5,0);
+                \draw [stealth-stealth] (0,2) -- node[left]{$|\psi_+|^2$} (0,0) -- (4,0);
+    
+                \node (A) [circle,fill=rex,inner sep=2pt,label={below:A}] at (1,0) {};
+                \node (B) [circle,fill=rex,inner sep=2pt,label={below:B}] at (3,0) {}
+                    edge [semithick,decorate,decoration={brace,raise=2pt}] node[below=4pt]{$R$} (A)
+                ;
+    
+                \draw [blx,thick] plot[domain=0.1:3.9,samples=500,smooth] (\x,{(e^(-1*abs(\x-1))+e^(-1*abs(\x-3)))^2});
+            \end{tikzpicture}
+            \caption{Sum probability.}
+            \label{fig:H2plusBondingc}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.4\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \path (-1,0) -- (5,0);
+                \draw [stealth-stealth] (0,2) -- node[left]{$|\psi_-|^2$} (0,0) -- (4,0);
+    
+                \node (A) [circle,fill=rex,inner sep=2pt,label={below:A}] at (1,0) {};
+                \node (B) [circle,fill=rex,inner sep=2pt,label={below:B}] at (3,0) {}
+                    edge [semithick,decorate,decoration={brace,raise=2pt}] node[below=4pt]{$R$} (A)
+                ;
+    
+                \draw [blx,thick] plot[domain=0.1:3.9,samples=500,smooth] (\x,{(e^(-1*abs(\x-1))-e^(-1*abs(\x-3)))^2});
+            \end{tikzpicture}
+            \caption{Difference probability.}
+            \label{fig:H2plusBondingd}
+        \end{subfigure}
+        \caption{Hydrogen ion bonding.}
+        \label{fig:H2plusBonding}
+    \end{figure}
+    \begin{itemize}
+        \item Note that in $\psi_-$, a node arises naturally from the quantum mechanics.
+        \item Thus, $\psi_+$ is a bonding orbital and $\psi_-$ is an antibonding orbital.
+    \end{itemize}
+    \item We now consider the \textbf{potential energy surface} or \textbf{PES} of the molecule.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[xscale=0.5,yscale=2]
+            \path (-4,0) -- (13,0);
+            \small
+            \draw [stealth-stealth] (0,1) -- node[rotate=90,above=9mm]{$E$ (\si{\hartree})} (0,0) -- node[below=7mm]{$R$} (9,0);
+            \footnotesize
+            \draw
+                (0.2,0.5) -- ++(-0.4,0) node[left]{$-0.5$}
+                (2.493,0.05) -- ++(0,-0.1) node[below=3mm]{$R_e$}
+                foreach \x in {2,4,6,8} {(\x,0.05) -- ++(0,-0.1) node[below]{$\x$}}
+            ;
+    
+            \draw [dashed] (0.2,0.5) -- (8.9,0.5);
+    
+            \draw [grx,thick] plot[domain=0.735:8.9,samples=500,smooth] (\x,{0.5+((e^(-2*\x)*(1+1/\x))+((e^(-\x)*(1+\x+\x*\x/3))/\x-e^(-\x)*(1+\x)))/(1+(e^(-\x)*(1+\x+\x*\x/3)))});
+            \draw [grx,thick] plot[domain=1.625:8.9,samples=500,smooth] (\x,{0.5+((e^(-2*\x)*(1+1/\x))-((e^(-\x)*(1+\x+\x*\x/3))/\x-e^(-\x)*(1+\x)))/(1-(e^(-\x)*(1+\x+\x*\x/3)))});
+    
+            \node at (3.5,0.8) {$E_-(R)$};
+            \node at (3.5,0.3) {$E_+(R)$};
+        \end{tikzpicture}
+        \caption{Potential energy surface of the hydrogen molecular ion.}
+        \label{fig:H2plusPES}
+    \end{figure}
+    \begin{itemize}
+        \item The $x,y$-axis units are Bohrs and Hartrees, respectively.
+        \item The bound state only occurs in the bonding orbital; if the electron is excited to the antibonding orbital, the atoms will drift apart to $\infty$ to minimize energy.
+    \end{itemize}
+    \item \textbf{Born-Oppenheimer approximation}.
+    \begin{itemize}
+        \item Throughout this derivation, we neglected the kinetic energy of the nuclei.
+        \item Thus, technically the total Hamiltonian is
+        \begin{equation*}
+            \hat{H}_\text{tot} = -\frac{\hbar^2}{2M}(\hat{\nabla}_\text{A}^2+\hat{\nabla}_\text{B}^2)+\hat{H}_\text{electr}
+        \end{equation*}
+        where $\hat{H}_\text{electr}$ is the Hamiltonian associated with Figure \ref{fig:H2plusDistances}.
+        \item We have assumed that the nuclei are fixed relative to the motion of the electrons. We can do this because $m_e/M\approx 10^{-3}$, i.e., the electrons travel much faster than the nuclei. Therefore, the kinetic energy of the electrons is more important.
+        \item The wave functions of the nuclei (which do exist) are very sharp peaks, so the nuclei don't move much, so we may regard them as fixed.
+    \end{itemize}
+    \item \textbf{Molecular orbital}: A linear combination of atomic orbitals. \emph{Also known as} \textbf{MO}.
+    \item Example (\ce{H2}):
+    \begin{itemize}
+        \item $\psi_\pm=1s_\text{A}\pm 1s_\text{B}$ (bonding and antibonding).
+        \item $\phi_\text{MO}=\phi_{1s_\text{A}}+\phi_{1s_\text{B}}$.
+        \item $\phi(12)=\phi_\text{MO}\alpha(1)\wedge\phi_\text{MO}\beta(2)$; thus, the MO diagram is connected back to the rigorous mathematics of Schr\"{o}dinger.
+    \end{itemize}
+    \item Filling rules: Fill the MOs that are lower in energy first.
+    \item Example (\ce{C2}):
+    \begin{itemize}
+        \item The MO diagram is identical to Figure III.17 from \textcite{bib:IChemNotes} except that the $\sigma_g$ corresponding to the $2p$ orbitals has higher energy than the $\pi_u$'s due to mixing.
+    \end{itemize}
+\end{itemize}
+
+
+
 \section{Chapter 9: The Chemical Bond --- Diatomic Molecules}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
-    \item Quantum mechanics was the first theory to explain why atoms combined to form a stable bond.
+    \item \marginnote{11/8:}Quantum mechanics was the first theory to explain why atoms combined to form a stable bond.
     \item Since \ce{H2+} has the simplest chemical bond, we will discuss it in detail.
     \begin{itemize}
         \item The ideas developed will be applicable to more complex molecules, motivating molecular orbitals.
@@ -200,8 +359,8 @@
                     edge [<->] node[below]{$R$} (A)
                 ;
     
-                \draw [blx,thick] plot [domain=-1.5:1.5,smooth,samples=100] (\x,{e^(-2*\x*\x)});
-                \draw [blx,thick] plot [domain=-1.5:1.5,smooth,samples=100] ({\x+2},{e^(-2*\x*\x)});
+                \draw [blx,thick] plot [domain=-1.5:1.5,smooth,samples=100] (\x,{e^(-2*abs(\x))});
+                \draw [blx,thick] plot [domain=-1.5:1.5,smooth,samples=100] ({\x+2},{e^(-2*abs(\x))});
             \end{tikzpicture}
             \caption{Small overlap.}
             \label{fig:overlapIntegrala}
@@ -215,8 +374,8 @@
                     edge [<->] node[below]{$R$} (A)
                 ;
     
-                \draw [blx,thick] plot [domain=-1.5:1.5,smooth,samples=100] (\x,{e^(-2*\x*\x)});
-                \draw [blx,thick] plot [domain=-1.5:1.5,smooth,samples=100] ({\x+1},{e^(-2*\x*\x)});
+                \draw [blx,thick] plot [domain=-1.5:1.5,smooth,samples=100] (\x,{e^(-2*abs(\x))});
+                \draw [blx,thick] plot [domain=-1.5:1.5,smooth,samples=100] ({\x+1},{e^(-2*abs(\x))});
             \end{tikzpicture}
             \caption{Large overlap.}
             \label{fig:overlapIntegralb}
