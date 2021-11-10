@@ -13,30 +13,485 @@
 \begin{enumerate}
     \item \marginnote{11/10:}Consider an electron in a potential with a Hamiltonian
     \begin{equation*}
-        H = H_0+\lambda V
+        \hat{H} = \hat{H}_0+\lambda\hat{V}
     \end{equation*}
     where
     \begin{equation*}
-        H_0 = -\frac{\hbar^2}{2m}\dv[2]{x}+\frac{1}{2}x^2
+        \hat{H}_0 = -\frac{\hbar^2}{2m}\dv[2]{x}+\frac{1}{2}x^2
     \end{equation*}
-    and the perturbative term $V=x^2$.
+    and the perturbative term $\hat{V}=x^2$.
     \begin{enumerate}
-        \item Compute the first-order correction to the energy for the ground- and the first-excited states for $\lambda=1/5$.
+        \item Compute the first-order correction to the energy for the ground and the first-excited states for $\lambda=1/5$.
+        \begin{proof}[Answer]
+            \underline{Ground state}: First, we need to find $\psi_0^{(0)}$. To do so, we will solve the Schr\"{o}dinger equation
+            \begin{align*}
+                \hat{H}_0\psi^{(0)} &= E_0\psi^{(0)}\\
+                -\frac{\hbar^2}{2m}\dv[2]{\psi^{(0)}(x)}{x}+\frac{1}{2}x^2\psi^{(0)}(x) &= E_0\psi^{(0)}(x)
+            \end{align*}
+            which is clearly just the Schr\"{o}dinger equation for a harmonic oscillator with $k=1$. Thus, from \textcite{bib:McQuarrieSimon}, we have that
+            \begin{equation*}
+                \psi_0^{(0)}(x) = \sqrt[4]{\frac{\alpha}{\pi}}\e[-\alpha x^2/2]
+            \end{equation*}
+            where $\alpha=\sqrt{m}/\hbar$. It follows that
+            \begin{align*}
+                \dv{E}{\lambda}\bigg|_0 &= \int\psi_0^{(0)^*}(x)V\psi_0^{(0)}(x)\dd{x}\\
+                &= \int_{-\infty}^\infty\left( \sqrt[4]{\frac{\alpha}{\pi}}\e[-\alpha x^2/2] \right)x^2\left( \sqrt[4]{\frac{\alpha}{\pi}}\e[-\alpha x^2/2] \right)\dd{x}\\
+                &= \sqrt{\frac{\alpha}{\pi}}\int_{-\infty}^\infty x^2\e[-\alpha x^2]\dd{x}\\
+                &= \sqrt{\frac{\alpha}{\pi}}\cdot\sqrt{\frac{\pi}{4\alpha^3}}\\
+                &= \sqrt{\frac{1}{4\alpha^2}}\\
+                &= \sqrt{\frac{\hbar^2}{4m}}\\
+                E_0^{(1)} &= \frac{\hbar}{2\sqrt{m}}
+            \end{align*}
+            where the integral is evaluated from the tables. Therefore, by multiplying the above by $\lambda=1/5$, we obtain the first order correction to the ground state energy as
+            \begin{equation*}
+                \boxed{\lambda E_0^{(1)} = \frac{\hbar}{10\sqrt{m}}}
+            \end{equation*}\par
+            \underline{First-excited state}: First, we need to find $\psi_1^{(0)}$. To do so, we will solve the same Schr\"{o}dinger equation as before to get
+            \begin{equation*}
+                \psi_1^{(0)} = \sqrt[4]{\frac{4\alpha^3}{\pi}}x\e[-\alpha x^2/2]
+            \end{equation*}
+            It follows that
+            \begin{align*}
+                \dv{E}{\lambda}\bigg|_0 &= \int\psi_1^{(0)^*}(x)V\psi_1^{(0)}(x)\dd{x}\\
+                &= \int_{-\infty}^\infty\left( \sqrt[4]{\frac{4\alpha^3}{\pi}}x\e[-\alpha x^2/2] \right)x^2\left( \sqrt[4]{\frac{4\alpha^3}{\pi}}x\e[-\alpha x^2/2] \right)\dd{x}\\
+                &= \sqrt{\frac{4\alpha^3}{\pi}}\int_{-\infty}^\infty x^4\e[-\alpha x^2]\dd{x}\\
+                &= \sqrt{\frac{4\alpha^3}{\pi}}\cdot\sqrt{\frac{9\pi}{16\alpha^5}}\\
+                &= \sqrt{\frac{9}{4\alpha^2}}\\
+                &= \sqrt{\frac{9\hbar^2}{4m}}\\
+                E_1^{(0)} &= \frac{3\hbar}{2\sqrt{m}}
+            \end{align*}
+            where the integral is evaluated from the tables. Therefore, by multiplying the above by $\lambda=1/5$, we obtain the first order correction to the first-excited state energy as
+            \begin{equation*}
+                \boxed{\lambda E_1^{(0)} = \frac{3\hbar}{10\sqrt{m}}}
+            \end{equation*}
+        \end{proof}
         \item Optimize the $\alpha$ in the trial wave function $\e[-\alpha x^2/2]$ to estimate the ground-state energy of this system for $\lambda=1/5$.
+        \begin{proof}[Answer]
+            Let $\phi(x)=\e[-\alpha x^2/2]$. Then
+            \begin{align*}
+                \hat{H}\phi(x) &= \hat{H}_0\phi(x)+\frac{1}{5}x^2\phi(x)\\
+                &= -\frac{\hbar^2}{2m}\dv[2]{x}(\e[-\alpha x^2/2])+\frac{7}{10}x^2\e[-\alpha x^2/2]\\
+                &= -\frac{\hbar^2}{2m}\dv{x}(-\alpha x\e[-\alpha x^2/2])+\frac{7}{10}x^2\e[-\alpha x^2/2]\\
+                &= -\frac{\hbar^2}{2m}\left( \alpha^2x^2\e[-\alpha x^2/2]-\alpha\e[-\alpha x^2/2] \right)+\frac{7}{10}x^2\e[-\alpha x^2/2]\\
+                &= \left( \frac{7}{10}-\frac{\hbar^2}{2m}\alpha^2 \right)x^2\e[-\alpha x^2/2]+\frac{\hbar^2}{2m}\alpha\e[-\alpha x^2/2]
+            \end{align*}
+            It follows that
+            \begin{align*}
+                \int\phi^*(x)\hat{H}\phi(x)\dd{x} &= \int_{-\infty}^\infty\left( \e[-\alpha x^2/2] \right)\left[ \left( \frac{7}{10}-\frac{\hbar^2}{2m}\alpha^2 \right)x^2\e[-\alpha x^2/2]+\frac{\hbar^2}{2m}\alpha\e[-\alpha x^2/2] \right]\dd{x}\\
+                &= \left( \frac{7}{10}-\frac{\hbar^2}{2m}\alpha^2 \right)\int_{-\infty}^\infty x^2\e[-\alpha x^2]\dd{x}+\frac{\hbar^2}{2m}\alpha\int_{-\infty}^\infty\e[-\alpha x^2]\dd{x}\\
+                &= \left( \frac{7}{10}-\frac{\hbar^2}{2m}\alpha^2 \right)\cdot\sqrt{\frac{\pi}{4\alpha^3}}+\frac{\hbar^2}{2m}\alpha\cdot\sqrt{\frac{\pi}{\alpha}}\\
+                &= \frac{7}{20}\sqrt{\frac{\pi}{\alpha^3}}-\frac{\hbar^2}{4m}\sqrt{\pi\alpha}+\frac{\hbar^2}{2m}\sqrt{\pi\alpha}\\
+                &= \frac{7}{20}\sqrt{\frac{\pi}{\alpha^3}}+\frac{\hbar^2}{4m}\sqrt{\pi\alpha}
+            \end{align*}
+            and
+            \begin{align*}
+                \int\phi^*(x)\phi(x)\dd{x} &= \int_{-\infty}^\infty\left( \e[-\alpha x^2/2] \right)\left( \e[-\alpha x^2/2] \right)\dd{x}\\
+                &= \int_{-\infty}^\infty\e[-\alpha x^2]\dd{x}\\
+                &= \sqrt{\frac{\pi}{\alpha}}
+            \end{align*}
+            Thus
+            \begin{align*}
+                E_\phi &= \frac{\int\phi^*\hat{H}\phi\dd{x}}{\int\phi^*\phi\dd{x}}\\
+                &= \frac{\frac{7}{20}\sqrt{\frac{\pi}{\alpha^3}}+\frac{\hbar^2}{4m}\sqrt{\pi\alpha}}{\sqrt{\frac{\pi}{\alpha}}}\\
+                &= \frac{7}{20\alpha}+\frac{\hbar^2\alpha}{4m}
+            \end{align*}
+            Differentiating, we find that
+            \begin{align*}
+                0 &= -\frac{7}{20\alpha^2}+\frac{\hbar^2}{4m}\\
+                \frac{1}{\alpha^2} &= \frac{5\hbar^2}{7m}\\
+                \alpha &= \pm\sqrt{\frac{7m}{5\hbar^2}}
+            \end{align*}
+            Thus, the possible values that will minimize $E_\phi$ are the $\alpha$'s given by the above. Note that $\alpha\to\pm\infty$ or $\alpha\to 0$ causes the energy to diverge, and we can ignore any negative energies because the harmonic oscillator does not have a negative energy. Plugging in, we find that $E_\phi(-\sqrt{7m/5\hbar^2})<0$, so our minimal value of energy is
+            \begin{align*}
+                E_\phi &= \frac{7}{20}\sqrt{\frac{5\hbar^2}{7m}}+\frac{\hbar^2}{4m}\sqrt{\frac{7m}{5\hbar^2}}\\
+                &= \frac{\hbar}{4}\sqrt{\frac{7}{5m}}+\frac{\hbar}{4}\sqrt{\frac{7}{5m}}\\
+                &= \frac{\hbar}{2}\sqrt{\frac{7}{5m}}\\
+                \Aboxed{E_\phi &= \SI{0.5916}{\atomicunit}}
+            \end{align*}
+        \end{proof}
         \item Which approximation yields a better estimate for the ground-state energy?
+        \begin{proof}[Answer]
+            First off, we must calculate the energy of the ground state of the electron according to first-order perturbation theory. To do so, note that
+            \begin{align*}
+                E_0^{(0)} &= \hbar\omega\left( 0+\frac{1}{2} \right)\\
+                &= \frac{\hbar}{2}\sqrt{\frac{1}{m}}\\
+                &= \frac{\hbar}{2\sqrt{m}}
+            \end{align*}
+            Thus, our approximation for the ground-state energy according to first-order perturbation theory is
+            \begin{align*}
+                E_0 &= E_0^{(0)}+\lambda E_0^{(1)}\\
+                &= \frac{\hbar}{2\sqrt{m}}+\frac{\hbar}{10\sqrt{m}}\\
+                &= \frac{3\hbar}{5\sqrt{m}}\\
+                &= \SI{0.6000}{\atomicunit}
+            \end{align*}
+            Since our variational energy $E_\phi$ must be greater than or equal to the actual energy, and $E_0$ is even greater than $E_\phi$, \fbox{our variational approximation $E_\phi$ yields a better estimate} than our first-order perturbation theory calculation $E_0$.
+        \end{proof}
     \end{enumerate}
     \item 
     \begin{enumerate}
         \item Using the $1s$, $2s$, and $2p$ orbitals, give all electronic configurations for the carbon atom where both the $1s$ and the $2s$ orbitals are filled.
+        \begin{proof}[Answer]
+            They are as follows.
+            \begin{figure}[h!]
+                \centering
+                \footnotesize
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}[
+                        every node/.style={black}
+                    ]
+                        \draw [ultra thick,grx] (0,2)
+                            -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_x$} ++(0.5,0) ++(0.1,0)
+                            -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_y$} ++(0.5,0) ++(0.1,0)
+                            -- node[below=2mm]{$2p_z$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,1) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$1s$} ++(0.5,0);
+                    \end{tikzpicture}
+                    \caption{}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}[
+                        every node/.style={black}
+                    ]
+                        \draw [ultra thick,grx] (0,2)
+                            -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_x$} ++(0.5,0) ++(0.1,0)
+                            -- node[below=2mm]{$2p_y$} ++(0.5,0) ++(0.1,0)
+                            -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_z$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,1) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$1s$} ++(0.5,0);
+                    \end{tikzpicture}
+                    \caption{}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}[
+                        every node/.style={black}
+                    ]
+                        \draw [ultra thick,grx] (0,2)
+                            -- node[below=2mm]{$2p_x$} ++(0.5,0) ++(0.1,0)
+                            -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_y$} ++(0.5,0) ++(0.1,0)
+                            -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_z$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,1) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$1s$} ++(0.5,0);
+                    \end{tikzpicture}
+                    \caption{}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}[
+                        every node/.style={black}
+                    ]
+                        \draw [ultra thick,grx] (0,2)
+                            -- node{\Large$\downharpoonright$} node[below=2mm]{$2p_x$} ++(0.5,0) ++(0.1,0)
+                            -- node{\Large$\downharpoonright$} node[below=2mm]{$2p_y$} ++(0.5,0) ++(0.1,0)
+                            -- node[below=2mm]{$2p_z$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,1) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$1s$} ++(0.5,0);
+                    \end{tikzpicture}
+                    \caption{}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}[
+                        every node/.style={black}
+                    ]
+                        \draw [ultra thick,grx] (0,2)
+                            -- node{\Large$\downharpoonright$} node[below=2mm]{$2p_x$} ++(0.5,0) ++(0.1,0)
+                            -- node[below=2mm]{$2p_y$} ++(0.5,0) ++(0.1,0)
+                            -- node{\Large$\downharpoonright$} node[below=2mm]{$2p_z$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,1) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$1s$} ++(0.5,0);
+                    \end{tikzpicture}
+                    \caption{}
+                \end{subfigure}\\[2em]
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}[
+                        every node/.style={black}
+                    ]
+                        \draw [ultra thick,grx] (0,2)
+                            -- node[below=2mm]{$2p_x$} ++(0.5,0) ++(0.1,0)
+                            -- node{\Large$\downharpoonright$} node[below=2mm]{$2p_y$} ++(0.5,0) ++(0.1,0)
+                            -- node{\Large$\downharpoonright$} node[below=2mm]{$2p_z$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,1) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$1s$} ++(0.5,0);
+                    \end{tikzpicture}
+                    \caption{}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}[
+                        every node/.style={black}
+                    ]
+                        \draw [ultra thick,grx] (0,2)
+                            -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_x$} ++(0.5,0) ++(0.1,0)
+                            -- node{\Large$\downharpoonright$} node[below=2mm]{$2p_y$} ++(0.5,0) ++(0.1,0)
+                            -- node[below=2mm]{$2p_z$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,1) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$1s$} ++(0.5,0);
+                    \end{tikzpicture}
+                    \caption{}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}[
+                        every node/.style={black}
+                    ]
+                        \draw [ultra thick,grx] (0,2)
+                            -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_x$} ++(0.5,0) ++(0.1,0)
+                            -- node[below=2mm]{$2p_y$} ++(0.5,0) ++(0.1,0)
+                            -- node{\Large$\downharpoonright$} node[below=2mm]{$2p_z$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,1) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$1s$} ++(0.5,0);
+                    \end{tikzpicture}
+                    \caption{}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}[
+                        every node/.style={black}
+                    ]
+                        \draw [ultra thick,grx] (0,2)
+                            -- node[below=2mm]{$2p_x$} ++(0.5,0) ++(0.1,0)
+                            -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_y$} ++(0.5,0) ++(0.1,0)
+                            -- node{\Large$\downharpoonright$} node[below=2mm]{$2p_z$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,1) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$1s$} ++(0.5,0);
+                    \end{tikzpicture}
+                    \caption{}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}[
+                        every node/.style={black}
+                    ]
+                        \draw [ultra thick,grx] (0,2)
+                            -- node{\Large$\downharpoonright$} node[below=2mm]{$2p_x$} ++(0.5,0) ++(0.1,0)
+                            -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_y$} ++(0.5,0) ++(0.1,0)
+                            -- node[below=2mm]{$2p_z$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,1) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$1s$} ++(0.5,0);
+                    \end{tikzpicture}
+                    \caption{}
+                \end{subfigure}\\[2em]
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}[
+                        every node/.style={black}
+                    ]
+                        \draw [ultra thick,grx] (0,2)
+                            -- node{\Large$\downharpoonright$} node[below=2mm]{$2p_x$} ++(0.5,0) ++(0.1,0)
+                            -- node[below=2mm]{$2p_y$} ++(0.5,0) ++(0.1,0)
+                            -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_z$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,1) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$1s$} ++(0.5,0);
+                    \end{tikzpicture}
+                    \caption{}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}[
+                        every node/.style={black}
+                    ]
+                        \draw [ultra thick,grx] (0,2)
+                            -- node[below=2mm]{$2p_x$} ++(0.5,0) ++(0.1,0)
+                            -- node{\Large$\downharpoonright$} node[below=2mm]{$2p_y$} ++(0.5,0) ++(0.1,0)
+                            -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_z$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,1) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$1s$} ++(0.5,0);
+                    \end{tikzpicture}
+                    \caption{}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}[
+                        every node/.style={black}
+                    ]
+                        \draw [ultra thick,grx] (0,2)
+                            -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2p_x$} ++(0.5,0) ++(0.1,0)
+                            -- node[below=2mm]{$2p_y$} ++(0.5,0) ++(0.1,0)
+                            -- node[below=2mm]{$2p_z$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,1) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$1s$} ++(0.5,0);
+                    \end{tikzpicture}
+                    \caption{}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}[
+                        every node/.style={black}
+                    ]
+                        \draw [ultra thick,grx] (0,2)
+                            -- node[below=2mm]{$2p_x$} ++(0.5,0) ++(0.1,0)
+                            -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2p_y$} ++(0.5,0) ++(0.1,0)
+                            -- node[below=2mm]{$2p_z$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,1) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$1s$} ++(0.5,0);
+                    \end{tikzpicture}
+                    \caption{}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}[
+                        every node/.style={black}
+                    ]
+                        \draw [ultra thick,grx] (0,2)
+                            -- node[below=2mm]{$2p_x$} ++(0.5,0) ++(0.1,0)
+                            -- node[below=2mm]{$2p_y$} ++(0.5,0) ++(0.1,0)
+                            -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2p_z$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,1) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0);
+                        \draw [ultra thick,grx] (0,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$1s$} ++(0.5,0);
+                    \end{tikzpicture}
+                    \caption{}
+                \end{subfigure}
+            \end{figure}
+        \end{proof}
         \item Which configuration has the lowest energy according to Hund's rule?
+        \begin{proof}[Answer]
+            Configurations \fbox{(a)-(f)} all have the same minimal energy. This is because we have parallel spins (we can take advantage of the exchange energy) and no two electrons are in the same orbital (as this would add the Coulombic energy).
+        \end{proof}
         \item For this configuration, express the molecular wave function in Grassmann product notation (i.e., with $\wedge$'s).
+        \begin{proof}[Answer]
+            The Grassmann wedge products for these six configurations are
+            \begin{align*}
+                \psi_\text{a}(123456) &= 1s\alpha(1)\wedge 1s\beta(2)\wedge 2s\alpha(3)\wedge 2s\beta(4)\wedge 2p_x\alpha(5)\wedge 2p_y\alpha(6)\\
+                \psi_\text{b}(123456) &= 1s\alpha(1)\wedge 1s\beta(2)\wedge 2s\alpha(3)\wedge 2s\beta(4)\wedge 2p_x\alpha(5)\wedge 2p_z\alpha(6)\\
+                \psi_\text{c}(123456) &= 1s\alpha(1)\wedge 1s\beta(2)\wedge 2s\alpha(3)\wedge 2s\beta(4)\wedge 2p_y\alpha(5)\wedge 2p_z\alpha(6)\\
+                \psi_\text{d}(123456) &= 1s\alpha(1)\wedge 1s\beta(2)\wedge 2s\alpha(3)\wedge 2s\beta(4)\wedge 2p_x\beta(5)\wedge 2p_y\beta(6)\\
+                \psi_\text{e}(123456) &= 1s\alpha(1)\wedge 1s\beta(2)\wedge 2s\alpha(3)\wedge 2s\beta(4)\wedge 2p_x\beta(5)\wedge 2p_z\beta(6)\\
+                \psi_\text{f}(123456) &= 1s\alpha(1)\wedge 1s\beta(2)\wedge 2s\alpha(3)\wedge 2s\beta(4)\wedge 2p_y\beta(5)\wedge 2p_z\beta(6)
+            \end{align*}
+        \end{proof}
     \end{enumerate}
     \item Using the worksheet "Molecular Orbitals" with the Quantum Chemistry Toolbox for Maple, answer the following questions.
     \begin{enumerate}
         \item In performing the geometry optimization of hydrogen fluoride, what is the computed bond length in the STO-3G basis set, and how does this bond length compare to the experimental bond length?
+        \begin{proof}[Answer]
+            The computed bond length is \fbox{$\SI{0.9555}{\angstrom}$}, which is approximately \fbox{$5\%$ off} from the experimental value of $\SI{0.91}{\angstrom}$.
+        \end{proof}
         \item What is the computed dipole moment of the molecule in Debyes, and is this result consistent with the experimental dipole moment in Debyes? (Hint: Search the \href{https://cccbdb.nist.gov/exp1x.asp}{NIST database}.)
+        \begin{proof}[Answer]
+            Maple computed the dipole moment to \fbox{$\SI{1.252}{\debye}$}. NIST has the experimental dipole moment as $\SI{1.820}{\debye}$. The computed value is $31.2\%$ off from the real value, so it is \fbox{not consistent}.
+        \end{proof}
         \item Draw a molecular orbital (MO) diagram for hydrogen fluoride.
+        \begin{proof}[Answer]
+            ${\color{white}hi}$
+            \begin{center}
+                \begin{tikzpicture}[
+                    yscale=0.15,
+                    every node/.style={black}
+                ]
+                    \footnotesize
+                    \draw [ultra thick,grx] (-2.5,-13.61) -- node{\Large$\upharpoonleft$} node[below=2mm]{$1s$} ++(0.5,0);
+                    \draw [ultra thick,grx] (2,-18.65) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2p_z$} ++(0.5,0) ++(0.1,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2p_y$} ++(0.5,0) ++(0.1,0) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_x$} ++(0.5,0);
+                    \draw [ultra thick,grx] (2,-40.17) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0);
+                    \draw [ultra thick,grx] (2,-60) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$1s$} ++(0.5,0);
+            
+                    \draw [ultra thick] (-0.55,-7) -- node[below]{$\sigma^*$} ++(1.1,0);
+                    \draw [ultra thick] (-0.55,-18.65) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2p_y$} ++(0.5,0) (0.05,-18.65) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2p_x$} ++(0.5,0);
+                    \draw [ultra thick] (-0.55,-28) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$\sigma$} ++(1.1,0);
+                    \draw [ultra thick] (-0.55,-40.17) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(1.1,0);
+                    \draw [ultra thick] (-0.55,-60) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$1s$} ++(1.1,0);
+            
+                    \draw [grx,densely dashed]
+                        (-2,-13.61) -- (-0.55,-7)
+                        (-2,-13.61) -- (-0.55,-28)
+                        (2,-18.65) -- (0.55,-7)
+                        (2,-18.65) -- (0.55,-28)
+                        (2,-40.17) -- (0.55,-40.17)
+                        (2,-18.65) -- (0.55,-18.65)
+                        (2,-60) -- (0.55,-60)
+                    ;
+                \end{tikzpicture}
+            \end{center}
+        \end{proof}
         \item Based on the results from the worksheet, provide a sketch of each MO, and explain which atomic orbitals (AOs) contribute significantly to each MO. Are these results consistent with your MO diagram?
+        \begin{proof}[Answer]
+            ${\color{white}hi}$
+            \begin{center}
+                \begin{tikzpicture}
+                    \begin{scope}
+                        \shade [top color=gray,bottom color=gray,middle color=white] (0,-0.1) rectangle (1,0.1);
+                        \fill [ball color=white] (0,0) circle (2mm);
+                        \fill [ball color=grx] (1,0) circle (3mm);
+            
+                        \fill [grx,opacity=0.3] (1,0) circle (5mm);
+                    \end{scope}
+                    
+                    \begin{scope}[yshift=2cm]
+                        \shade [top color=gray,bottom color=gray,middle color=white] (0,-0.1) rectangle (1,0.1);
+                        \fill [ball color=white] (0,0) circle (2mm);
+                        \fill [ball color=grx] (1,0) circle (3mm);
+            
+                        \fill [grx,opacity=0.3] (-0.7,0)
+                            to[out=90,in=90,in looseness=1.6] (2,0)
+                            to[out=-90,in=-90,out looseness=1.6] cycle
+                        ;
+                    \end{scope}
+                    
+                    \begin{scope}[yshift=4.5cm]
+                        \shade [top color=gray,bottom color=gray,middle color=white] (0,-0.1) rectangle (1,0.1);
+                        \fill [ball color=white] (0,0) circle (2mm);
+                        \fill [ball color=grx] (1,0) circle (3mm);
+            
+                        \fill [grx,opacity=0.3] (1,0)
+                            to[out=90,in=90,out looseness=3.5,in looseness=2] (2,0)
+                            to[out=-90,in=-90,in looseness=3.5,out looseness=2] cycle
+                        ;
+                        \fill [rex!50!blx,opacity=0.3] (-0.7,0)
+                            to[out=90,in=90,in looseness=2,out looseness=1.2] (1,0)
+                            to[out=-90,in=-90,out looseness=2,in looseness=1.2] cycle
+                        ;
+                    \end{scope}
+                    
+                    \begin{scope}[xshift=-2cm,yshift=7cm]
+                        \shade [top color=gray,bottom color=gray,middle color=white] (0,-0.1) rectangle (1,0.1);
+                        \fill [ball color=white] (0,0) circle (2mm);
+                        \fill [ball color=grx] (1,0) circle (3mm);
+            
+                        \fill [grx,opacity=0.3] (1,0)
+                            to[out=0,in=0,out looseness=3.5,in looseness=2] (1,1)
+                            to[out=180,in=180,in looseness=3.5,out looseness=2] cycle
+                        ;
+                        \fill [rex!50!blx,opacity=0.3] (1,0)
+                            to[out=0,in=0,out looseness=3.5,in looseness=2] (1,-1)
+                            to[out=180,in=180,in looseness=3.5,out looseness=2] cycle
+                        ;
+                    \end{scope}
+                    
+                    \begin{scope}[xshift=2cm,yshift=7cm]
+                        \shade [top color=gray,bottom color=gray,middle color=white] (0,-0.1) rectangle (1,0.1);
+                        \fill [ball color=white] (0,0) circle (2mm);
+                        \fill [ball color=grx] (1,0) circle (3mm);
+            
+                        \fill [rex!50!blx,opacity=0.3] (1,0.15) circle (8mm);
+                        \fill [grx,opacity=0.3] (1,-0.15) circle (8mm);
+                    \end{scope}
+                    
+                    \begin{scope}[yshift=9.5cm]
+                        \shade [top color=gray,bottom color=gray,middle color=white] (0,-0.1) rectangle (1,0.1);
+                        \fill [ball color=white] (0,0) circle (2mm);
+                        \fill [ball color=grx] (1,0) circle (3mm);
+            
+                        \fill [grx,opacity=0.3] (1.1,0)
+                            to[out=90,in=90,out looseness=4,in looseness=2] (1.7,0)
+                            to[out=-90,in=-90,in looseness=4,out looseness=2] cycle
+                        ;
+                        \fill [rex!50!blx,opacity=0.3] (0.5,0)
+                            to[out=90,in=90,in looseness=4,out looseness=2] (1.1,0)
+                            to[out=-90,in=-90,out looseness=4,in looseness=2] cycle
+                        ;
+                        \fill [grx,opacity=0.3] (-0.7,0)
+                            to[out=90,in=90,in looseness=3,out looseness=1.5] (0.5,0)
+                            to[out=-90,in=-90,out looseness=3,in looseness=1.5] cycle
+                        ;
+                    \end{scope}
+                \end{tikzpicture}
+            \end{center}
+            The first MO comes primarily from the \ce{F_{$1s$}} AO. The second MO comes primarily from the \ce{H_{$1s$}} and \ce{F_{$2s$}} AO. The third MO comes primarily from the \ce{H_{$1s$}}, \ce{F_{$2s$}}, and \ce{F_{$2p_z$}} AOs. The fourth and fifth MOs come entirely from the \ce{F_{$2p_y$}} and \ce{F_{$2p_x$}} AOs, respectively. The sixth MO comes primarily from the \ce{H_{$1s$}}, \ce{F_{$2s$}}, and \ce{F_{$2p_z$}} AOs.\par
+            These results are \fbox{not consistent} with my MO diagram since the MOs drawn derive their their electron density from additional AOs not connected to them by dashed lines in the MO diagram.
+        \end{proof}
     \end{enumerate}
 \end{enumerate}
 
