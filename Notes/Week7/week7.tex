@@ -312,6 +312,169 @@
 
 
 
+\section{Huckel Theory}
+\begin{itemize}
+    \item \marginnote{11/12:}Reviews that diatomics with more electrons will have less mixing.
+    \item \textbf{Bond order}: A measure of stability. \emph{Given by}
+    \begin{equation*}
+        BO = \frac{1}{2}[(\text{\# of electrons in }BO_1)-(\text{\# of electrons in }ABO_1)]
+    \end{equation*}
+    \begin{itemize}
+        \item For example, for \ce{C2}, we will have $BO=\frac{1}{2}(8-4)=2$.
+    \end{itemize}
+    \item Huckel was a physicist/chemist from the 1930s who worked out the MO theory for conjugated molecules.
+    \item Huckel's strategy.
+    \begin{enumerate}
+        \item $\mathbb{H}\vec{c}=E\mathbb{S}\vec{c}$ becomes $\mathbb{H}\vec{c}=E\vec{c}$, where the only orbitals considered are the $p_z$ orbitals.
+        \item We let $\mathbb{S}=\mathbb{I}$, i.e., we assume all orbitals are orthonormal. $S_{ij}=\delta_{ij}$.
+        \item $H_{ii}=\alpha$ (the energy of the electrons in $p_z$).
+        \begin{itemize}
+            \item $H_{i,i+1}=H_{i+1,i}=\beta$ (interaction between adjacent $p_z$ orbitals).
+            \item Everything else is zero!
+        \end{itemize}
+    \end{enumerate}
+    \item Example: Ethene.
+    \begin{figure}[h!]
+        \centering
+        \footnotesize
+        \chemfig{@{C1}C(-[:120]H)(-[:-120]H)=@{C2}C(-[:60]H)(-[:-60]H)}
+        \chemmove{
+            \draw [-,rey,line width=2mm] ([yshift=5mm]C1.90) to[bend left=30] ([yshift=5mm]C2.90);
+            \draw [-,rez,line width=2mm] ([yshift=-5mm]C1.-90) to[bend right=30] ([yshift=-5mm]C2.-90);
+            %
+            \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rey] (C1.110) to[bend left=110,looseness=30] (C1.70);
+            \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rez] (C1.-70) to[bend left=110,looseness=30] (C1.-110);
+            %
+            \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rey] (C2.110) to[bend left=110,looseness=30] (C2.70);
+            \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rez] (C2.-70) to[bend left=110,looseness=30] (C2.-110);
+        }
+        \caption{Ethene orbital diagram.}
+        \label{fig:ethene}
+    \end{figure}
+    \begin{itemize}
+        \item The Hamiltonian matrix is
+        \begin{equation*}
+            \mathbb{H} =
+            \begin{pmatrix}
+                \alpha & \beta\\
+                \beta & \alpha\\
+            \end{pmatrix}
+        \end{equation*}
+        \item If we let $(\alpha-E)/\beta=x$, then
+        \begin{align*}
+            0 &=
+            \begin{vmatrix}
+                \alpha-E & \beta\\
+                \beta & \alpha-E\\
+            \end{vmatrix}\\
+            &= \frac{1}{\beta^2}
+            \begin{vmatrix}
+                \alpha-E & \beta\\
+                \beta & \alpha-E\\
+            \end{vmatrix}\\
+            &=
+            \begin{vmatrix}
+                x & 1\\
+                1 & x\\
+            \end{vmatrix}
+        \end{align*}
+        \item Thus, our characteristic polynomial is
+        \begin{align*}
+            0 &= x^2-1\\
+            &= (x+1)(x-1)
+        \end{align*}
+        so $x=\pm 1$.
+        \item It follows from returning the substitution that $\alpha\pm\beta=E_\mp$.
+        \item This yields the following energy diagram.
+        \begin{figure}[h!]
+            \centering
+            \begin{tikzpicture}[
+                yscale=1.2,
+                every node/.style={black}
+            ]
+                \footnotesize
+                \draw [stealth-stealth] (0,2) -- (0,0) -- (4,0);
+        
+                \draw [dashed] (0,1) -- ++(4,0) node[right]{$\alpha$};
+        
+                \draw [grx,ultra thick] (1.25,1.4) -- ++(0.5,0) node[right]{$\alpha-\beta$};
+                \draw [grx,ultra thick] (1.25,0.6) -- node{\large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} ++(0.5,0) node[right]{$\alpha+\beta$};
+            \end{tikzpicture}
+            \caption{Ethene energy diagram.}
+            \label{fig:etheneEN}
+        \end{figure}
+        \item Note that the ground state MO is more stable than the 1-electron in each $p_z$ orbital scenario; thus bonding occurs.
+        \item It follows that
+        \begin{align*}
+            \psi_{\alpha+\beta} &= 2p_{z_\text{A}}+2p_{z_\text{B}}&
+            \psi_{\alpha-\beta} &= 2p_{z_\text{A}}-2p_{z_\text{B}}
+        \end{align*}
+        \begin{itemize}
+            \item Thus, $\psi_{\alpha+\beta}$ has $\pi_u$ symmetry and $\psi_{\alpha-\beta}$ has $\pi_g$ symmetry.
+        \end{itemize}
+    \end{itemize}
+    \item Example: 1,3-butadiene.
+    \begin{itemize}
+        \item Our determinant here will be
+        \begin{align*}
+            0 &=
+            \begin{vmatrix}
+                \alpha-E & \beta & 0 & 0\\
+                \beta & \alpha-E & \beta & 0\\
+                0 & \beta & \alpha-E & \beta\\
+                0 & 0 & \beta & \alpha-E\\
+            \end{vmatrix}\\
+            &=
+            \begin{vmatrix}
+                x & 1 & 0 & 0\\
+                1 & x & 1 & 0\\
+                0 & 1 & x & 1\\
+                0 & 0 & 1 & x\\
+            \end{vmatrix}\\
+            &= x^4-3x^2+1\\
+            &= y^2-3y+1\\
+            y &= \frac{3\pm\sqrt{5}}{2}\\
+            x &= \pm 1.618,\pm 0.618
+        \end{align*}
+        \item Thus, our energy diagram will be
+        \begin{figure}[h!]
+            \centering
+            \begin{tikzpicture}[
+                yscale=1.2,
+                every node/.style={black}
+            ]
+                \footnotesize
+                \draw [stealth-stealth] (0,2) -- (0,0) -- (4,0);
+        
+                \draw [dashed] (0,1) -- ++(4,0) node[right]{$\alpha$};
+        
+                \draw [grx,ultra thick] (1.25,{1+0.4*1.618}) -- ++(0.5,0) node[right]{$\alpha-1.618\beta$};
+                \draw [grx,ultra thick] (1.25,{1+0.4*0.618}) -- ++(0.5,0) node[right]{$\alpha-0.618\beta$};
+                \draw [grx,ultra thick] (1.25,{1-0.4*0.618}) -- node{\large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} ++(0.5,0) node[right]{$\alpha+0.618\beta$};
+                \draw [grx,ultra thick] (1.25,{1-0.4*1.618}) -- node{\large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} ++(0.5,0) node[right]{$\alpha+1.618\beta$};
+            \end{tikzpicture}
+            \caption{1,3-butadiene energy diagram.}
+            \label{fig:butadieneEN}
+        \end{figure}
+        \item This yields the bond order $BO=\frac{1}{2}(4-0)=2$.
+        \item Solving for the possible $\vec{c}$'s yields four wave function LCAOs analogous to the particle in a box wave functions (even function, odd function with one node, even function with two nodes, odd function with three nodes).
+        \begin{itemize}
+            \item Thus, the Huckel approximation agrees with the approximation of four particles in a box.
+        \end{itemize}
+    \end{itemize}
+    \item Example 3: 1,3,5-hexatriene.
+    \begin{itemize}
+        \item Working out the determinant yields
+        \begin{align*}
+            0 &= x^6-5x^4+6x^2-1\\
+            &= y^3-5y^2+6y-1
+        \end{align*}
+        \item Our energy diagram is as one might expect with 3 bonding orbitals and 3 antibonding orbitals.
+    \end{itemize}
+\end{itemize}
+
+
+
 \section{Chapter 9: The Chemical Bond --- Diatomic Molecules}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
