@@ -525,7 +525,9 @@
         \item By symmetry, $c_1=c_2$ for \ce{H2+}.
     \end{itemize}
     \item \textbf{LCAO molecular orbital}: A molecular orbital that is a linear combination of atomic orbitals.
-    \item \textbf{Overlap integral}: The following integral. \emph{Denoted by} $\bm{S}$. \emph{Given by}
+    \item We seek to find $E_\pm$ by taking the quotient the integrals $\int\dd{\mathbf{r}}\psi_\pm^*\hat{H}\psi_\pm$ and $\int\dd{\mathbf{r}}\psi_\pm^*\psi_\pm$.
+    \item Considering $\int\dd{\mathbf{r}}\psi_\pm^*\psi_\pm$ first, we are lead to define the \textbf{overlap integral}.
+    \item \textbf{Overlap integral}: The following integral, which is only significant where there is a large overlap between the two hydrogenlike atomic orbitals. \emph{Denoted by} $\bm{S}$. \emph{Given by}
     \begin{equation*}
         S = \int\dd{\mathbf{r}}nl_\text{A}^*nl_\text{B}
         = \int\dd{\mathbf{r}}nl_\text{B}^*nl_\text{A}
@@ -567,17 +569,199 @@
         \label{fig:overlapIntegral}
     \end{figure}
     \begin{itemize}
-        \item So named because it is only significant where there is a large overlap between the two hydrogenlike atomic orbitals.
         \item As $R\to 0$, $S\to 1$. As $R\to\infty$, $S\to 0$.
     \end{itemize}
     \item The overlap integral when $nl=1s$ can be evaluated analytically, giving
     \begin{equation*}
         S(R) = \e[-R]\left( 1+R+\frac{R^2}{3} \right)
     \end{equation*}
+    \item The overlap integral allows us to express $\int\dd{\mathbf{r}}\psi_\pm^*\psi_\pm$ in the following convenient form.
+    \begin{align*}
+        \int\dd{\mathbf{r}}\psi_+^*\psi_+ &= \int\dd{\mathbf{r}}(1s_\text{A}^*+1s_\text{B}^*)(1s_\text{A}+1s_\text{B})\\
+        &= \int\dd{\mathbf{r}}1s_\text{A}^*1s_\text{A}+\int\dd{\mathbf{r}}1s_\text{A}^*1s_\text{B}+\int\dd{\mathbf{r}}1s_\text{B}^*1s_\text{A}+\int\dd{\mathbf{r}}1s_\text{B}^*1s_\text{B}\\
+        &= 1+S+S+1\\
+        &= 2(1+S)
+    \end{align*}
     \item It follows that the normalized $\psi_\pm$ are
     \begin{equation*}
         \psi_\pm = \frac{1}{\sqrt{2(1\pm S)}}(1s_\text{A}\pm 1s_\text{B})
     \end{equation*}
+    \item \marginnote{11/14:}We now look to evaluate the integral $\int\dd{\mathbf{r}}\psi_+^*\hat{H}\psi_+$.
+    \item To begin, we have that
+    \begin{align*}
+        \int\dd{\mathbf{r}}\psi_+^*\hat{H}\psi_+ ={}& \int\dd{\mathbf{r}}(1s_\text{A}^*+1s_\text{B}^*)\left( -\frac{1}{2}\nabla^2-\frac{1}{r_\text{A}}-\frac{1}{r_\text{B}}+\frac{1}{R} \right)(1s_\text{A}+1s_\text{B})\\
+        \begin{split}
+            ={}& \int\dd{\mathbf{r}}(1s_\text{A}^*+1s_\text{B}^*)\left( -\frac{1}{2}\nabla^2-\frac{1}{r_\text{A}}-\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{A}\\
+            & +\int\dd{\mathbf{r}}(1s_\text{A}^*+1s_\text{B}^*)\left( -\frac{1}{2}\nabla^2-\frac{1}{r_\text{A}}-\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{B}
+        \end{split}\\
+        \begin{split}
+            ={}& \int\dd{\mathbf{r}}(1s_\text{A}^*+1s_\text{B}^*)\left( E_{1s}-\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{A}\\
+            & +\int\dd{\mathbf{r}}(1s_\text{A}^*+1s_\text{B}^*)\left( E_{1s}-\frac{1}{r_\text{A}}+\frac{1}{R} \right)1s_\text{B}
+        \end{split}\\
+        \begin{split}
+            ={}& \int\dd{\mathbf{r}}\left( E_{1s}-\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{A}^*1s_\text{A}+\int\dd{\mathbf{r}}\left( E_{1s}-\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{B}^*1s_\text{A}\\
+            & +\int\dd{\mathbf{r}}\left( E_{1s}-\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{A}^*1s_\text{B}+\int\dd{\mathbf{r}}\left( E_{1s}-\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{B}^*1s_\text{B}
+        \end{split}\\
+        \begin{split}
+            ={}& E_{1s}\cdot 1+\int\dd{\mathbf{r}}\left( -\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{A}^*1s_\text{A}+E_{1s}\cdot S+\int\dd{\mathbf{r}}\left( -\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{B}^*1s_\text{A}\\
+            & +E_{1s}\cdot 1+\int\dd{\mathbf{r}}\left( -\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{A}^*1s_\text{B}+E_{1s}\cdot S+\int\dd{\mathbf{r}}\left( -\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{B}^*1s_\text{B}
+        \end{split}\\
+        \begin{split}
+            ={}& 2E_{1s}(1+S)\\
+            & +\int\dd{\mathbf{r}}\left( -\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{A}^*1s_\text{A}+\int\dd{\mathbf{r}}\left( -\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{B}^*1s_\text{A}\\
+            & +\int\dd{\mathbf{r}}\left( -\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{A}^*1s_\text{B}+\int\dd{\mathbf{r}}\left( -\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{B}^*1s_\text{B}
+        \end{split}
+    \end{align*}
+    where $E_{1s}=-E_\text{h}/2$ is the ground-state energy of the hydrogen atom (the energy corresponding to the $1s_\text{A}$ wave function).
+    \item \textbf{Coulomb integral}: The following integral, which reflects both the charge density of the electron about nucleus A interacting with nucleus B via the Coulumb potential and the internuclear repulsion. \emph{Denoted by} $\bm{J}$. \emph{Given by}
+    \begin{equation*}
+        J = \int\dd{\mathbf{r}}1s_\text{A}^*\left( -\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{A}
+    \end{equation*}
+    \item \textbf{Exchange integral}: The following integral. \emph{Denoted by} $\bm{K}$. \emph{Given by}
+    \begin{equation*}
+        K = \int\dd{\mathbf{r}}1s_\text{B}^*\left( -\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{A}
+    \end{equation*}
+    \begin{itemize}
+        \item The exchange integral describes a purely quantum-mechanical effect; it has no analogy in classical mechanics.
+    \end{itemize}
+    \item Using the definitions of the Coluomb and exchange integrals, we have that
+    \begin{equation*}
+        \int\dd{\mathbf{r}}\psi_+^*\hat{H}\psi_+ = 2E_{1s}(1+S)+2J+2K
+    \end{equation*}
+    \item We can now determine a final expression for the energy $E_+$ corresponding to $\psi_+$.
+    \begin{align*}
+        E_+ &= \frac{\int\dd{\mathbf{r}}\psi_+^*\hat{H}\psi_+}{\int\dd{\mathbf{r}}\psi_+^*\psi_+}\\
+        &= \frac{2E_{1s}(1+S)+2J+2K}{2(1+S)}\\
+        &= E_{1s}+\frac{J+K}{1+S}
+    \end{align*}
+    \item The Coulomb and exchange integrals can be evaluated analytically, giving
+    \begin{align*}
+        J &= \e[-2R]\left( 1+\frac{1}{R} \right)&
+        K &= \frac{S}{R}-\e[-R](1+R)
+    \end{align*}
+    \begin{itemize}
+        \item Note that since the Coulomb integral is always positive, the exchange integral is entirely responsible for the existence of the chemical bond in \ce{H2+}.
+        \item This highlights the importance of the quantum-mechanical nature of the chemical bond.
+    \end{itemize}
+    \item \textbf{Bonding orbital}: A state that exhibits a stable chemical bond.
+    \begin{itemize}
+        \item Example: $\psi_+$.
+    \end{itemize}
+    \item \textbf{Antibonding orbital}: A state that leads to a repulsive interaction between the two nuclei for all internuclear distances.
+    \begin{itemize}
+        \item Example: $\psi_-$.
+    \end{itemize}
+    \item The bonding orbital $\psi_\text{b}=\psi_+$ describes the ground state of \ce{H2+}, while the antibonding orbital $\psi_\text{a}=\psi_-$ describes an excited state.
+    \item Note that we have only found two molecular orbitals (as opposed to the infinitely many hydrogenlike atomic orbitals) because we used a trial wave function that was the linear combination of only two atomic orbitals. We could use longer linear combinations to find more molecular orbitals, but for pedagogical reasons, we will limit ourselves to two for now.
+    \item "Because $\psi_\text{b}$ is the molecular orbital corresponding to the ground-state energy of \ce{H2+}, we can describe the ground state of \ce{H2} by placing two electrons with opposite spins in $\psi_\text{b}$, just as we placed two electrons in a $1s$ atomic orbital to describe the helium atom" \parencite[336]{bib:McQuarrieSimon}.
+    \item This leads to the Slater determinantal wave function
+    \begin{equation*}
+        \psi = \frac{1}{\sqrt{2!}}
+        \begin{vmatrix}
+            \psi_\text{b}\alpha(1) & \psi_\text{b}\beta(1)\\
+            \psi_\text{b}\alpha(2) & \psi_\text{b}\beta(2)\\
+        \end{vmatrix}
+    \end{equation*}
+    for \ce{H2}.
+    \begin{itemize}
+        \item As before, the spatial and spin parts of this two-electron wave function separate.
+    \end{itemize}
+    \item It follows that the spatial molecular wave function is
+    \begin{align*}
+        \psi_\text{MO} &= \psi_\text{b}(1)\psi_\text{b}(2)\\
+        &= \frac{1}{2(1+S)}[1s_\text{A}(1)+1s_\text{B}(1)][1s_\text{A}(2)+1s_\text{B}(2)]
+    \end{align*}
+    \item \textbf{Linear combination of atomic orbitals-molecular orbitals method}: The method of constructing molecular wave functions by taking the product of molecular orbitals, which are in turn linear combinations of atomic orbitals. \emph{Also known as} \textbf{LCAO-MO method}.
+    \begin{itemize}
+        \item This is how we constructed $\psi_\text{MO}$, above.
+    \end{itemize}
+    \item Knowing that $\psi_\text{MO}$ is normalized, we have that
+    \begin{equation*}
+        E_\text{MO} = \int\dd{\mathbf{r}_1}\dd{\mathbf{r}_2}\psi_\text{MO}^*(1,2)\hat{H}\psi_\text{MO}(1,2)
+    \end{equation*}
+    \item \textbf{$\bm{\sigma}$ orbital}: An orbital that is symmetric about the internuclear axis.
+    \begin{itemize}
+        \item Both $\psi_\pm$ are $\sigma$ orbitals.
+        \item Molecular orbitals constructed from $1s$ orbitals are denoted by $\sigma 1s$.
+    \end{itemize}
+    \item Distinguishing between $\sigma 1s$ bonding and antibonding orbitals.
+    \begin{itemize}
+        \item We may let $\sigma 1s$ refer to $\psi_+$ and $\sigma^*1s$ refer to $\psi_-$.
+        \item We may let $\sigma_g1s$ refer to $\psi_+$ ($g$ being short for "gerade" [the German word for even] since $\psi_+$ does not change sign under inversion) and $\sigma_u1s$ refer to $\psi_-$ ($u$ being short for "ungerade" [the German word for odd] since $\psi_-$ does change sign under inversion).
+        \item \textcite{bib:McQuarrieSimon} will favor the latter notation.
+    \end{itemize}
+    \item $\sigma 2s$ molecular orbitals.
+    \begin{itemize}
+        \item Of the form $2s_\text{A}\pm 2s_\text{B}$.
+        \item Have radial nodes about each nuclei (owing to the structure of the $2s$ hydrogenlike atomic orbital) in addition to the possible planar node in the middle of the molecule.
+        \item Have higher energies than $\sigma 1s$ MOs since they're associated with higher energy atomic orbitals. This can be demonstrated rigorously the same way we calculated the energies for the $\sigma 1s$ MOs.
+        \item In terms of energy, $\sigma_g1s<\sigma_u1s<\sigma_g2s<\sigma_u2s$.
+    \end{itemize}
+    \item $2p$ molecular orbitals.
+    \begin{itemize}
+        \item Choose the internuclear axis to be the $z$-axis.
+        \item $2p_{z_\text{A}}\pm 2p_{z_\text{B}}$ are cylindrically symmetric about the internuclear axis and are therefore $\sigma_u2p_z$ and $\sigma_g2p_z$ orbitals, respectively.
+        \item $2p_{x,y_\text{A}}\pm 2p_{x,y_\text{B}}$ are \textbf{$\bm{\pi}$ orbitals}, denoted $\pi_u2p_{x,y}$ and $\pi_g2p_{x,y}$, respectively.
+        \item $\pi_u2p_x,\pi_u2p_y$ and $\pi_g2p_x,\pi_g2p_y$ are degenerate pairs of orbitals since they are identical except for their spatial orientation.
+    \end{itemize}
+    \item \textbf{$\bm{\pi}$ orbital}: A molecular orbital with one nodal plane that contains the internuclear axis.
+    \item From \ce{Li2} through \ce{N2}, the energy order is
+    \begin{equation*}
+        \sigma_g2s < \sigma_u2s
+        < \pi_u2p_{x,y}
+        < \sigma_g2p_z
+        < \pi_g2p_{x,y}
+        < \sigma_u2p_z
+    \end{equation*}
+    \begin{itemize}
+        \item From \ce{O2} through \ce{F2}, the energy order is
+        \begin{equation*}
+            \sigma_g2s < \sigma_u2s
+            < \sigma_g2p_z
+            < \pi_u2p_{x,y}
+            < \pi_g2p_{x,y}
+            < \sigma_u2p_z
+        \end{equation*}
+    \end{itemize}
+    \item Diatomic helium does not exist since the bonding and antibonding electrons cancel each other out, leaving only repulsive nuclei.
+    \begin{itemize}
+        \item Bond order formalizes this notion.
+        \item Note that in 1993, Gentry and co. reported spectroscopic observations of \ce{He2} in a gas-phase sample of helium of temperature $\SI{0.001}{\kelvin}$, possessing by far the weakest chemical bond known.
+    \end{itemize}
+    \item Note that since there is little difference between the electron densities of core electron-derived molecular orbitals, we need only consider electrons in the valence shell when discussing chemical bonding.
+    \item We denote the filled $n=1$ shell by $K$, e.g., the ground state electron configuration of \ce{Li2} is $KK(\sigma_g2s)^2$.
+    \item MO theory accurately predicts that \ce{O2} is paramagnetic.
+    \begin{itemize}
+        \item MO theory also predicts bond orders of $2.5,2,1.5,1$ for \ce{O2+}, \ce{O2}, \ce{O2-}, \ce{O2^2-}, respectively. This would suggest that bond length increases and bond energy decreases down this list, as we do indeed observe experimentally.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} provides data on the ground-state electron configuration, bond order, bond length, and bond energy for the homonuclear diatomics of lithium through neon.
+    \item \textbf{Ionization energy}: The energy required to eject an electron from a molecule.
+    \item \textbf{Photoelectron spectroscopy}: The measurement of the energies of the electrons ejected by radiation incident on gaseous molecules.
+    \begin{itemize}
+        \item Goes through how PES supports MO theory, as on \textcite[56]{bib:IChemNotes}.
+    \end{itemize}
+    \item \textbf{Heteronuclear diatomic molecule}: A diatomic molecule in which the two nuclei are different.
+    \item For heteronuclear diatomics whose constituent atoms' atomic numbers differ by 1 or 2, the scheme we used for homonuclear diatomics is good enough.
+    \item For heteronuclear diatomics whose constituent atoms' atomic numbers differ greatly (e.g., \ce{HF}), we need a new scheme.
+    \begin{itemize}
+        \item Noting that the energy of the $1s$ atomic orbital of \ce{H} is similar to the energy of the $2p$ atomic orbitals of \ce{F}, we look for constructive and destructive interference and find that $1s_{\ce{H}}$ and $2p_{z_{\ce{F}}}$ interact nicely.
+        \item Thus, a first approximation the molecular orbital would be $\psi=c_11s_{\ce{H}}+c_22p_{z_{\ce{F}}}$.
+        \item Note that both MOs have $\sigma$ symmetry.
+    \end{itemize}
+    \item The scheme presented thus far is the simplest possible.
+    \item More generally, we may create trial wave functions that include more and orbitals, minimizing the coefficients with the variational method along the way, until we reach the Hartree-Fock limit.
+    \item \textbf{SCF-LCAO-MO wave function}: A wave function obtained from molecular orbitals that are linear combinations of atomic orbitals whose coefficients are determined by a self-consistent field method.
+    \begin{itemize}
+        \item Such orbitals, obtained from many atomic orbitals, cannot be meaningfully classified as $\sigma 2s$ or $\pi 2p$, for example, so we classify them as the first $\sigma_g$ orbital ($1\sigma_g$), the first $\sigma_u$ orbital ($1\sigma_u$), and so on and so forth.
+        \item An SCF-LCAO-MO is only the same as a Hartree-Fock orbital if the SCF-LCAO-MO contains enough terms to reach the Hartree-Fock limit.
+    \end{itemize}
+    \item \textbf{Hartree-Fock-Roothaan method}: The method for determining a SCF-LCAO-MO wave function.
+    \item \textcite{bib:McQuarrieSimon} lists data on the Hartree-Fock limit vs. experimental calculations.
+    \item Molecular term symbols.
+    \item Excited states of molecules.
+    \begin{itemize}
+        \item Consider \ce{H2} with one electron in the $\sigma_g1s$ orbital and one electron in the $\sigma_g2s$ orbital. This species has a slightly longer bond length than ground state \ce{H2}.
+    \end{itemize}
 \end{itemize}
 
 
