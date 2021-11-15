@@ -1,0 +1,83 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\setcounter{section}{6}
+
+\begin{document}
+
+
+
+
+\section{Molecular Orbital Theory}
+\begin{enumerate}
+    \item \marginnote{11/17:}The bonding and antibonding potential energy surfaces of \ce{H2+} were derived in class by applying the linear variational principle to the trial wave function
+    \begin{equation*}
+        \psi_\text{trial} = c_11s_\text{A}+c_21s_\text{B}
+    \end{equation*}
+    \begin{enumerate}
+        \item Estimate the ground-state potential energy surface by computing the first-order \emph{perturbative} change in the energy where the reference Hamiltonian
+        \begin{equation*}
+            \hat{H}_0 = -\frac{1}{2}\nabla^2-\frac{1}{r_A}
+        \end{equation*}
+        is the Hamiltonian of the hydrogen atom at position $A$ and the perturbation
+        \begin{equation*}
+            \hat{V} = -\frac{1}{r_B}+\frac{1}{R}
+        \end{equation*}
+        is the interaction of a second proton at position $B$ with the proton at position $A$ where $R$ is the internuclear distance. The reference wave function
+        \begin{equation*}
+            \psi_0 = 1s_\text{A}
+        \end{equation*}
+        is the $1s$ orbital of hydrogen centered at position $A$.
+        \item Make a sketch of the potential energy surface from part (a) as a function of $R$.
+        \item Does the approximation in part (a) produce a stable, bound ground state for \ce{H2+}?
+        \item In a second sketch, compare the potential energy surface in part (a) with the bonding and antibonding potential energy surfaces of \ce{H2+} that were derived in class from the trial wave function above.
+        \item Using the trial wave function for comparison, explain briefly in terms of bonding --- the sharing of electrons --- the limitation of the wave function in part (a).
+        \item Furnish the trial wave function that within the variational approximation would give the same potential energy surface as the application of first-order perturbation theory in (a).
+    \end{enumerate}
+    \item The Coulomb integral for \ce{H2+} is given by
+    \begin{equation*}
+        J(R) = \e[-2R]\left( 1+\frac{1}{R} \right)
+    \end{equation*}
+    \begin{enumerate}
+        \item By making a sketch of $J(R)$ as a function of the internuclear distance $R$, show that $J(R)$ is nonnegative for all $R$.
+        \item The $J(R)$ results from two competing forces: (i) the attraction of an electron on A to the proton at B and (ii) the repulsion of the proton at A from the proton at B. What does the nonnegativity of $J(R)$ in part (a) say about the relative strengths of these competing forces?
+    \end{enumerate}
+    \item 
+    \begin{enumerate}
+        \item Give the molecular orbital diagrams for the molecules \ce{N2}, \ce{N2+}, \ce{O2}, and \ce{O2+}.
+        \item What is the bond order for each molecule?
+        \item Explain why \ce{N2} has a larger dissociation energy than \ce{N2+}, but \ce{O2+} has a larger dissociation energy than \ce{O2}.
+        \item Using Grassmann notation, give the ground-state wave function for \ce{N2} in molecular orbital theory.
+    \end{enumerate}
+    \item Using the worksheet "Huckel Theory" with the Quantum Chemistry Toolbox for Maple, answer the lettered questions.
+    \item In photoelectron spectroscopy, radiation interacts with gaseous molecules to eject electrons whose kinetic energies are measured (recall the photoelectric effect).
+    \begin{enumerate}
+        \item Explain why measuring the kinetic energy of the ejected electrons tells us something about the molecular orbital energies.
+        \item If the incident radiation has a frequency of $\SI{57.8}{\nano\meter}$, what is the largest electron binding energy that can be measured?
+    \end{enumerate}
+    \item 
+    \begin{enumerate}
+        \item Sketch the hybrid orbitals of \ce{Be} in the molecule \ce{BeH2} and illustrate their role in bonding.
+        \item Using the hybrid orbitals, assemble a molecular orbital diagram for \ce{BeH2}.
+        \item With Grassmann notation, express the MO ground-state wave function for \ce{BeH2}.
+    \end{enumerate}
+    \item Using the \emph{hybridized} $sp^3$ wave functions of \ce{CH4} on \textcite[376]{bib:McQuarrieSimon}, give the probability that an electron in one of the $sp^3$ wave functions is\dots
+    \begin{enumerate}
+        \item In carbon's $2p_x$ orbital;
+        \item In carbon's $2p_z$ orbital.
+        \item By symmetry, should the results in parts (a) and (b) be the same or different?
+    \end{enumerate}
+    \item The $\pi$-electrons may be approximated in conjugated and aromatic hydrocarbons through Huckel theory. Use Huckel theory to approximate the energies and the wave functions for\dots
+    \begin{enumerate}
+        \item The allyl radical;
+        \item Cyclobutadiene;
+        \item The cyclopentadienyl radical.
+        \item For each wave function computed in parts (a), (b), and (c), give a schematic sketch of the molecular orbital contributions. Refer to Figure 10.23 on \textcite[396]{bib:McQuarrieSimon} for an example of such a sketch.
+    \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}
