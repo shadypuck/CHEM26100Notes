@@ -80,10 +80,83 @@
 
 
 
+\section{Time-Dependent Schr\"{o}dinger Equation}
+\begin{itemize}
+    \item \marginnote{11/17:}The TD SE is an \textbf{initial value differential equation} since we know $\psi_0$ and can propagate that over time.
+    \item We will approximate the solutions to this with both an expansion (variational method) and perturbation theory.
+    \item Now we continue from before (finding the time-dependence of the interaction of a EM radiation with a molecule).
+    \begin{itemize}
+        \item Let
+        \begin{equation*}
+            \hat{H} = \hat{H}_0+\hat{V}
+        \end{equation*}
+        where $\hat{H}_0$ is the Hamiltonian of the molecule and $\hat{V}$ describes the interaction of the photon and the molecule.
+        \item Let
+        \begin{equation*}
+            \psi(t) = a_1(t)\underbrace{\phi_1\e[-iE_1t/\hbar]}_{\psi_1}+a_2(t)\underbrace{\phi_2\e[-iE_2t/\hbar]}_{\psi_2}
+        \end{equation*}
+        \item Substituting into the TD SE, multiplying through by $\phi_2^*$, and integrating and simplifying yields (continuing from before)
+        \begin{equation*}
+            i\hbar\dv{a_2}{t} = a_1(t)\e[-i(E_1-E_2)t/\hbar]\int\phi_2^*\hat{V}\phi_1\dd{\vec{r}}+a_2(t)\int\phi_2^*\vec{V}\phi_2\dd{\vec{r}}
+        \end{equation*}
+        \item Computing $a_2(t)$ as a function of time.
+        \item Initial values:
+        \begin{align*}
+            a_1(0) &= 1&
+            a_2(0) &= 0
+        \end{align*}
+        i.e., all of the electron density is in the ground state, and none is in the excited state.
+        \item Assume a small perturbation and use the initial conditions on the right hand side of the above equation.
+        \item This yields
+        \begin{equation*}
+            i\hbar\dv{a_2}{t} = \e[-i(E_1-E_2)t/\hbar]\int\phi_2^*\hat{V}\phi_1\dd{\vec{r}}
+        \end{equation*}
+        \item But since
+        \begin{equation*}
+            \hat{V} = -\frac{\mu_z}{2}E_{0_z}(\e[i2\pi\nu t]+\e[-i2\pi\nu t])
+        \end{equation*}
+        where we focus on the component of the electric field along the internuclear axis, we get
+        \begin{equation*}
+            \dv{a_2}{t} \propto \underbrace{\left( \int\phi_2\mu_z\phi_1\dd{\vec{r}} \right)}_{(\mu_z)_{12}}E_{0_z}\left( \e[i(E_2-E_2+h\nu)t/\hbar]+\e[i(E_2-E_1-h\nu)t/\hbar] \right)
+        \end{equation*}
+        where $(\mu_z)_{12}$ is the \textbf{transition dipole moment} between states 1 and 2.
+        \begin{itemize}
+            \item $(\mu_z)_{12}$ must be nonzero to get a transition.
+        \end{itemize}
+        \item Integrating from 0 to $\tau$ gives
+        \begin{equation*}
+            a_1(t) = (\mu_z)_{12}E_{0_z}\left( \frac{1-\e[i(E_2-E_1+h\nu)t/\hbar]}{E_2-E_1+h\nu}+\frac{1-\e[i(E_2-E_1-h\nu)t/\hbar]}{E_2-E_1-h\nu} \right)
+        \end{equation*}
+        \item The second term becomes large as $E_2-E_1-h\nu\to 0$.
+        \item Thus, the probability in state 2 at $\tau$ is
+        \begin{equation*}
+            a_2^*(\tau)a_2(\tau) \propto \frac{\sin^2[(E_2-E_1-\hbar\omega)t/2\hbar]}{(E_2-E_1-\hbar\omega)^2}
+        \end{equation*}
+        \item The right term above is a function of the form $\sin^2(xt/2\hbar)/x^2$, which has a peak right at the resonance frequency.
+        \begin{itemize}
+            \item This is the $\sinc$ function.
+        \end{itemize}
+    \end{itemize}
+    \item Test 3:
+    \begin{itemize}
+        \item Problem sets 6-7.
+        \item Helium from a perturbation theory/variational principle perspective.
+        \item Chemical bonding (MOs for \ce{H2+}, bonding and antibonding orbitals).
+        \item MO diagrams for diatomics (\ce{N2}, \ce{O2}, etc.)
+        \item Grassmann wedge notation.
+        \item Huckel theory (the MOs for conjugated molecules). There WILL be one of these on the test.
+        \item Hybridization.
+        \item Time-dependent perturbation theory and the TD SE (probably not a question on this, but if you have expansion coefficients evolving with time, how do you find the probability [modulus squared]).
+        \item 5 parts, formula page, calculator allowed.
+    \end{itemize}
+\end{itemize}
+
+
+
 \section{Chapter 10: Bonding in Polyatomic Molecules}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
-    \item Consider \ce{BeH2}.
+    \item \marginnote{11/15:}Consider \ce{BeH2}.
     \begin{itemize}
         \item The two \ce{Be-H} bonds are equivalent with an angle of $\ang{180}$ between them
         \item MOs are formed from orbitals that are similar in energy, so in addition to the \ce{H($1s$)} and \ce{Be($2s$)}, throw in the energetically close \ce{Be($2p$)}.
