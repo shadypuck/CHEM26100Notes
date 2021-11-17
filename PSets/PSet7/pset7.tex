@@ -29,11 +29,103 @@
             \psi_0 = 1s_\text{A}
         \end{equation*}
         is the $1s$ orbital of hydrogen centered at position $A$.
+        \begin{proof}[Answer]
+            If we let
+            \begin{equation*}
+                \hat{H} = \hat{H}_0+\lambda\hat{V}
+            \end{equation*}
+            then we want to find the first-order approximation
+            \begin{equation*}
+                E(1) = E(0)+(1)\dv{E}{\lambda}\bigg|_0
+            \end{equation*}
+            of $E(\lambda)$ with respect to $\hat{H}$ where $\lambda=1$. Let's begin.\par
+            We know that the ground state energy of the unperturbed hydrogen atom is
+            \begin{equation*}
+                E(0) = -\frac{1}{2}\,\si{\hartree}
+            \end{equation*}
+            Additionally, we know that the first-order perturbation
+            \begin{align*}
+                \dv{E}{\lambda}\bigg|_0 &= \int\psi_0^*\hat{V}\psi_0\dd{\vec{r}}\\
+                &= \int\dd{\vec{r}}1s_\text{A}^*\left( -\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{A}\\
+                &= J\\
+                \Aboxed{\dv{E}{\lambda}\bigg|_0 &= \e[-2R]\left( 1+\frac{1}{R} \right)}
+            \end{align*}
+            Thus, the ground state potential energy surface is
+            \begin{equation*}
+                \boxed{E(1) = -\frac{1}{2}+\e[-2R]\left( 1+\frac{1}{R} \right)}
+            \end{equation*}
+        \end{proof}
         \item Make a sketch of the potential energy surface from part (a) as a function of $R$.
+        \begin{proof}[Answer]
+            ${\color{white}hi}$
+            \begin{center}
+                \begin{tikzpicture}[xscale=0.5,yscale=2]
+                    \path (-4,0) -- (13,0);
+                    \small
+                    \draw [stealth-stealth] (0,1) -- node[rotate=90,above=9mm]{$E$ (\si{\hartree})} (0,0) -- node[below=7mm]{$R$} (9,0);
+                    \footnotesize
+                    \draw
+                        (0.2,0.5) -- ++(-0.4,0) node[left]{$-0.5$}
+                        foreach \x in {2,4,6,8} {(\x,0.05) -- ++(0,-0.1) node[below]{$\x$}}
+                    ;
+            
+                    \draw [dashed] (0.2,0.5) -- (8.9,0.5);
+            
+                    \draw [orx,thick] plot[domain=0.764:8.9,samples=500,smooth] (\x,{0.5+e^(-2*\x)*(1+1/\x)});
+                \end{tikzpicture}
+            \end{center}
+        \end{proof}
         \item Does the approximation in part (a) produce a stable, bound ground state for \ce{H2+}?
+        \begin{proof}[Answer]
+            \fbox{No}. Since the function is decreasing on $(0,\infty)$, energy can only be lowered by increasing the internuclear distance, so the atoms will drift apart forever.
+        \end{proof}
         \item In a second sketch, compare the potential energy surface in part (a) with the bonding and antibonding potential energy surfaces of \ce{H2+} that were derived in class from the trial wave function above.
+        \begin{proof}[Answer]
+            ${\color{white}hi}$
+            \begin{center}
+                \begin{tikzpicture}[xscale=0.5,yscale=2]
+                    \path (-4,0) -- (13,0);
+                    \small
+                    \draw [stealth-stealth] (0,1) -- node[rotate=90,above=9mm]{$E$ (\si{\hartree})} (0,0) -- node[below=7mm]{$R$} (9,0);
+                    \footnotesize
+                    \draw
+                        (0.2,0.5) -- ++(-0.4,0) node[left]{$-0.5$}
+                        (2.493,0.05) -- ++(0,-0.1) node[below=3mm]{$R_e$}
+                        foreach \x in {2,4,6,8} {(\x,0.05) -- ++(0,-0.1) node[below]{$\x$}}
+                    ;
+            
+                    \draw [dashed] (0.2,0.5) -- (8.9,0.5);
+            
+                    \draw [orx,thick] plot[domain=0.764:8.9,samples=500,smooth] (\x,{0.5+e^(-2*\x)*(1+1/\x)});
+                    \draw [grx,thick] plot[domain=0.735:8.9,samples=500,smooth] (\x,{0.5+((e^(-2*\x)*(1+1/\x))+((e^(-\x)*(1+\x+\x*\x/3))/\x-e^(-\x)*(1+\x)))/(1+(e^(-\x)*(1+\x+\x*\x/3)))});
+                    \draw [grx,thick] plot[domain=1.625:8.9,samples=500,smooth] (\x,{0.5+((e^(-2*\x)*(1+1/\x))-((e^(-\x)*(1+\x+\x*\x/3))/\x-e^(-\x)*(1+\x)))/(1-(e^(-\x)*(1+\x+\x*\x/3)))});
+            
+                    \node at (3.5,0.8) {$E_-(R)$};
+                    \node at (3.5,0.3) {$E_+(R)$};
+                \end{tikzpicture}
+            \end{center}
+        \end{proof}
         \item Using the trial wave function for comparison, explain briefly in terms of bonding --- the sharing of electrons --- the limitation of the wave function in part (a).
+        \begin{proof}[Answer]
+            The wave function in part (a) does not describe bonding particularly well since it is centered strictly at one atom and does not represent an equal, symmetric sharing of electrons.
+        \end{proof}
         \item Furnish the trial wave function that within the variational approximation would give the same potential energy surface as the application of first-order perturbation theory in (a).
+        \begin{proof}[Answer]
+            Based on the above, we can guess that
+            \begin{equation*}
+                \psi_\text{trial} = 1s_\text{A}
+            \end{equation*}
+            Indeed, with this trial wave function, we find
+            \begin{align*}
+                E &= \frac{\int 1s_\text{A}^*\hat{H}1s_\text{A}\dd{\tau}}{\int 1s_\text{A}^*1s_\text{A}\dd{\tau}}\\
+                &= \frac{E_{1s}+J}{1}\\
+                &= E(1)
+            \end{align*}
+            as desired. Therefore, the desired trial wave function is indeed
+            \begin{equation*}
+                \boxed{\psi_\text{trial} = 1s_\text{A}}
+            \end{equation*}
+        \end{proof}
     \end{enumerate}
     \item The Coulomb integral for \ce{H2+} is given by
     \begin{equation*}
@@ -41,39 +133,974 @@
     \end{equation*}
     \begin{enumerate}
         \item By making a sketch of $J(R)$ as a function of the internuclear distance $R$, show that $J(R)$ is nonnegative for all $R$.
+        \begin{proof}[Answer]
+            ${\color{white}hi}$
+            \begin{center}
+                \begin{tikzpicture}[xscale=0.5,yscale=2]
+                    \path (-4,0) -- (13,0);
+                    \small
+                    \draw [stealth-stealth] (0,1) -- node[rotate=90,above=9mm]{$E$ (\si{\hartree})} (0,0) -- node[below=7mm]{$R$} (9,0);
+                    \footnotesize
+                    \draw
+                        (0.2,0.5) -- ++(-0.4,0) node[left]{$0$}
+                        foreach \x in {2,4,6,8} {(\x,0.05) -- ++(0,-0.1) node[below]{$\x$}}
+                    ;
+            
+                    \draw [dashed] (0.2,0.5) -- (8.9,0.5);
+            
+                    \draw [orx,thick] plot[domain=0.764:8.9,samples=500,smooth] (\x,{0.5+e^(-2*\x)*(1+1/\x)});
+                \end{tikzpicture}
+            \end{center}
+        \end{proof}
         \item The $J(R)$ results from two competing forces: (i) the attraction of an electron on A to the proton at B and (ii) the repulsion of the proton at A from the proton at B. What does the nonnegativity of $J(R)$ in part (a) say about the relative strengths of these competing forces?
+        \begin{proof}[Answer]
+            Since we have that
+            \begin{align*}
+                0 &< \int\dd{\vec{r}}1s_\text{A}^*\left( -\frac{1}{r_\text{B}}+\frac{1}{R} \right)1s_\text{A}\\
+                0 &< \int\dd{\vec{r}}1s_\text{A}^*\left( \frac{1}{R} \right)1s_\text{A}-\int\dd{\vec{r}}1s_\text{A}^*\left( \frac{1}{r_\text{B}} \right)1s_\text{A}\\
+                \int\dd{\vec{r}}1s_\text{A}^*\left( \frac{1}{r_\text{B}} \right)1s_\text{A} &< \int\dd{\vec{r}}1s_\text{A}^*\left( \frac{1}{R} \right)1s_\text{A}
+            \end{align*}
+            where the right term above describes the internuclear repulsion and the left term above describes the electronic attraction, the \fbox{internuclear repulsion is stronger than the electronic attraction}.
+        \end{proof}
     \end{enumerate}
     \item 
     \begin{enumerate}
         \item Give the molecular orbital diagrams for the molecules \ce{N2}, \ce{N2+}, \ce{O2}, and \ce{O2+}.
+        \begin{proof}[Answer]
+            ${\color{white}hi}$
+            \begin{figure}[H]
+                \centering
+                \footnotesize
+                \tikzset{every node/.style={black}}
+                \begin{subfigure}[b]{0.49\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \draw [ultra thick]
+                            (-0.55,5.9) -- node[below=2mm]{$\sigma_u$} ++(1.1,0)
+                            (-0.55,5.0) -- ++(0.5,0) node[below=2mm,xshift=0.5mm]{$\pi_u$}
+                                ++(0.1,0) -- ++(0.5,0)
+                            (-0.55,3.6) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$\sigma_g$} ++(1.1,0)
+                            (-0.55,2.8) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} ++(0.5,0) node[below=2mm,xshift=0.5mm]{$\pi_u$}
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} ++(0.5,0)
+                            (-0.55,1.6) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$\sigma_u$} ++(1.1,0)
+                            (-0.55,0.0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$\sigma_g$} ++(1.1,0)
+                        ;
+            
+                        \draw [ultra thick,grx]
+                            (2,4.5) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_x$} ++(0.5,0)
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_y$} ++(0.5,0)
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_z$} ++(0.5,0)
+                            (2,0.7) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0)
+                            (-3.7,4.5) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_z$} ++(0.5,0)
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_y$} ++(0.5,0)
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_x$} ++(0.5,0)
+                            (-2.5,0.7) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0)
+                        ;
+            
+                        \draw [grx,densely dashed]
+                            (0.55,5.9)  -- (3.2,4.5)
+                            (0.55,5.0)  -- (2.0,4.5)
+                            (0.55,3.6)  -- (3.2,4.5)
+                            (0.55,2.8)  -- (2.0,4.5)
+                            (0.55,1.6)  -- (2.0,0.7)
+                            (0.55,0.0)  -- (2.0,0.7)
+                            (-0.55,5.9) -- (-3.2,4.5)
+                            (-0.55,5.0) -- (-2.0,4.5)
+                            (-0.55,3.6) -- (-3.2,4.5)
+                            (-0.55,2.8) -- (-2.0,4.5)
+                            (-0.55,1.6) -- (-2.0,0.7)
+                            (-0.55,0.0) -- (-2.0,0.7)
+                        ;
+                    \end{tikzpicture}
+                    \caption{\ce{N2}.}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.49\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \draw [ultra thick]
+                            (-0.55,5.9) -- node[below=2mm]{$\sigma_u$} ++(1.1,0)
+                            (-0.55,5.0) -- ++(0.5,0) node[below=2mm,xshift=0.5mm]{$\pi_u$}
+                                ++(0.1,0) -- ++(0.5,0)
+                            (-0.55,3.6) -- node{\Large$\upharpoonleft$} node[below=2mm]{$\sigma_g$} ++(1.1,0)
+                            (-0.55,2.8) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} ++(0.5,0) node[below=2mm,xshift=0.5mm]{$\pi_u$}
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} ++(0.5,0)
+                            (-0.55,1.6) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$\sigma_u$} ++(1.1,0)
+                            (-0.55,0.0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$\sigma_g$} ++(1.1,0)
+                        ;
+            
+                        \draw [ultra thick,grx]
+                            (2,4.5) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_x$} ++(0.5,0)
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_y$} ++(0.5,0)
+                                ++(0.1,0) -- node[below=2mm]{$2p_z$} ++(0.5,0)
+                            (2,0.7) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0)
+                            (-3.7,4.5) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_z$} ++(0.5,0)
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_y$} ++(0.5,0)
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_x$} ++(0.5,0)
+                            (-2.5,0.7) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0)
+                        ;
+            
+                        \draw [grx,densely dashed]
+                            (0.55,5.9)  -- (3.2,4.5)
+                            (0.55,5.0)  -- (2.0,4.5)
+                            (0.55,3.6)  -- (3.2,4.5)
+                            (0.55,2.8)  -- (2.0,4.5)
+                            (0.55,1.6)  -- (2.0,0.7)
+                            (0.55,0.0)  -- (2.0,0.7)
+                            (-0.55,5.9) -- (-3.2,4.5)
+                            (-0.55,5.0) -- (-2.0,4.5)
+                            (-0.55,3.6) -- (-3.2,4.5)
+                            (-0.55,2.8) -- (-2.0,4.5)
+                            (-0.55,1.6) -- (-2.0,0.7)
+                            (-0.55,0.0) -- (-2.0,0.7)
+                        ;
+                    \end{tikzpicture}
+                    \caption{\ce{N2+}.}
+                \end{subfigure}
+            \end{figure}
+            \begin{figure}[h!]
+                \ContinuedFloat
+                \centering
+                \footnotesize
+                \tikzset{every node/.style={black}}
+                \begin{subfigure}[b]{0.49\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \draw [ultra thick]
+                            (-0.55,5.9) -- node[below=2mm]{$\sigma_u$} ++(1.1,0)
+                            (-0.55,5.0) -- node{\Large$\upharpoonleft$} ++(0.5,0) node[below=2mm,xshift=0.5mm]{$\pi_u$}
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$} ++(0.5,0)
+                            (-0.55,3.6) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} ++(0.5,0) node[below=2mm,xshift=0.5mm]{$\pi_u$}
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} ++(0.5,0)
+                            (-0.55,2.8) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$\sigma_g$} ++(1.1,0)
+                            (-0.55,1.6) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$\sigma_u$} ++(1.1,0)
+                            (-0.55,0.0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$\sigma_g$} ++(1.1,0)
+                        ;
+            
+                        \draw [ultra thick,grx]
+                            (2,4.5) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2p_x$} ++(0.5,0)
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_y$} ++(0.5,0)
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_z$} ++(0.5,0)
+                            (2,0.7) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0)
+                            (-3.7,4.5) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2p_z$} ++(0.5,0)
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_y$} ++(0.5,0)
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_x$} ++(0.5,0)
+                            (-2.5,0.7) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0)
+                        ;
+            
+                        \draw [grx,densely dashed]
+                            (0.55,5.9)  -- (3.2,4.5)
+                            (0.55,5.0)  -- (2.0,4.5)
+                            (0.55,3.6)  -- (2.0,4.5)
+                            (0.55,2.8)  -- (3.2,4.5)
+                            (0.55,1.6)  -- (2.0,0.7)
+                            (0.55,0.0)  -- (2.0,0.7)
+                            (-0.55,5.9) -- (-3.2,4.5)
+                            (-0.55,5.0) -- (-2.0,4.5)
+                            (-0.55,3.6) -- (-2.0,4.5)
+                            (-0.55,2.8) -- (-3.2,4.5)
+                            (-0.55,1.6) -- (-2.0,0.7)
+                            (-0.55,0.0) -- (-2.0,0.7)
+                        ;
+                    \end{tikzpicture}
+                    \caption{\ce{O2}.}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.49\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \draw [ultra thick]
+                            (-0.55,5.9) -- node[below=2mm]{$\sigma_u$} ++(1.1,0)
+                            (-0.55,5.0) -- node{\Large$\upharpoonleft$} ++(0.5,0) node[below=2mm,xshift=0.5mm]{$\pi_u$}
+                                ++(0.1,0) -- ++(0.5,0)
+                            (-0.55,3.6) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} ++(0.5,0) node[below=2mm,xshift=0.5mm]{$\pi_u$}
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} ++(0.5,0)
+                            (-0.55,2.8) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$\sigma_g$} ++(1.1,0)
+                            (-0.55,1.6) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$\sigma_u$} ++(1.1,0)
+                            (-0.55,0.0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$\sigma_g$} ++(1.1,0)
+                        ;
+            
+                        \draw [ultra thick,grx]
+                            (2,4.5) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_x$} ++(0.5,0)
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_y$} ++(0.5,0)
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_z$} ++(0.5,0)
+                            (2,0.7) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0)
+                            (-3.7,4.5) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2p_z$} ++(0.5,0)
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_y$} ++(0.5,0)
+                                ++(0.1,0) -- node{\Large$\upharpoonleft$} node[below=2mm]{$2p_x$} ++(0.5,0)
+                            (-2.5,0.7) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm]{$2s$} ++(0.5,0)
+                        ;
+            
+                        \draw [grx,densely dashed]
+                            (0.55,5.9)  -- (3.2,4.5)
+                            (0.55,5.0)  -- (2.0,4.5)
+                            (0.55,3.6)  -- (2.0,4.5)
+                            (0.55,2.8)  -- (3.2,4.5)
+                            (0.55,1.6)  -- (2.0,0.7)
+                            (0.55,0.0)  -- (2.0,0.7)
+                            (-0.55,5.9) -- (-3.2,4.5)
+                            (-0.55,5.0) -- (-2.0,4.5)
+                            (-0.55,3.6) -- (-2.0,4.5)
+                            (-0.55,2.8) -- (-3.2,4.5)
+                            (-0.55,1.6) -- (-2.0,0.7)
+                            (-0.55,0.0) -- (-2.0,0.7)
+                        ;
+                    \end{tikzpicture}
+                    \caption{\ce{O2+}.}
+                \end{subfigure}
+            \end{figure}
+        \end{proof}
         \item What is the bond order for each molecule?
+        \begin{proof}[Answer]
+            We have that
+            \begin{align*}
+                BO_{\ce{N2}} &= \frac{1}{2}(8-2)&
+                    BO_{\ce{N2+}} &= \frac{1}{2}(7-2)&
+                        BO_{\ce{O2}} &= \frac{1}{2}(8-4)&
+                            BO_{\ce{O2+}} &= \frac{1}{2}(8-3)\\
+                \Aboxed{BO_{\ce{N2}} &= 3}&
+                    \Aboxed{BO_{\ce{N2+}} &= 2.5}&
+                        \Aboxed{BO_{\ce{O2}} &= 2}&
+                            \Aboxed{BO_{\ce{O2+}} &= 2.5}
+            \end{align*}
+        \end{proof}
         \item Explain why \ce{N2} has a larger dissociation energy than \ce{N2+}, but \ce{O2+} has a larger dissociation energy than \ce{O2}.
+        \begin{proof}[Answer]
+            Bond order, as a measure of stability, positively correlates with dissociation energy. Thus, since $BO_{\ce{N2}}>BO_{\ce{N2+}}$ and $BO_{\ce{O2+}}>BO_{\ce{O2}}$, \ce{N2} has a larger dissociation energy than \ce{N2+} and \ce{O2+} has a larger dissociation energy than \ce{O2}.
+        \end{proof}
         \item Using Grassmann notation, give the ground-state wave function for \ce{N2} in molecular orbital theory.
+        \begin{proof}[Answer]
+            We have
+            \begin{align*}
+                \begin{split}
+                    \psi ={}& \sigma_g1s\alpha(1)\wedge\sigma_g1s\beta(2)\wedge\sigma_u1s\alpha(3)\wedge\sigma_u1s\beta(4)\wedge\sigma_g2s\alpha(5)\wedge\sigma_g2s\beta(6)\wedge\sigma_u2s\alpha(7)\wedge\sigma_u2s\beta(8)\\
+                    & \wedge\pi_u2p_x\alpha(9)\wedge\pi_u2p_x\beta(10)\wedge\pi_u2p_y\alpha(11)\wedge\pi_u2p_y\beta(12)\wedge\sigma_g2p_z\alpha(13)\wedge\sigma_g2p_z\beta(14)
+                \end{split}
+            \end{align*}
+            where $\psi=\psi(1,2,3,4,5,6,7,8,9,10,11,12,13,14)$ is a function of the fourteen sets of four (three spatial and one spin) coordinates describing each electron.
+        \end{proof}
     \end{enumerate}
     \item Using the worksheet "Huckel Theory" with the Quantum Chemistry Toolbox for Maple, answer the lettered questions.
+    \begin{enumerate}
+        \item Order the energies from lowest to highest.
+        \begin{proof}[Answer]
+            We have
+            \begin{equation*}
+                \boxed{\alpha+2\beta < \alpha = \alpha < \alpha-2\beta}
+            \end{equation*}
+        \end{proof}
+        \item How many molecular orbitals are degenerate?
+        \begin{proof}[Answer]
+            If there is one eigenvalue/energy with nontrivial multiplicity, then there exist \fbox{two} molecular orbitals that are degenerate.
+        \end{proof}
+        \item Normalize each of the four eigenvectors generated by Maple.
+        \begin{proof}[Answer]
+            The normalized eigenvectors are
+            \begin{figure}[h!]
+                \centering
+                \begin{subfigure}[b]{0.2\linewidth}
+                    \centering
+                    \begin{equation*}
+                        \boxed{
+                            \begin{bmatrix}
+                                0\\
+                                -1/\sqrt{2}\\
+                                0\\
+                                1/\sqrt{2}\\
+                            \end{bmatrix}
+                        }
+                    \end{equation*}
+                    \caption{}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.2\linewidth}
+                    \centering
+                    \begin{equation*}
+                        \boxed{
+                            \begin{bmatrix}
+                                -1/\sqrt{2}\\
+                                0\\
+                                1/\sqrt{2}\\
+                                0\\
+                            \end{bmatrix}
+                        }
+                    \end{equation*}
+                    \caption{}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.2\linewidth}
+                    \centering
+                    \begin{equation*}
+                        \boxed{
+                            \begin{bmatrix}
+                                -1/2\\
+                                1/2\\
+                                -1/2\\
+                                1/2\\
+                            \end{bmatrix}
+                        }
+                    \end{equation*}
+                    \caption{}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.2\linewidth}
+                    \centering
+                    \begin{equation*}
+                        \boxed{
+                            \begin{bmatrix}
+                                1/2\\
+                                1/2\\
+                                1/2\\
+                                1/2\\
+                            \end{bmatrix}
+                        }
+                    \end{equation*}
+                    \caption{}
+                \end{subfigure}
+            \end{figure}
+        \end{proof}
+        \item Draw a sketch of each of the molecular orbitals including the relative phases between the $p_z$ orbitals as indicated by the computed eigenvectors.
+        \begin{proof}[Answer]
+            ${\color{white}hi}$
+            \begin{figure}[h!]
+                \centering
+                \footnotesize
+                \begin{subfigure}[b]{0.24\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \draw [scale=0.6]
+                            (-2,0) node(C1){} -- (0,-1) node(C2){} -- (2,0) node(C3){} -- (0,1) node(C4){} -- cycle
+                            (-1.8,0) -- (0,-0.9)
+                            (1.8,0) -- (0,0.9)
+                        ;
+            
+                        \filldraw [semithick,draw=rex,fill=rez] (C2.110) to[bend left=110,looseness=20] (C2.70);
+                        \filldraw [semithick,draw=rex,fill=rey] (C2.-70) to[bend left=110,looseness=20] (C2.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C4.110) to[bend left=110,looseness=20] (C4.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C4.-70) to[bend left=110,looseness=20] (C4.-110);
+                    \end{tikzpicture}
+                    \caption{}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.24\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \draw [scale=0.6]
+                            (-2,0) node(C1){} -- (0,-1) node(C2){} -- (2,0) node(C3){} -- (0,1) node(C4){} -- cycle
+                            (-1.8,0) -- (0,-0.9)
+                            (1.8,0) -- (0,0.9)
+                        ;
+            
+                        \filldraw [semithick,draw=rex,fill=rez] (C1.110) to[bend left=110,looseness=20] (C1.70);
+                        \filldraw [semithick,draw=rex,fill=rey] (C1.-70) to[bend left=110,looseness=20] (C1.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C3.110) to[bend left=110,looseness=20] (C3.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C3.-70) to[bend left=110,looseness=20] (C3.-110);
+                    \end{tikzpicture}
+                    \vspace{2em}
+                    \caption{}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.24\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \draw [scale=0.6]
+                            (-2,0) node(C1){} -- (0,-1) node(C2){} -- (2,0) node(C3){} -- (0,1) node(C4){} -- cycle
+                            (-1.8,0) -- (0,-0.9)
+                            (1.8,0) -- (0,0.9)
+                        ;
+            
+                        \filldraw [semithick,draw=rex,fill=rez] (C1.110) to[bend left=110,looseness=20] (C1.70);
+                        \filldraw [semithick,draw=rex,fill=rey] (C1.-70) to[bend left=110,looseness=20] (C1.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C2.110) to[bend left=110,looseness=20] (C2.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C2.-70) to[bend left=110,looseness=20] (C2.-110);
+                        \filldraw [semithick,draw=rex,fill=rez] (C3.110) to[bend left=110,looseness=20] (C3.70);
+                        \filldraw [semithick,draw=rex,fill=rey] (C3.-70) to[bend left=110,looseness=20] (C3.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C4.110) to[bend left=110,looseness=20] (C4.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C4.-70) to[bend left=110,looseness=20] (C4.-110);
+                    \end{tikzpicture}
+                    \caption{}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.24\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \draw [scale=0.6]
+                            (-2,0) node(C1){} -- (0,-1) node(C2){} -- (2,0) node(C3){} -- (0,1) node(C4){} -- cycle
+                            (-1.8,0) -- (0,-0.9)
+                            (1.8,0) -- (0,0.9)
+                        ;
+            
+                        \filldraw [semithick,draw=rex,fill=rey] (C1.110) to[bend left=110,looseness=20] (C1.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C1.-70) to[bend left=110,looseness=20] (C1.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C2.110) to[bend left=110,looseness=20] (C2.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C2.-70) to[bend left=110,looseness=20] (C2.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C3.110) to[bend left=110,looseness=20] (C3.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C3.-70) to[bend left=110,looseness=20] (C3.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C4.110) to[bend left=110,looseness=20] (C4.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C4.-70) to[bend left=110,looseness=20] (C4.-110);
+                    \end{tikzpicture}
+                    \caption{}
+                \end{subfigure}
+            \end{figure}
+        \end{proof}
+        \item Label each sketch in part (d) by its molecular orbital energy.
+        \begin{proof}[Answer]
+            We have
+            \begin{align*}
+                \Aboxed{\text{(a)} &= \alpha}&
+                \Aboxed{\text{(b)} &= \alpha}&
+                \Aboxed{\text{(c)} &= \alpha-2\beta}&
+                \Aboxed{\text{(d)} &= \alpha+2\beta}
+            \end{align*}
+        \end{proof}
+        \item Do the molecular orbitals computed by the variational 2-RDM method agree with the qualitative features of those predicted by Huckel's theory?
+        \begin{proof}[Answer]
+            The orbitals (c) and (d) from part (d) have variational 2-RDM analogues. However, the other two orbitals have definite qualitative distinctions (namely, the Huckel ones have their electron density localized to one atom instead of distributed across two).
+        \end{proof}
+        \item In what ways do these orbital occupations agree with those predicted from Huckel theory, and in what ways do they not agree?
+        \begin{proof}[Answer]
+            They agree in the sense that we have a bonding state that is nearly fully occupied and an antibonding state that is nearly empty, but they disagree on the degeneracy of the two middle states (Huckel theory predicts degeneracy in the middle states, but the states computed here differ in occupation by almost exactly an entire electron, suggesting that they have significantly different energies).
+        \end{proof}
+        \item Based on the computed bond distances, is the geometry of cyclobutadiene square or rectangular?
+        \begin{proof}[Answer]
+            Since the bond lengths of C1-C3 and C2-C4 are equal but different than the bond lengths of C1-C2 and C3-C4, cyclobutadiene is \fbox{rectangular}.
+        \end{proof}
+        \item Can you use the result from part (h) to explain the difference in the occupation numbers from the Variational 2-RDM calculations and those from Huckel's method?
+        \begin{proof}[Answer]
+            Yes. Since the lowest and highest energy orbitals have a $C_4$ axis in both approximations but the molecule overall only has a $C_2$ axis in the variational 2-RDM approximation, the middle orbitals cannot be symmetric as they are in the Huckel approximation from part (d). This lack of symmetry implies nondegenerate energies, as one orbital must be more occupied than the other to stretch the molecule from square to rectangular.
+        \end{proof}
+    \end{enumerate}
     \item In photoelectron spectroscopy, radiation interacts with gaseous molecules to eject electrons whose kinetic energies are measured (recall the photoelectric effect).
     \begin{enumerate}
         \item Explain why measuring the kinetic energy of the ejected electrons tells us something about the molecular orbital energies.
+        \begin{proof}[Answer]
+            Using Einstein's Nobel prize equation
+            \begin{equation*}
+                KE = h\nu-W
+            \end{equation*}
+            we know that the kinetic energy $KE$ of the ejected electron is equal to the energy $h\nu$ of the impinging photon minus the ionization energy of the ejected electron (the molecular orbital energy). Thus, if we plot measured $KE$'s versus known $h\nu$'s and perform a linear regression, the $y$-intercept gives an approximation for $W$.
+        \end{proof}
         \item If the incident radiation has a frequency of $\SI{57.8}{\nano\meter}$, what is the largest electron binding energy that can be measured?
+        \begin{proof}
+            Using the above equation again, if $\nu=\SI{57.8}{\nano\meter}$, the largest electron binding energy that can be measured is that which gives a $KE$ detectably greater than zero. Numerically,
+            \begin{align*}
+                0 &< KE\\
+                0 &< h\nu-W\\
+                W &< h\nu\\
+                &= \SI{3.83}{\joule}
+            \end{align*}
+            i.e., the largest energy that can be measured is bounded by \fbox{$\SI{3.83}{\joule}$}.
+        \end{proof}
     \end{enumerate}
     \item 
     \begin{enumerate}
         \item Sketch the hybrid orbitals of \ce{Be} in the molecule \ce{BeH2} and illustrate their role in bonding.
+        \begin{proof}[Answer]
+            ${\color{white}hi}$
+            \begin{center}
+                \begin{tikzpicture}
+                    \footnotesize
+                    \node (Be) {Be};
+                    \node (H1) at (2.2,0) {H};
+                    \node (H2) at (-2.2,0) {H};
+            
+                    \filldraw [semithick,draw=rex,fill=rez,opacity=0.5] (Be.165) to[bend right=110,looseness=10] (Be.-165);
+                    \filldraw [semithick,draw=rex,fill=rez,opacity=0.5] (Be.15) to[bend left=110,looseness=10] (Be.-15);
+                    \filldraw [semithick,draw=rex,fill=rey,opacity=0.5] (Be.30) to[bend left=110,looseness=20] (Be.-30);
+                    \filldraw [semithick,draw=rex,fill=rey,opacity=0.5] (Be.150) to[bend right=110,looseness=20] (Be.-150);
+            
+                    \filldraw [semithick,draw=rex,fill=rey,opacity=0.5] (H1) circle (3mm);
+                    \filldraw [semithick,draw=rex,fill=rey,opacity=0.5] (H2) circle (3mm);
+                \end{tikzpicture}
+            \end{center}
+        \end{proof}
         \item Using the hybrid orbitals, assemble a molecular orbital diagram for \ce{BeH2}.
+        \begin{proof}[Answer]
+            ${\color{white}hi}$
+            \begin{center}
+                \begin{tikzpicture}[
+                    every node/.style={black}
+                ]
+                    \footnotesize
+                    \draw [ultra thick]
+                        (-0.55,1.6) -- ++(0.5,0) node[below=2mm,xshift=0.5mm]{$\sigma_u$}
+                            ++(0.1,0) -- ++(0.5,0)
+                        (-0.55,0.0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} ++(0.5,0) node[below=2mm,xshift=0.5mm]{$\sigma_g$}
+                            ++(0.1,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} ++(0.5,0)
+                    ;
+            
+                    \draw [ultra thick,grx]
+                        (2,0.3) -- node{\Large$\upharpoonleft$} node[below=2mm]{$sp$} ++(0.5,0)
+                            ++(0.1,0) -- node{\Large$\upharpoonleft$} node[below=2mm]{$sp$} ++(0.5,0)
+                        (-3.1,1.1) -- node{\Large$\upharpoonleft$} node[below=2mm]{$1s$} ++(0.5,0)
+                            ++(0.1,0) -- node{\Large$\upharpoonleft$} node[below=2mm]{$1s$} ++(0.5,0)
+                    ;
+            
+                    \draw [grx,densely dashed]
+                        (0.55,1.6)  -- (2.0,0.3)
+                        (0.55,0.0)  -- (2.0,0.3)
+                        (-0.55,1.6) -- (-2.0,1.1)
+                        (-0.55,0.0) -- (-2.0,1.1)
+                    ;
+                \end{tikzpicture}
+            \end{center}
+        \end{proof}
         \item With Grassmann notation, express the MO ground-state wave function for \ce{BeH2}.
+        \begin{proof}[Answer]
+            We have that
+            \begin{equation*}
+                \psi(1,2,3,4,5,6) = 1s\alpha(1)\wedge 1s\beta(2)\wedge 1\sigma_g\alpha(3)\wedge 1\sigma_g\beta(4)\wedge 2\sigma_g\alpha(5)\wedge 2\sigma_g\beta(6)
+            \end{equation*}
+        \end{proof}
     \end{enumerate}
     \item Using the \emph{hybridized} $sp^3$ wave functions of \ce{CH4} on \textcite[376]{bib:McQuarrieSimon}, give the probability that an electron in one of the $sp^3$ wave functions is\dots
     \begin{enumerate}
         \item In carbon's $2p_x$ orbital;
+        \begin{proof}[Answer]
+            We have that the normalized $sp^3$ wave functions are of the form
+            \begin{equation*}
+                \psi = \frac{1}{2}(2s\pm 2p_x\pm 2p_y\pm 2p_z)
+            \end{equation*}
+            Thus, since the probability that an electron is in one of the component orbitals is equal to the square of the norm of its coefficient, we have that
+            \begin{equation*}
+                \boxed{\Prob_{2p_x} = \frac{1}{4}}
+            \end{equation*}
+        \end{proof}
         \item In carbon's $2p_z$ orbital.
+        \begin{proof}[Answer]
+            By a completely symmetric argument to part (a),
+            \begin{equation*}
+                \boxed{\Prob_{2p_z} = \frac{1}{4}}
+            \end{equation*}
+        \end{proof}
         \item By symmetry, should the results in parts (a) and (b) be the same or different?
+        \begin{proof}[Answer]
+            \fbox{Yes}.
+        \end{proof}
     \end{enumerate}
     \item The $\pi$-electrons may be approximated in conjugated and aromatic hydrocarbons through Huckel theory. Use Huckel theory to approximate the energies and the wave functions for\dots
     \begin{enumerate}
         \item The allyl radical;
+        \begin{proof}[Answer]
+            Consider the system $\mathbb{H}\vec{c}=E\mathbb{S}\vec{c}$ describing only the three adjacent $2p_z$ orbitals of the allyl radical, each of which contains one electron. Invoking the Huckel approximation, we get
+            \begin{align*}
+                \mathbb{H}\vec{c} &= E\mathbb{I}\vec{c}\\
+                (\mathbb{H}-E\mathbb{I})\vec{c} &= 0\\
+                \begin{pmatrix}
+                    \alpha-E & \beta & 0\\
+                    \beta & \alpha-E & \beta\\
+                    0 & \beta & \alpha-E\\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    c_1\\
+                    c_2\\
+                    c_3\\
+                \end{pmatrix}
+                &=
+                \begin{pmatrix}
+                    0\\
+                    0\\
+                    0\\
+                \end{pmatrix}
+            \end{align*}
+            as an approximation of the original system, where $\alpha,\beta$ are experimentally determined quantities. We want to find all energies $E$ that give $\mathbb{H}-E\mathbb{I}$ a nontrivial null space, i.e., a nontrivial corresponding wave function. But these values of $E$ will be the ones for which $\mathbb{H}-E\mathbb{I}$ is singular with determinant zero. Thus, set
+            \begingroup
+            \allowdisplaybreaks
+            \begin{align*}
+                0 &=
+                \begin{vmatrix}
+                    \alpha-E & \beta & 0\\
+                    \beta & \alpha-E & \beta\\
+                    0 & \beta & \alpha-E\\
+                \end{vmatrix}\\
+                &= \beta^3
+                \begin{vmatrix}
+                    (\alpha-E)/\beta & 1 & 0\\
+                    1 & (\alpha-E)/\beta & 1\\
+                    0 & 1 & (\alpha-E)/\beta\\
+                \end{vmatrix}\\
+                &=
+                \begin{vmatrix}
+                    x & 1 & 0\\
+                    1 & x & 1\\
+                    0 & 1 & x\\
+                \end{vmatrix}\\
+                &= x^3-2x\\
+                &= x(x+\sqrt{2})(x-\sqrt{2})\\
+                \frac{\alpha-E}{\beta} &= 0,\pm\sqrt{2}\\
+                E &= \alpha-(0,\pm\sqrt{2})\beta
+            \end{align*}
+            \endgroup
+            to determine the desired approximate energies, which we may label
+            \begin{align*}
+                \Aboxed{E_1 &= \alpha+\sqrt{2}\beta}&
+                \Aboxed{E_2 &= \alpha}&
+                \Aboxed{E_3 &= \alpha-\sqrt{2}\beta}
+            \end{align*}
+            As for the corresponding wave functions, to determine the coefficients of $\psi_i$, we solve the original system with each $E_i$ plugged in using Gauss-Jordan elimination. For example,
+            \begin{align*}
+                &
+                \begin{pNiceArray}{ccc|c}
+                    \frac{\alpha-E_1}{\beta} & 1 & 0 & 0\\
+                    1 & \frac{\alpha-E_1}{\beta} & 1 & 0\\
+                    0 & 1 & \frac{\alpha-E_1}{\beta} & 0\\
+                \end{pNiceArray}\\
+                &
+                \begin{pNiceArray}{ccc|c}
+                    -\sqrt{2} & 1 & 0 & 0\\
+                    1 & -\sqrt{2} & 1 & 0\\
+                    0 & 1 & -\sqrt{2} & 0\\
+                \end{pNiceArray}\\
+                &
+                \begin{pNiceArray}{ccc|c}
+                    1 & 0 & -1 & 0\\
+                    0 & 1 & -\sqrt{2} & 0\\
+                    0 & 0 & 0 & 0
+                \end{pNiceArray}
+            \end{align*}
+            yields $\psi_1=(1c_3)2p_{z_\text{A}}+(\sqrt{2}c_3)2p_{z_\text{B}}+(c_3)2p_{z_\text{C}}$. We can pick a particular solution by normalizing to get $c_3=1/2$, yielding
+            \begin{equation*}
+                \boxed{\psi_1 = \frac{1}{2}2p_{z_\text{A}}+\frac{1}{\sqrt{2}}2p_{z_\text{B}}+\frac{1}{2}2p_{z_\text{C}}}
+            \end{equation*}
+            Repeating the process for $E_2$ and $E_3$ gives
+            \begin{align*}
+                \Aboxed{\psi_2 &= -\frac{1}{\sqrt{2}}2p_{z_\text{A}}+\frac{1}{\sqrt{2}}2p_{z_\text{C}}}\\
+                \Aboxed{\psi_3 &= \frac{1}{2}2p_{z_\text{A}}-\frac{1}{\sqrt{2}}2p_{z_\text{B}}+\frac{1}{2}2p_{z_\text{C}}}
+            \end{align*}
+        \end{proof}
         \item Cyclobutadiene;
+        \begin{proof}[Answer]
+            The Huckel approximation system for cyclobutadiene is identical to the four-dimensional generalization of the system used in part (a), except that the bottom-left and upper-right matrix elements are $\beta$ instead of zero, reflecting the fact that cyclobutadiene is ring-shaped and thus the $2p_{z_\text{A}}$ and $2p_{z_\text{D}}$ orbitals are actually adjacent. Symbolically, the system is
+            \begin{equation*}
+                \begin{pmatrix}
+                    \alpha-E & \beta & 0 & \beta\\
+                    \beta & \alpha-E & \beta & 0\\
+                    0 & \beta & \alpha-E & \beta\\
+                    \beta & 0 & \beta & \alpha-E\\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    c_1\\
+                    c_2\\
+                    c_3\\
+                    c_4\\
+                \end{pmatrix}
+                =
+                \begin{pmatrix}
+                    0\\
+                    0\\
+                    0\\
+                    0\\
+                \end{pmatrix}
+            \end{equation*}
+            We may proceed from here in an identical fashion to part (a) to learn that
+            \begin{align*}
+                0 &=
+                \begin{vmatrix}
+                    x & 1 & 0 & 1\\
+                    1 & x & 1 & 0\\
+                    0 & 1 & x & 1\\
+                    1 & 0 & 1 & x\\
+                \end{vmatrix}\\
+                &= x^2(x+2)(x-2)\\
+                E &= \alpha-(0,\pm 2)\beta
+            \end{align*}
+            i.e.,
+            \begin{align*}
+                \Aboxed{E_1 &= \alpha+2\beta}&
+                \Aboxed{E_2 = E_3 &= \alpha}&
+                \Aboxed{E_4 &= \alpha-2\beta}
+            \end{align*}
+            As before, these values then yield
+            \begin{equation*}
+                \boxed{\psi_1 = \frac{1}{2}(2p_{z_\text{A}}+2p_{z_\text{B}}+2p_{z_\text{C}}+2p_{z_\text{D}})}
+            \end{equation*}
+            Solving for $\psi_2$ and $\psi_3$ is somewhat more complicated however due to the degeneracy of their corresponding energies. Indeed, applying Gauss-Jordan elimination with either $E_2$ or $E_3$ plugged in gives a two-dimensional null space (i.e., two linearly independent families of solutions) described by
+            \begin{equation*}
+                \psi_{2,3} = (-c_3)2p_{z_\text{A}}+(-c_4)2p_{z_\text{B}}+(c_3)2p_{z_\text{C}}+(c_4)2p_{z_\text{D}}
+            \end{equation*}
+            However, since wave functions should be orthogonal, choose $c_4=0$ for $\psi_2$ and $c_3=0$ for $\psi_3$, i.e., choose
+            \begin{align*}
+                \psi_2 &= (-c_3)2p_{z_\text{A}}+(c_3)2p_{z_\text{C}}&
+                \psi_3 &= (-c_4)2p_{z_\text{B}}+(c_4)2p_{z_\text{D}}
+            \end{align*}
+            Normalizing then yields
+            \begin{align*}
+                \Aboxed{\psi_2 &= -\frac{1}{\sqrt{2}}2p_{z_\text{A}}+\frac{1}{\sqrt{2}}2p_{z_\text{C}}}\\
+                \Aboxed{\psi_3 &= -\frac{1}{\sqrt{2}}2p_{z_\text{B}}+\frac{1}{\sqrt{2}}2p_{z_\text{D}}}
+            \end{align*}
+            Lastly, we can still solve for $\psi_4$ as we did in part (a):
+            \begin{equation*}
+                \boxed{\psi_4 = \frac{1}{2}(-2p_{z_\text{A}}+2p_{z_\text{B}}-2p_{z_\text{C}}+2p_{z_\text{D}})}
+            \end{equation*}
+        \end{proof}
         \item The cyclopentadienyl radical.
+        \begin{proof}[Answer]
+            Here, we proceed in an entirely analogous method to the previous two parts. No new modifications are needed. Indeed, we find the energies via
+            \begin{align*}
+                0 &=
+                \begin{pmatrix}
+                    x & 1 & 0 & 0 & 1\\
+                    1 & x & 1 & 0 & 0\\
+                    0 & 1 & x & 1 & 0\\
+                    0 & 0 & 1 & x & 1\\
+                    1 & 0 & 0 & 1 & x\\
+                \end{pmatrix}\\
+                &= (x+2)(x^2-2-1)^2\\
+                E &= \alpha-\left( -2,\frac{1\pm\sqrt{5}}{2} \right)\beta
+            \end{align*}
+            to be
+            \begin{align*}
+                \Aboxed{E_1 &= \alpha+2\beta}&
+                \Aboxed{E_2 = E_3 &= \alpha-\frac{1-\sqrt{5}}{2}\beta}&
+                \Aboxed{E_4 = E_5 &= \alpha-\frac{1+\sqrt{5}}{2}\beta}
+            \end{align*}
+            Gauss-Jordan elimination, picking orthogonal bases where necessary, and normalization then yields
+            \begin{align*}
+                \Aboxed{\psi_1 &= \frac{1}{\sqrt{5}}(2p_{z_\text{A}}+2p_{z_\text{B}}+2p_{z_\text{C}}+2p_{z_\text{D}}+2p_{z_\text{E}})}\\
+                \Aboxed{\psi_2 &= -\frac{1}{\sqrt{5-\sqrt{5}}}2p_{z_\text{A}}-\frac{\sqrt{5}\sqrt{5-\sqrt{5}}}{10}2p_{z_\text{B}}+\frac{\sqrt{5}\sqrt{5-\sqrt{5}}}{10}2p_{z_\text{C}}+\frac{1}{\sqrt{5-\sqrt{5}}}2p_{z_\text{D}}}\\
+                \Aboxed{\psi_3 &= \frac{\sqrt{5}\sqrt{5-\sqrt{5}}}{10}2p_{z_\text{A}}-\frac{\sqrt{5}\sqrt{5-\sqrt{5}}}{10}2p_{z_\text{B}}+\frac{1}{\sqrt{5-\sqrt{5}}}2p_{z_\text{C}}+\frac{1}{\sqrt{5-\sqrt{5}}}2p_{z_\text{E}}}\\
+                \Aboxed{\psi_4 &= -\frac{1}{\sqrt{5+\sqrt{5}}}2p_{z_\text{A}}-\frac{\sqrt{5}\sqrt{5+\sqrt{5}}}{10}2p_{z_\text{B}}+\frac{\sqrt{5}\sqrt{5+\sqrt{5}}}{10}2p_{z_\text{C}}+\frac{1}{\sqrt{5+\sqrt{5}}}2p_{z_\text{D}}}\\
+                \Aboxed{\psi_5 &= \frac{\sqrt{5}\sqrt{5+\sqrt{5}}}{10}2p_{z_\text{A}}-\frac{\sqrt{5}\sqrt{5+\sqrt{5}}}{10}2p_{z_\text{B}}+\frac{1}{\sqrt{5+\sqrt{5}}}2p_{z_\text{C}}+\frac{1}{\sqrt{5+\sqrt{5}}}2p_{z_\text{E}}}
+            \end{align*}
+        \end{proof}
         \item For each wave function computed in parts (a), (b), and (c), give a schematic sketch of the molecular orbital contributions. Refer to Figure 10.23 on \textcite[396]{bib:McQuarrieSimon} for an example of such a sketch.
+        \begin{proof}[Answer]
+            ${\color{white}hi}$
+            \begin{figure}[H]
+                \centering
+                \footnotesize
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \chemfig{@{C1}C=_[:30]@{C2}C-[:-30]@{C3}\charge{45=\.}{C}}
+                    \chemmove{
+                        \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rey] (C1.110) to[bend left=110,looseness=21] (C1.70);
+                        \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rez] (C1.-70) to[bend left=110,looseness=21] (C1.-110);
+                        %
+                        \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rey] (C2.110) to[bend left=110,looseness=30] (C2.70);
+                        \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rez] (C2.-70) to[bend left=110,looseness=30] (C2.-110);
+                        %
+                        \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rey] (C3.110) to[bend left=110,looseness=21] (C3.70);
+                        \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rez] (C3.-70) to[bend left=110,looseness=21] (C3.-110);
+                    }
+                    \vspace{2em}
+                    \caption*{$\psi_1$}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \chemfig{@{C1}C=_[:30]@{C2}C-[:-30]@{C3}\charge{45=\.}{C}}
+                    \chemmove{
+                        \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rez] (C1.110) to[bend left=110,looseness=30] (C1.70);
+                        \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rey] (C1.-70) to[bend left=110,looseness=30] (C1.-110);
+                        %
+                        \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rey] (C3.110) to[bend left=110,looseness=30] (C3.70);
+                        \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rez] (C3.-70) to[bend left=110,looseness=30] (C3.-110);
+                    }
+                    \vspace{2em}
+                    \caption*{$\psi_2$}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \chemfig{@{C1}C=_[:30]@{C2}C-[:-30]@{C3}\charge{45=\.}{C}}
+                    \chemmove{
+                        \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rey] (C1.110) to[bend left=110,looseness=21] (C1.70);
+                        \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rez] (C1.-70) to[bend left=110,looseness=21] (C1.-110);
+                        %
+                        \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rez] (C2.110) to[bend left=110,looseness=30] (C2.70);
+                        \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rey] (C2.-70) to[bend left=110,looseness=30] (C2.-110);
+                        %
+                        \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rey] (C3.110) to[bend left=110,looseness=21] (C3.70);
+                        \filldraw [-,shorten <=2pt,shorten >=2pt,semithick,draw=rex,fill=rez] (C3.-70) to[bend left=110,looseness=21] (C3.-110);
+                    }
+                    \vspace{2em}
+                    \caption*{$\psi_3$}
+                \end{subfigure}
+                \caption*{Part (a).}
+            \end{figure}
+            \begin{figure}[H]
+                \centering
+                \footnotesize
+                \begin{subfigure}[b]{0.24\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \draw [scale=0.6]
+                            (-2,0) node(C1){} -- (0,-1) node(C2){} -- (2,0) node(C3){} -- (0,1) node(C4){} -- cycle
+                            (-1.8,0) -- (0,-0.9)
+                            (1.8,0) -- (0,0.9)
+                        ;
+            
+                        \filldraw [semithick,draw=rex,fill=rey] (C1.110) to[bend left=110,looseness=20] (C1.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C1.-70) to[bend left=110,looseness=20] (C1.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C2.110) to[bend left=110,looseness=20] (C2.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C2.-70) to[bend left=110,looseness=20] (C2.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C3.110) to[bend left=110,looseness=20] (C3.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C3.-70) to[bend left=110,looseness=20] (C3.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C4.110) to[bend left=110,looseness=20] (C4.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C4.-70) to[bend left=110,looseness=20] (C4.-110);
+                    \end{tikzpicture}
+                    \caption*{$\psi_1$}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.24\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \draw [scale=0.6]
+                            (-2,0) node(C1){} -- (0,-1) node(C2){} -- (2,0) node(C3){} -- (0,1) node(C4){} -- cycle
+                            (-1.8,0) -- (0,-0.9)
+                            (1.8,0) -- (0,0.9)
+                        ;
+            
+                        \filldraw [semithick,draw=rex,fill=rez] (C1.110) to[bend left=110,looseness=20] (C1.70);
+                        \filldraw [semithick,draw=rex,fill=rey] (C1.-70) to[bend left=110,looseness=20] (C1.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C3.110) to[bend left=110,looseness=20] (C3.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C3.-70) to[bend left=110,looseness=20] (C3.-110);
+                    \end{tikzpicture}
+                    \vspace{2em}
+                    \caption*{$\psi_2$}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.24\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \draw [scale=0.6]
+                            (-2,0) node(C1){} -- (0,-1) node(C2){} -- (2,0) node(C3){} -- (0,1) node(C4){} -- cycle
+                            (-1.8,0) -- (0,-0.9)
+                            (1.8,0) -- (0,0.9)
+                        ;
+            
+                        \filldraw [semithick,draw=rex,fill=rez] (C2.110) to[bend left=110,looseness=20] (C2.70);
+                        \filldraw [semithick,draw=rex,fill=rey] (C2.-70) to[bend left=110,looseness=20] (C2.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C4.110) to[bend left=110,looseness=20] (C4.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C4.-70) to[bend left=110,looseness=20] (C4.-110);
+                    \end{tikzpicture}
+                    \caption*{$\psi_3$}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.24\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \draw [scale=0.6]
+                            (-2,0) node(C1){} -- (0,-1) node(C2){} -- (2,0) node(C3){} -- (0,1) node(C4){} -- cycle
+                            (-1.8,0) -- (0,-0.9)
+                            (1.8,0) -- (0,0.9)
+                        ;
+            
+                        \filldraw [semithick,draw=rex,fill=rez] (C1.110) to[bend left=110,looseness=20] (C1.70);
+                        \filldraw [semithick,draw=rex,fill=rey] (C1.-70) to[bend left=110,looseness=20] (C1.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C2.110) to[bend left=110,looseness=20] (C2.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C2.-70) to[bend left=110,looseness=20] (C2.-110);
+                        \filldraw [semithick,draw=rex,fill=rez] (C3.110) to[bend left=110,looseness=20] (C3.70);
+                        \filldraw [semithick,draw=rex,fill=rey] (C3.-70) to[bend left=110,looseness=20] (C3.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C4.110) to[bend left=110,looseness=20] (C4.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C4.-70) to[bend left=110,looseness=20] (C4.-110);
+                    \end{tikzpicture}
+                    \caption*{$\psi_4$}
+                \end{subfigure}
+                \caption*{Part (b).}
+            \end{figure}
+            \begin{figure}[H]
+                \centering
+                \tikzset{every path/.style={scale=0.9}}
+                \footnotesize
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \draw [transform shape,yscale=0.5]
+                            (-198:1.2) node(C1){} -- (-126:1.2) node(C2){} -- (-54:1.2) node(C3){} -- (18:1.2) node(C4){} -- (90:1.2) node(C5){} -- cycle
+                            (-126:1) -- (162:1)
+                            (-54:1) -- (18:1)
+                        ;
+                        \node [transform shape,scale=0.6,xshift=2pt,yshift=2pt] at (C5.north east) {$\bullet$};
+            
+                        \filldraw [semithick,draw=rex,fill=rey] (C1.110) to[bend left=110,looseness=30] (C1.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C1.-70) to[bend left=110,looseness=30] (C1.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C2.110) to[bend left=110,looseness=30] (C2.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C2.-70) to[bend left=110,looseness=30] (C2.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C3.110) to[bend left=110,looseness=30] (C3.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C3.-70) to[bend left=110,looseness=30] (C3.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C4.110) to[bend left=110,looseness=30] (C4.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C4.-70) to[bend left=110,looseness=30] (C4.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C5.110) to[bend left=110,looseness=30] (C5.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C5.-70) to[bend left=110,looseness=30] (C5.-110);
+                    \end{tikzpicture}
+                    \caption*{$\psi_1$}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \draw [transform shape,yscale=0.5]
+                            (-198:1.2) node(C1){} -- (-126:1.2) node(C2){} -- (-54:1.2) node(C3){} -- (18:1.2) node(C4){} -- (90:1.2) node(C5){} -- cycle
+                            (-126:1) -- (162:1)
+                            (-54:1) -- (18:1)
+                        ;
+                        \node [transform shape,scale=0.6,xshift=2pt,yshift=2pt] at (C5.north east) {$\bullet$};
+            
+                        \filldraw [semithick,draw=rex,fill=rez] (C1.110) to[bend left=110,looseness=30] (C1.70);
+                        \filldraw [semithick,draw=rex,fill=rey] (C1.-70) to[bend left=110,looseness=30] (C1.-110);
+                        \filldraw [semithick,draw=rex,fill=rez] (C2.110) to[bend left=110,looseness=18] (C2.70);
+                        \filldraw [semithick,draw=rex,fill=rey] (C2.-70) to[bend left=110,looseness=18] (C2.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C3.110) to[bend left=110,looseness=18] (C3.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C3.-70) to[bend left=110,looseness=18] (C3.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C4.110) to[bend left=110,looseness=30] (C4.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C4.-70) to[bend left=110,looseness=30] (C4.-110);
+                    \end{tikzpicture}
+                    \vspace{1em}
+                    \caption*{$\psi_2$}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \draw [transform shape,yscale=0.5]
+                            (-198:1.2) node(C1){} -- (-126:1.2) node(C2){} -- (-54:1.2) node(C3){} -- (18:1.2) node(C4){} -- (90:1.2) node(C5){} -- cycle
+                            (-126:1) -- (162:1)
+                            (-54:1) -- (18:1)
+                        ;
+                        \node [transform shape,scale=0.6,xshift=2pt,yshift=2pt] at (C5.north east) {$\bullet$};
+            
+                        \filldraw [semithick,draw=rex,fill=rey] (C1.110) to[bend left=110,looseness=18] (C1.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C1.-70) to[bend left=110,looseness=18] (C1.-110);
+                        \filldraw [semithick,draw=rex,fill=rez] (C2.110) to[bend left=110,looseness=18] (C2.70);
+                        \filldraw [semithick,draw=rex,fill=rey] (C2.-70) to[bend left=110,looseness=18] (C2.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C3.110) to[bend left=110,looseness=30] (C3.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C3.-70) to[bend left=110,looseness=30] (C3.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C5.110) to[bend left=110,looseness=30] (C5.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C5.-70) to[bend left=110,looseness=30] (C5.-110);
+                    \end{tikzpicture}
+                    \caption*{$\psi_3$}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \draw [transform shape,yscale=0.5]
+                            (-198:1.2) node(C1){} -- (-126:1.2) node(C2){} -- (-54:1.2) node(C3){} -- (18:1.2) node(C4){} -- (90:1.2) node(C5){} -- cycle
+                            (-126:1) -- (162:1)
+                            (-54:1) -- (18:1)
+                        ;
+                        \node [transform shape,scale=0.6,xshift=2pt,yshift=2pt] at (C5.north east) {$\bullet$};
+            
+                        \filldraw [semithick,draw=rex,fill=rez] (C1.110) to[bend left=110,looseness=19] (C1.70);
+                        \filldraw [semithick,draw=rex,fill=rey] (C1.-70) to[bend left=110,looseness=19] (C1.-110);
+                        \filldraw [semithick,draw=rex,fill=rez] (C2.110) to[bend left=110,looseness=30] (C2.70);
+                        \filldraw [semithick,draw=rex,fill=rey] (C2.-70) to[bend left=110,looseness=30] (C2.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C3.110) to[bend left=110,looseness=30] (C3.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C3.-70) to[bend left=110,looseness=30] (C3.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C4.110) to[bend left=110,looseness=19] (C4.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C4.-70) to[bend left=110,looseness=19] (C4.-110);
+                    \end{tikzpicture}
+                    \caption*{$\psi_4$}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.19\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \draw [transform shape,yscale=0.5]
+                            (-198:1.2) node(C1){} -- (-126:1.2) node(C2){} -- (-54:1.2) node(C3){} -- (18:1.2) node(C4){} -- (90:1.2) node(C5){} -- cycle
+                            (-126:1) -- (162:1)
+                            (-54:1) -- (18:1)
+                        ;
+                        \node [transform shape,scale=0.6,xshift=2pt,yshift=2pt] at (C5.north east) {$\bullet$};
+            
+                        \filldraw [semithick,draw=rex,fill=rey] (C1.110) to[bend left=110,looseness=30] (C1.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C1.-70) to[bend left=110,looseness=30] (C1.-110);
+                        \filldraw [semithick,draw=rex,fill=rez] (C2.110) to[bend left=110,looseness=30] (C2.70);
+                        \filldraw [semithick,draw=rex,fill=rey] (C2.-70) to[bend left=110,looseness=30] (C2.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C3.110) to[bend left=110,looseness=19] (C3.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C3.-70) to[bend left=110,looseness=19] (C3.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C5.110) to[bend left=110,looseness=19] (C5.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C5.-70) to[bend left=110,looseness=19] (C5.-110);
+                    \end{tikzpicture}
+                    \caption*{$\psi_3$}
+                \end{subfigure}
+                \caption*{Part (c).}
+            \end{figure}
+        \end{proof}
     \end{enumerate}
 \end{enumerate}
 
