@@ -809,5 +809,88 @@
 
 
 
+\section{Harmonic Oscillator Energy Derivation}
+\emph{From \textcite{bib:HarmonicOscillator}.}
+\begin{itemize}
+    \item \marginnote{11/17:}The one-dimensional time-independent Schr\"{o}dinger equation governing the motion of the harmonic oscillator is
+    \begin{equation*}
+        -\frac{\hbar^2}{2m}\dv[2]{\psi}{x}+\frac{1}{2}m\omega^2x^2\psi = E\psi
+    \end{equation*}
+    as derived from the sum of the quantum kinetic energy operator and classical potential for a harmonic oscillator.
+    \item To find the wave functions and eigenenergies of this second-order differential equation, we use the power series method.
+    \item To begin, introduce the dimensionless variable
+    \begin{equation*}
+        y = \sqrt{\frac{m\omega}{\hbar}}x
+    \end{equation*}
+    and perform a change of variables as follows.
+    \begin{align*}
+        0 &= \dv[2]{\psi(x)}{x}+\left( \frac{2mE}{\hbar^2}-\frac{m^2\omega^2}{\hbar^2}x^2 \right)\psi(x)\\
+        &= \dv{y}(\dv{\psi(y)}{y}\cdot\dv{y}{x})\cdot\dv{y}{x}+\left[ \frac{2mE}{\hbar^2}-\frac{m^2\omega^2}{\hbar^2}\left( \sqrt{\frac{\hbar}{m\omega}}y \right)^2 \right]\psi(y)\\
+        &= \dv{y}(\dv{\psi(y)}{y}\cdot\sqrt{\frac{m\omega}{\hbar}})\cdot\sqrt{\frac{m\omega}{\hbar}}+\left( \frac{2mE}{\hbar^2}-\frac{m\omega}{\hbar}y^2 \right)\psi(y)\\
+        &= \dv[2]{\psi(y)}{y}+\left( \frac{2E}{\hbar\omega}-y^2 \right)\psi(y)
+    \end{align*}
+    \item If we let $\epsilon=2E/\hbar\omega$ as well, we obtain
+    \begin{equation*}
+        \dv[2]{\psi(y)}{y}+(\epsilon-y^2)\psi(y) = 0
+    \end{equation*}
+    as a fully simplified version of the original differential equation.
+    \item We now perform an asymptotic analysis.
+    \item In the limit as $y\to\infty$, the constant $\epsilon$ becomes negligible in comparison to the $y^2$ term. Thus, our differential equation becomes
+    \begin{equation*}
+        \dv[2]{\psi(y)}{y}-y^2\psi(y) = 0
+    \end{equation*}
+    \item \marginnote{11/18:}The general solution is
+    \begin{equation*}
+        \psi(y) = H(y)\e[-y^2/2]
+    \end{equation*}
+    where $H(y)$ is some function.
+    \item Substituting this general solution back into the simplified differential equation yields a condition that the function(s) $H(y)$ must satisfy.
+    \begin{align*}
+        0 &= \dv[2]{y}(\psi(y))-y^2\psi(y)\\
+        &= \dv{y}(\dv{y}(H(y)\e[-y^2/2]))+(\epsilon-y^2)H(y)\e[-y^2/2]\\
+        &= \dv{y}(\dv{H(y)}{y}\e[-y^2/2]-yH(y)\e[-y^2/2])+(\epsilon-y^2)H(y)\e[-y^2/2]\\
+        &= \dv{y}(\dv{H(y)}{y}\e[-y^2/2])+\dv{y}(-yH(y)\e[-y^2/2])+(\epsilon-y^2)H(y)\e[-y^2/2]\\
+        &= \left( \dv[2]{H(y)}{y}\e[-y^2/2]-y\dv{H(y)}{y}\e[-y^2/2] \right)+\left( -H(y)\e[-y^2/2]-y\dv{H(y)}{y}\e[-y^2/2]+y^2H(y)\e[-y^2/2] \right)+(\epsilon-y^2)H(y)\e[-y^2/2]\\
+        &= \dv[2]{H(y)}{y}\e[-y^2/2]-2y\dv{H(y)}{y}\e[-y^2/2]+(\epsilon-1)H(y)\e[-y^2/2]\\
+        &= \dv[2]{H(y)}{y}-2y\dv{H(y)}{y}+(\epsilon-1)H(y)
+    \end{align*}
+    \begin{itemize}
+        \item Note that the last line above is the Hermite equation.
+    \end{itemize}
+    \item To solve the second-order differential equation above, suppose
+    \begin{equation*}
+        H(y) = \sum_{n=0}^\infty c_ny^n
+    \end{equation*}
+    \item Then we have
+    \begingroup
+    \allowdisplaybreaks
+    \begin{align*}
+        0 &= \dv[2]{y}(H(y))-2y\dv{y}(H(y))+(\epsilon-1)H(y)\\
+        &= \dv[2]{y}(\sum_{n=0}^\infty c_ny^n)-2y\dv{y}(\sum_{n=0}^\infty c_ny^n)+(\epsilon-1)\sum_{n=0}^\infty c_ny^n\\
+        &= \sum_{n=2}^\infty c_nn(n-1)y^{n-2}-2y\sum_{n=1}^\infty c_nny^{n-1}+(\epsilon-1)\sum_{n=0}^\infty c_ny^n\\
+        &= \sum_{n=0}^\infty c_{n+2}(n+2)(n+1)y^n-2y\sum_{n=0}^\infty c_{n+1}(n+1)y^n+(\epsilon-1)\sum_{n=0}^\infty c_ny^n\\
+        &= \sum_{n=0}^\infty(c_{n+2}(n+2)(n+1)y^n-2c_{n+1}(n+1)y^{n+1}+(\epsilon-1)c_ny^n)\\
+        &= \sum_{n=0}^\infty(c_{n+2}(n+2)(n+1)y^n-2c_nny^n+(\epsilon-1)c_ny^n)\\
+        &= \sum_{n=0}^\infty((n+2)(n+1)c_{n+2}+(\epsilon-1-2n)c_n)y^n
+    \end{align*}
+    \endgroup
+    \item For this equality to hold, the coefficient of each power of $y$ on the right hand side of the above equation must equal zero, i.e., we must have
+    \begin{align*}
+        (n+2)(n+1)c_{n+2}+(\epsilon-1-2n)c_n &= 0\\
+        (n+2)(n+1)c_{n+2} &= (2n+1-\epsilon)c_n\\
+        c_{n+2} &= \frac{2n+1-\epsilon}{(n+1)(n+1)}c_n
+    \end{align*}
+    \item The above equation is a "series representation of all the expansion coefficients in terms of $c_0$ for the power series solution" to the Hermite equation \parencite{bib:HarmonicOscillator}.
+    \item However, there is a problem: For large values of $y$, if $n$ keeps increasing indefinitely, $H(y)$ will keep increasing indefinitely. Thus, to have a physically meaningful solution over the whole number line, the Taylor series must contain only a finite number of terms.
+    \item It follows that at some point, $a_{n+2}=0$. But this happens if and only if the numerator of the recursion relation equals zero, i.e., if
+    \begin{align*}
+        0 &= 2n+1-\epsilon\\
+        \frac{2E}{\hbar\omega} &= 2n+1\\
+        E &= \hbar\omega\left( n+\frac{1}{2} \right)
+    \end{align*}
+\end{itemize}
+
+
+
 
 \end{document}
