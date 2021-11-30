@@ -1,0 +1,119 @@
+\documentclass[../notes.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter\ (#1)}{}}
+\setcounter{chapter}{8}
+
+\begin{document}
+
+
+
+
+\chapter{Quantum Dynamics and Control}
+\section{Time-Dependent Schr\"{o}dinger Equation and Spectroscopy}
+\begin{itemize}
+    \item \marginnote{11/29:}From last time:
+    \begin{itemize}
+        \item The probability of a two-level system being in state 2 at time $\tau$ is
+        \begin{equation*}
+            |a_2(\tau)|^2 \equiv a_2^*(\tau)a_2(\tau) \propto \frac{\sin^2[(E_2-E_1-\hbar\omega)t/2\hbar]}{(E_2-E_1-\hbar\omega)^2}
+        \end{equation*}
+        \item When $\hbar\omega=E_2-E_1$, you'll have the maximum resonance/strongest absorption and the peak in the graph of the $\sinc$ function.
+        \item Leads to selection rules: Only certain states directly couple with a weak perturbation.
+    \end{itemize}
+    \item Now consider the transition dipole moment:
+    \begin{equation*}
+        (\mu_z)_{12} = \int\phi_2^*\mu_z\phi_1\dd{x}
+    \end{equation*}
+    \item The integral will vanish in the rigid rotor approximation.
+    \begin{itemize}
+        \item Up to the approximation of the rigid rotor, $l$ can only change by $\pm 1$ and $m$ stays the same.
+    \end{itemize}
+    \item Taking the harmonic oscillator as the paradigm for vibrational motion, we find that the quantum number must be $\Delta n=\pm 1$.
+    \begin{itemize}
+        \item The harmonic oscillator wave functions are of the form
+        \begin{equation*}
+            \psi_n(x) = N_nH_n(\sqrt{\alpha}x)\e[-\alpha x^2/2]
+        \end{equation*}
+        where $\alpha=\sqrt{k\mu}/\hbar$.
+        \item Assume $\alpha=1$. Then $\psi_n=N_nH_n(x)\e[-x^2/2]$.
+        \item We want to evaluate
+        \begin{equation*}
+            (\mu_z)_{12} = \int\psi_{n'}(q)\mu_z(q)\psi_n(q)\dd{q}
+        \end{equation*}
+        where
+        \begin{equation*}
+            \mu_z(q) = \mu_0+\left( \dv{\mu}{q} \right)_{q=0}q+\cdots
+        \end{equation*}
+        \begin{itemize}
+            \item This means that the transition dipole moment changes as a function of the bond length.
+            \item When $q=0$ (at equilibrium), the transition dipole moment is the equilibrium one ($\mu_0$).
+            \item Then we Taylor series expand to correct the transition dipole moment away from equilibrium.
+        \end{itemize}
+        \item Therefore,
+        \begin{equation*}
+            (\mu_z)_{nn'} \equiv \mu_0\int_{-\infty}^\infty H_{n'}(q)H_n(q)\e[-q^2]\dd{q}+\left( \dv{\mu}{q} \right)_{q=0}\int_{-\infty}^\infty H_{n'}(q)qH_n(q)\e[-q^2]\dd{q}+\cdots
+        \end{equation*}
+        \begin{itemize}
+            \item The first term goes to zero as long as $n\neq n'$ because the Hermite polynomials are orthonormal.
+        \end{itemize}
+        \item Recall that we used a recurrence relation to define the Hermite polynomials.
+        \item In addition to the one we used previously, we have the recurrence relation
+        \begin{equation*}
+            qH_n(q) = nH_{n-1}(q)+\frac{1}{2}H_{n+1}(q)
+        \end{equation*}
+        for all $n$.
+        \item Thus,
+        \begin{equation*}
+            \int_{-\infty}^\infty H_{n'}(q)qH_n(q)\e[-q^2]\dd{q} = \int_{-\infty}^\infty H_{n'}(q)\left[ nH_{n-1}(q)+\frac{1}{2}H_{n+1}(q) \right]\e[-q^2]\dd{q}
+        \end{equation*}
+        \item Thus, unless $n'=n\pm 1$, the integral vanishes.
+        \item This is the selection rule!
+    \end{itemize}
+    \item Note that we're just tickling the molecule with a bit of radiation to get this to happen --- if we hit it with too hard of a hammer, the selection rule will no longer hold.
+    \item Spectroscopy.
+    \begin{itemize}
+        \item $\Delta E=E_n-E_l=h\nu$.
+        \item Regions of EM:
+        \begin{table}[h!]
+            \centering
+            \small
+            \renewcommand{\arraystretch}{1.2}
+            \begin{tabular}{l|llll}
+                \textbf{Region} & Microwave & Far IR & IR & Vis/UV\\
+                \hline
+                \textbf{Wavenumber (cm${}^{\bm{-1}}$)} & $\numrange{0.033}{3.3}$ & $\numrange{3.3}{330}$ & $\numrange{330}{14500}$ & $\numrange{14500}{500000}$\\
+                \hline
+                \textbf{Molecular property} & Rotation of polyatomics & Rotation of small molecules & Vibration & Electron transitions\\
+            \end{tabular}
+            \caption{Spectroscopy in various regions of the electromagnetic spectrum.}
+            \label{fig:spectroscopy}
+        \end{table}
+    \end{itemize}
+    \item The Schr\"{o}dinger equation within the Born-Oppenheimer approximation:
+    \begin{equation*}
+        \left[ \sum_A\left( -\frac{\nabla_A^2}{2} \right)+\hat{H}_\text{elec} \right]\psi_\text{elec}\psi_\text{nucl} = (E_\text{elec}+E_\text{nucl})\psi_\text{elec}\psi_\text{nucl}
+    \end{equation*}
+    \begin{itemize}
+        \item We invoke the Born-Oppenheimer approximation to split the wavefunction into electronic and nuclear components.
+    \end{itemize}
+    \item We then split this equation into two parts. The first of which is the electronic Schr\"{o}dinger equation
+    \begin{equation*}
+        \hat{H}_\text{elec}\psi_\text{elec} = E_\text{elec}\psi_\text{elec}
+    \end{equation*}
+    \begin{itemize}
+        \item The BO approximation is what allows us to split the original Schr\"{o}dinger equation in two.
+    \end{itemize}
+    \item We now multiply by $\psi_\text{elec}$ and integrate over all of the electrons.
+    \begin{equation*}
+        \left[ \sum_A\left( -\frac{\nabla_A^2}{2} \right)+V(R) \right]\psi_\text{nucl} = (E_\text{elec}+E_\text{nucl})\psi_\text{nucl}
+    \end{equation*}
+    \begin{itemize}
+        \item $V(R)=E_\text{elec}(R)=\int\psi_\text{elec}^*\hat{H}_\text{elec}\psi_\text{elec}\dd{x}$ is the potential energy surface (PES).
+    \end{itemize}
+\end{itemize}
+
+
+
+
+\end{document}
