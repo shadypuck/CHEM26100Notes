@@ -1,0 +1,62 @@
+\documentclass[../psets.tex]{subfiles}
+
+\pagestyle{main}
+\renewcommand{\leftmark}{Problem Set \thesection}
+\setcounter{section}{7}
+
+\begin{document}
+
+
+
+
+\section{Vibrational Modes and Time-Dependent Quantum Mechanics}
+\begin{enumerate}
+    \item \marginnote{12/2:}Consider the molecule \ce{BeH2}.
+    \begin{enumerate}
+        \item How many degrees of freedom does the molecule possess?
+        \item For each degree of freedom, there is a normal mode of vibration. Enumerate each of the normal modes of vibration.
+        \item Which of these modes are IR active? Explain.
+    \end{enumerate}
+    \item Using the worksheet "Normal Modes" with the Quantum Chemistry Toolbox for Maple, you will compute the optimized geometry and the vibrational normal modes of hypochlorous acid (or \ce{HOCl}) using the electronic structure theory known as the Hartree-Fock method. After using the worksheet to perform the calculations and view the animations of the normal modes on your computer, answer the following questions.
+    \begin{enumerate}
+        \item In performing the geometry optimization of \ce{HOCl}, what are the computed bond lengths and angle in the STO-3G basis set, and how do these bond lengths and angle compare to the experimental values?
+        \item Give the computed and experimental values of the three normal modes, and based on the computed animations, draw an illustrative sketch for each normal mode.
+        \item Repeat parts (a) and (b) for the triatomic molecule sulfur dioxide (or \ce{SO2}) by changing at the top of the worksheet $r_1$ and $r_2$ to the experimental bond length of $\SI{1.43}{\angstrom}$, $\theta$ to $\ang{119}$, and the atoms in the variable \emph{molec} from \ce{H}, \ce{O}, and \ce{Cl} to \ce{O}, \ce{S}, and \ce{O}, respectively.
+    \end{enumerate}
+    \item The wave functions of the harmonic oscillator may be categorized as being either even or odd. They are even when $\psi(-x)=\psi(x)$ and they are odd when $\psi(-x)=-\psi(x)$.
+    \begin{enumerate}
+        \item Using this symmetry property, compute the probability for a transition from $n=0$ to $n=2$.
+        \item In general, what may be said regarding transitions between even states?
+        \item Are these results consistent with the more general selection rules derived in class?
+    \end{enumerate}
+    \item The molecule \ce{{}^{39}K^{127}I} has a microwave spectrum of equally-spaced lines.
+    \begin{enumerate}
+        \item In a laboratory at the University of Chicago, the spacing is measured to be $\SI{3634}{\mega\hertz}$. What is the bond length of \ce{{}^{39}K^{127}I}?
+        \item In the far infrared region, the molecule \ce{{}^{39}K^{35}Cl} has an intense line at $\SI{278.0}{\per\centi\meter}$. Compute the force constant and the period of vibration for \ce{{}^{39}K^{35}Cl}.
+    \end{enumerate}
+    \item Using the worksheet "Molecular Spectroscopy" with the Quantum Chemistry Toolbox for Maple, you will compute the rotational spectra for the ground and first-excited states of hydrogen chloride \ce{HCl}. You will compute the rotational spectra by two methods: (i) a normal-mode approximation in which the vibrational and rotational energies are modeled with the harmonic oscillator and the three-dimensional rigid rotor approximations, respectively, and (ii) an \emph{ab initio} approximation in which the rovibrational Schr\"{o}dinger equation is solved for the rovibrational energies with the potential energy curve computed by density functional theory (DFT). After using the worksheet to perform the calculations, answer the following questions.
+    \begin{enumerate}
+        \item What are the rovibrational energies in reciprocal centimeters of the P and R branches in the normal-modes approximation?
+        \item How does the spacing between rovibrational energies in part (a) change with $J$?
+        \item What are the rovibrational energies of the P and R branches in the \emph{ab initio} approximation?
+        \item How does the spacing between rovibrational energies in part (c) change with $J$?
+        \item Compute the wavelength of a photon required to excite a molecule from $n=0$ and $J=0$ to $n=1$ and $J=1$.
+        \item In what region of the electromagnetic spectrum does this energy lie?
+    \end{enumerate}
+    \item If the ground state and the excited state have a degeneracy of $g_1$ and $g_2$, respectively, the Einstein $A$ coefficient is given by
+    \begin{equation*}
+        A = \frac{16\pi^3\nu^3g_1}{3\epsilon_0hc^3g_2}|\mu|^2
+    \end{equation*}
+    where $|\mu|$ is the \textbf{transition dipole moment}. Consider the $1s\to 2p$ absorption of gaseous hydrogen \ce{H_{(g)}}, which is observed at $\SI{121.8}{\nano\meter}$. The radiative lifetime of the triply degenerate excited $2p$ state of \ce{H_{(g)}} is $\SI{1.6e-9}{\second}$. Compute the value of the transition dipole moment for this transition.
+    \item The \ce{He}-\ce{Ne} laser has a line at $\SI{3391.3}{\nano\meter}$ from the $5s^1P_1\to 3p^3P_2$ transition. In the \emph{Table of Atomic Energy Levels} by Charlotte Moore, the energies of these levels are $\SI{166658.484}{\per\centi\meter}$ and $\SI{163710.581}{\per\centi\meter}$, respectively. Compute the wavelength of this transition, and explain why the result is not $\SI{3391.3}{\nano\meter}$. (Hint: Consult Example 8-10 in \textcite{bib:McQuarrieSimon}.)
+    \item Chemical lasers generate population inversions through chemical reactions. In the \ce{HF} gas laser, the gaseous \ce{HF} is produced by the reaction
+    \begin{equation*}
+        \ce{F_{(g)} + H2_{(g)} -> HF_{(g)} + H_{(g)}}
+    \end{equation*}
+    The major product of this reaction is \ce{HF_{(g)}} in the excited $n=2$ vibrational state. The reaction creates a population inversion in which $N(n)$, the number of molecules in each vibrational state $n$, is much larger for $n=2$ than $n=0$ or $n=1$. The output of the \ce{HF_{(g)}} laser corresponds to transitions between vibrational lines of the $n=2\to n=1$ transition ($\lambda=\SIrange{2.7}{3.2}{\micro\meter}$). Why isn't there any lasing action from $n=2\to n=0$ even though there is a population inversion between these states?
+\end{enumerate}
+
+
+
+
+\end{document}
