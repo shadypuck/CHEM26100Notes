@@ -406,7 +406,609 @@
     \end{equation*}
     where $E_v=(v+1/2)h\nu$ and $\nu=\sqrt{k/\mu}/2\pi$.
     \item Each energy $E_J=\hbar^2/(2I)\cdot J(J+1)$ of the rigid rotator is associated with degeneracy $g_J=2J+1$.
+    \item \marginnote{12/1:}\textbf{Rotational term}: The rotational energy of a molecule. \emph{Denoted by} $\bm{F(J)}$. \emph{Units} $\si{\per\centi\meter}$. \emph{Given by}
+    \begin{equation*}
+        F(J) = \frac{E_J}{hc}
+    \end{equation*}
+    \item Rotational selection rule: Transitions among rotational levels resulting from the absorption of radiation have $\Delta J=\pm 1$ and have a permanent dipole moment.
+    \item The rotational and vibrational energy of a diatomic molecule within the rigid rotator-harmonic oscillator approximation is
+    \begin{equation*}
+        \tilde{E}_{v,J} = G(v)+F(J) = (v+\tfrac{1}{2})\tilde{\nu}+\tilde{B}J(J+1)
+    \end{equation*}
+    where $\tilde{\nu}=\sqrt{k/\mu}/2\pi c$, $\tilde{B}=h/8\pi ^2cI$, and $v,J=0,1,2,\dots$.
+    \begin{itemize}
+        \item Since $\tilde{\nu}$ and $\tilde{B}$ are on the order of $\SI{e3}{\per\centi\meter}$ and $\SI{1}{\per\centi\meter}$, respectively, vibrational energy levels are usually spaced about 100 to 1000 times farther apart than rotational energy levels.
+    \end{itemize}
+    \item Rovibrational selection rule: $\Delta v=\pm 1$ and $\Delta J=\pm 1$.
+    \item Observed frequencies for rovibrational transitions.
+    \begin{itemize}
+        \item $\Delta J=+1$.
+        \begin{equation*}
+            \tilde{\nu}_\text{obs} = \tilde{E}_{v+1,J+1}-\tilde{E}_{v,J} = \tilde{\nu}+2\tilde{B}(J+1)
+        \end{equation*}
+        \item $\Delta J=-1$.
+        \begin{equation*}
+            \tilde{\nu}_\text{obs} = \tilde{E}_{v+1,J-1}-\tilde{E}_{v,J} = \tilde{\nu}-2\tilde{B}J
+        \end{equation*}
+        \item Note that $J$ is the initial quantum number in both of the above equations.
+    \end{itemize}
+    \item \textbf{$\bm{R}$ branch}: The series toward the high-frequency side of the rotational-vibrational spectrum, due to rotational transitions with $\Delta J=+1$.
+    \item \textbf{$\bm{P}$ branch}: The series toward the low frequency side of the rotational-vibrational spectrum, due to rotational transitions with $\Delta J=-1$.
+    \item \textbf{Vibration-rotation interaction}: The decrease in $\tilde{B}$ as $v$ increases.
+    \begin{itemize}
+        \item Cause: As $v$ increases, $R_e$ (the equilibrium bond length) increases (Figure \ref{fig:parabolicPotentiala}). Thus $\tilde{B}\propto 1/R_e$ decreases.
+    \end{itemize}
+    \item Thus, for the $v=0\to 1$ transition, the frequencies of the $R$ and $P$ branches are truly given by
+    \begin{align*}
+        \tilde{\nu}_R &= E_{1,J+1}-E_{0,J} = \tilde{\nu}+2\tilde{B}_1+(3\tilde{B}_1-\tilde{B}_0)J+(\tilde{B}_1-\tilde{B}_0)J^2\\
+        \tilde{\nu}_P &= E_{1,J-1}-E_{0,J} = \tilde{\nu}-(\tilde{B}_1+\tilde{B}_0)J+(\tilde{B}_1-\tilde{B}_0)J^2
+    \end{align*}
+    for $J=0,1,2,\dots$ and $J=1,2,3,\dots$, respectively.
+    \begin{itemize}
+        \item $\tilde{B}_v$ denotes the value of $\tilde{B}$ at vibrational energy level $v$.
+        \item The above equations reduce to the original ones for $\tilde{B}_1=\tilde{B}_0$.
+        \item Since $\tilde{B}_1<\tilde{B}_0$, "the spacing between the lines in the $R$ branch decreases and the spacing between the lines in the $P$ branch increases with increasing $J$" \parencite[502]{bib:McQuarrieSimon}.
+    \end{itemize}
+    \item The dependence of $\tilde{B}$ on $v$ is usually expressed as
+    \begin{equation*}
+        \tilde{B}_v = \tilde{B}_e-\tilde{\alpha}_e(v+\tfrac{1}{2})
+    \end{equation*}
+    \item Rotational lines are not exactly equally spaced since a chemical bond stretches due to the centrifugal force as a molecule rotates more and more energetically.
+    \begin{itemize}
+        \item This small deviation from the rigid rotator approximation can be treated by perturbation theory, resulting in
+        \begin{equation*}
+            F(J) = \tilde{B}J(J+1)-\tilde{D}J^2(J+1)^2
+        \end{equation*}
+        where $\tilde{D}$ is the \textbf{centrifugal distortion constant}.
+        \item Modified frequencies of the absorption:
+        \begin{equation*}
+            \tilde{\nu} = F(J+1)-F(J) = 2\tilde{B}(J+1)-4\tilde{D}(J+1)^2
+        \end{equation*}
+        \item Rotational energy levels of a nonrigid rotator are spaced closer together than those of a rigid rotator.
+    \end{itemize}
+    \item The harmonic-oscillator approximation of a vibrating diatomic predicts only one line in its vibrational spectrum.
+    \begin{itemize}
+        \item However, while there is an experimental \textbf{fundamental}, there are also \textbf{overtones}.
+    \end{itemize}
+    \item \textbf{Fundamental}: The dominant line in the vibrational spectrum of a diatomic molecule.
+    \item \textbf{Overtone}: A line in the vibrational spectrum of a diatomic molecules of weaker intensity than the fundamental, appearing at an almost integral multiple of the fundamental.
+    \item Terms past the quadratic in the Taylor series expansion of the potential energy well $V(R)$ about the equilibrium bond length $R_e$ can be accounted for by applying perturbation theory to the harmonic oscillator approximation.
+    \begin{itemize}
+        \item Doing so gives rise to the vibrational term
+        \begin{equation*}
+            G(v) = \tilde{\nu}_e(v+\tfrac{1}{2})-\tilde{x}_e\tilde{\nu}_e(v+\tfrac{1}{2})^2+\cdots
+        \end{equation*}
+        for $v=0,1,2,\dots$, where $\tilde{x}_e$ is the \textbf{anharmonicity constant}.
+        \item The separation between the energy levels of an anharmonic oscillator decreases with increasing $v$.
+        \item "The selection rule for an anharmonic oscillator is that $\Delta v$ can have any integral value, although the intensities of the $\Delta v=\pm 2,\pm 3,\dots$ transitions are much less than for the $\Delta v=\pm 1$ transitions" \parencite[506]{bib:McQuarrieSimon}.
+        \item Since most diatomics are in the ground vibrational state at room temperature, the frequencies of the observed $0\to v$ transitions will be
+        \begin{equation*}
+            \tilde{\nu}_\text{obs} = G(v)-G(0) = \tilde{\nu}_ev-\tilde{x}_e\tilde{\nu}_ev(v+1)
+        \end{equation*}
+        for $v=1,2,\dots$.
+    \end{itemize}
+    \item "Just as rotational transitions accompany vibrational transitions, both rotational and vibrational transitions accompany electronic transitions" \parencite[507]{bib:McQuarrieSimon}.
+    \item The BO approximation allows us to separate the electronic energy from the vibrational-rotational energy since vibration and rotation, overall, are nuclear-motion phenomena.
+    \item \textbf{Vibronic transition}: A vibrational transition in an electronic spectrum.
+    \item Vibronic selection rule: $\Delta v$ may take on any integral value.
+    \begin{itemize}
+        \item Rotational transitions in electronic spectra are not considered because they are so much smaller.
+    \end{itemize}
+    \item Vibronic transitions usually originate from the $v=0$ vibrational state, yielding predicted frequencies
+    \begin{equation*}
+        \tilde{\nu}_\text{obs} = \tilde{T}_e+(\tfrac{1}{2}\tilde{\nu}_e'-\tfrac{1}{4}\tilde{x}_e'\tilde{\nu}_e')-(\tfrac{1}{2}\tilde{\nu}_e''-\tfrac{1}{4}\tilde{x}_e''\tilde{\nu}_e'')+\tilde{\nu}_e'v'-\tilde{x}_e'\tilde{\nu}_e'v'(v'+1)
+    \end{equation*}
+    where $\tilde{T}_e$ is the difference in energies of the minima of the two electronic potential energy curves in wave numbers, and the single and double primes indicate the upper and lower energy states, respectively.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \small
+            \draw [stealth-stealth] (0,12.5) -- node[left]{$E$} (0,0) -- node[below]{$R$} (8.5,0);
+    
+            \footnotesize
+            \draw [blx,thick,name path=PES1] (0.7,6) to[out=-85,in=180,in looseness=0.5] (3,0.2) to[out=0,in=180,out looseness=0.7,in looseness=1.5] (8,4);
+            \begin{scope}[
+                on background layer
+            ]
+                \path [name path=ve01] (0,0.50) -- ++(8,0);
+                \path [name path=ve02] (0,0.92) -- ++(8,0);
+                \path [name path=ve03] (0,1.32) -- ++(8,0);
+                \path [name path=ve04] (0,1.70) -- ++(8,0);
+                \path [name path=ve05] (0,2.06) -- ++(8,0);
+                \path [name path=ve06] (0,2.40) -- ++(8,0);
+                \path [name path=ve07] (0,2.72) -- ++(8,0);
+                \path [name path=ve08] (0,3.02) -- ++(8,0);
+                \path [name path=ve09] (0,3.30) -- ++(8,0);
+                \path [name path=ve10] (0,3.56) -- ++(8,0);
+                \path [name path=ve11] (0,3.80) -- ++(8,0);
+                \draw [grx,semithick,name intersections={of=PES1 and ve01}] (intersection-1) node[left=1pt]{0} -- (intersection-2) coordinate (v00b);
+                \draw [grx,semithick,name intersections={of=PES1 and ve02}] (intersection-1) node[left]{1} -- (intersection-2);
+                \draw [grx,semithick,name intersections={of=PES1 and ve03}] (intersection-1) node[left]{2} -- (intersection-2);
+                \draw [grx,semithick,name intersections={of=PES1 and ve04}] (intersection-1) node[left]{3} -- (intersection-2);
+                \draw [grx,semithick,name intersections={of=PES1 and ve05}] (intersection-1) node[left]{$v''$} -- (intersection-2);
+                \draw [grx,semithick,name intersections={of=PES1 and ve06}] (intersection-1) -- (intersection-2);
+                \draw [grx,semithick,name intersections={of=PES1 and ve07}] (intersection-1) -- (intersection-2);
+                \draw [grx,semithick,name intersections={of=PES1 and ve08}] (intersection-1) -- (intersection-2);
+                \draw [grx,semithick,name intersections={of=PES1 and ve09}] (intersection-1) -- (intersection-2);
+                \draw [grx,semithick,name intersections={of=PES1 and ve10}] (intersection-1) -- (intersection-2);
+                \draw [grx,semithick,name intersections={of=PES1 and ve11}] (intersection-1) -- (intersection-2);
+            \end{scope}
+    
+            \draw [blx,thick,yshift=6cm,name path=PES2] (0.7,6) to[out=-85,in=180,in looseness=0.5] (3,0.2) to[out=0,in=180,out looseness=0.7,in looseness=1.5] (8,4);
+            \begin{scope}[
+                on background layer,
+                yshift=6cm
+            ]
+                \path [name path=ve01] (0,0.50) -- ++(8,0);
+                \path [name path=ve02] (0,0.92) -- ++(8,0);
+                \path [name path=ve03] (0,1.31) -- ++(8,0);
+                \path [name path=ve04] (0,1.67) -- ++(8,0);
+                \path [name path=ve05] (0,2.00) -- ++(8,0);
+                \path [name path=ve06] (0,2.30) -- ++(8,0);
+                \path [name path=ve07] (0,2.57) -- ++(8,0);
+                \path [name path=ve08] (0,2.81) -- ++(8,0);
+                \path [name path=ve09] (0,3.02) -- ++(8,0);
+                \path [name path=ve10] (0,3.20) -- ++(8,0);
+                \path [name path=ve11] (0,3.35) -- ++(8,0);
+                \draw [grx,semithick,name intersections={of=PES2 and ve01}] (intersection-1) node[left=1pt]{0} -- (intersection-2) coordinate (v00t);
+                \draw [grx,semithick,name intersections={of=PES2 and ve02}] (intersection-1) node[left]{1} -- (intersection-2);
+                \draw [grx,semithick,name intersections={of=PES2 and ve03}] (intersection-1) node[left]{2} -- (intersection-2);
+                \draw [grx,semithick,name intersections={of=PES2 and ve04}] (intersection-1) node[left]{3} -- (intersection-2);
+                \draw [grx,semithick,name intersections={of=PES2 and ve05}] (intersection-1) node[left]{$v'$} -- (intersection-2);
+                \draw [grx,semithick,name intersections={of=PES2 and ve06}] (intersection-1) -- (intersection-2);
+                \draw [grx,semithick,name intersections={of=PES2 and ve07}] (intersection-1) -- (intersection-2);
+                \draw [grx,semithick,name intersections={of=PES2 and ve08}] (intersection-1) -- (intersection-2);
+                \draw [grx,semithick,name intersections={of=PES2 and ve09}] (intersection-1) -- (intersection-2);
+                \draw [grx,semithick,name intersections={of=PES2 and ve10}] (intersection-1) -- (intersection-2);
+                \draw [grx,semithick,name intersections={of=PES2 and ve11}] (intersection-1) -- (intersection-2);
+            \end{scope}
+    
+            \small
+            \draw [very thin] (v00t) -- (v00t -| 4.7,0);
+            \draw [very thin] (v00b) -- (v00b -| 4.7,0);
+            \draw [<->,shorten <=1pt,shorten >=1pt] (v00b -| 4.5,0) -- node[pos=0.7,fill=white,inner sep=1.5pt]{$\tilde{\nu}_{0\,0}$} (v00t -| 4.5,0);
+            \draw [very thin] (3,6.2) -- (6.7,6.2);
+            \draw [very thin] (3,0.2) -- (6.7,0.2);
+            \draw [<->,shorten <=1pt,shorten >=1pt] (6.5,0.2) -- node[fill=white,inner sep=1.5pt]{$\tilde{T}_e$} (6.5,6.2);
+            \path [name path=D0] (7,0) -- ++(0,6);
+            \draw [very thin] (v00b -| 6.8,0) -- ++(0.4,0);
+            \draw [<->,shorten <=1pt,shorten >=1pt,name intersections={of=PES1 and D0}] (v00b -| 7,0) -- node[fill=white,inner sep=1.5pt]{$D_0$} (intersection-1);
+            \path [name path=De] (7.5,0) -- ++(0,6);
+            \draw [very thin] (7.3,0.2) -- ++(0.4,0);
+            \draw [<->,shorten <=1pt,shorten >=1pt,name intersections={of=PES1 and De}] (7.5,0.2) -- node[fill=white,inner sep=1.5pt]{$D_e$} (intersection-1);
+        \end{tikzpicture}
+        \caption{The quantities describing an electronic transition.}
+        \label{fig:electronicQuantities}
+    \end{figure}
+    \item $\bm{D_e}$: The difference in energy between the minimum of the potential energy curve and the dissociated atoms.
+    \item $\bm{D_0}$: The corresponding dissociation energy from the ground-vibrational level.
+    \item We thus have that $D_e=D_0+\frac{1}{2}h\nu$ in the harmonic oscillator approximation and $D_e=D_0+\frac{1}{2}h(\nu_e-\frac{1}{2}x_e\nu_e)$ in the anharmonic oscillator approximation.
+    \item Since the nuclei do not move appreciably during an electronic transition, such transitions can be depicted as vertical lines in the energy diagram, as we have done thus far.
+    \item \textcite{bib:McQuarrieSimon} covers the Franck-Condon principle.
+    \item Consider a rigid body, a polyatomic molecule modeled as a rigid network of $N$ atoms.
+    \item \textbf{Moments of inertia} (of a rigid body): Given a Cartesian coordinate system, the following values. \emph{Denoted by} $\bm{I_{xx}},\bm{I_{yy}},\bm{I_{zz}}$. \emph{Given by}
+    \begingroup
+    \allowdisplaybreaks
+    \begin{align*}
+        I_{xx} &= \sum_{j=1}^Nm_j[(y_j-y_{cm})^2+(z_j-z_{cm})^2]\\
+        I_{yy} &= \sum_{j=1}^Nm_j[(x_j-x_{cm})^2+(z_j-z_{cm})^2]\\
+        I_{zz} &= \sum_{j=1}^Nm_j[(x_j-x_{cm})^2+(y_j-y_{cm})^2]
+    \end{align*}
+    \endgroup
+    where $m_j$ is the mass of the $j^\text{th}$ atom situated at the point $(x_j,y_j,z_j)$ and $(x_{cm},y_{cm},z_{cm})$ are the coordinates of the center of mass of the rigid body.
+    \item \textbf{Products of inertia} (of a rigid body): The quantities of the form
+    \begin{equation*}
+        I_{xy} = -\sum_{j=1}^Nm_j(x_j-x_{cm})(y_j-y_{cm})
+    \end{equation*}
+    \item \textbf{Principal axes} (of a rigid body): The particular set of Cartesian coordinates $X,Y,Z$ passing through the center of mass of a rigid body such that all of the products of inertia vanish.
+    \item \textbf{Principal moments of inertia} (of a rigid body): The moments of inertia of a rigid body about the principal axes. \emph{Denoted by} $\bm{I_A},\bm{I_B},\bm{I_C}$ where $I_A\leq I_B\leq I_C$.
+    \begin{itemize}
+        \item Usually given in terms of rotational constants in units of reciprocal centimeters, e.g., $\tilde{A}=h/8\pi^2cI_A$.
+    \end{itemize}
+    \item \textbf{Spherical top}: A rigid body with all three principal moments of inertial equal.
+    \begin{itemize}
+        \item For example, \ce{CH4} and \ce{SF6}.
+    \end{itemize}
+    \item \textbf{Symmetric top}: A rigid body with two principal moments of inertial equal.
+    \begin{itemize}
+        \item For example, \ce{NH3} and \ce{C6H6}.
+    \end{itemize}
+    \item \textbf{Asymmetric top}: A rigid body with all three principal moments of inertial unequal.
+    \begin{itemize}
+        \item For example, \ce{H2O}.
+    \end{itemize}
+    \item The quantum-mechanical problem of a spherical top can be solved exactly, yielding energy levels $F(J)=\tilde{B}J(J+1)$ for $J=0,1,2,\dots$ (the same as for a linear molecule) with respective degeneracies $g_J=(2J+1)^2$.
+    \item Since spherical tops cannot have a permanent dipole moment, they do not have pure rotational spectra.
+    \item The quantum-mechanical problem of a symmetric top can also be solved exactly.
+    \item \textbf{Oblate symmetric top}: A symmetric top with unique moment of inertia larger than the two equal ones.
+    \begin{itemize}
+        \item For example, \ce{C6H6} or an O-ring.
+        \item Energy levels $F(J,K)=\tilde{B}J(J+1)+(\tilde{C}-\tilde{B})K^2$ for $J=0,1,2,\dots$, $K=0,\pm 1,\pm 2,\dots,\pm J$, and degeneracy $g_{JK}=2J+1$.
+        \begin{itemize}
+            \item $J$ is a measure of the total rotational angular momentum of the molecule.
+            \item $K$ is a measure of the component of the rotational angular momentum along the unique axis of the symmetric top.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Prolate symmetric top}: A symmetric top with unique moment of inertia smaller than the two equal ones.
+    \begin{itemize}
+        \item For example, \ce{CH3Cl} or a cigar.
+        \item Energy levels $F(J,K)=\tilde{B}J(J+1)+(\tilde{A}-\tilde{B})K^2$ with the same quantum numbers and degeneracy as in the oblate case.
+    \end{itemize}
+    \item Symmetric top molecule selection rule: The dipole moment must be directed along the axis of symmetry, and then we may have $\Delta J=0,\pm 1$, $\Delta K=0$ for $K\neq 0$ and $\Delta J=\pm 1$, $\Delta J=0$ for $K=0$.
+    \item Centrifugal distortion effects are larger for larger molecules.
+    \item To understand the vibrational spectra of polyatomic molecules in terms of the harmonic-oscillator approximation, we introduce normal coordinates.
+    \item \textcite{bib:McQuarrieSimon} reviews degrees of freedom.
+    \begin{itemize}
+        \item A complete specification of a molecule containing $N$ nuclei in space requires $3N$ coordinates.
+        \item However, using some to specify the overall molecules position and orientation in space leaves the rest of the degrees of freedom available to describe vibration.
+    \end{itemize}
+    \item "In the absence of external fields, the energy of a molecule does not depend upon the position of its center of mass or its orientation" \parencite[519]{bib:McQuarrieSimon}.
+    \item $\bm{N_\textbf{vib}}$: The number of vibrational degrees of freedom.
+    \item Thus, the potential energy is solely a function of the $N_\text{vib}$ vibrational coordinates. Letting the displacements about the equilibrium values of these coordinates be $q_1,\dots,q_{N_\text{vib}}$, we have that
+    \begin{equation*}
+        \Delta V = V(q_1,\dots,q_{N_\text{vib}})-V(0,\dots,0) = \frac{1}{2}\sum_{i=1}^{N_\text{vib}}\sum_{j=1}^{N_\text{vib}}\left( \pdv{V}{q_i}{q_j} \right)q_iq_j+\cdots
+    \end{equation*}
+    where the $\cdots$ terms are anharmonic.
+    \item The cross terms in the above expression make the solution to the corresponding Schr\"{o}dinger equation quite tedious, but a theorem of classical mechanics and a straightforward procedure using matrix algebra allows us to find a new set of coordinates $\{Q_j\}$ called \textbf{normal coordinates} or \textbf{normal modes} such that
+    \begin{equation*}
+        \Delta V = \frac{1}{2}\sum_{j=1}^{N_\text{vib}}F_jQ_j^2
+    \end{equation*}
+    \item It follows that the vibrational Schr\"{o}dinger equation $\hat{H}_\text{vib}\psi_\text{vib}=E_\text{vib}\psi_\text{vib}$ is separable and defined by
+    \begin{gather*}
+        \hat{H}_\text{vib} = \sum_{j=1}^{N_\text{vib}}\left( -\frac{\hbar^2}{2\mu_j}\dv[2]{Q_j}+\frac{1}{2}F_jQ_j^2 \right)\\
+        \psi_\text{vib}(Q_1,\dots,Q_{N_\text{vib}}) = \psi_\text{vib,1}(Q_1)\cdots\psi_{\text{vib},N_\text{vib}}(Q_{N_\text{vib}})\\
+        E_\text{vib} = \sum_{j=1}^{N_\text{vib}}h\nu_j(v_j+\tfrac{1}{2})
+    \end{gather*}
+    \item Thus, the vibrational motion of a polyatomic molecule appears as $N_\text{vib}$ independent harmonic oscillators, each with their own characteristic fundamental frequency $\nu_j$.
+    \item Vibrational absorption spectroscopy selection rule: The dipole moment of the molecule must vary during the normal mode.
+    \item \textbf{Infrared active} (normal mode): A normal mode such that the dipole moment of the molecule does vary during the prescribed motion.
+    \item \textbf{Infrared inactive} (normal mode): A normal mode such that the dipole moment of the molecule does not vary during the prescribed motion.
+    \item \textcite{bib:McQuarrieSimon} analyzes the normal modes of \ce{CO2}, \ce{H2CO}, and \ce{CH3Cl}.
+    \item \textbf{Parallel band}: An absorption band corresponding to a normal mode with dipole moment oscillating parallel to the molecular axis.
+    \begin{itemize}
+        \item Governed by the selection rule $\Delta v=+1$, $\Delta J=\pm 1$, just like a diatomic molecules.
+        \item Generates a vibration-rotation spectrum consisting of a $P$ branch and an $R$ branch.
+    \end{itemize}
+    \item The case of a dipole moment oscillating perpendicular to the molecular axis.
+    \begin{itemize}
+        \item Governed by the selection rule $\Delta v=+1$, $\Delta J=0,\pm 1$.
+        \item The band due to $\Delta J=0$ is called the \textbf{$\bm{Q}$ branch}, and is centered between the $P$ and $R$ branches.
+    \end{itemize}
+    \item Identifying normal coordinates with irreducible representations.
+    \begin{figure}[h!]
+        \centering
+        \small
+        \begin{align*}
+            \hat{E}\left( 
+                \tikz[every node/.style={black},baseline={(0,0.1)}]{
+                    \draw [semithick,orx,-latex] (0,0.5) node[circle,fill,inner sep=1.5pt]{} -- ++(0:0.4);
+                    \draw [semithick,orx,-latex] (-0.5,0) node[circle,fill,inner sep=1.5pt]{} -- ++(-135:0.4);
+                    \draw [semithick,orx,-latex] (0.5,0) node[circle,fill,inner sep=1.5pt]{} -- ++(135:0.4);
+                }
+            \right)\quad &=\quad \tikz[every node/.style={black},baseline={(0,0.1)}]{
+                \draw [semithick,orx,-latex] (0,0.5) node[circle,fill,inner sep=1.5pt]{} -- ++(0:0.4);
+                \draw [semithick,orx,-latex] (-0.5,0) node[circle,fill,inner sep=1.5pt]{} -- ++(-135:0.4);
+                \draw [semithick,orx,-latex] (0.5,0) node[circle,fill,inner sep=1.5pt]{} -- ++(135:0.4);
+            }&
+            \hat{\sigma}_v\left( 
+                \tikz[every node/.style={black},baseline={(0,0.1)}]{
+                    \draw [semithick,orx,-latex] (0,0.5) node[circle,fill,inner sep=1.5pt]{} -- ++(0:0.4);
+                    \draw [semithick,orx,-latex] (-0.5,0) node[circle,fill,inner sep=1.5pt]{} -- ++(-135:0.4);
+                    \draw [semithick,orx,-latex] (0.5,0) node[circle,fill,inner sep=1.5pt]{} -- ++(135:0.4);
+                }
+            \right)\quad &=\quad \tikz[every node/.style={black},baseline={(0,0.1)}]{
+                \draw [semithick,orx,-latex] (0,0.5) node[circle,fill,inner sep=1.5pt]{} -- ++(180:0.4);
+                \draw [semithick,orx,-latex] (-0.5,0) node[circle,fill,inner sep=1.5pt]{} -- ++(45:0.4);
+                \draw [semithick,orx,-latex] (0.5,0) node[circle,fill,inner sep=1.5pt]{} -- ++(-45:0.4);
+            }\\[5mm]
+            \hat{C}_2\left( 
+                \tikz[every node/.style={black},baseline={(0,0.1)}]{
+                    \draw [semithick,orx,-latex] (0,0.5) node[circle,fill,inner sep=1.5pt]{} -- ++(0:0.4);
+                    \draw [semithick,orx,-latex] (-0.5,0) node[circle,fill,inner sep=1.5pt]{} -- ++(-135:0.4);
+                    \draw [semithick,orx,-latex] (0.5,0) node[circle,fill,inner sep=1.5pt]{} -- ++(135:0.4);
+                }
+            \right)\quad &=\quad \tikz[every node/.style={black},baseline={(0,0.1)}]{
+                \draw [semithick,orx,-latex] (0,0.5) node[circle,fill,inner sep=1.5pt]{} -- ++(180:0.4);
+                \draw [semithick,orx,-latex] (-0.5,0) node[circle,fill,inner sep=1.5pt]{} -- ++(45:0.4);
+                \draw [semithick,orx,-latex] (0.5,0) node[circle,fill,inner sep=1.5pt]{} -- ++(-45:0.4);
+            }&
+            \hat{\sigma}_v'\left( 
+                \tikz[every node/.style={black},baseline={(0,0.1)}]{
+                    \draw [semithick,orx,-latex] (0,0.5) node[circle,fill,inner sep=1.5pt]{} -- ++(0:0.4);
+                    \draw [semithick,orx,-latex] (-0.5,0) node[circle,fill,inner sep=1.5pt]{} -- ++(-135:0.4);
+                    \draw [semithick,orx,-latex] (0.5,0) node[circle,fill,inner sep=1.5pt]{} -- ++(135:0.4);
+                }
+            \right)\quad &=\quad \tikz[every node/.style={black},baseline={(0,0.1)}]{
+                \draw [semithick,orx,-latex] (0,0.5) node[circle,fill,inner sep=1.5pt]{} -- ++(0:0.4);
+                \draw [semithick,orx,-latex] (-0.5,0) node[circle,fill,inner sep=1.5pt]{} -- ++(-135:0.4);
+                \draw [semithick,orx,-latex] (0.5,0) node[circle,fill,inner sep=1.5pt]{} -- ++(135:0.4);
+            }
+        \end{align*}
+        \caption{The asymmetric stretch normal mode under the operations of the $\Cbf_{2v}$ point group.}
+        \label{fig:asymmetricStretchB2}
+    \end{figure}
+    \begin{itemize}
+        \item Consider, for example, \ce{H2O}, belonging to the $\Cbf_{2v}$ point group.
+        \item Let the asymmetric stretch normal coordinate be $Q_{as}$.
+        \item Then by Figure \ref{fig:asymmetricStretchB2}, we have that
+        \begin{align*}
+            \hat{E}Q_{as} &= Q_{as}&
+            \hat{C}_2Q_{as} &= -Q_{as}&
+            \hat{\sigma}_vQ_{as} &= -Q_{as}&
+            \hat{\sigma}_v'Q_{as} &= Q_{as}
+        \end{align*}
+        so $Q_{as}$ belongs to $B_2$.
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} also derives the relevant irreducible representations as in \textcite[40]{bib:IChemNotes}.
+    \item We now begin the derivation of selection rules.
+    \item Since we are considering \emph{transitions}, we will need the time-dependent Schr\"{o}dinger equation.
+    \begin{itemize}
+        \item Stationary states, such as those wave functions we have considered thus far, only pertain to isolated systems with Hamiltonians that do not depend on time.
+        \item As such, to consider transitions between states, we will be working not just with the time-dependent Schr\"{o}dinger equation but also with a time-dependent Hamiltonian.
+    \end{itemize}
+    \item In particular, let the molecule interact with electromagnetic field
+    \begin{equation*}
+        \mathbf{E} = \mathbf{E}_0\cos 2\pi\nu t
+    \end{equation*}
+    where $\nu$ is the frequency of the radiation incident on the molecule and $\mathbf{E}_0$ is the electric field vector.
+    \item It follows by Problem \ref{prb:13-49} that the Hamiltonian operator for the interaction of the electric field with the molecule is
+    \begin{equation*}
+        \hat{H}^{(1)} = -\bm{\mu}\cdot\mathbf{E} = -\bm{\mu}\cdot\mathbf{E}_0\cos 2\pi\nu t
+    \end{equation*}
+    \item Thus, the overall problem is to solve
+    \begin{equation*}
+        \hat{H}\Psi = i\hbar\dv{\Psi}{t}
+    \end{equation*}
+    where $\hat{H}=\hat{H}^{(0)}+\hat{H}^{(1)}=\hat{H}^{(0)}-\bm{\mu}\cdot\mathbf{E}_0\cos 2\pi\nu t$ and $\hat{H}^{(0)}$ is the Hamiltonian of the isolated molecule.
+    \item Treating $\hat{H}^{(1)}$ as a small perturbation, we can solve the above with \textbf{time-dependent perturbation theory}, an extension of time-independent perturbation theory worked through as follows.
+    \begin{itemize}
+        \item For simplicity, we consider only a two-state system (in spite of the fact that an isolated molecule generally has an infinite number of stationary states).
+    \end{itemize}
+    \item In such a system, the solutions to
+    \begin{equation*}
+        \hat{H}^{(0)}\Psi = i\hbar\dv{\Psi}{t}
+    \end{equation*}
+    are
+    \begin{align*}
+        \Psi_1(t) &= \psi_1\e[-iE_1t/\hbar]&
+        \Psi_2(t) &= \psi_2\e[-iE_2t/\hbar]
+    \end{align*}
+    where $\psi_1,\psi_2$ are the two stationary states.
+    \item Let the system initially be in state 1, and assume that the overall solution $\Psi(t)$ is a linear combination of $\Psi_1(t),\Psi_2(t)$ that evolves over time. In particular, assume
+    \begin{equation*}
+        \Psi(t) = a_1(t)\Psi_1(t)+a_2(t)\Psi_2(t)
+    \end{equation*}
+    and let our initial conditions be $a_1(t)=1$ and $a_2(t)=0$.
+    \begin{itemize}
+        \item Recall that $a_i^*a_i$ gives the probability that the molecule is in state $i$.
+    \end{itemize}
+    \item Substituting our wave function into the full time-dependent Schr\"{o}dinger equation gives
+    \begin{align*}
+        (\hat{H}^{(0)}+\hat{H}^{(1)})\Psi(t) &= i\hbar\dv{\Psi}{t}\\
+        a_1(t)\hat{H}^{(0)}\Psi_1+a_2(t)\hat{H}^{(0)}\Psi_2+a_1(t)\hat{H}^{(1)}\Psi_1+a_2(t)\hat{H}^{(1)}\Psi_2 &= a_1(t)i\hbar\dv{\Psi_1}{t}+i\hbar\Psi_1\dv{a_1}{t}+a_2(t)i\hbar\dv{\Psi_2}{t}+i\hbar\Psi_2\dv{a_2}{t}\\
+        a_1(t)\hat{H}^{(1)}\Psi_1+a_2(t)\hat{H}^{(1)}\Psi_2 &= i\hbar\Psi_1\dv{a_1}{t}+i\hbar\Psi_2\dv{a_2}{t}
+    \end{align*}
+    where we cancel terms that are equal by the TD SE in going from the second to the third equality.
+    \item We now multiply through by $\psi_2^*$, integrate over all space, and simplify.
+    \begin{align*}
+        \psi_2^*a_1(t)\hat{H}^{(1)}\Psi_1+\psi_2^*a_2(t)\hat{H}^{(1)}\Psi_2 &= \psi_2^*i\hbar\Psi_1\dv{a_1}{t}+\psi_2^*i\hbar\Psi_2\dv{a_2}{t}\\
+        a_1(t)\int\psi_2^*\hat{H}^{(1)}\Psi_1\dd{\tau}+a_2(t)\int\psi_2^*\hat{H}^{(1)}\Psi_2\dd{\tau} &= i\hbar\dv{a_1}{t}\int\psi_2^*\psi_1\e[-iE_1t/\hbar]\dd{\tau}+i\hbar\dv{a_2}{t}\int\psi_2^*\psi_2\e[-iE_2t/\hbar]\dd{\tau}\\
+        a_1(t)\int\psi_2^*\hat{H}^{(1)}\Psi_1\dd{\tau}+a_2(t)\int\psi_2^*\hat{H}^{(1)}\Psi_2\dd{\tau} &= i\hbar\e[-iE_1t/\hbar]\dv{a_1}{t}\int\psi_2^*\psi_1\dd{\tau}+i\hbar\e[-iE_2t/\hbar]\dv{a_2}{t}\int\psi_2^*\psi_2\dd{\tau}\\
+        a_1(t)\int\psi_2^*\hat{H}^{(1)}\Psi_1\dd{\tau}+a_2(t)\int\psi_2^*\hat{H}^{(1)}\Psi_2\dd{\tau} &= i\hbar\e[-iE_2t/\hbar]\dv{a_2}{t}
+    \end{align*}
+    \item Solve for $i\hbar\dv*{a_2}{t}$ and simplify.
+    \begin{align*}
+        i\hbar\dv{a_2}{t} &= a_1(t)\e[iE_2t/\hbar]\int\psi_2^*\hat{H}^{(1)}\psi_1\e[-iE_1t/\hbar]\dd{\tau}+a_2(t)\e[iE_2t/\hbar]\int\psi_2^*\hat{H}^{(1)}\psi_2\e[-iE_2t/\hbar]\dd{\tau}\\
+        &= a_1(t)\e[-i(E_1-E_2)t/\hbar]\int\psi_2^*\hat{H}^{(1)}\psi_1\dd{\tau}+a_2(t)\int\psi_2^*\hat{H}^{(1)}\psi_2\dd{\tau}
+    \end{align*}
+    \item Since $\hat{H}^{(1)}$ is a small perturbation, the initial values corresponding to the TD SE may be approximated as identical to those corresponding to the TI SE. As such, substitute $a_1(0)=1$ and $a_2(0)=0$ into the above to obtain
+    \begin{equation*}
+        i\hbar\dv{a_2}{t} = \e[-i(E_1-E_2)t/\hbar]\int\psi_2^*\hat{H}^{(1)}\psi_1\dd{\tau}
+    \end{equation*}
+    \item Take the electric field to be in the $z$-direction. Then
+    \begin{align*}
+        \hat{H}^{(1)} &= -\mu_zE_{0z}\cos 2\pi\nu t\\
+        &= -\frac{\mu_zE_{0z}}{2}(\e[i2\pi\nu t]+\e[-i2\pi\nu t])
+    \end{align*}
+    \item Substituting this into the above then yields
+    \begin{align*}
+        i\hbar\dv{a_2}{t} &= \e[-i(E_1-E_2)t/\hbar]\int\psi_2^*\cdot -\frac{\mu_zE_{0z}}{2}(\e[i2\pi\nu t]+\e[-i2\pi\nu t])\psi_1\dd{\tau}\\
+        &= -\frac{E_{0z}}{2}\e[i(E_2-E_1)t/\hbar](\e[ih\nu t2\pi/h]+\e[-ih\nu t2\pi/h])\int\psi_2^*\mu_z\psi_1\dd{\tau}\\
+        \dv{a_2}{t} &= -\frac{1}{2i\hbar}\int\psi_2^*\mu_z\psi_1\dd{\tau}E_{0z}(\e[i(E_2-E_1+h\nu)t/\hbar]+\e[i(E_2-E_1-h\nu)t/\hbar])\\
+        &\propto (\mu_z)_{12}E_{0z}(\e[i(E_2-E_1+h\nu)t/\hbar]+\e[i(E_2-E_1-h\nu)t/\hbar])
+    \end{align*}
+    where we define
+    \begin{equation*}
+        (\mu_z)_{12} = \int\psi_2^*\mu_z\psi_1\dd{\tau}
+    \end{equation*}
+    to be the $z$-component of the \textbf{transition dipole moment} between states 1 and 2.
+    \begin{itemize}
+        \item Note that if $(\mu_z)_{12}=0$, then $\dv*{a_2}{0}=0$ and there will be no transition out of state 1 and into state 2.
+        \item In other words, the dipole must change during the transition, and we have derived the first part of the selection rule!
+    \end{itemize}
+    \item Before finishing our derivation of explicit selection rules, integrate the above.
+    \begin{align*}
+        a_2(t) &\propto \int_0^t(\mu_z)_{12}E_{0z}(\e[i(E_2-E_1+h\nu)t/\hbar]+\e[i(E_2-E_1-h\nu)t/\hbar])\dd{t}\\
+        &\propto (\mu_z)_{12}E_{0z}\left( \frac{1-\e[i(E_2-E_1+h\nu)t/\hbar]}{E_2-E_1+h\nu}+\frac{1-\e[i(E_2-E_1-h\nu)t/\hbar]}{E_2-E_1-h\nu} \right)
+    \end{align*}
+    \begin{itemize}
+        \item Note that since $E_2>E_1$, when $E_2-E_1\approx h\nu$, the \textbf{resonance denominators} cause the second term above to be of major importance in determining $a_2(t)$.
+        \item Thus, the Bohr frequency condition arises naturally from the quantum mechanics!
+    \end{itemize}
+    \item \textbf{Resonance denominators}: The two denominators in the above equation for $a_2(t)$.
+    \item Given the above function, we can now determine the probability of observing the molecule in state 2.
+    \begin{itemize}
+        \item This quantity is proportional to both the probability of absorption and the intensity of absorption.
+        \item It is given by $a_2^*a_2$. In calculating this quantity, though, we need only take into account the second term in the definition of $a_2$ as per the above discussion of resonance denominators.
+        \item This gives us (see Problem \ref{prb:13-40})
+        \begin{align*}
+            a_2^*(t)a_2(t) &\propto \frac{\sin^2[(E_2-E_1-\hbar\omega)t/2\hbar]}{(E_2-E_1-\hbar\omega)^2}
+        \end{align*}
+        which has its largest peak (largest probability of a transition) at $\hbar\omega=E_2-E_1$ (see Figure \ref{fig:sincFunction}).
+    \end{itemize}
+    \item We now derive the selection rule in the rigid-rotator approximation.
+    \item We require that
+    \begin{equation*}
+        0 \neq (\mu_z)_{J,M;J',M'} = \int_0^{2\pi}\int_0^\pi Y_{J'}^{M'}(\theta,\phi)^*\mu_zY_J^M(\theta,\phi)\sin\theta\dd{\theta}\dd{\phi}
+    \end{equation*}
+    \item Invoke $\mu_z=\mu\cos\theta$.
+    \begin{equation*}
+        (\mu_z)_{J,M;J',M'} = \mu\int_0^{2\pi}\int_0^\pi Y_{J'}^{M'}(\theta,\phi)^*Y_J^M(\theta,\phi)\cos\theta\sin\theta\dd{\theta}\dd{\phi}
+    \end{equation*}
+    \begin{itemize}
+        \item Thus, $\mu\neq 0$ for a nonzero transition dipole moment.
+        \item In other words, the molecule must have a permanent dipole moment for it to have a pure rotational spectrum, as asserted earlier!
+    \end{itemize}
+    \item As to the rest of the selection rule, substitute the spherical harmonics into the above equation and simplify. Also substitute $x=\cos\theta$.
+    \begin{align*}
+        (\mu_z)_{J,M;J',M'} &= \mu\int_0^{2\pi}\int_0^\pi(N_{J'M'}P_{J'}^{|M'|}(\cos\theta)\e[-iM'\phi])(N_{JM}P_J^{|M|}(\cos\theta)\e[iM\phi])\cos\theta\sin\theta\dd{\theta}\dd{\phi}\\
+        &= \mu N_{JM}N_{J'M'}\int_0^{2\pi}\dd{\phi}\e[i(M-M')\phi]\int_0^\pi\dd{\theta}P_{J'}^{|M'|}(\cos\theta)P_J^{|M|}(\cos\theta)\cos\theta\sin\theta\\
+        &= \mu N_{JM}N_{J'M'}\int_0^{2\pi}\dd{\phi}\e[i(M-M')\phi]\int_{-1}^1\dd{x}xP_{J'}^{|M'|}(x)P_J^{|M|}(x)
+    \end{align*}
+    \begin{itemize}
+        \item For the leftmost integral above to be nonzero, we must have $M=M'$.
+        \item This is the $\Delta M=0$ selection rule!
+    \end{itemize}
+    \item Evaluating the leftmost integral yields 
+    \begin{equation*}
+        (\mu_z)_{J,M;J',M'} = 2\pi\mu N_{JM}N_{J'M'}\int_{-1}^1\dd{x}xP_{J'}^{|M'|}(x)P_J^{|M|}(x)
+    \end{equation*}
+    \item Given the recursion rule
+    \begin{equation*}
+        (2J+1)xP_J^{|M|}(x) = (J-|M|+1)P_{J+1}^{|M|}(x)+(J+|M|)P_{J-1}^{|M|}(x)
+    \end{equation*}
+    pertaining to the associated Legendre functions, we have
+    \begin{equation*}
+        (\mu_z)_{J,M;J',M} = 2\pi\mu N_{JM}N_{J'M}\int_{-1}^1\dd{x}P_{J'}^{|M|}(x)\left[ \frac{J-|M|+1}{2J+1}P_{J+1}^{|M|}(x)+\frac{J+|M|}{2J+1}P_{J-1}^{|M|}(x) \right]
+    \end{equation*}
+    \begin{itemize}
+        \item Thus, by the orthogonality of the associated Legendre functions, we must have $J'=J+1$ or $J'=J-1$ for the above integral not to vanish.
+        \item This is the $\Delta J=\pm 1$ selection rule!
+    \end{itemize}
+    \item We now derive the selection rule in the harmonic-oscillator approximation.
+    \item As before, let
+    \begin{equation*}
+        (\mu_z)_{v,v'} = \int_{-\infty}^\infty[N_{v'}H_{v'}(\sqrt{\alpha}q)\e[-\alpha q^2/2]]\mu_z(q)[N_vH_v(\sqrt{\alpha}q)\e[-\alpha q^2/2]]\dd{q}
+    \end{equation*}
+    \item Expand $\mu_z(q)$ about the equilibrium nuclear separation to two terms
+    \begin{equation*}
+        \mu_z(q) = \mu_0+\left( \dv{\mu}{q} \right)_0q
+    \end{equation*}
+    where $\mu_0$ is the dipole moment at the equilibrium bond length and $q$ is the displacement from that equilibrium value.
+    \item Substituting this expansion into the original equation yields
+    \begin{align*}
+        (\mu_z)_{v,v'} &= \int_{-\infty}^\infty[N_{v'}H_{v'}(\sqrt{\alpha}q)\e[-\alpha q^2/2]]\left[ \mu_0+\left( \dv{\mu}{q} \right)_0q \right][N_vH_v(\sqrt{\alpha}q)\e[-\alpha q^2/2]]\dd{q}\\
+        &= N_vN_{v'}\mu_0\int_{-\infty}^\infty H_{v'}(\sqrt{\alpha}q)H_v(\sqrt{\alpha}q)\e[-\alpha q^2]\dd{q}+N_vN_{v'}\left( \dv{\mu}{q} \right)_0\int_{-\infty}^\infty H_{v'}(\sqrt{\alpha}q)qH_v(\sqrt{\alpha}q)\e[-\alpha q^2]\dd{q}
+    \end{align*}
+    \item The first integral above vanishes if $v\neq v'$ by the orthogonality of the Hermite polynomials with respect to a Gaussian weighting function.
+    \item As to the second integral, invoke the Hermite polynomial recursion formula
+    \begin{equation*}
+        \xi H_v(\xi) = vH_{v-1}(\xi)+\tfrac{1}{2}H_{v+1}(\xi)
+    \end{equation*}
+    from Problem \ref{prb:5-24} to get
+    \begin{equation*}
+        (\mu_z)_{v,v'} = \frac{N_vN_{v'}}{\alpha}\left( \dv{\mu}{q} \right)_0\int_{-\infty}^\infty H_{v'}(\xi)[vH_{v-1}(\xi)+\tfrac{1}{2}H_{v+1}(\xi)]\e[-\xi^2]\dd{\xi}
+    \end{equation*}
+    \begin{itemize}
+        \item Note that we substitute $\xi=\sqrt{\alpha}q$.
+        \item Thus, by the orthogonality of the Hermite polynomials, we must have $v'=v\pm 1$ for the above integral not to vanish.
+        \item This is the $\Delta v=\pm 1$ selection rule!
+        \item Additionally, the $(\dv*{\mu}{q})_0$ term indicates that the dipole moment must vary during the vibration.
+    \end{itemize}
+    \item A normal mode will have a nonzero transition only if it belongs to the same irreducible representation as one of the $\mu_{x,y,z}$\footnote{Related to Module 12 on \textcite[49-50]{bib:IChemNotes}.}.
+    \begin{itemize}
+        % \item Consider the more general transition dipole moment in terms of normal coordinates as follows.
+        % \begin{equation*}
+        %     I_{0\to 1} = \int\psi_0(Q_1,\dots,Q_{N_\text{vib}})
+        %     \begin{Bmatrix}
+        %         \mu_x\\
+        %         \mu_y\\
+        %         \mu_z\\
+        %     \end{Bmatrix}
+        %     \psi_1(Q_1,\dots,Q_{N_\text{vib}})\dd{Q_1}\cdots\dd{Q_{N_\text{vib}}}
+        % \end{equation*}
+        \item We have
+        \begin{equation*}
+            \psi_0(Q_1,\dots,Q_{N_\text{vib}}) = c\e[-\alpha_1Q_1^2-\cdots-\alpha_{N_\text{vib}}Q_{N_\text{vib}}^2]
+        \end{equation*}
+        where $c$ is a normalization constant and $\alpha_j=\sqrt{\mu_jk_j}/2\hbar$.
+        \begin{itemize}
+            \item Since the normal modes belong to the irreducible representations of the relevant molecular point group, the effect of an arbitrary symmetry operation $\hat{R}$ on $Q_j$ gives $\pm Q_j$.
+            \item Thus, $\psi_0$ as a function of quadratic terms of $Q_j$ is wholly invariant under any $\hat{R}$.
+        \end{itemize}
+        \item We also have
+        \begin{equation*}
+            \psi_1(Q_1,\dots,Q_{N_\text{vib}}) = c'Q_j\e[-\alpha_1Q_1^2-\cdots-\alpha_{N_\text{vib}}Q_{N_\text{vib}}^2]
+        \end{equation*}
+        since an excited state necessitates exciting one and only one normal mode.
+        \begin{itemize}
+            \item Thus, $\psi_1$ transforms as $Q_j$ under the symmetry operations of the group.
+        \end{itemize}
+        \item Since $I_{0\to 1}$ is invariant under all operations of the group,
+        \begin{equation*}
+            I_{0\to 1} = \hat{R}I_{0\to 1} = \int(\hat{R}\psi_0)(\hat{R}\mu_x)(\hat{R}\psi_1)\dd{Q_1}\cdots\dd{Q_{N_\text{vib}}} = \chi_{A_1}(\hat{R})\chi_{\mu_x}(\hat{R})\chi_{Q_j}(\hat{R})I_{0,1}
+        \end{equation*}
+        \item Thus, the product of the characters equals 1. More specifically, since $\chi_{A_1}(\hat{R})$ always equals 1, the excited state and dipole must transform together, i.e., must belong to the same irreducible representation for the transition to be nonzero.
+    \end{itemize}
 \end{itemize}
+
+
+\subsection*{Problems}
+\begin{enumerate}[label={\textbf{13-\arabic*.}},ref={13-\arabic*}]
+    \setcounter{enumi}{39}
+    \item \label{prb:13-40}Derive Equation 13.57 from Equation 13.55 in \textcite{bib:McQuarrieSimon}.
+    \begin{proof}[Answer]
+        Since we are considering proportionality and ignoring the first term, we will work with the following version of Equation 13.55.
+        \begin{equation*}
+            a_2(t) \propto \frac{1-\e[i(E_2-E_1-h\nu)t/\hbar]}{E_2-E_1-h\nu}
+        \end{equation*}
+        Let
+        \begin{equation*}
+            x = E_2-E_1-h\nu
+            = E_2-E_1-\frac{h}{2\pi}\cdot 2\pi\nu
+            = E_2-E_1-\hbar\omega
+        \end{equation*}
+        Then
+        \begin{align*}
+            a_2^*(t)a_2(t) &= \frac{1-\e[-ixt/\hbar]}{x}\cdot\frac{1-\e[ixt/\hbar]}{x}\\
+            &= \frac{1-\e[ixt/\hbar]-\e[-ixt/\hbar]+\e[0]}{x^2}\\
+            &= \frac{2-(\e[ixt/\hbar]+\e[-ixt/\hbar])}{x^2}\\
+            &= \frac{2-2\cos(xt/\hbar)}{x^2}\\
+            &= \frac{4}{x^2}\cdot\frac{1-\cos(2(xt/2\hbar))}{2}\\
+            &= \frac{4}{x^2}\cdot\sin^2(xt/2\hbar)\\
+            &\propto \frac{\sin^2(xt/2\hbar)}{x^2}
+        \end{align*}
+        Returning the substitution yields the desired result.
+    \end{proof}
+    \setcounter{enumi}{48}
+    \item \label{prb:13-49}Consider a molecule with a dipole moment $\bm{\mu}$ in an electric field $\bm{E}$. We picture the dipole moment as a positive charge and a negative charge of magnitude $q$ separated by a vector $\mathbf{l}$.
+    \begin{center}
+        \begin{tikzpicture}
+            \footnotesize
+            \draw (-2,0) -- (0,0) coordinate (O) -- (2,0) coordinate (A);
+    
+            \draw [thick,latex-latex] (30:2) ++(-60:0.7) -- ++(-60:-0.7) -- ++(0:0.7) node[right]{$f=qE_z$};
+            \draw [thick,latex-latex] (-150:2) ++(120:0.7) -- ++(120:-0.7) -- ++(180:0.7) node[left]{$f=qE_z$};
+            \draw [thick] (-150:2) node[circle,draw,fill=white,inner sep=0pt]{$-$} -- (30:2) coordinate (B) node[circle,draw,fill=white,inner sep=0pt]{$+$};
+    
+            \pic [draw,angle eccentricity=1.2,angle radius=8mm,pic text={$\theta$}] {angle=A--O--B};
+            \draw [shorten <=1pt,shorten >=1pt,<->] (-150:2) ++(120:0.3) -- node[pos=0.6,fill=white,inner sep=1.5pt]{$l$} ++(30:4);
+    
+            \draw [thick,-latex] (1.7,-1) -- ++(0.6,0) node[right]{$E_z$};
+        \end{tikzpicture}
+    \end{center}
+    The field $\bm{E}$ causes the dipole to rotate into a direction parallel to $\bm{E}$. Therefore, work is required to rotate the dipole to an angle $\theta$ to $\bm{E}$. The force causing the molecule to rotate is actually a torque (torque is the angular analog of force) and is given by $l/2$ times the force perpendicular to $\mathbf{l}$ at each end of the vector $\mathbf{l}$. Show that this torque is equal to $\mu E\sin\theta$ and that the energy required to rotate the dipole from some initial angle $\theta_0$ to some arbitrary angle $\theta$ is
+    \begin{equation*}
+        V = \int_{\theta_0}^\theta\mu E\sin\theta'\dd{\theta'}
+    \end{equation*}
+    Given that $\theta_0$ is customarily taken to be $\pi/2$, show that
+    \begin{equation*}
+        V = -\mu E\cos\theta = -\bm{\mu}\cdot\bm{E}
+    \end{equation*}
+    The magnetic analog of this result will be given in Chapter 14.
+\end{enumerate}
 
 
 

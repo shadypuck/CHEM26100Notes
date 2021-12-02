@@ -135,14 +135,14 @@
         \item The right term above is a function of the form $\sin^2(xt/2\hbar)/x^2$, which has a peak right at the resonance frequency.
         \begin{figure}[H]
             \centering
-            \begin{tikzpicture}[scale=0.5]
+            \begin{tikzpicture}[xscale=0.4,yscale=0.5]
                 \footnotesize
                 \path (-2,0) -- (9,0);
-                \draw [stealth-stealth] (0,5) -- node[left]{$\Prob(\omega)$} (0,0) -- (7,0);
-                \draw (3.14,0.2) -- ++(0,-0.4) node[below]{$\omega$};
+                \draw [stealth-stealth] (0,5) -- node[left]{$\Prob(\omega)$} (0,0) -- (10,0);
+                \draw (4.71,0.2) -- ++(0,-0.4) node[below]{$\omega$};
         
-                \draw [rex,thick,xshift=3.14cm,/pgf/fpu,/pgf/fpu/output format=fixed] plot[domain=-pi:-0.001,smooth,samples=100] (\x,{sin(2*\x r)^2/(\x*\x)});
-                \draw [rex,thick,xshift=3.14cm,/pgf/fpu,/pgf/fpu/output format=fixed] plot[domain=0.001:pi,smooth,samples=100] (\x,{sin(2*\x r)^2/(\x*\x)});
+                \draw [rex,thick,xshift=4.71cm,/pgf/fpu,/pgf/fpu/output format=fixed] plot[domain=-1.5*pi:-0.001,smooth,samples=100] (\x,{sin(2*\x r)^2/(\x*\x)});
+                \draw [rex,thick,xshift=4.71cm,/pgf/fpu,/pgf/fpu/output format=fixed] plot[domain=0.001:1.5*pi,smooth,samples=100] (\x,{sin(2*\x r)^2/(\x*\x)});
             \end{tikzpicture}
             \caption{The $\sinc$ function.}
             \label{fig:sincFunction}
@@ -233,6 +233,17 @@
     \item \textbf{Walsh correlation diagram}: A plot of the energy of a molecular orbital as a function of a systematic change in molecular geometry.
     \item \textbf{$\bm{\sigma}$-bond framework}: The collection of all $\sigma$ bonds in a molecule.
 \end{itemize}
+
+
+\subsection*{Problems}
+\begin{enumerate}[label={\textbf{10-\arabic*.}},ref={10-\arabic*}]
+    \setcounter{enumi}{46}
+    \item \label{prb:10-47}\marginnote{12/1:}The dipole moment of a polyatomic molecule is defined by
+    \begin{equation*}
+        \bm{\mu} = e\sum_jz_j\mathbf{r}_j
+    \end{equation*}
+    where $z_je$ is the magnitude of a charge located at the point given by $\mathbf{r}_j$. Show that the value of $\bm{\mu}$ is independent of the origin chosen for $\mathbf{r}_j$ if the net charge is zero. Show that $\mathbf{\mu}=0$ for \ce{SO3} (trigonal planar), \ce{CCl4} (tetrahedral), \ce{SF6} (octahedral), \ce{XeF4} (square planar), and \ce{PF5} (trigonal bipyramidal).
+\end{enumerate}
 
 
 

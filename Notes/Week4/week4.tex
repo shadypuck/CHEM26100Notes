@@ -378,8 +378,16 @@
 
 \subsection*{Problems}
 \begin{enumerate}[label={\textbf{5-\arabic*.}},ref={5-\arabic*}]
+    \setcounter{enumi}{23}
+    \item \label{prb:5-24}\marginnote{12/1:}There are a number of general relations between the Hermite polynomials and their derivatives (which we will not derive). Some of these are
+    \begin{gather*}
+        \dv{H_v(\xi)}{\xi} = 2\xi H_v(\xi)-H_{v+1}(\xi)\\
+        H_{v+1}(\xi)-2\xi H_v(\xi)+2vH_{v-1}(\xi) = 0\\
+        \dv{H_v(\xi)}{\xi} = 2vH_{v-1}(\xi)
+    \end{gather*}
+    Such connecting relations are called \textbf{recursion formulas}. Verify these formulas explicitly using the first few Hermite polynomials given in Table \ref{tab:hermitePolynomials}.
     \setcounter{enumi}{28}
-    \item \label{prb:5-29}Show that the moment of inertia for a rigid rotator can be written as $I=\mu r^2$ where $r=r_1+r_2$ (the fixed separation of the two masses) and $\mu$ is the reduced mass.
+    \item \label{prb:5-29}\marginnote{10/19:}Show that the moment of inertia for a rigid rotator can be written as $I=\mu r^2$ where $r=r_1+r_2$ (the fixed separation of the two masses) and $\mu$ is the reduced mass.
     \begin{proof}[Answer]
         First, note that $m_1r_1=m_2r_2$ for such a rotation about the center of mass. Then
         \begingroup
