@@ -115,5 +115,300 @@
 
 
 
+\section{Spectroscopy (cont.)}
+\begin{itemize}
+    \item \marginnote{12/1:}From last time, we have that
+    \begin{equation*}
+        \left[ \sum_A\left( -\frac{\nabla_A^2}{2\mu_A} \right)+V(R) \right]\psi_\text{nucl} = (E_\text{elec}+E_\text{nucl})\psi_\text{nucl}
+    \end{equation*}
+    \begin{itemize}
+        \item The PES is $V(R)=\int\psi_\text{elec}^*\hat{H}_\text{elec}\psi_\text{elec}\dd{x}$.
+        \item This begins to break down where we have \textbf{conical intersections}.
+    \end{itemize}
+    \item \textbf{Conical intersection}: An intersection between potential energy surfaces, where electrons can jump from one to the other.
+    \begin{itemize}
+        \item Allows for radiation-less transitions from one surface to another.
+    \end{itemize}
+    \item Potential energy surface\footnote{Note that we technically have a potential energy curve at this point; we will only have a surface in higher-dimensional systems.} for the ground electronic wave function and its surface.
+    \begin{itemize}
+        \item Think Figure \ref{fig:parabolicPotentialb} with its zero-point energy in the HO approximation.
+        \item The energies of the vibrational levels get closer and closer together until they're continuous forming a continuum at the level of the asymptote, reaching the classical limit.
+    \end{itemize}
+    \item We have that
+    \begin{align*}
+        E_\text{nucl} &\approx E_\text{HO}+E_\text{RR}\\
+        &\approx \hbar\omega(n+\tfrac{1}{2})+\frac{\hbar^2}{2I}l(l+1)
+    \end{align*}
+    \begin{itemize}
+        \item Since harmonic oscillator transitions are in the IR region and rigid rotor transitions are in the microwave region, vibrational transitions are of higher energy ($\hbar\omega>\hbar^2/2I$).
+    \end{itemize}
+    \item Rotational levels.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}
+            \small
+            \draw [-stealth] (-3,0) -- node[left]{$E$} ++(0,4.5);
+    
+            \draw [blx,thick] (-2,4) parabola bend (0,0) (2,4);
+    
+            \draw [grx,semithick] (-1,1) -- (1,1);
+            \draw [grx,semithick] (-1.5,2.25) -- (1.5,2.25);
+    
+            \draw [grx,yshift=1cm]
+                (-0.5,0.05) -- ++(1,0)
+                (-0.5,0.15) -- ++(1,0)
+                (-0.5,0.3) -- ++(1,0)
+                (-0.5,0.5) -- ++(1,0)
+                (-0.5,0.75) -- ++(1,0)
+            ;
+            \draw [grx,yshift=2.25cm]
+                (-0.5,0.05) -- ++(1,0)
+                (-0.5,0.15) -- ++(1,0)
+                (-0.5,0.3) -- ++(1,0)
+                (-0.5,0.5) -- ++(1,0)
+                (-0.5,0.75) -- ++(1,0)
+            ;
+        \end{tikzpicture}
+        \caption{Rotational and vibrational energy levels.}
+        \label{fig:rovibrationalELevels}
+    \end{figure}
+    \begin{itemize}
+        \item Each vibrational energy level has a number of smaller rotational states that are part of it.
+    \end{itemize}
+    \item Changes in rotational levels often accompany changes in vibrational levels.
+    \begin{itemize}
+        \item If we change the vibrational level by $\pm 1$, we have to change the rotational level (by $\pm 1$) as well.
+    \end{itemize}
+    \item IR/vibrational spectroscopy.
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style={black}
+        ]
+            \small
+            \draw [stealth-stealth] (0,2) -- node[rotate=90,above]{Absorption} (0,0) -- node[below]{$\si{\per\centi\meter}$} (5.5,0);
+    
+            \footnotesize
+            \draw [rex,thick] (0,0.5)
+                -- ++(1,0)
+                -- ++(0.05,0.5) -- ++(0.05,-0.5) -- ++(0.05,0) -- ++(0.05,0.7) -- ++(0.05,-0.7) -- ++(0.05,0) -- ++(0.05,0.9) -- ++(0.05,-0.9) -- ++(0.05,0) -- ++(0.05,1) node[below=1cm]{$\Delta J=-1$} node[above]{$P$ branch} -- ++(0.05,-1) -- ++(0.05,0) -- ++(0.05,0.8) -- ++(0.05,-0.8) -- ++(0.05,0) -- ++(0.05,0.6) -- ++(0.05,-0.6) -- ++(0.05,0) -- ++(0.05,0.2) -- ++(0.05,-0.2)
+                -- ++(0.5,0)
+                -- ++(0.05,0.2) -- ++(0.05,-0.2) -- ++(0.05,0) -- ++(0.05,0.6) -- ++(0.05,-0.6) -- ++(0.05,0) -- ++(0.05,0.8) -- ++(0.05,-0.8) -- ++(0.05,0) -- ++(0.05,1) node[below=1cm]{$\Delta J=+1$} node[above]{$R$ branch} -- ++(0.05,-1) -- ++(0.05,0) -- ++(0.05,0.9) -- ++(0.05,-0.9) -- ++(0.05,0) -- ++(0.05,0.7) -- ++(0.05,-0.7) -- ++(0.05,0) -- ++(0.05,0.5) -- ++(0.05,-0.5)
+                -- (5,0.5)
+            ;
+        \end{tikzpicture}
+        \caption{IR/vibrational spectrum.}
+        \label{fig:IRspectrum}
+    \end{figure}
+    \begin{itemize}
+        \item The whole spectrum represents a rovibrational transition.
+        \item The $P$ branch corresponds to when you go from a lower vibrational state to a higher vibrational state, \emph{but} you go from a higher rotational state to a lower rotational state.
+        \item The $R$ branch corresponds to when you go from a lower vibrational state to a higher vibrational state, \emph{and} you go from a lower rotational state to a higher rotational state.
+        \item The number of peaks in the $R$ and $P$ branches reveals which rotational states are occupied (although we could theoretically go on forever, realistically, only lower energy rotational states are occupied).
+    \end{itemize}
+    \item Electronic states.
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.49\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \small
+                \draw [stealth-stealth] (0,4.5) -- node[left]{$E$} (0,0) -- node[below]{$R$} (6.5,0);
+    
+                \draw [blx,thick,name path=PES1] (0.5,2) to[out=-85,in=180,in looseness=0.7] (1.3,0.2) to[out=0,in=180,out looseness=0.5,in looseness=2] (4,1);
+                \begin{scope}[
+                    on background layer
+                ]
+                    \path [name path=ve1] (0,0.40) -- ++(6,0);
+                    \path [name path=ve2] (0,0.57) -- ++(6,0);
+                    \path [name path=ve3] (0,0.71) -- ++(6,0);
+                    \path [name path=ve4] (0,0.82) -- ++(6,0);
+                    \path [name path=ve5] (0,0.90) -- ++(6,0);
+                    \path [name path=ve6] (0,0.95) -- ++(6,0);
+                    \draw [grx,semithick,name intersections={of=PES1 and ve1}] (intersection-1) -- (intersection-2);
+                    \draw [grx,semithick,name intersections={of=PES1 and ve2}] (intersection-1) -- (intersection-2);
+                    \draw [grx,semithick,name intersections={of=PES1 and ve3}] (intersection-1) -- (intersection-2);
+                    \draw [grx,semithick,name intersections={of=PES1 and ve4}] (intersection-1) -- (intersection-2);
+                    \draw [grx,semithick,name intersections={of=PES1 and ve5}] (intersection-1) -- (intersection-2);
+                    \draw [grx,semithick,name intersections={of=PES1 and ve6}] (intersection-1) -- (intersection-2);
+                \end{scope}
+    
+                \draw [blx,thick,xshift=0.6cm,yshift=1cm,name path=PES2] (0.6,1.5) to[out=-85,in=180,in looseness=0.7] (1.3,0.2) to[out=0,in=180,out looseness=0.5,in looseness=2] (4,0.75);
+                \begin{scope}[
+                    on background layer,
+                    yshift=1cm
+                ]
+                    \path [name path=ve1] (0,0.40) -- ++(6,0);
+                    \path [name path=ve2] (0,0.57) -- ++(6,0);
+                    \path [name path=ve3] (0,0.71) -- ++(6,0);
+                    \draw [grx,semithick,name intersections={of=PES2 and ve1}] (intersection-1) -- (intersection-2);
+                    \draw [grx,semithick,name intersections={of=PES2 and ve2}] (intersection-1) -- (intersection-2);
+                    \draw [grx,semithick,name intersections={of=PES2 and ve3}] (intersection-1) -- (intersection-2);
+                \end{scope}
+    
+                \draw [blx,thick,xshift=1cm,yshift=2cm,name path=PES3] (0.7,1.2) to[out=-85,in=180,in looseness=0.7] (1.3,0.2) to[out=0,in=180,out looseness=0.5,in looseness=2] (4,0.6);
+                \begin{scope}[
+                    on background layer,
+                    yshift=2cm
+                ]
+                    \path [name path=ve1] (0,0.40) -- ++(6,0);
+                    \path [name path=ve2] (0,0.57) -- ++(6,0);
+                    \draw [grx,semithick,name intersections={of=PES3 and ve1}] (intersection-1) -- (intersection-2);
+                    \draw [grx,semithick,name intersections={of=PES3 and ve2}] (intersection-1) -- (intersection-2);
+                \end{scope}
+    
+                \draw [blx,thick,xshift=1.5cm,yshift=2.5cm] (0.7,1.8) to[out=-70,in=180] (4,0.6);
+    
+                \path [name path=trans] (1.3,0) -- ++(0,4);
+                \draw [orx,semithick,-latex,shorten >=4pt,name intersections={of=trans and PES1,by=start},name intersections={of=trans and PES2,by=end}] (start) -- (end);
+            \end{tikzpicture}
+            \caption{Electronic states.}
+            \label{fig:electronicStatesa}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.49\linewidth}
+            \centering
+            \begin{tikzpicture}
+                \small
+                \draw [stealth-stealth] (0,4.5) -- node[left]{$E$} (0,0) -- node[below]{$R$} (6.5,0);
+    
+                \draw [blx,thick,name path=PES1] (0.5,2) to[out=-85,in=180,in looseness=0.7] (1.3,0.2) to[out=0,in=180,out looseness=0.5,in looseness=2] (4,1);
+                \begin{scope}[
+                    on background layer
+                ]
+                    \draw [grx,semithick] (1.05,0.40) -- ++(0.5,0);
+                    \draw [grx,semithick] (1.05,0.57) -- ++(0.5,0);
+                    \draw [grx,semithick] (1.05,0.71) -- ++(0.5,0);
+                    \draw [grx,semithick] (1.05,0.82) -- ++(0.5,0);
+                    \draw [grx,semithick] (1.05,0.90) -- ++(0.5,0);
+                    \draw [grx,semithick] (1.05,0.95) -- ++(0.5,0);
+                \end{scope}
+    
+                \draw [blx,thick,yshift=1cm,name path=PES2] (0.6,1.5) to[out=-85,in=180,in looseness=0.7] (1.3,0.2) to[out=0,in=180,out looseness=0.5,in looseness=2] (4,0.75);
+                \begin{scope}[
+                    on background layer,
+                    yshift=1cm
+                ]
+                    \draw [grx,semithick] (1.05,0.40) -- ++(0.5,0);
+                    \draw [grx,semithick] (1.05,0.57) -- ++(0.5,0);
+                    \draw [grx,semithick] (1.05,0.71) -- ++(0.5,0);
+                \end{scope}
+    
+                \draw [blx,thick,xshift=0.6cm,yshift=2cm,name path=PES3] (0.7,1.2) to[out=-85,in=180,in looseness=0.7] (1.3,0.2) to[out=0,in=180,out looseness=0.5,in looseness=2] (4,0.6);
+                \begin{scope}[
+                    on background layer,
+                    xshift=0.6cm,yshift=2cm
+                ]
+                    \draw [grx,semithick] (1.05,0.40) -- ++(0.5,0);
+                    \draw [grx,semithick] (1.05,0.57) -- ++(0.5,0);
+                \end{scope}
+    
+                \draw [densely dashed,xshift=1.3cm,yshift=0.2cm] plot [domain=-1:1] (\x,{0.8*e^(-3*\x*\x)});
+                \draw [densely dashed,xshift=1.3cm,yshift=1.3cm] plot [domain=-1:1] (\x,{0.6*e^(-3*\x*\x)});
+                \draw [densely dashed,xshift=1.9cm,yshift=2.2cm] plot [domain=-1:1] (\x,{0.4*e^(-3*\x*\x)});
+    
+                \path [name path=trans] (1.3,0) -- ++(0,4);
+                \path [name path=trans2] (1.4,0) -- ++(0,4);
+                \draw [orx,semithick,-latex,name intersections={of=trans and PES1,by=start},name intersections={of=trans and PES2,by=end}] (start) -- (end);
+                \draw [orx,semithick,-latex,shorten >=2pt,name intersections={of=trans2 and PES1,by=start},name intersections={of=trans2 and PES3,by=end}] (start) -- (end);
+            \end{tikzpicture}
+            \caption{Overlapping Gaussian wave packets.}
+            \label{fig:electronicStatesb}
+        \end{subfigure}
+        \caption{Exciting between electronic states.}
+        \label{fig:electronicStates}
+    \end{figure}
+    \begin{itemize}
+        \item You can also do excitations from one potential energy surface to another.
+        \item Recall that we have a Gaussian wave packet around the minimum energy on the PES.
+        \item It's important that our Gaussian wave packets have some overlap for us to jump from one PES to the other.
+        \item In Figure \ref{fig:electronicStatesb}, we'd expect a much higher probability of electronic transitions to the PES's with significant orbital overlap than from either to the third, where there is much less overlap.
+    \end{itemize}
+    \item \textbf{Franck-Condon Principle}\footnote{Developed at UChicago!}: The intensity of the transitions is proportional to the product of two harmonic oscillator wave functions --- $\psi_1$ from the one vibrational state and $\psi_2$ from the other vibrational state.
+    \item In a polyatomic molecule, any bond can be approximated as a spring, and any spring can be approximated as a harmonic oscillator.
+    \begin{itemize}
+        \item Thus, any polyatomic molecule can be thought of as a bunch of harmonic oscillators linked together.
+    \end{itemize}
+    \item Normal modes and normal coordinates:
+    \begin{itemize}
+        \item Degrees of freedom: $3N$ ($x,y,z$ coordinates).
+        \begin{itemize}
+            \item There are translational, vibrational, and rotational DOFs.
+            \item We always have 3 translational DOFs, 2 or 3 rotational DOFs (depending on whether or not the molecule is linear), and $3N-5$ or $3N-6$ vibrational DOFs (depending on whether or not the molecule is linear once again).
+        \end{itemize}
+    \end{itemize}
+    \item Taking the right linear combinations of coupled oscillator stretches gives normal modes that are orthogonal to each other.
+    \begin{itemize}
+        \item Diagonalizing gives normal modes that are decoupled from each other.
+    \end{itemize}
+    \item Example (\ce{H2O}):
+    \begin{figure}[h!]
+        \centering
+        \begin{subfigure}[b]{0.3\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                every node/.style={black}
+            ]
+                \draw [semithick,orx,-latex] (0,1) node[circle,fill,inner sep=1.5pt]{} -- ++(90:0.5);
+                \draw [semithick,orx,-latex] (-1,0) node[circle,fill,inner sep=1.5pt]{} -- ++(-135:0.5);
+                \draw [semithick,orx,-latex] (1,0) node[circle,fill,inner sep=1.5pt]{} -- ++(-45:0.5);
+            \end{tikzpicture}
+            \caption{Symmetric stretch.}
+            \label{fig:H2ONormalModesa}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.3\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                every node/.style={black}
+            ]
+                \draw [semithick,orx,-latex] (0,1) node[circle,fill,inner sep=1.5pt]{} -- ++(0:0.5);
+                \draw [semithick,orx,-latex] (-1,0) node[circle,fill,inner sep=1.5pt]{} -- ++(-135:0.5);
+                \draw [semithick,orx,-latex] (1,0) node[circle,fill,inner sep=1.5pt]{} -- ++(135:0.5);
+            \end{tikzpicture}
+            \caption{Asymmetric stretch.}
+            \label{fig:H2ONormalModesb}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.3\linewidth}
+            \centering
+            \begin{tikzpicture}[
+                every node/.style={black}
+            ]
+                \draw [semithick,orx,-latex] (0,1) node[circle,fill,inner sep=1.5pt]{} -- ++(-90:0.5);
+                \draw [semithick,orx,-latex] (-1,0) node[circle,fill,inner sep=1.5pt]{} to[out=180,in=-70] ++(135:0.5);
+                \draw [semithick,orx,-latex] (1,0) node[circle,fill,inner sep=1.5pt]{} to[out=0,in=-110] ++(45:0.5);
+            \end{tikzpicture}
+            \caption{Bending mode.}
+            \label{fig:H2ONormalModesc}
+        \end{subfigure}
+        \caption{Normal modes of \ce{H2O}.}
+        \label{fig:H2ONormalModes}
+    \end{figure}
+    \begin{itemize}
+        \item 3 vibrational modes.
+        \item Symmetric stretch, asymmetric stretch, and bending mode.
+        \item Their respective frequencies are $\nu_1=\SI{3650}{\per\centi\meter}$, $\nu_2=\SI{3760}{\per\centi\meter}$, and $\nu_3=\SI{1600}{\per\centi\meter}$.
+    \end{itemize}
+\end{itemize}
+
+
+
+\section{Chapter 13: Molecular Spectroscopy}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{11/30:}\textbf{Spectroscopy}: The study of the interaction of electromagnetic radiation with atoms and molecules.
+    \item "Electromagnetic radiation is customarily divided into different energy regions reflecting the different types of molecular processes that can be caused by such radiation" \parencite[495-96]{bib:McQuarrieSimon}.
+    \item Vibrational selection rule: Transitions among vibrational levels resulting from the absorption of radiation have $\Delta v=\pm 1$ and have a dipole moment that varies during the vibration.
+    \begin{itemize}
+        \item For a harmonic oscillator, the spectrum consists of one line in the infrared region at the frequency $\nu_\text{obs}=\sqrt{k/\mu}/2\pi$.
+    \end{itemize}
+    \item \textbf{Vibrational term}: The vibrational energy of a molecule. \emph{Denoted by} $\bm{G(v)}$. \emph{Units} $\si{\per\centi\meter}$. \emph{Given by}
+    \begin{equation*}
+        G(v) = \frac{E_v}{hc}
+    \end{equation*}
+    where $E_v=(v+1/2)h\nu$ and $\nu=\sqrt{k/\mu}/2\pi$.
+    \item Each energy $E_J=\hbar^2/(2I)\cdot J(J+1)$ of the rigid rotator is associated with degeneracy $g_J=2J+1$.
+\end{itemize}
+
+
+
 
 \end{document}
