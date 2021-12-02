@@ -14,40 +14,342 @@
     \item \marginnote{12/2:}Consider the molecule \ce{BeH2}.
     \begin{enumerate}
         \item How many degrees of freedom does the molecule possess?
+        \begin{proof}[Answer]
+            \ce{BeH2} has three atoms, each of which is completely described by three coordinates. Thus, \ce{BeH2} has $3N=\boxed{9}$ degrees of freedom.
+        \end{proof}
         \item For each degree of freedom, there is a normal mode of vibration. Enumerate each of the normal modes of vibration.
+        \begin{proof}[Answer]
+            Since \ce{BeH2} is a linear molecule, it has $3N-5=4$ vibrational degrees of freedom/normal modes. These are a singly degenerate symmetric stretch, a doubly degenerate bending mode (one mode in each of the two axes orthogonal to the principal axis), and a singly degenerate asymmetric stretch.
+        \end{proof}
         \item Which of these modes are IR active? Explain.
+        \begin{proof}[Answer]
+            The \fbox{asymmetric stretch} and \fbox{bending modes} are IR active since both are vibrations during which the dipole moment of the molecule varies. The symmetric stretch is IR inactive for the same reason.
+        \end{proof}
     \end{enumerate}
     \item Using the worksheet "Normal Modes" with the Quantum Chemistry Toolbox for Maple, you will compute the optimized geometry and the vibrational normal modes of hypochlorous acid (or \ce{HOCl}) using the electronic structure theory known as the Hartree-Fock method. After using the worksheet to perform the calculations and view the animations of the normal modes on your computer, answer the following questions.
     \begin{enumerate}
         \item In performing the geometry optimization of \ce{HOCl}, what are the computed bond lengths and angle in the STO-3G basis set, and how do these bond lengths and angle compare to the experimental values?
+        \begin{proof}[Answer]
+            The computed bond lengths and angle are $\boxed{\SI{1.006}{\angstrom}}$, $\boxed{\SI{1.738}{\angstrom}}$, and $\boxed{\ang{100.158}}$, respectively. The \fbox{computed bond lengths are greater than the experimental bond lengths}, and the \fbox{computed bond angle is less than the experimental bond angle}; as per the NIST database, the experimental values are $\SI{0.964}{\angstrom}$, $\SI{1.689}{\angstrom}$, and $\ang{102.450}$, respectively.
+        \end{proof}
         \item Give the computed and experimental values of the three normal modes, and based on the computed animations, draw an illustrative sketch for each normal mode.
+        \begin{proof}[Answer]
+            The computed values are $\boxed{\SI{4165}{\per\centi\meter}}$ for the \ce{O-H} stretch, $\boxed{\SI{1535}{\per\centi\meter}}$ for the bend, and $\boxed{\SI{983}{\per\centi\meter}}$ for the \ce{Cl-O} stretch. The experimental values are $\boxed{\SI{3609}{\per\centi\meter}}$ for the \ce{O-H} stretch, $\boxed{\SI{1239}{\per\centi\meter}}$ for the bend, and $\boxed{\SI{724}{\per\centi\meter}}$ for the \ce{Cl-O} stretch.\par
+            Sketches of the normal modes:
+            \begin{figure}[h!]
+                \centering
+                \begin{subfigure}[b]{0.2\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \footnotesize
+                        \node (Cl) [circle,draw=grx,fill=grx!10,inner sep=1pt] at (90:1.73) {Cl};
+                        \node (O) [circle,draw=rex,fill=rex!10,inner sep=1pt] {O}
+                            (O) edge [semithick,-latex] ++(170:0.6)
+                        ;
+                        \node (H) [circle,draw=gray,fill=gray!10,inner sep=1pt] at (-12:1) {H}
+                            (H) edge [semithick,-latex] ++(-10:0.6)
+                        ;
+                    \end{tikzpicture}
+                    \caption{\ce{O-H} stretch.}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.2\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \footnotesize
+                        \node (Cl) [circle,draw=grx,fill=grx!10,inner sep=1pt] at (90:1.73) {Cl}
+                            (Cl) edge [semithick,-latex] ++(0:0.6)
+                        ;
+                        \node (O) [circle,draw=rex,fill=rex!10,inner sep=1pt] {O}
+                            (O) edge [semithick,-latex] ++(-135:0.6)
+                        ;
+                        \node (H) [circle,draw=gray,fill=gray!10,inner sep=1pt] at (-12:1) {H}
+                            (H) edge [semithick,-latex] ++(90:0.6)
+                        ;
+                    \end{tikzpicture}
+                    \caption{Bend.}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.2\linewidth}
+                    \centering
+                    \begin{tikzpicture}
+                        \footnotesize
+                        \node (Cl) [circle,draw=grx,fill=grx!10,inner sep=1pt] at (90:1.73) {Cl}
+                            (Cl) edge [semithick,-latex] ++(90:0.6)
+                        ;
+                        \node (O) [circle,draw=rex,fill=rex!10,inner sep=1pt] {O}
+                            (O) edge [semithick,-latex] ++(-90:0.6)
+                        ;
+                        \node (H) [circle,draw=gray,fill=gray!10,inner sep=1pt] at (-12:1) {H};
+                    \end{tikzpicture}
+                    \caption{\ce{O-Cl} stretch}
+                \end{subfigure}
+            \end{figure}
+        \end{proof}
         \item Repeat parts (a) and (b) for the triatomic molecule sulfur dioxide (or \ce{SO2}) by changing at the top of the worksheet $r_1$ and $r_2$ to the experimental bond length of $\SI{1.43}{\angstrom}$, $\theta$ to $\ang{119}$, and the atoms in the variable \emph{molec} from \ce{H}, \ce{O}, and \ce{Cl} to \ce{O}, \ce{S}, and \ce{O}, respectively.
+        \begin{proof}
+            The computed bond lengths and angle are $\boxed{\SI{1.507}{\angstrom}}$, $\boxed{\SI{1.559}{\angstrom}}$, and $\boxed{\ang{108.633}}$, respectively. The \fbox{computed bond lengths are greater than the experimental bond lengths}, and the \fbox{computed bond angle is less than the experimental bond angle}; as per the NIST database, the experimental values are $\SI{1.432}{\angstrom}$, $\SI{1.432}{\angstrom}$, and $\ang{119.500}$, respectively.\par\smallskip
+            The computed values are $\boxed{\SI{1151}{\per\centi\meter}}$ for the asymmetric stretch, $\boxed{\SI{1126}{\per\centi\meter}}$ for the symmetric stretch, and $\boxed{\SI{462}{\per\centi\meter}}$ for the bend. The experimental values are $\boxed{\SI{1381}{\per\centi\meter}}$ for the asymmetric stretch, $\boxed{\SI{1168}{\per\centi\meter}}$ for the symmetric stretch, and $\boxed{\SI{526}{\per\centi\meter}}$ for the bend.\par
+            Sketches of the normal modes:
+            \begin{figure}[h!]
+                \centering
+                \footnotesize
+                \begin{subfigure}[b]{0.3\linewidth}
+                    \centering
+                    \begin{tikzpicture}[
+                        every node/.style={black}
+                    ]
+                        \node (S) [circle,draw=yex,fill=yex!10,inner sep=1pt] at (0,1) {S}
+                            (S) edge [semithick,-latex] ++(90:0.6)
+                        ;
+                        \node (O1) [circle,draw=rex,fill=rex!10,inner sep=1pt] at (-1,0) {O}
+                            (O1) edge [semithick,-latex] ++(-135:0.6)
+                        ;
+                        \node (O2) [circle,draw=rex,fill=rex!10,inner sep=1pt] at (1,0) {O}
+                            (O2) edge [semithick,-latex] ++(-45:0.6)
+                        ;
+                    \end{tikzpicture}
+                    \caption{Symmetric stretch.}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.3\linewidth}
+                    \centering
+                    \begin{tikzpicture}[
+                        every node/.style={black}
+                    ]
+                        \node (S) [circle,draw=yex,fill=yex!10,inner sep=1pt] at (0,1) {S}
+                            (S) edge [semithick,-latex] ++(0:0.6)
+                        ;
+                        \node (O1) [circle,draw=rex,fill=rex!10,inner sep=1pt] at (-1,0) {O}
+                            (O1) edge [semithick,-latex] ++(-135:0.6)
+                        ;
+                        \node (O2) [circle,draw=rex,fill=rex!10,inner sep=1pt] at (1,0) {O}
+                            (O2) edge [semithick,-latex] ++(135:0.6)
+                        ;
+                    \end{tikzpicture}
+                    \caption{Asymmetric stretch.}
+                \end{subfigure}
+                \begin{subfigure}[b]{0.3\linewidth}
+                    \centering
+                    \begin{tikzpicture}[
+                        every node/.style={black}
+                    ]
+                        \node (S) [circle,draw=yex,fill=yex!10,inner sep=1pt] at (0,1) {S}
+                            (S) edge [semithick,-latex] ++(-90:0.6)
+                        ;
+                        \node (O1) [circle,draw=rex,fill=rex!10,inner sep=1pt] at (-1,0) {O}
+                            (O1) edge [semithick,-latex,out=180,in=-70] ++(150:0.7)
+                        ;
+                        \node (O2) [circle,draw=rex,fill=rex!10,inner sep=1pt] at (1,0) {O}
+                            (O2) edge [semithick,-latex,out=0,in=-110] ++(30:0.7)
+                        ;
+                    \end{tikzpicture}
+                    \caption{Bend.}
+                \end{subfigure}
+            \end{figure}
+        \end{proof}
     \end{enumerate}
     \item The wave functions of the harmonic oscillator may be categorized as being either even or odd. They are even when $\psi(-x)=\psi(x)$ and they are odd when $\psi(-x)=-\psi(x)$.
     \begin{enumerate}
         \item Using this symmetry property, compute the probability for a transition from $n=0$ to $n=2$.
+        \begin{proof}[Answer]
+            % The transition dipole moment and hence the probability for such a transition is
+            % \begin{equation*}
+            %     (\mu_z)_{12} = \int_{-\infty}^\infty\psi_2^*\mu_z\psi_0\dd{q} = \boxed{0}
+            % \end{equation*}
+            % Since $\psi_2^*$ and $\psi_0$ are even functions, their product (the integrand) is even, and even integrals that are symmetric about the origin evaluate to zero.
+
+
+            % $\psi_0$ and $\psi_2$ are even functions. Taking the conjugate of $\psi_2$ does not change the fact that it's an even function, and nor does taking the product $\psi_2^*\psi_0$:
+            % \begin{equation*}
+            %     (\psi_2^*\psi_0)(-x) = \psi_2^*(-x)\psi_0(-x)
+            %     = \psi_2^*(x)\psi_0(x) = (\psi_2^*\psi_0)(x)
+            % \end{equation*}
+            % Thus, making use of the even-ness of $\psi_2^*\psi_0$, we can determine that
+            % \begin{align*}
+            %     (\mu_z)_{02} &= \int_{-\infty}^\infty\psi_2^*\mu_z\psi_0\dd{x}\\
+            %     &= \mu_z\int_{-\infty}^0(\psi_2^*\psi_0)(x)\dd{x}+\mu_z\int_0^\infty(\psi_2^*\psi_0)(x)\dd{x}\\
+            %     &= -\mu_z\int_0^{-\infty}(\psi_2^*\psi_0)(x)\dd{x}+\mu_z\int_0^\infty(\psi_2^*\psi_0)(x)\dd{x}\\
+            %     &= -\mu_z\int_0^\infty(\psi_2^*\psi_0)(-x)\dd{x}+\mu_z\int_0^\infty(\psi_2^*\psi_0)(x)\dd{x}\\
+            %     &= -\mu_z\int_0^\infty(\psi_2^*\psi_0)(x)\dd{x}+\mu_z\int_0^\infty(\psi_2^*\psi_0)(x)\dd{x}\\
+            %     &= \boxed{0}
+            % \end{align*}
+            % i.e., that there is no probability of such a transition occurring within our approximations.
+
+
+            The probability for a transition from $n=0$ to $n=2$ is proportional to the transition dipole moment $(\mu_x)_{02}$, so we will compute that first. From the definition, we have that
+            \begin{align*}
+                (\mu_x)_{02} &= \int_{-\infty}^\infty\psi_2^*\mu_x\psi_0\dd{x}\\
+                &= \mu_0\int_{-\infty}^\infty\psi_2^*\psi_0\dd{x}+\left( \dv{\mu}{x} \right)_0\int_{-\infty}^\infty\psi_2^*x\psi_0\dd{x}
+            \end{align*}
+            The left integral above can be evaluated via symmetry. First off, note that $\psi_0$ and $\psi_2$ are even functions. Additionally, taking the conjugate of $\psi_2$ does not change the fact that it's an even function, and nor does taking the product $\psi_2^*\psi_0$:
+            \begin{equation*}
+                (\psi_2^*\psi_0)(-x) = \psi_2^*(-x)\psi_0(-x)
+                = \psi_2^*(x)\psi_0(x) = (\psi_2^*\psi_0)(x)
+            \end{equation*}
+            Thus, making use of the even-ness of $\psi_2^*\psi_0$, we can determine that
+            \begin{align*}
+                \int_{-\infty}^\infty\psi_2^*\psi_0\dd{x} &= \int_{-\infty}^0(\psi_2^*\psi_0)(x)\dd{x}+\int_0^\infty(\psi_2^*\psi_0)(x)\dd{x}\\
+                &= -\int_0^{-\infty}(\psi_2^*\psi_0)(x)\dd{x}+\int_0^\infty(\psi_2^*\psi_0)(x)\dd{x}\\
+                &= -\int_0^\infty(\psi_2^*\psi_0)(-x)\dd{x}+\int_0^\infty(\psi_2^*\psi_0)(x)\dd{x}\\
+                &= -\int_0^\infty(\psi_2^*\psi_0)(x)\dd{x}+\int_0^\infty(\psi_2^*\psi_0)(x)\dd{x}\\
+                &= 0
+            \end{align*}
+            As to the other integral, we expand in terms of the harmonic oscillator wave functions, substitute $\xi=\sqrt{\alpha}x$, make use of the Hermite polynomial recursion formula
+            \begin{equation*}
+                \xi H_n(\xi) = nH_{n-1}(\xi)+\tfrac{1}{2}H_{n+1}(\xi)
+            \end{equation*}
+            and invoke the orthogonality of the Hermite polynomials with respect to the weighting function $\e[-\xi^2]$ to get
+            \begin{align*}
+                \int_{-\infty}^\infty\psi_2^*x\psi_0\dd{x} &= N_2N_0\int_{-\infty}^\infty xH_2(\sqrt{\alpha}x)H_0(\sqrt{\alpha}x)\e[-\alpha x^2]\dd{x}\\
+                &= \frac{N_2N_0}{\alpha}\int_{-\infty}^\infty \xi H_2(\xi)H_0(\xi)\e[-\xi^2]\dd{\xi}\\
+                &= \frac{N_2N_0}{\alpha}\int_{-\infty}^\infty [2H_1(\xi)+\tfrac{1}{2}H_3(\xi)]H_0(\xi)\e[-\xi^2]\dd{\xi}\\
+                &= 0
+            \end{align*}
+            Therefore, \fbox{the probability of the transition is zero} since the overall transition dipole moment is equal to zero.
+        \end{proof}
         \item In general, what may be said regarding transitions between even states?
+        \begin{proof}[Answer]
+            Transitions between even states are \fbox{forbidden}.
+        \end{proof}
         \item Are these results consistent with the more general selection rules derived in class?
+        \begin{proof}[Answer]
+            \fbox{Yes}. In class, we derived that only transitions with $\Delta n=\pm 1$ may be allowed, so transitions between even states (with $\Delta n=\pm 2,\pm 4,\pm 6,\dots$) should certainly be forbidden.
+        \end{proof}
     \end{enumerate}
     \item The molecule \ce{{}^{39}K^{127}I} has a microwave spectrum of equally-spaced lines.
     \begin{enumerate}
         \item In a laboratory at the University of Chicago, the spacing is measured to be $\SI{3634}{\mega\hertz}$. What is the bond length of \ce{{}^{39}K^{127}I}?
+        \begin{proof}[Answer]
+            From \textcite{bib:McQuarrieSimon}, we know that
+            \begin{equation*}
+                2B = \SI{3.634e9}{\per\second}
+            \end{equation*}
+            and that
+            \begin{equation*}
+                2B = \frac{h}{4\pi^2\mu R_e^2}
+            \end{equation*}
+            where $R_e$ is the bond length. This combined with the fact that the reduced mass of \ce{{}^{39}K^{127}I} is
+            \begin{equation*}
+                \mu = \frac{39\cdot 127}{39+127} = \SI{4.96e-26}{\kilo\gram}
+            \end{equation*}
+            implies that
+            \begin{align*}
+                R_e &= \sqrt{\frac{h}{4\pi^2\mu\cdot 2B}}\\
+                \Aboxed{R_e &= \SI{3.05}{\angstrom}}
+            \end{align*}
+        \end{proof}
         \item In the far infrared region, the molecule \ce{{}^{39}K^{35}Cl} has an intense line at $\SI{278.0}{\per\centi\meter}$. Compute the force constant and the period of vibration for \ce{{}^{39}K^{35}Cl}.
+        \begin{proof}[Answer]
+            From \textcite{bib:McQuarrieSimon}, we know that
+            \begin{equation*}
+                \tilde{\nu} = \SI{2.780e4}{\per\meter}
+            \end{equation*}
+            and that
+            \begin{equation*}
+                \tilde{\nu} = \frac{1}{2\pi c}\sqrt{\frac{k}{\mu}}
+            \end{equation*}
+            where $k$ is the force constant. This combined with the fact that the reduced mass of \ce{{}^{39}K^{35}Cl} is
+            \begin{equation*}
+                \mu = \frac{39\cdot 35}{39+35} = \SI{3.06e-26}{\kilo\gram}
+            \end{equation*}
+            implies that
+            \begin{align*}
+                k &= 4\pi^2c^2\tilde{\nu}^2\mu\\
+                \Aboxed{k &= \SI[per-mode=symbol]{84.0}{\newton\per\meter}}
+            \end{align*}
+            Additionally, we have that
+            \begin{align*}
+                T &= 2\pi\sqrt{\frac{\mu}{k}}\\
+                \Aboxed{T &= \SI{1.20e-13}{\second}}
+            \end{align*}
+        \end{proof}
     \end{enumerate}
     \item Using the worksheet "Molecular Spectroscopy" with the Quantum Chemistry Toolbox for Maple, you will compute the rotational spectra for the ground and first-excited states of hydrogen chloride \ce{HCl}. You will compute the rotational spectra by two methods: (i) a normal-mode approximation in which the vibrational and rotational energies are modeled with the harmonic oscillator and the three-dimensional rigid rotor approximations, respectively, and (ii) an \emph{ab initio} approximation in which the rovibrational Schr\"{o}dinger equation is solved for the rovibrational energies with the potential energy curve computed by density functional theory (DFT). After using the worksheet to perform the calculations, answer the following questions.
     \begin{enumerate}
         \item What are the rovibrational energies in reciprocal centimeters of the P and R branches in the normal-modes approximation?
+        \begin{proof}[Answer]
+            We have
+            \begin{align*}
+                P &= \SI{2694}{\per\centi\meter}&
+                    R &= \SI{2733}{\per\centi\meter}\\
+                P &= \SI{2674}{\per\centi\meter}&
+                    R &= \SI{2753}{\per\centi\meter}\\
+                P &= \SI{2654}{\per\centi\meter}&
+                    R &= \SI{2772}{\per\centi\meter}\\
+                P &= \SI{2634}{\per\centi\meter}&
+                    R &= \SI{2792}{\per\centi\meter}\\
+                P &= \SI{2615}{\per\centi\meter}&
+                    R &= \SI{2812}{\per\centi\meter}
+            \end{align*}
+            \begin{tikzpicture}[remember picture,overlay]
+                \draw (3.3,3.4) rectangle ++(2.5,-2.8);
+                \draw (9,3.4) rectangle ++(2.5,-2.8);
+            \end{tikzpicture}
+        \end{proof}
         \item How does the spacing between rovibrational energies in part (a) change with $J$?
+        \begin{proof}[Answer]
+            The spacing \fbox{stays the same}.
+        \end{proof}
         \item What are the rovibrational energies of the P and R branches in the \emph{ab initio} approximation?
+        \begin{proof}[Answer]
+            We have
+            \begin{align*}
+                P &= \SI{2552}{\per\centi\meter}&
+                    R &= \SI{2689}{\per\centi\meter}\\
+                P &= \SI{2481}{\per\centi\meter}&
+                    R &= \SI{2753}{\per\centi\meter}\\
+                P &= \SI{2408}{\per\centi\meter}&
+                    R &= \SI{2816}{\per\centi\meter}\\
+                P &= \SI{2333}{\per\centi\meter}&
+                    R &= \SI{2875}{\per\centi\meter}\\
+                P &= \SI{2256}{\per\centi\meter}&
+                    R &= \SI{2932}{\per\centi\meter}
+            \end{align*}
+            \begin{tikzpicture}[remember picture,overlay]
+                \draw (3.3,3.4) rectangle ++(2.5,-2.8);
+                \draw (9,3.4) rectangle ++(2.5,-2.8);
+            \end{tikzpicture}
+        \end{proof}
         \item How does the spacing between rovibrational energies in part (c) change with $J$?
+        \begin{proof}[Answer]
+            On the $P$ branch, the spacing increases as $J$ increases. On the $R$ branch, the spacing decreases as $J$ decreases
+        \end{proof}
         \item Compute the wavelength of a photon required to excite a molecule from $n=0$ and $J=0$ to $n=1$ and $J=1$.
+        \begin{proof}[Answer]
+            Using the \emph{ab initio} approximation, the first listed $R$ value corresponds to the desired $0,0\to 1,1$ transition. Thus,
+            \begin{align*}
+                \lambda &= \frac{1}{\tilde{\nu}} = \frac{1}{\SI{2.689e5}{\per\meter}}\\
+                \Aboxed{\lambda &= \SI{3.72e-6}{\meter}}
+            \end{align*}
+        \end{proof}
         \item In what region of the electromagnetic spectrum does this energy lie?
+        \begin{proof}[Answer]
+            It lies in the \fbox{infrared} region.
+        \end{proof}
     \end{enumerate}
     \item If the ground state and the excited state have a degeneracy of $g_1$ and $g_2$, respectively, the Einstein $A$ coefficient is given by
     \begin{equation*}
         A = \frac{16\pi^3\nu^3g_1}{3\epsilon_0hc^3g_2}|\mu|^2
     \end{equation*}
     where $|\mu|$ is the \textbf{transition dipole moment}. Consider the $1s\to 2p$ absorption of gaseous hydrogen \ce{H_{(g)}}, which is observed at $\SI{121.8}{\nano\meter}$. The radiative lifetime of the triply degenerate excited $2p$ state of \ce{H_{(g)}} is $\SI{1.6e-9}{\second}$. Compute the value of the transition dipole moment for this transition.
+    \begin{proof}[Answer]
+        The ground state as a singly degenerate $s$ orbital and the excited state as a triply degenerate $p$ orbital have degeneracies
+        \begin{align*}
+            g_1 &= 1&
+            g_2 &= 3
+        \end{align*}
+        The wavelength of light absorbed in the transition is
+        \begin{equation*}
+            \lambda = \frac{c}{\nu} = \SI{1.218e-7}{\meter}
+        \end{equation*}
+        The radiative lifetime is
+        \begin{equation*}
+            \tau_R = \frac{1}{A} = \SI{1.6e-9}{\second}
+        \end{equation*}
+        Therefore, the transition dipole moment is
+        \begin{align*}
+            |\mu| &= \sqrt{\frac{3\epsilon_0hc^3g_2A}{16\pi^3\nu^3g_1}}\\
+            \Aboxed{|\mu| &= \SI{1.1e-29}{\coulomb\meter}}
+        \end{align*}
+    \end{proof}
     \item The \ce{He}-\ce{Ne} laser has a line at $\SI{3391.3}{\nano\meter}$ from the $5s^1P_1\to 3p^3P_2$ transition. In the \emph{Table of Atomic Energy Levels} by Charlotte Moore, the energies of these levels are $\SI{166658.484}{\per\centi\meter}$ and $\SI{163710.581}{\per\centi\meter}$, respectively. Compute the wavelength of this transition, and explain why the result is not $\SI{3391.3}{\nano\meter}$. (Hint: Consult Example 8-10 in \textcite{bib:McQuarrieSimon}.)
     \item Chemical lasers generate population inversions through chemical reactions. In the \ce{HF} gas laser, the gaseous \ce{HF} is produced by the reaction
     \begin{equation*}
