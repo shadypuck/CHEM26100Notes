@@ -391,6 +391,172 @@
 
 
 
+\section{Lasers}
+\begin{itemize}
+    \item \marginnote{12/3:}Consider a 2-level system.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \footnotesize
+            \draw (0,1.5) --
+                node[pos=0.4,above=1pt,circle,draw,inner sep=1.5pt]{}
+                node[pos=0.5,above=1pt,circle,draw,inner sep=1.5pt]{}
+                node[pos=0.6,above=1pt,circle,draw,inner sep=1.5pt]{}
+            ++(2,0) node[right]{$E_2$};
+            \draw (0,0) --
+                node[pos=0.3,above=1pt,circle,draw,inner sep=1.5pt]{}
+                node[pos=0.4,above=1pt,circle,draw,inner sep=1.5pt]{}
+                node[pos=0.5,above=1pt,circle,draw,inner sep=1.5pt]{}
+                node[pos=0.6,above=1pt,circle,draw,inner sep=1.5pt]{}
+                node[pos=0.7,above=1pt,circle,draw,inner sep=1.5pt]{}
+            ++(2,0) node[right]{$E_1$};
+    
+            \draw [grx,semithick,->,decorate,decoration={snake,post length=1,amplitude=1pt,segment length=6pt}] (-0.5,1) -- node[above right=-2pt]{$h\nu_{12}$} (0.3,0.1);
+            \draw [grx,semithick,->] (1.8,0.1) to[bend right=20] ++(0,1.3);
+        \end{tikzpicture}
+        \caption{Two-level system.}
+        \label{fig:2LevelSystem}
+    \end{figure}
+    \begin{itemize}
+        \item Hit it with a photon of frequency $\nu_{12}=(E_2-E_1)/h$.
+        \item Population conditions:
+        \begin{align*}
+            \dv{N_1}{t}+\dv{N_2}{t} &= 0&
+            N_1+N_2 &= N_\text{tot}
+        \end{align*}
+        \item Radiation:
+        \begin{itemize}
+            \item Energy density $\rho$ in units of $\si{\joule\per\cubic\meter}$.
+            \item Spectral energy density $\rho_\nu(\nu_{12})$ in units of energy density per unit frequency (i.e., $\si{\joule\second\per\cubic\meter}$).
+        \end{itemize}
+        \item Three types of changes tha can occur to our population.
+        \begin{enumerate}
+            \item Absorption: A photon comes in, gets absorbed by a molecule in the ground state, and gets excited to the excited state.
+            \begin{equation*}
+                -\dv{N_1}{t} = B_{12}\rho_\nu(\nu_{12})N_1(t)
+            \end{equation*}
+            \begin{itemize}
+                \item This is very similar to chemical kinetics!
+                \item We have a rate dependent on quantity. Our rate constant is $B_{12}$ and $\rho_\nu(\nu_{12})$ is like a photonic reagent interacting with the number of molecules in the state of interest.
+                \item The whole thing is essentially a binary reaction.
+                \item The $B$ is Einstein's coefficient.
+            \end{itemize}
+            \item Stimulated emission:
+            \begin{equation*}
+                -\dv{N_2}{t} = B_{21}\rho_\nu(\nu_{12})N_2(t)
+            \end{equation*}
+            \begin{itemize}
+                \item The photon field can cause the molecule to emit a photon as well.
+            \end{itemize}
+            \item Spontaneous emission:
+            \begin{equation*}
+                -\dv{N_2}{t} = A_{21}N_2(t)
+            \end{equation*}
+            \begin{itemize}
+                \item This looks like a unimolecular reaction.
+            \end{itemize}
+        \end{enumerate}
+        \item This yields the overall rate equation
+        \begin{equation*}
+            -\dv{N_1}{t} = \dv{N_2}{t} = B_{12}\rho_\nu(\nu_{12})N_1(t)-A_{12}N_2(t)-B_{21}\rho_\nu(\nu_{12})N_2(t)
+        \end{equation*}
+    \end{itemize}
+    \item We now get to lasers.
+    \item Lasers work by \textbf{population inversion}.
+    \item Consider a 3-level system.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            every node/.style=black
+        ]
+            \footnotesize
+            \draw (0,2) --
+                node[pos=0.25,above=1pt,circle,draw,inner sep=1.5pt]{}
+                node[pos=0.30,above=1pt,circle,draw,inner sep=1.5pt]{}
+                node[pos=0.35,above=1pt,circle,draw,inner sep=1.5pt]{}
+            ++(4,0) node[right]{$E_3$};
+            \draw (2,1.5) --
+                node[pos=0.2,above=1pt,circle,draw,inner sep=1.5pt]{}
+                node[pos=0.3,above=1pt,circle,draw,inner sep=1.5pt]{}
+                node[pos=0.4,above=1pt,circle,draw,inner sep=1.5pt]{}
+                node[pos=0.5,above=1pt,circle,draw,inner sep=1.5pt]{}
+                node[pos=0.6,above=1pt,circle,draw,inner sep=1.5pt]{}
+                node[pos=0.7,above=1pt,circle,draw,inner sep=1.5pt]{}
+                node[pos=0.8,above=1pt,circle,draw,inner sep=1.5pt]{}
+            ++(2,0) node[right]{$E_2$};
+            \draw (0,0) --
+                node[pos=0.20,above=1pt,circle,draw,inner sep=1.5pt]{}
+                node[pos=0.25,above=1pt,circle,draw,inner sep=1.5pt]{}
+                node[pos=0.30,above=1pt,circle,draw,inner sep=1.5pt]{}
+                node[pos=0.35,above=1pt,circle,draw,inner sep=1.5pt]{}
+                node[pos=0.40,above=1pt,circle,draw,inner sep=1.5pt]{}
+            ++(4,0) node[right]{$E_1$};
+    
+            \draw [grx,semithick,->,shorten <=1pt,shorten >=1pt] (0.3,0) -- node[right]{pump} ++(0,2);
+            \draw [gray,semithick,decorate,decoration={coil,segment length=5pt,aspect=0.2,post length=4pt,amplitude=2pt},->,shorten >=1pt] (2.1,2) -- node[left]{fast decay} ++(0,-0.5);
+            \draw [rex,semithick,->,shorten <=1pt,shorten >=1pt] (3,1.5) -- node[right,text width=1cm]{laser action} ++(0,-1.5);
+        \end{tikzpicture}
+        \caption{Three-level system.}
+        \label{fig:3LevelSystem}
+    \end{figure}
+    \begin{itemize}
+        \item We first pump molecules from $E_1$ into $E_3$ (this is called the \textbf{pump phase}).
+        \item Then there's a \textbf{fast decay} to the second excited state, followed by a delay before moving into the first state. Thus, you can get a lot of molecules in $E_2$.
+        \item The \textbf{laser action} between states 2 and 1 occurs in the subsequent relaxation from the second to the first excited state.
+        \item Pump phase:
+        \begin{itemize}
+            \item Sending in a photon with frequency $\nu_{13}=(E_3-E_1)/h$.
+        \end{itemize}
+    \end{itemize}
+    \item Note that we can't get a laser built in only two levels.
+    \begin{itemize}
+        \item The same photons that build our population inversion eat away at it through stimulated emission.
+        \item From the differential equation: Once the levels are equally occupied, the $B$ terms cancel; only spontaneous emission is left (which will also keep us below an inversion).
+        \begin{itemize}
+            \item $\dv*{N_2}{t}=0$ when $N_1(t)=N_2(t)$.
+        \end{itemize}
+    \end{itemize}
+    \item As an aside, note that
+    \begin{equation*}
+        B_{12} = B_{21} = \frac{\pi}{3\hbar^3\epsilon_0}|\mu_{12}|^2
+    \end{equation*}
+    \begin{itemize}
+        \item I.e., the rates of absorption depend on the transition dipole moment!
+    \end{itemize}
+    \item Example: Ruby laser.
+    \begin{itemize}
+        \item We have \ce{Al2O3} with \ce{Cr^2+} impurities absorbing radiation at $\lambda=\SI{5500}{\angstrom}$ (green is absorbed for red to be emitted; opposite colors on the color wheel).
+        \item We pump with $h\nu_{13}$ (green photons) and emit with $h\nu_{12}$ (ruby photons).
+        \begin{itemize}
+            \item $\nu_{12}$ leads to $\lambda_{12}=\SI{6943}{\angstrom}$.
+        \end{itemize}
+        \item The ruby photons, as they're emitted can stimulate emission from more atoms in $E_2$ in an exponentially increasing (amplified) pattern.
+        \begin{itemize}
+            \item This is why the population inversion is key, i.e., to create an avalanche.
+        \end{itemize}
+        \item Lasers are important to create coherent radiation, which allow us to really carefully interrogate our molecules as chemists.
+    \end{itemize}
+    \item For a laser pointer, you can set up the photons to all come out in the same direction, but that's more of an engineering question.
+    \item Relating $A$ and $B$.
+    \begin{itemize}
+        \item Solve our differential equation for
+        \begin{equation*}
+            \rho_\nu(\nu_{12}) = \frac{A_{21}}{(N_2/N_1)B_{12}-B_{21}}
+        \end{equation*}
+        \item Invoking the Boltzmann distribution and setting this equal to the Planck blackbody distribution yields
+        \begin{equation*}
+            \frac{8\pi h}{c^3}\frac{\nu_{12}^3}{\e[h\nu_{12}/k_\text{B}T]-1} = \frac{A_{21}}{B_{12}\e[h\nu_{12}/k_\text{B}T]-B_{12}}
+        \end{equation*}
+        \begin{itemize}
+            \item So our first notions of quantum mechanics connect back to our most modern advances. The first line of the story is also the last.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+
 \section{Chapter 13: Molecular Spectroscopy}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
@@ -1043,9 +1209,9 @@
         \item Let the sample of atoms have insufficient thermal energy to occupy state 2, i.e., $k_\text{B}T<<E_2-E_1$.
         \item Expose the sample to EM radiation of frequency $\nu_{12}$ where $h\nu_{12}=E_2-E_1$.
         \item The energy density of said EM radiation is described by the \textbf{radiant energy density} and the \textbf{spectral radiant energy density}.
-        \item Einstein proposes that the rate $-\dv*{N_1}{t}=\dv*{N_2}{t}$ of excitation from the ground electronic state to the excited electronic state is proportional to $\rho_v(\nu_{12})$ and $N_1(t)$. In particular,
+        \item Einstein proposes that the rate $-\dv*{N_1}{t}=\dv*{N_2}{t}$ of excitation from the ground electronic state to the excited electronic state is proportional to $\rho_\nu(\nu_{12})$ and $N_1(t)$. In particular,
         \begin{equation*}
-            -\dv{N_1}{t} = B_{12}\rho_v(\nu_{12})N_1(t)
+            -\dv{N_1}{t} = B_{12}\rho_\nu(\nu_{12})N_1(t)
         \end{equation*}
         where $B_{12}$ is a proportionality constant called an \textbf{Einstein coefficient}.
     \end{itemize}
@@ -1053,9 +1219,9 @@
     \begin{itemize}
         \item The intensity $I$ of light is of the form $I=\rho c$.
     \end{itemize}
-    \item \textbf{Spectral radiant energy density}: The radiant energy density per unit frequency. \emph{Denoted by} $\bm{\rho_v}$. \emph{Units} $\si{\joule\per\cubic\meter\second}$. \emph{Given by}
+    \item \textbf{Spectral radiant energy density}: The radiant energy density per unit frequency. \emph{Denoted by} $\bm{\rho_\nu}$. \emph{Units} $\si{\joule\per\cubic\meter\second}$. \emph{Given by}
     \begin{equation*}
-        \rho_v = \dv{\rho}{v}
+        \rho_\nu = \dv{\rho}{v}
     \end{equation*}
     \item The approach (relaxation).
     \begin{itemize}
@@ -1071,9 +1237,9 @@
     \end{itemize}
     \item \textbf{Stimulated emission}: The process by which exposure of an atom in an excited electronic state to electromagnetic radiation of energy $h\nu_{12}=E_2-E_1$ could stimulate the emission of a photon and thereby regenerate the ground state.
     \begin{itemize}
-        \item The rate, we assume, is proportional to $N_2(t)$ and $\rho_v(\nu_{12})$. In particular,
+        \item The rate, we assume, is proportional to $N_2(t)$ and $\rho_\nu(\nu_{12})$. In particular,
         \begin{equation*}
-            -\dv{N_2}{t} = B_{21}\rho_v(\nu_{12})N_2(t)
+            -\dv{N_2}{t} = B_{21}\rho_\nu(\nu_{12})N_2(t)
         \end{equation*}
         where $B_{21}$ is a third Einstein coefficient.
         \item In this process, one photon at frequency $\nu_{12}$ stimulates an atom to emit another. These two photons can then go on to cause more excited atoms to release photons, and on and on resulting in a substantial amplification of an incident light beam at frequency $\nu_{12}$.
@@ -1083,14 +1249,14 @@
     \end{itemize}
     \item Since a sample of atoms exposed to light undergoes absorption, spontaneous emission, and stimulated emission, the true rate of change in the population is
     \begin{equation*}
-        -\dv{N_1}{t} = \dv{N_2}{t} = B_{12}\rho_v(\nu_{12})N_1(t)-A_{21}N_2(t)-B_{21}\rho_v(\nu_{12})N_2(t)
+        -\dv{N_1}{t} = \dv{N_2}{t} = B_{12}\rho_\nu(\nu_{12})N_1(t)-A_{21}N_2(t)-B_{21}\rho_\nu(\nu_{12})N_2(t)
     \end{equation*}
     \item Deriving a relation between the three Einstein coefficients.
     \begin{itemize}
-        \item Consider the limit at which the two energy states are in thermal equilibrium, i.e., $-\dv*{N_1}{t}=\dv*{N_2}{t}=0$. Also let $\rho_v(\nu_{12})$ be the equilibrium spectral radiant energy density, which we assume comes from a thermal blackbody radiation source.
-        \item Solving the above overall population rate of change equation for $\rho_v(\nu_{12})$ yields
+        \item Consider the limit at which the two energy states are in thermal equilibrium, i.e., $-\dv*{N_1}{t}=\dv*{N_2}{t}=0$. Also let $\rho_\nu(\nu_{12})$ be the equilibrium spectral radiant energy density, which we assume comes from a thermal blackbody radiation source.
+        \item Solving the above overall population rate of change equation for $\rho_\nu(\nu_{12})$ yields
         \begin{equation*}
-            \rho_v(\nu_{12}) = \frac{A_{21}}{(N_1/N_2)B_{12}-B_{21}}
+            \rho_\nu(\nu_{12}) = \frac{A_{21}}{(N_1/N_2)B_{12}-B_{21}}
         \end{equation*}
         \item Applying the fact (see Chapter 17) that for a system in equilibrium at temperature $T$, the number of atoms or molecules in the state $j$ with energy $E_j$ is $N_j=c\e[-E_j/k_\text{B}T]$, we have that
         \begin{equation*}
@@ -1110,7 +1276,7 @@
         \end{equation*}
         \item This allows us to write the rate equation for a nondegenerate two-level system as
         \begin{equation*}
-            -\dv{N_1}{t} = \dv{N_2}{t} = B\rho_v(\nu_{12})[N_1(t)-N_2(t)]-AN_2(t)
+            -\dv{N_1}{t} = \dv{N_2}{t} = B\rho_\nu(\nu_{12})[N_1(t)-N_2(t)]-AN_2(t)
         \end{equation*}
     \end{itemize}
     \item For a laser to amplify light, a photon that passes through the sample must have a greater probability of stimulating emission from an excited atom then of being absorbed by an atom in its ground state.
@@ -1118,7 +1284,7 @@
         \item Symbolically, we must have
         \begin{align*}
             \text{rate stimulated emission} &> \text{rate absorption}\\
-            B_{21}\rho_v(\nu_{12})N_2 &> B_{12}\rho_v(\nu_{12})N_1\\
+            B_{21}\rho_\nu(\nu_{12})N_2 &> B_{12}\rho_\nu(\nu_{12})N_1\\
             N_2 &> N_1
         \end{align*}
     \end{itemize}
@@ -1131,11 +1297,11 @@
     \begin{itemize}
         \item Integrating the rate equation for a such a system yields
         \begin{equation*}
-            N_2(t) = \frac{B\rho_v(\nu_{12})N_\text{total}}{A+2B\rho_v(\nu_{12})}\{1-\e[-[{A+2B\rho_v(\nu_{12})]t}]\}
+            N_2(t) = \frac{B\rho_\nu(\nu_{12})N_\text{total}}{A+2B\rho_\nu(\nu_{12})}\{1-\e[-[{A+2B\rho_\nu(\nu_{12})]t}]\}
         \end{equation*}
         \item This equation's behavior as $t\to\infty$ converges to
         \begin{equation*}
-            \frac{N_2}{N_\text{total}} = \frac{B\rho_v(\nu_{12})}{A+2B\rho_v(\nu_{12})}
+            \frac{N_2}{N_\text{total}} = \frac{B\rho_\nu(\nu_{12})}{A+2B\rho_\nu(\nu_{12})}
         \end{equation*}
         which, since $A>0$, will always be strictly less than $1/2$.
         \item Therefore, no such population inversion can be achieved.
