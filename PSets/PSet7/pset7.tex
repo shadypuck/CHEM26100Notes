@@ -384,7 +384,7 @@
         \begin{proof}[Answer]
             We have
             \begin{equation*}
-                \boxed{\alpha+2\beta < \alpha = \alpha < \alpha-2\beta}
+                \boxed{\alpha+2\beta \leq \alpha = \alpha \leq \alpha-2\beta}
             \end{equation*}
         \end{proof}
         \item How many molecular orbitals are degenerate?
@@ -469,8 +469,12 @@
                             (1.8,0) -- (0,0.9)
                         ;
             
+                        \filldraw [semithick,draw=rex,fill=rez] (C1.110) to[bend left=110,looseness=20] (C1.70);
+                        \filldraw [semithick,draw=rex,fill=rey] (C1.-70) to[bend left=110,looseness=20] (C1.-110);
                         \filldraw [semithick,draw=rex,fill=rez] (C2.110) to[bend left=110,looseness=20] (C2.70);
                         \filldraw [semithick,draw=rex,fill=rey] (C2.-70) to[bend left=110,looseness=20] (C2.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C3.110) to[bend left=110,looseness=20] (C3.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C3.-70) to[bend left=110,looseness=20] (C3.-110);
                         \filldraw [semithick,draw=rex,fill=rey] (C4.110) to[bend left=110,looseness=20] (C4.70);
                         \filldraw [semithick,draw=rex,fill=rez] (C4.-70) to[bend left=110,looseness=20] (C4.-110);
                     \end{tikzpicture}
@@ -485,12 +489,16 @@
                             (1.8,0) -- (0,0.9)
                         ;
             
-                        \filldraw [semithick,draw=rex,fill=rez] (C1.110) to[bend left=110,looseness=20] (C1.70);
-                        \filldraw [semithick,draw=rex,fill=rey] (C1.-70) to[bend left=110,looseness=20] (C1.-110);
-                        \filldraw [semithick,draw=rex,fill=rey] (C3.110) to[bend left=110,looseness=20] (C3.70);
-                        \filldraw [semithick,draw=rex,fill=rez] (C3.-70) to[bend left=110,looseness=20] (C3.-110);
+
+                        \filldraw [semithick,draw=rex,fill=rey] (C1.110) to[bend left=110,looseness=20] (C1.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C1.-70) to[bend left=110,looseness=20] (C1.-110);
+                        \filldraw [semithick,draw=rex,fill=rez] (C2.110) to[bend left=110,looseness=20] (C2.70);
+                        \filldraw [semithick,draw=rex,fill=rey] (C2.-70) to[bend left=110,looseness=20] (C2.-110);
+                        \filldraw [semithick,draw=rex,fill=rez] (C3.110) to[bend left=110,looseness=20] (C3.70);
+                        \filldraw [semithick,draw=rex,fill=rey] (C3.-70) to[bend left=110,looseness=20] (C3.-110);
+                        \filldraw [semithick,draw=rex,fill=rey] (C4.110) to[bend left=110,looseness=20] (C4.70);
+                        \filldraw [semithick,draw=rex,fill=rez] (C4.-70) to[bend left=110,looseness=20] (C4.-110);
                     \end{tikzpicture}
-                    \vspace{2em}
                     \caption{}
                 \end{subfigure}
                 \begin{subfigure}[b]{0.24\linewidth}
@@ -547,7 +555,7 @@
         \end{proof}
         \item Do the molecular orbitals computed by the variational 2-RDM method agree with the qualitative features of those predicted by Huckel's theory?
         \begin{proof}[Answer]
-            The orbitals (c) and (d) from part (d) have variational 2-RDM analogues. However, the other two orbitals have definite qualitative distinctions (namely, the Huckel ones have their electron density localized to one atom instead of distributed across two).
+            The orbitals (c) and (d) from part (d) have variational 2-RDM analogues. However, the other two orbitals have definite qualitative distinctions (namely, we have to take linear combinations of the Huckel ones, which is allowed since they're degenerate, but still).
         \end{proof}
         \item In what ways do these orbital occupations agree with those predicted from Huckel theory, and in what ways do they not agree?
         \begin{proof}[Answer]
@@ -572,16 +580,16 @@
             \end{equation*}
             we know that the kinetic energy $KE$ of the ejected electron is equal to the energy $h\nu$ of the impinging photon minus the ionization energy of the ejected electron (the molecular orbital energy). Thus, if we plot measured $KE$'s versus known $h\nu$'s and perform a linear regression, the $y$-intercept gives an approximation for $W$.
         \end{proof}
-        \item If the incident radiation has a frequency of $\SI{57.8}{\nano\meter}$, what is the largest electron binding energy that can be measured?
+        \item If the incident radiation has a wavelength of $\SI{57.8}{\nano\meter}$, what is the largest electron binding energy that can be measured?
         \begin{proof}
-            Using the above equation again, if $\nu=\SI{57.8}{\nano\meter}$, the largest electron binding energy that can be measured is that which gives a $KE$ detectably greater than zero. Numerically,
+            Using the above equation again, if $\lambda=\SI{5.78e-8}{\meter}$, the largest electron binding energy that can be measured is that which gives a $KE$ detectably greater than zero. Numerically,
             \begin{align*}
                 0 &< KE\\
                 0 &< h\nu-W\\
-                W &< h\nu\\
-                &= \SI{3.83}{\joule}
+                W &< \frac{hc}{\lambda}\\
+                &= \SI{3.44e-18}{\joule}
             \end{align*}
-            i.e., the largest energy that can be measured is bounded by \fbox{$\SI{3.83}{\joule}$}.
+            i.e., the largest energy that can be measured is bounded by \fbox{$\SI{3.44e-18}{\joule}$}.
         \end{proof}
     \end{enumerate}
     \item 
@@ -615,10 +623,10 @@
                 ]
                     \footnotesize
                     \draw [ultra thick]
-                        (-0.55,1.6) -- ++(0.5,0) node[below=2mm,xshift=0.5mm]{$\sigma_u$}
-                            ++(0.1,0) -- ++(0.5,0)
-                        (-0.55,0.0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} ++(0.5,0) node[below=2mm,xshift=0.5mm]{$\sigma_g$}
-                            ++(0.1,0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} ++(0.5,0)
+                        (-0.25,2.5) -- node[below=2mm]{$\sigma_u^*$} ++(0.5,0)
+                        (-0.25,1.6) -- node[below=2mm]{$\sigma_g^*$} ++(0.5,0)
+                        (-0.25,0.0) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm,xshift=0.5mm]{$\sigma_u$} ++(0.5,0)
+                        (-0.25,-0.9) -- node{\Large$\upharpoonleft$\hspace{-1mm}$\downharpoonright$} node[below=2mm,xshift=0.5mm]{$\sigma_g$} ++(0.5,0)
                     ;
             
                     \draw [ultra thick,grx]
@@ -629,10 +637,14 @@
                     ;
             
                     \draw [grx,densely dashed]
-                        (0.55,1.6)  -- (2.0,0.3)
-                        (0.55,0.0)  -- (2.0,0.3)
-                        (-0.55,1.6) -- (-2.0,1.1)
-                        (-0.55,0.0) -- (-2.0,1.1)
+                        (0.25,2.5)  -- (2.0,0.3)
+                        (0.25,1.6)  -- (2.0,0.3)
+                        (0.25,0.0)  -- (2.0,0.3)
+                        (0.25,-0.9)  -- (2.0,0.3)
+                        (-0.25,2.5) -- (-2.0,1.1)
+                        (-0.25,1.6) -- (-2.0,1.1)
+                        (-0.25,0.0) -- (-2.0,1.1)
+                        (-0.25,-0.9) -- (-2.0,1.1)
                     ;
                 \end{tikzpicture}
             \end{center}
