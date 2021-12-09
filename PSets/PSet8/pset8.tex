@@ -350,12 +350,27 @@
             \Aboxed{|\mu| &= \SI{1.1e-29}{\coulomb\meter}}
         \end{align*}
     \end{proof}
-    \item The \ce{He}-\ce{Ne} laser has a line at $\SI{3391.3}{\nano\meter}$ from the $5s^1P_1\to 3p^3P_2$ transition. In the \emph{Table of Atomic Energy Levels} by Charlotte Moore, the energies of these levels are $\SI{166658.484}{\per\centi\meter}$ and $\SI{163710.581}{\per\centi\meter}$, respectively. Compute the wavelength of this transition, and explain why the result is not $\SI{3391.3}{\nano\meter}$. (Hint: Consult Example 8-10 in \textcite{bib:McQuarrieSimon}.)
+    \item The \ce{He}-\ce{Ne} laser has a line at $\SI{3391.3}{\nano\meter}$ from the $5s\prescript{1}{}{P}_1\to 3p\prescript{3}{}{P}_2$ transition. In the \emph{Table of Atomic Energy Levels} by Charlotte Moore, the energies of these levels are $\SI{166658.484}{\per\centi\meter}$ and $\SI{163710.581}{\per\centi\meter}$, respectively. Compute the wavelength of this transition, and explain why the result is not $\SI{3391.3}{\nano\meter}$. (Hint: Consult Example 8-10 in \textcite{bib:McQuarrieSimon}.)
+    \begin{proof}[Answer]
+        The difference in energy between the levels is
+        \begin{equation*}
+            \Delta\tilde{\nu} = 166658.484-163710.581 = \SI{2947.903}{\per\centi\meter}
+        \end{equation*}
+        It follows that the wavelength of the transition is
+        \begin{align*}
+            \lambda &= \frac{1}{\Delta\tilde{\nu}}\\
+            \Aboxed{\lambda &= \SI{3392.241}{\nano\meter}}
+        \end{align*}
+        As per \textcite{bib:McQuarrieSimon}, the values are off by a factor of the IOR of air (1.00029) since \fbox{the calculation assumes a vacuum and the experimental value is measured in air.}
+    \end{proof}
     \item Chemical lasers generate population inversions through chemical reactions. In the \ce{HF} gas laser, the gaseous \ce{HF} is produced by the reaction
     \begin{equation*}
         \ce{F_{(g)} + H2_{(g)} -> HF_{(g)} + H_{(g)}}
     \end{equation*}
     The major product of this reaction is \ce{HF_{(g)}} in the excited $n=2$ vibrational state. The reaction creates a population inversion in which $N(n)$, the number of molecules in each vibrational state $n$, is much larger for $n=2$ than $n=0$ or $n=1$. The output of the \ce{HF_{(g)}} laser corresponds to transitions between vibrational lines of the $n=2\to n=1$ transition ($\lambda=\SIrange{2.7}{3.2}{\micro\meter}$). Why isn't there any lasing action from $n=2\to n=0$ even though there is a population inversion between these states?
+    \begin{proof}[Answer]
+        The harmonic oscillator selection rule forbids transitions with $\Delta n\neq\pm 1$.
+    \end{proof}
 \end{enumerate}
 
 
