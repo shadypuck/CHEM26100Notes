@@ -1315,6 +1315,127 @@
         \end{align*}
     \end{itemize}
     \item \textbf{Fluorescence lifetime}: The reciprocal of $A$. \emph{Also known as} \textbf{radiative lifetime}. \emph{Denoted by} $\tau_R$.
+    \item \marginnote{12/8:}We now consider a three-level system, which can achieve a population inversion.
+    \item \textbf{Pump source}: A light beam that is used to create excited state populations.
+    \item Although we can derive rate equations for every energy level of the three-level system, only the rate equation of the second, intermediate level is needed to give a useful result.
+    \begin{equation*}
+        \dv{N_2}{t} = A_{32}N_3-A_{21}N_2+\rho_\nu(\nu_{32})B_{32}N_3-\rho_\nu(\nu_{32})B_{32}N_2
+    \end{equation*}
+    \begin{itemize}
+        \item At equilibrium (e.g., $\dv*{N_2}{t}=0$), the above equation can be rearranged to the form
+        \begin{equation*}
+            \frac{N_3}{N_2} = \frac{A_{21}+B_{32}\rho_\nu(\nu_{32})}{A_{32}+B_{32}\rho_\nu(\nu_{32})}
+        \end{equation*}
+        \item This implies that $N_3>N_2$ if $A_{21}>A_{32}$, i.e., if it takes a while for atoms in state 3 to decay to state 2, but atoms in state 2 decay quickly to state 1.
+    \end{itemize}
+    \item \textbf{Gain medium}: A system of atoms that has a population inversion between states 2 and 3.
+    \item The insides of a laser.
+    \begin{figure}[h!]
+        \centering
+        \begin{tikzpicture}[
+            scale=0.8,
+            every node/.style=black
+        ]
+            \footnotesize
+            \path (-8,0) -- (8,0);
+            \fill [rex] (-6,0.7) -- (6,1.3) -- node[above]{laser beam} ++(2,0) -- ++(0,-0.6) -- ++(-2,0) -- (6,0.7) -- (-6,1.3) -- cycle;
+    
+            \filldraw [fill=gray!20] (-6,0) -- ++(0,2) -- ++(0.5,0) arc[start angle=150,end angle=210,radius=2cm] -- node[below,text width=1.5cm,align=center]{$100\%$ reflective mirror} cycle;
+            \filldraw [fill=gray!20] (6,0) -- ++(0,2) -- ++(-0.5,0) arc[start angle=30,end angle=-30,radius=2cm] -- node[below,text width=1.5cm,align=center]{$<100\%$ reflective mirror} cycle;
+    
+            \small
+            \node [draw,fill=white,semithick,minimum width=4.8cm,minimum height=1.6cm] at (0,1) {Gain medium};
+            \node [draw,fill=white,semithick,minimum width=4.8cm,minimum height=0.8cm] at (0,-3) {Pump source};
+    
+            \draw [fill=grx!30] (-2.5,-2.3) -- ++(0,1.4) -- ++(-0.2,0) -- ++(0.3,0.7) -- ++(0.3,-0.7) -- ++(-0.2,0) -- ++(0,-1.4);
+            \draw [fill=grx!30] (-1.5,-2.3) -- ++(0,1.4) -- ++(-0.2,0) -- ++(0.3,0.7) -- ++(0.3,-0.7) -- ++(-0.2,0) -- ++(0,-1.4);
+            \draw [fill=grx!30] (-0.5,-2.3) -- ++(0,1.4) -- ++(-0.2,0) -- ++(0.3,0.7) -- ++(0.3,-0.7) -- ++(-0.2,0) -- ++(0,-1.4);
+            \draw [fill=grx!30] (0.5,-2.3) -- ++(0,1.4) -- ++(-0.2,0) -- ++(0.3,0.7) -- ++(0.3,-0.7) -- ++(-0.2,0) -- ++(0,-1.4);
+            \draw [fill=grx!30] (1.5,-2.3) -- ++(0,1.4) -- ++(-0.2,0) -- ++(0.3,0.7) -- ++(0.3,-0.7) -- ++(-0.2,0) -- ++(0,-1.4);
+            \draw [fill=grx!30] (2.5,-2.3) -- ++(0,1.4) -- ++(-0.2,0) -- ++(0.3,0.7) -- ++(0.3,-0.7) -- ++(-0.2,0) -- ++(0,-1.4);
+        \end{tikzpicture}
+        \caption{The insides of a laser.}
+        \label{fig:laserInsides}
+    \end{figure}
+    \item \textbf{Laser cavity}: The area containing the components in Figure \ref{fig:laserInsides}.
+    \item Gain medium.
+    \begin{itemize}
+        \item A solid-state material, liquid solution, or a gas mixture.
+        \item The first laser used a solid syntheticallly grown ruby rod.
+        \begin{itemize}
+            \item Ruby is a crystal of corundum (\ce{Al2O3}) where sum \ce{Al^3+} ions are replaced by \ce{Cr^3+} ions.
+            \item The ruby must be synthetic since naturally occurring crystals contain natural strains and defects. We use \ce{Al2O3} doped at about 0.05 mass percent with \ce{Cr^3+}.
+            \item The photophysical properties of the \textbf{active ions} (\ce{Cr^3+}) in the \textbf{host material} (\ce{Al203}) are suitable for achieving a population inversion.
+        \end{itemize}
+        \item Depending on the gain media, laser output can be a continuous light beam or a short burst of light.
+        \item \textcite{bib:McQuarrieSimon} lists data on various solid-state and gas phase gain media.
+        \item Gas phase lasers produce light in the ultraviolet, visible, and infrared spectra. Some are even capable of producing multiple wavelengths.
+        \item Since the stimulated-emission process requries that the phases of the incident light wave and stimulated light wave have the same phase, lasers emit \textbf{coherent} light.
+    \end{itemize}
+    \item \textbf{Coherent} (light): Light the constituent waves of which are all in phase.
+    \item \textbf{Radiant power}: Radiant energy per unit time. \emph{Units} $\si{\watt}$.
+    \item \textbf{Average radiant power}: Total energy emitted per second. \emph{Units} $\si{\watt}$.
+    \item Pump source.
+    \begin{itemize}
+        \item Gain media are pumped either via \textbf{optical excitation} or \textbf{electrical excitation}.
+    \end{itemize}
+    \item \textbf{Optical excitation}: Using a high-intensity light source such as a continuous lamp, flash lamp, or laser to excite the gain medium.
+    \begin{itemize}
+        \item Since only light with the right frequency is absorbed, lasers tend to be inefficient devices.
+        \item Gas phase lasers convert only $\SIrange{0.001}{0.1}{\percent}$ of input energy to laser light.
+        \item Solid state lasers convert a few percent.
+        \item The \ce{CO2} laser and some semiconductor lasers convert $\SIrange{50}{70}{\percent}$.
+        \item This is why some lasers use other lasers as pump sources.
+    \end{itemize}
+    \item \textbf{Electrical excitation}: Using intense electrical discharges to excite the gain medium.
+    \begin{itemize}
+        \item Commonly used in gas lasers.
+    \end{itemize}
+    \item Laser cavity design.
+    \begin{itemize}
+        \item To sufficiently amplify the light, the light must be directed back and forth through the gain medium a number of times using a \textbf{resonator}.
+        \item The less than $100\%$ reflectivity of one of the mirrors allows some light to escape.
+    \end{itemize}
+    \item \textbf{Resonator}: An optical cavity including a pair of mirrors that direct light back and forth through the gain medium.
+    \item \ce{He}-\ce{Ne} laser.
+    \begin{itemize}
+        \item The first continuous-wave laser.
+        \item Can be made to produce light at a number of wavelengths, but most are red or infrared.
+        \item Very common (supermarket scanners, range finders, etc.).
+        \item Uses $\SI{1.0}{\torr}$ of helium and $\SI{0.1}{\torr}$ neon in a glass gas chamber as a gain medium with a high current DC pump source as electrical excitation.
+        \item The constant current delivered leads to continuous lasing.
+        \item How it works:
+        \begin{itemize}
+            \item Electrons collide with helium atoms, generating a number of excited states but notably the long lived $2s\prescript{3}{}{S}_1$ and $2s\prescript{1}{}{S}_0$ excited states, with respective lifetimes $\SI{e-4}{\second}$ and $\SI{5e-6}{\second}$.
+            \item On average, within $\SI{e-7}{\second}$, the excited helium atom will collide with a neon atom, initiating a nonradiative energy transfer to neon's fortuitously near equivalent energy levels.
+            \begin{gather*}
+                \ce{He^{$*$}(2s{}^3S1) + Ne_{(g)} -> He_{(g)} + Ne^{$*$}(2p^5 4s)}\\
+                \ce{He^{$*$}(2s{}^1S0) + Ne_{(g)} -> He_{(g)} + Ne^{$*$}(2p^5 5s)}
+            \end{gather*}
+            \item The lifetime of the excited neon states are such that a population inversion can be set up and maintained.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Spectral resolution}: The range over which a spectrophotometer cannot distinguish a difference in wavenumbers.
+    \item \textbf{Hyperfine interaction}: Small changes in the energies of the rotational state that are caused by the interaction of the electron spins with the nuclear spins.
+    \begin{itemize}
+        \item It is possible to include such interactions in the Hamiltonian operator and predict the spacings.
+    \end{itemize}
+    \item Time-resolved laser spectroscopy can be used to study the dynamics of chemical reactions.
+    \item \textbf{Photochemical reaction}: A chemical reaction that results from the absorption of light.
+    \item Examples:
+    \begin{gather*}
+        \ce{O3 ->[\SI{300}{\nano\meter}] O2 + O}\\
+        \ce{\emph{trans}-butadiene ->[\SI{250}{\nano\meter}] \emph{cis}-butadiene}
+    \end{gather*}
+    \begin{itemize}
+        \item The top reaction above is \textbf{photodissociation}, while the bottom one is \textbf{photoisomerization}.
+    \end{itemize}
+    \item \textbf{Quantum yield} (of a photochemical reaction): The number of molecules that undergo a reaction per photon absorbed. \emph{Denoted by} $\bm{\Phi}$.
+    \item Time-resolved laser apparatuses split short pulses into two time-separated pulses.
+    \item \textbf{Pump pulse}: The laser pulse that initiates the photochemistry.
+    \item \textbf{Probe pulse}: The laser pulse that is used to record changes in the sample since the pump pulse arrived.
+    \item \textcite{bib:McQuarrieSimon} does a worked example with \ce{ICN}.
+    \item \textbf{Laser-induced fluorescence}: A form of detection that relies on using a laser to cause the product molecules to fluoresce.
 \end{itemize}
 
 
