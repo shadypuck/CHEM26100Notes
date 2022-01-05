@@ -1196,10 +1196,7 @@
             \item Analogous orthonormality conditions are also satisfied.
         \end{itemize}
     \end{itemize}
-    \item Nuclear spins are not limited to $\pm 1/2$.
-    \begin{itemize}
-        \item \textcite{bib:McQuarrieSimon} lists the spin and some other properties of nuclei commonly studied with NMR.
-    \end{itemize}
+    \item Nuclear spins are not limited to $\pm 1/2$ (see Table \ref{tab:NMRnuclei}).
     \item Why a charged particle with nonzero spin acts like a magnetic dipole.
     \begin{itemize}
         \item The motion of an electric charge around a closed loop generates a magnetic dipole $\bm{\mu}$, with magnitude
@@ -1234,6 +1231,74 @@
     \end{equation*}
     \begin{itemize}
         \item The larger the value, the easier it is to observe the nucleus.
+    \end{itemize}
+    \begin{table}[H]\marginnote{1/5:}
+        \centering
+        \small
+        \begin{tabular}{ccS[table-format=1.4]S[table-format=1.4]S[table-format=2.4]}
+            \toprule
+            Nucleus & Spin & \shortstack{Nuclear g\\factor} & \shortstack{Magnetic moment\\(in nuclear magnetons)} & \shortstack{Magnetogyric ratio\\$\gamma/10^7\,\si{\radian\per\tesla\per\second}$}\\
+            \midrule
+            \ce{{}^1H}  & $1/2$ & 5.5854 & 2.7928 & 26.7522\\
+            \ce{{}^2H}  & $1$   & 0.8574 & 0.8574 & 4.1066\\
+            \ce{{}^13C} & $1/2$ & 1.4042 & 0.7021 & 6.7283\\
+            \ce{{}^14N} & $1$   & 0.4036 & 0.4036 & 1.9338\\
+            \ce{{}^31P} & $1/2$ & 2.2610 & 1.1305 & 10.841\\
+            \bottomrule
+        \end{tabular}
+        \caption{Properties of nuclei commonly studied in NMR experiments.}
+        \label{tab:NMRnuclei}
+    \end{table}
+    \item The SI unit of magnetic field strength is the tesla.
+    \begin{itemize}
+        \item However, we commonly use the gauss:
+        \begin{equation*}
+            \SI{1}{\gauss} = \SI{e-4}{\tesla}
+        \end{equation*}
+    \end{itemize}
+    \item The interaction of a quantum magnetic moment $\bm{\mu}$ with a magnetic field $\mathbf{B}$.
+    \begin{itemize}
+        \item Let the magnetic field $\mathbf{B}$ be oriented in the $z$-direction, so that
+        \begin{equation*}
+            V = -\mu_zB_z
+        \end{equation*}
+        (from Problem 13.49 in the magnetic field case).
+        \item Expressing the magnetic moment in terms of the spin angular momentum yields
+        \begin{equation*}
+            V = -\gamma B_zI_z
+        \end{equation*}
+        \item As an expression for the energy of a magnetic moment in terms of an observable, the above tells us that the Hamiltonian for this quantum magnetic moment is
+        \begin{equation*}
+            \hat{H} = -\gamma B_z\hat{I}_z
+        \end{equation*}
+        \item Thus, we may solve the Schr\"{o}dinger equation describing this system as follows.
+        \begin{align*}
+            \hat{H}\psi &= E\psi\\
+            -\gamma B_z\hat{I}_z\psi &= E\psi\\
+            -\gamma B_z\hbar m_I\psi_I &= E\psi_I
+        \end{align*}
+        where $\psi_I$ represents the spin eigenfunctions and $m_I=I,I-1,\dots,-I$.
+        \item This yields
+        \begin{equation*}
+            E = -\hbar\gamma\hspace{0.13em}m_IB_z
+        \end{equation*}
+        as the equation describing the allowed energies of the system.
+    \end{itemize}
+    \item We can use the above result to calculate the difference in energy between a proton aligned with a magnetic field ($m_I=+1/2$) and one aligned against it ($m_I=-1/2$).
+    \begin{equation*}
+        \Delta E = [-\hbar\gamma\cdot -\tfrac{1}{2}\cdot B_z]-[-\hbar\gamma\cdot\tfrac{1}{2}\cdot B_z]
+        = \hbar\gamma B_z
+    \end{equation*}
+    \item Note that the above result shows that $\Delta E$ depends linearly on magnetic field strength.
+    \item If a proton in an applied magnetic field is hit by a photon of energy $\Delta E$, it will transition from the lower energy state to the higher energy state.
+    \begin{itemize}
+        \item For a field of $\SI{2.11}{\tesla}$, the photon must be in the radiofrequency region.
+        \item The frequency associated with a transition of one assigned nuclear spin state to another for a spin $+1/2$ nucleus is
+        \begin{align*}
+            h\nu &= \hbar\gamma B_z\\
+            2\pi\nu &= \gamma B_z\\
+            \nu &= \frac{\gamma B_z}{2\pi}
+        \end{align*}
     \end{itemize}
 \end{itemize}
 
