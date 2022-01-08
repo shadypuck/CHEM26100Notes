@@ -1225,7 +1225,7 @@
     \begin{equation*}
         \beta_N = \frac{q}{2m_N}
     \end{equation*}
-    \item \textbf{Magnetogyric ratio}: A characteristic quantity for each nucleus upon which the detection sensitivity of a particular type of nucleus in an NMR experiment depends. \emph{Denoted by} $\bm{\lambda}$. \emph{Given by}
+    \item \textbf{Magnetogyric ratio}: A characteristic quantity for each nucleus upon which the detection sensitivity of a particular type of nucleus in an NMR experiment depends. \emph{Units} $\si{\radian\per\tesla\per\second}$. \emph{Denoted by} $\bm{\lambda}$. \emph{Given by}
     \begin{equation*}
         \lambda = g_N\beta_N
     \end{equation*}
@@ -1322,6 +1322,45 @@
     \item \textbf{Shielding constant}: The unitless proportionality constant relating the magnitudes of the magnetic field applied to a molecule and the electrically generated shielding magnetic field. \emph{Denoted by} $\bm{\sigma}$.
     \begin{itemize}
         \item On the order of $10^{-5}$.
+        \item \marginnote{1/7:}Depends on the local electrochemical environment of the hydrogen nuclei, i.e., different hydrogen nuclei within the same molecule can experience different local fields.
+    \end{itemize}
+    \item If the total magnetic field experienced by a hydrogen nucleus is $B_z=(1-\sigma)B_0$, then the field strength (at fixed frequency $\nu$) at which the nucleus will undergo a spin transition is
+    \begin{equation*}
+        B_0 = \frac{2\pi\nu}{\gamma(1-\sigma)}
+    \end{equation*}
+    \item Characteristics of NMR spectra.
+    \begin{itemize}
+        \item Spectra have a peak at zero corresponding to a small amount of added tetramethylsilane (TMS; \ce{Si(CH3)4}) used for calibration purposes.
+        \begin{itemize}
+            \item TMS is ideal because it has 12 equivalent hydrogen atoms (thus yields only one peak), is relatively unreactive, and most organic compounds absorb \textbf{downfield} from it.
+        \end{itemize}
+        \item Spectra have two scales.
+        \begin{itemize}
+            \item The top one is in hertz and runs from $\SI{0}{\hertz}$ on the right to some higher number of hertz (perhaps around $\SI{500}{\hertz}$) on the left side.
+            \item The bottom one is derived from the top as follows.
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Downfield} (of a spike): At smaller fields; to the left of said spike on the spectrum.
+    \item \textbf{Chemical shift}: A spectrometer-independent measure of the frequency required to cause a nuclear spin-state transition relative to TMS. \emph{Units} $\si{\ppm}$. \emph{Denoted by} $\bm{\delta}_\textbf{H}$. \emph{Given by}
+    \begin{align*}
+        \delta_\text{H} &= \frac{\text{resonance frequency of H nucleus relative to TMS}}{\text{spectrometer frequency}}\times 10^6\\
+        &= \frac{\nu_\text{H}-\nu_\text{TMS}}{\nu_\text{spectrometer}}\times 10^6
+    \end{align*}
+    \begin{itemize}
+        \item As we have established above, the field strength $B_0$ needed for a nucleus to absorb radiation at a fixed frequency $\nu$ is directly proportional to that frequency.
+        \begin{itemize}
+            \item For example, it will take $1.5$ times stronger magnetic field for a nucleus to absorb the same amount of radiation on a $\SI{90}{\mega\hertz}$-spectrometer as a $\SI{60}{\mega\hertz}$-spectrometer.
+            \item This change means that peaks separated by $x$ hertz on a $\SI{60}{\mega\hertz}$-spectrometer will be separated by $1.5x$ hertz on a $\SI{90}{\mega\hertz}$-spectrometer.
+            \item Note that the unit of measurement "hertz" is proportional to and interconvertible with joules of energy and teslas of magnetic field strength.
+        \end{itemize}
+        \item Mathematically, we can also see that $\delta_\text{H}$ is independent of $\nu_\text{spectrometer}$.
+        \begin{align*}
+            \delta_\text{H} &= \frac{\nu_\text{H}-\nu_\text{TMS}}{\nu_\text{spectrometer}}\times 10^6\\
+            &= \frac{\frac{\gamma B_0}{2\pi}(1-\sigma_\text{H})-\frac{\gamma B_0}{2\pi}(1-\sigma_\text{TMS})}{\nu_\text{spectrometer}}\times 10^6\\
+            &= \frac{1}{\nu_\text{spectrometer}}\cdot\frac{\gamma B_0}{2\pi}(\sigma_\text{TMS}-\sigma_\text{H})\times 10^6\\
+            &\approx \frac{2\pi}{\gamma B_0}\cdot\frac{\gamma B_0}{2\pi}(\sigma_\text{TMS}-\sigma_\text{H})\times 10^6\\
+            &= (\sigma_\text{TMS}-\sigma_\text{H})\times 10^6
+        \end{align*}
     \end{itemize}
 \end{itemize}
 
