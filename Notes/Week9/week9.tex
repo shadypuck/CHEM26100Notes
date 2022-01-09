@@ -1362,6 +1362,96 @@
             &= (\sigma_\text{TMS}-\sigma_\text{H})\times 10^6
         \end{align*}
     \end{itemize}
+    \item \marginnote{1/8:}The degree of shielding increases with increasing electron density around the nucleus.
+    \begin{itemize}
+        \item The greater the electron density, the more \textbf{upfield} the spike will be.
+        \item Hence, hydrogens with many EDGs nearby (such as alkanes) will have small chemical shifts, and hydrogens with many EWGs nearby (such as haloalkanes) will have large chemical shifts.
+    \end{itemize}
+    \item \textbf{Upfield} (of a spike): At smaller fields; to the right of said spike on the spectrum.
+    \item \textcite{bib:McQuarrieSimon} list typical chemical shifts for hydrogen nuclei in various electrochemical environments.
+    \item The relative areas of peaks in an NMR spectrum indicate the number of equivalent hydrogen atoms in each set.
+    \item \textbf{Split} (signal): A signal in an NMR spectrum corresponding to a single set of hydrogen atoms that appears as two or more closely spaced spikes. \emph{Also known as} \textbf{multiplet}.
+    \item \textbf{Doublet}: A split signal with two spikes.
+    \item \textbf{Triplet}: A split signal with three spikes.
+    \item Split signals occur because in addition to the external magnetic field and the electrically generated magnetic field, neighboring hydrogen nuclei on adjacent carbon atoms act like tiny bar magnets in their own right.
+    \item \textbf{Spin-spin interaction}: The interaction between the nuclear spins of neighboring hydrogen nuclei on adjacent carbon atoms.
+    \item Consider a molecule with two hydrogen atoms in different electronic environments.
+    \begin{itemize}
+        \item The spin Hamiltonian describing this molecule is
+        \begin{equation*}
+            \hat{H} = -\gamma B_0(1-\sigma_1)\hat{I}_{z1}-\gamma B_0(1-\sigma_2)\hat{I}_{z2}+\frac{hJ_{12}}{\hbar^2}\hat{\mathbf{I}}_1\cdot\hat{\mathbf{I}}_2
+        \end{equation*}
+        \begin{itemize}
+            \item This Hamiltonian includes one term for each hydrogen nucleus independently, and one interaction term derived from the classical expression for the interaction between two magnetic dipole moments.
+            \item $J_{12}$ is the \textbf{spin-spin coupling constant}.
+        \end{itemize}
+        \item We now apply first-order perturbation theory to
+        \begin{align*}
+            \hat{H}^{(0)} &= -\gamma B_0(1-\sigma_1)\hat{I}_{z1}-\gamma B_0(1-\sigma_2)\hat{I}_{z2}&
+            \hat{H}^{(1)} &= \frac{hJ_{12}}{\hbar^2}\hat{\mathbf{I}}_1\cdot\hat{\mathbf{I}}_2
+        \end{align*}
+        \item The unperturbed wave functions are
+        \begin{align*}
+            \psi_1 &= \alpha(1)\alpha(2)&
+                \psi_2 &= \beta(1)\alpha(2)\\
+            \psi_3 &= \alpha(1)\beta(2)&
+                \psi_4 &= \beta(1)\beta(2)
+        \end{align*}
+        % \begin{align*}
+        %     \hat{H}^{(0)}\psi &= E\psi\\
+        %     [-\gamma B_0(1-\sigma_1)\hat{I}_{z1}-\gamma B_0(1-\sigma_2)\hat{I}_{z2}]\psi_1\psi_2 &= E\psi_1\psi_2\\
+        %     -\gamma B_0(1-\sigma_1)\hat{I}_{z1}(\psi_1\psi_2)-\gamma B_0(1-\sigma_2)\hat{I}_{z2}(\psi_1\psi_2) &= E\psi_1\psi_2\\
+        %     -\gamma B_0(1-\sigma_1)\psi_2\hat{I}_{z1}\psi_1-\gamma B_0(1-\sigma_2)\psi_1\hat{I}_{z2}\psi_2 &= E\psi_1\psi_2\\
+        %     -\frac{1}{\psi_1}\gamma B_0(1-\sigma_1)\hat{I}_{z1}\psi_1-\frac{1}{\psi_2}\gamma B_0(1-\sigma_2)\hat{I}_{z2}\psi_2 &= E
+        % \end{align*}
+        % \begin{align*}
+        %     -\frac{1}{\psi_1}\gamma B_0(1-\sigma_1)\hat{I}_{z1}\psi_1 &= E_1&
+        %         -\frac{1}{\psi_2}\gamma B_0(1-\sigma_2)\hat{I}_{z2}\psi_2 &= E_2\\
+        %     -\gamma B_0(1-\sigma_1)\hat{I}_{z1}\psi_1 &= E_1\psi_1&
+        %         -\gamma B_0(1-\sigma_2)\hat{I}_{z2}\psi_2 &= E_2\psi_2
+        % \end{align*}
+        \item The energy corresponding to $\psi_j$ is
+        \begin{equation*}
+            E_j = E_j^{(0)}+\int\dd{\tau_1}\dd{\tau_2}\psi_j^*\hat{H}^{(1)}\psi_j
+        \end{equation*}
+        where $\tau_1,\tau_2$ are spin variables (to avoid confusion with the shielding constant, we avoid using the conventional $\sigma_1,\sigma_2$).
+        \item We can determine $E_1^{(0)}$ as follows.
+        \begin{align*}
+            \hat{H}^{(0)}\psi_1 &= \hat{H}^{(0)}\alpha(1)\alpha(2)\\
+            &= -\gamma B_0(1-\sigma_1)\hat{I}_{z1}\alpha(1)\alpha(2)-\gamma B_0(1-\sigma_2)\hat{I}_{z2}\alpha(1)\alpha(2)\\
+            &= -\frac{\hbar\gamma B_0(1-\sigma_1)}{2}\alpha(1)\alpha(2)-\frac{\hbar\gamma B_0(1-\sigma_2)}{2}\alpha(1)\alpha(2)\\
+            &= -\hbar\gamma B_0\left( \frac{1-\sigma_1}{2}+\frac{1-\sigma_2}{2} \right)\alpha(1)\alpha(2)\\
+            &= -\hbar\gamma B_0\left( 1-\frac{\sigma_1+\sigma_2}{2} \right)\alpha(1)\alpha(2)\\
+            &= E_1^{(0)}\alpha(1)\alpha(2)\\
+            &= E_1^{(0)}\psi_1
+        \end{align*}
+        \item The other $E_j^{(0)}$ are determined analogously to yield
+        \begin{align*}
+            E_1^{(0)} &= -\hbar\gamma B_0\left( 1-\frac{\sigma_1+\sigma_2}{2} \right)&
+                E_2^{(0)} &= -\frac{\hbar\gamma B_0}{2}(\sigma_1-\sigma_2)\\
+            E_3^{(0)} &= \frac{\hbar\gamma B_0}{2}(\sigma_1-\sigma_2)&
+                E_4^{(0)} &= \hbar\gamma B_0\left( 1-\frac{\sigma_1+\sigma_2}{2} \right)
+        \end{align*}
+        \item As to the first-order corrections, we must evaluate integrals of the form
+        \begin{equation*}
+            H_{ii} = \frac{hJ_{12}}{\hbar^2}\int\dd{\tau_1}\dd{\tau_2}\psi_i^*\hat{\mathbf{I}}_1\cdot\hat{\mathbf{I}}_2\psi_i
+        \end{equation*}
+        \item Since we know that
+        \begin{equation*}
+            \hat{\mathbf{I}}_1\cdot\hat{\mathbf{I}}_2 = \hat{I}_{x1}\hat{I}_{x2}+\hat{I}_{y1}\hat{I}_{y2}+\hat{I}_{z1}\hat{I}_{z2}
+        \end{equation*}
+        we will have to evaluate three such integrals for each wavefunction.
+        \item Evaluating the integrals with $\hat{I}_{z1}\hat{I}_{z2}$ is fairly easy. For example,
+        \begin{align*}
+            H_{z,11} &= \frac{hJ_{12}}{\hbar^2}\int\dd{\tau_1}\dd{\tau_2}\psi_1^*\hat{I}_{z1}\hat{I}_{z2}\psi_1\\
+            &= \frac{hJ_{12}}{\hbar^2}\int\dd{\tau_1}\dd{\tau_2}\alpha^*(1)\alpha^*(2)\hat{I}_{z1}\hat{I}_{z2}\alpha(1)\alpha(2)\\
+            &= \frac{hJ_{12}}{\hbar^2}\int\dd{\tau_1}\dd{\tau_2}\alpha^*(1)\alpha^*(2)[\hat{I}_{z1}\alpha(1)][\hat{I}_{z2}\alpha(2)]\\
+            &= \frac{hJ_{12}}{\hbar^2}\int\dd{\tau_1}\dd{\tau_2}\alpha^*(1)\alpha^*(2)[\tfrac{\hbar}{2}\alpha(1)][\tfrac{\hbar}{2}\alpha(2)]\\
+            &= \frac{hJ_{12}}{4}\int\dd{\tau_1}\dd{\tau_2}\alpha^*(1)\alpha^*(2)\alpha(1)\alpha(2)\\
+            &= \frac{hJ_{12}}{4}\int\dd{\tau_1}\alpha^*(1)\alpha(1)\int\dd{\tau_2}\alpha^*(2)\alpha(2)\\
+            &= \frac{hJ_{12}}{4}
+        \end{align*}
+    \end{itemize}
 \end{itemize}
 
 
