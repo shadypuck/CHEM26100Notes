@@ -1451,8 +1451,312 @@
             &= \frac{hJ_{12}}{4}\int\dd{\tau_1}\alpha^*(1)\alpha(1)\int\dd{\tau_2}\alpha^*(2)\alpha(2)\\
             &= \frac{hJ_{12}}{4}
         \end{align*}
+        \item \marginnote{1/11:}Evaluating the other three yields
+        \begin{align*}
+            H_{z,22} = H_{z,33} &= -\frac{hJ_{12}}{4}&
+            H_{z,44} &= \frac{hJ_{12}}{4}
+        \end{align*}
+        \item Evaluating the integrals with $\hat{I}_{x1}\hat{I}_{x2}$ and $\hat{I}_{y1}\hat{I}_{y2}$ is much more complicated: Problems \ref{prb:14-18} through \ref{prb:14-21} conclude that
+        \begin{align*}
+            \hat{I}_x\alpha &= \frac{\hbar}{2}\beta&
+            \hat{I}_y\alpha &= \frac{i\hbar}{2}\beta\\
+            \hat{I}_x\beta &= \frac{\hbar}{2}\alpha&
+            \hat{I}_y\beta &= -\frac{i\hbar}{2}\alpha
+        \end{align*}
+        from which it follows that the $x,y$ terms of $\hat{\mathbf{I}}_1\cdot\hat{\mathbf{I}}_2$ do not contribute to any of the first-order energies.
+        \item It follows that the energy of each level to first-order is
+        \begin{align*}
+            E_1 &= -h\nu_0\left( 1-\frac{\sigma_1+\sigma_2}{2} \right)+\frac{hJ_{12}}{4}&
+                E_2 &= -\frac{h\nu_0}{2}(\sigma_1-\sigma_2)-\frac{hJ_{12}}{4}\\
+            E_3 &= \frac{h\nu_0}{2}(\sigma_1-\sigma_2)-\frac{hJ_{12}}{4}&
+                E_4 &= h\nu_0\left( 1-\frac{\sigma_1+\sigma_2}{2} \right)+\frac{hJ_{12}}{4}
+        \end{align*}
+        where $\nu_0=\gamma B_0/2\pi$.
     \end{itemize}
+    \item Nuclear spin selection rule: Only one type of nucleus at a time can undergo a transition.
+    \item Thus, the only allowed transitions are
+    \begin{align*}
+        \alpha(1)\alpha(2) &\longrightarrow \beta(1)\alpha(2)\tag{$\psi_1\to\psi_2$}\\
+        \alpha(1)\alpha(2) &\longrightarrow \alpha(1)\beta(2)\tag{$\psi_1\to\psi_3$}\\
+        \beta(1)\alpha(2) &\longrightarrow \beta(1)\beta(2)\tag{$\psi_2\to\psi_4$}\\
+        \alpha(1)\beta(2) &\longrightarrow \beta(1)\beta(2)\tag{$\psi_3\to\psi_4$}
+    \end{align*}
+    and the corresponding frequencies are
+    \begin{align*}
+        \nu_{1\to 2} &= \nu_0(1-\sigma_1)-\frac{J_{12}}{2}\\
+        \nu_{1\to 3} &= \nu_0(1-\sigma_2)-\frac{J_{12}}{2}\\
+        \nu_{2\to 4} &= \nu_0(1-\sigma_2)+\frac{J_{12}}{2}\\
+        \nu_{3\to 4} &= \nu_0(1-\sigma_1)+\frac{J_{12}}{2}
+    \end{align*}
+    \item Since, by hypothesis, $J_{12}$ is sufficiently small for first-order perturbation theory to be applicable, we know that the four resonance frequencies appear as a pair of doublets.
+    \begin{figure}[h!]
+        \centering
+        \footnotesize
+        \begin{tikzpicture}
+            \draw (0,0) -- (7,0);
+    
+            \draw [blx,thick] (0.4,0) -- ++(0,1);
+            \draw [blx,thick] (1.6,0) -- ++(0,1);
+            \draw [blx,thick] (5.4,0) -- ++(0,1);
+            \draw [blx,thick] (6.6,0) -- ++(0,1);
+    
+            \draw [dashed,very thin] (1,0) --
+                node[pos=0.3,left=-2pt ]{$\dfrac{J_{12}}{2}$}
+                node[pos=0.3,right=-2pt]{$\dfrac{J_{12}}{2}$}
+            ++(0,1.6);
+            \draw [dashed,very thin] (6,0) --
+                node[pos=0.3,left=-2pt ]{$\dfrac{J_{12}}{2}$}
+                node[pos=0.3,right=-2pt]{$\dfrac{J_{12}}{2}$}
+            ++(0,1.6);
+            \draw [<->,shorten <=2pt,shorten >=2pt] (1,1.4) -- node[above]{$\nu_0|\sigma_1-\sigma_2|$} ++(5,0);
+        \end{tikzpicture}
+        \caption{Split peak distances.}
+        \label{fig:splitPeakDistances}
+    \end{figure}
+    \item \textbf{AX system}: A molecule in which the two hydrogen nuclei are in very different chemical environments, i.e., $\nu_0|\sigma_1-\sigma_2|>>J_{12}$.
+    \begin{itemize}
+        \item The notation arises because every nonequivalent hydrogen is assigned a letter, and nonequivalent hydrogens whose chemical shifts differ by a relatively large amount are assigned letters that are relatively far apart in the alphabet (and vice versa for those with similar chemical shifts).
+        \item Furthermore, if there is more than one hydrogen of a given type, we add a subscript to the letter (for example, 1,1,2-trichloroethane is a $A_2X$ system).
+    \end{itemize}
+    \item Note that since $J_{12}$ is independent of $\nu_0$ (the frequency of the spectrometer), doublet spacing does not change between spectra from different spectrometers.
+    \item \textbf{First-order spectrum}: A spectrum for which $J_{12}<<\nu_0|\sigma_1-\sigma_2|$, i.e., for which first-order perturbation theory is applicable.
+    \item While spin-spin coupling between nonequivalent hydrogens splits signals, no spin-spin coupling is observed between equivalent hydrogens.
+    \item Consider an $A_2$ system (such as dichloromethane).
+    \begin{itemize}
+        \item The spin Hamiltonian describing this molecule is identical to the last one except that the shielding constants are now equal.
+        \begin{equation*}
+            \hat{H} = \underbrace{\vphantom{\frac{hJ_{AA}}{\hbar^2}\hat{\mathbf{I}}_1\cdot\hat{\mathbf{I}}_2}-\gamma B_0(1-\sigma_A)\hat{I}_{z1}-\gamma B_0(1-\sigma_A)\hat{I}_{z2}}_{\hat{H}^{(0)}}+\underbrace{\frac{hJ_{AA}}{\hbar^2}\hat{\mathbf{I}}_1\cdot\hat{\mathbf{I}}_2}_{\hat{H}^{(1)}}
+        \end{equation*}
+        \item As before, we apply first-order perturbation theory.
+        \item However, we now arrive at a difference from last time, specifically concerning the unperturbed wavefunctions.
+        \begin{itemize}
+            \item Indeed, because the two nuclei are equivalent (i.e., indistinguishable), we must use combinations of $\alpha$ and $\beta$ that are either symmetric or antisymmetric.
+            \item The four acceptable ones are
+            \begin{align*}
+                \phi_1 &= \alpha(1)\alpha(2)&
+                \phi_2 &= \frac{1}{\sqrt{2}}[\alpha(1)\beta(2)-\beta(1)\alpha(2)]\\
+                \phi_3 &= \frac{1}{\sqrt{2}}[\alpha(1)\beta(2)+\beta(1)\alpha(2)]&
+                \phi_4 &= \beta(1)\beta(2)
+            \end{align*}
+        \end{itemize}
+        \item We will now calculate $E_1$ as an example (the procedure for the others is symmetric).
+        \begin{itemize}
+            \item First off, we have that
+            \begin{align*}
+                E_1 ={}& E_1^{(0)}+E_1^{(1)}\\
+                \begin{split}
+                    ={}& \iint\dd{\tau_1}\dd{\tau_2}\alpha^*(1)\alpha^*(2)\left[ -\gamma B_0(1-\sigma_A)(\hat{I}_{z1}+\hat{I}_{z2}) \right]\alpha(1)\alpha(2)\\
+                    &+ \iint\dd{\tau_1}\dd{\tau_2}\alpha^*(1)\alpha^*(2)\frac{hJ_{AA}}{\hbar^2}(\hat{I}_{x1}\hat{I}_{x2}+\hat{I}_{y1}\hat{I}_{y2}+\hat{I}_{z1}\hat{I}_{z2})\alpha(1)\alpha(2)
+                \end{split}
+            \end{align*}
+            \item The first integral is readily evaluated by noting that
+            \begin{equation*}
+                (\hat{I}_{z1}+\hat{I}_{z2})\alpha(1)\alpha(2) = \left( \frac{\hbar}{2}+\frac{\hbar}{2} \right)\alpha(1)\alpha(2)
+                = \hbar\alpha(1)\alpha(2)
+            \end{equation*}
+            \item The second integral is readily evaluated by noting that
+            \begin{align*}
+                (\hat{I}_{x1}\hat{I}_{x2}+\hat{I}_{y1}\hat{I}_{y2}+\hat{I}_{z1}\hat{I}_{z2})\alpha(1)\alpha(2) &= \frac{\hbar^2}{4}\beta(1)\beta(2)-\frac{\hbar^2}{4}\beta(1)\beta(2)+\frac{\hbar^2}{4}\alpha(1)\alpha(2)\\
+                &= \frac{\hbar^2}{4}\alpha(1)\alpha(2)
+            \end{align*}
+            \item Therefore,
+            \begin{align*}
+                \begin{split}
+                    E_1 ={}& -\hbar\gamma B_0(1-\sigma_A)\iint\dd{\tau_1}\dd{\tau_2}\alpha^*(1)\alpha^*(2)\alpha(1)\alpha(2)\\
+                    &+ \frac{hJ_{AA}}{\hbar^2}\frac{\hbar^2}{4}\iint\dd{\tau_1}\dd{\tau_2}\alpha^*(1)\alpha^*(2)\alpha(1)\alpha(2)
+                \end{split}\\
+                ={}& -\hbar\gamma B_0(1-\sigma_A)+\frac{hJ_{AA}}{4}
+            \end{align*}
+        \end{itemize}
+        \item The energy of the remaining levels to first-order is
+        \begin{align*}
+            E_2 &= -\frac{3hJ_{AA}}{4}&
+            E_3 &= \frac{hJ_{AA}}{4}&
+            E_4 &= \hbar\gamma B_0(1-\sigma_A)+\frac{hJ_{AA}}{4}
+        \end{align*}
+    \end{itemize}
+    \item Nuclear spin symmetry selection rule: Only transitions between states of the same spin symmetry are allowed.
+    \item Based on the two selection rules, the only allowed transitions are $1\to 3$ and $3\to 4$, with corresponding frequencies
+    \begin{equation*}
+        \nu_{1\to 3} = \nu_{3\to 4} = \nu_0(1-\sigma_A)
+    \end{equation*}
+    \item "Therefore, although the spin-spin coupling between equivalent protons alters the energy levels, the selection rules are such that the spin-spin coupling constant effect cancels in the transition frequencies, so only a single proton resonance is observed" \parencite[573]{bib:McQuarrieSimon}.
+    \item \textbf{$\bm{n+1}$ rule}: If a proton has $n$ equivalent neighboring protons, then its NMR signal will be split into $n+1$ closely spaced peaks.
+    \begin{itemize}
+        \item Rationalized qualitatively by considering the possible spin states of the neighboring nuclei. Relative intensities of the multiplets are discussed, too.
+    \end{itemize}
+    \item When $J$ and $\nu_0|\sigma_1-\sigma_2|$ are closer in magnitude, we can no longer use perturbation theory; instead, we must resort to a variational calculation.
+    \item Example: Variational calculation of a molecule with two nonequivalent hydrogen atoms.
+    \begin{itemize}
+        \item We use as our trial wavefunction
+        \begin{equation*}
+            \Psi = c_1\psi_1+c_2\psi_2+c_3\psi_3+c_4\psi_4
+        \end{equation*}
+        \begin{itemize}
+            \item $\Psi$ has the interesting property that minimizing its variational parameters will result in an \emph{exact} solution. This is because it represents \emph{all} possible two-proton spin functions, hence is as general as possible, allowing a variational calculation to yield an exact result.
+        \end{itemize}
+        \item To minimize $\Psi$, employ the secular determinant
+        \begin{equation*}
+            \begin{vmatrix}
+                H_{11}-E & H_{12} & H_{13} & H_{14}\\
+                H_{12} & H_{22}-E & H_{23} & H_{24}\\
+                H_{13} & H_{23} & H_{33}-E & H_{34}\\
+                H_{14} & H_{24} & H_{34} & H_{44}-E\\
+            \end{vmatrix}
+            = 0
+        \end{equation*}
+        where $H_{ij}=\iint\dd{\tau_1}\dd{\tau_2}\psi_i^*\hat{H}\psi_j$.
+        \item Evaluating the matrix elements significantly simplifies the secular determinant.
+        \begin{equation*}
+            \begin{vNiceMatrix}
+                -d_1-d_2+\frac{hJ}{4}-E & 0 & 0 & 0\\
+                0 & -d_1+d_2-\frac{hJ}{4}-E & \frac{hJ}{2} & 0\\
+                0 & \frac{hJ}{2} & d_1-d_2-\frac{hJ}{4}-E & 0\\
+                0 & 0 & 0 & d_1+d_2+\frac{hJ}{4}-E\\
+            \end{vNiceMatrix}
+            = 0
+        \end{equation*}
+        \begin{itemize}
+            \item Note that in the following, $d_1=\frac{1}{2}h\nu_0(1-\sigma_1)$, $d_2=\frac{1}{2}h\nu_0(1-\sigma_2)$, and we drop the 12 subscript on $J$ for convenience.
+        \end{itemize}
+        \item Expanding yields the following energy levels.
+        \begin{align*}
+            E_1 &= -h\nu_0\left( 1-\frac{\sigma_1+\sigma_2}{2} \right)+\frac{hJ}{4}&
+            E_2 &= -\frac{hJ}{4}-\frac{h}{2}\sqrt{\nu_0^2(\sigma_1-\sigma_2)^2+J^2}\\
+            E_3 &= -\frac{hJ}{4}+\frac{h}{2}\sqrt{\nu_0^2(\sigma_1-\sigma_2)^2+J^2}&
+            E_4 &= h\nu_0\left( 1-\frac{\sigma_1+\sigma_2}{2} \right)+\frac{hJ}{4}
+        \end{align*}
+    \end{itemize}
+    \item It follows that the frequencies of the allowed transitions are
+    \begin{align*}
+        \nu_{1\to 2} &= \frac{\nu_0}{2}(2-\sigma_1-\sigma_2)-\frac{J}{2}-\frac{1}{2}\sqrt{\nu_0^2(\sigma_1-\sigma_2)^2+J^2}\\
+        \nu_{1\to 3} &= \frac{\nu_0}{2}(2-\sigma_1-\sigma_2)-\frac{J}{2}+\frac{1}{2}\sqrt{\nu_0^2(\sigma_1-\sigma_2)^2+J^2}\\
+        \nu_{2\to 4} &= \frac{\nu_0}{2}(2-\sigma_1-\sigma_2)+\frac{J}{2}+\frac{1}{2}\sqrt{\nu_0^2(\sigma_1-\sigma_2)^2+J^2}\\
+        \nu_{3\to 4} &= \frac{\nu_0}{2}(2-\sigma_1-\sigma_2)+\frac{J}{2}-\frac{1}{2}\sqrt{\nu_0^2(\sigma_1-\sigma_2)^2+J^2}
+    \end{align*}
+    \begin{itemize}
+        \item The relative intensities of the signals are, respectively,
+        \begin{equation*}
+            \frac{(r-1)^2}{(r+1)^2}:1:\frac{(r-1)^2}{(r+1)^2}:1
+        \end{equation*}
+        where
+        \begin{align*}
+            r &= \sqrt{\frac{\sqrt{\Delta^2+J^2}+\Delta}{\sqrt{\Delta^2+J^2}-\Delta}}&
+            \Delta &= \nu_0(\sigma_1-\sigma_2)
+        \end{align*}
+    \end{itemize}
+    \item Thus, the relative intensities of the peaks depend upon the relative values of $\nu_0|\sigma_1-\sigma_2|$ and $J$.
+    \item Special cases:
+    \begin{itemize}
+        \item $J=0$: Two separate singlets, as per two distinct but uncoupled hydrogen atoms.
+        \item $\sigma_1=\sigma_2$: One singlet, as per two chemically equivalent hydrogen atoms.
+    \end{itemize}
+    \item \textbf{Second-order spectrum}: A spectrum in between the two extremes of $J<<\nu_0|\sigma_1-\sigma_2|$ and $J=0$ / $\sigma_1=\sigma_2$.
+    \begin{itemize}
+        \item The $n+1$ rule does not apply here.
+    \end{itemize}
+    \item Note that in the case where $J<<\nu_0|\sigma_1-\sigma_2|$, the second-order frequencies approach their respective first-order limits.
+    \item Resolution increases with spectrometer frequency because as $\nu_0$ (and hence $\nu_0|\sigma_1-\sigma_2|$) increase, higher-order spectra converge to the first-order limit.
 \end{itemize}
+
+
+\subsection*{Problems}
+\begin{enumerate}[label={\textbf{14-\arabic*.}},ref={14-\arabic*}]
+    \setcounter{enumi}{17}
+    \item \label{prb:14-18}The nuclear spin operators $\hat{I}_x,\hat{I}_y,\hat{I}_z$, like all angular momentum operators, obey the commutation relations
+    \begin{align*}
+        [\hat{I}_x,\hat{I}_y] &= i\hbar\hat{I}_z&
+        [\hat{I}_y,\hat{I}_z] &= i\hbar\hat{I}_x&
+        [\hat{I}_z,\hat{I}_x] &= i\hbar\hat{I}_y
+    \end{align*}
+    (see Problem \ref{prb:6-13}). Define the (non-Hermitian) operators
+    \begin{align*}
+        \hat{I}_+ &= \hat{I}_x+i\hat{I}_y&
+        \hat{I}_- &= \hat{I}_x-i\hat{I}_y\tag{1}
+    \end{align*}
+    and show that
+    \begin{equation*}
+        \hat{I}_z\hat{I}_+ = \hat{I}_+\hat{I}_z+\hbar\hat{I}_+\tag{2}
+    \end{equation*}
+    and
+    \begin{equation*}
+        \hat{I}_z\hat{I}_- = \hat{I}_-\hat{I}_z-\hbar\hat{I}_-\tag{3}
+    \end{equation*}
+    \item \label{prb:14-19}Using the definitions of $\hat{I}_+$ and $\hat{I}_-$ from the previous problem, verify the following two equations where $\hat{I}^2=\hat{I}_x^2+\hat{I}_y^2+\hat{I}_z^2$.
+    \begin{align*}
+        \hat{I}_+\hat{I}_- &= \hat{I}^2-\hat{I}_z^2+\hbar\hat{I}_z&
+        \hat{I}_-\hat{I}_+ &= \hat{I}^2-\hat{I}_z^2-\hbar\hat{I}_z
+    \end{align*}
+    \item \label{prb:14-20}Use Equation 2 from Problem \ref{prb:14-18} and the fact that $\hat{I}_z\beta=-\frac{\hbar}{2}\beta$ to show that
+    \begin{equation*}
+        \hat{I}_z\hat{I}_+\beta = \hat{I}_+\left( -\frac{\hbar}{2}\beta+\hbar\beta \right) = \frac{\hbar}{2}\hat{I}_+\beta
+    \end{equation*}
+    Because $\hat{I}_z\alpha=\frac{\hbar}{2}\alpha$, this result shows that
+    \begin{equation*}
+        \hat{I}_+\beta \propto \alpha = c\alpha
+    \end{equation*}
+    where $c$ is a proportionality constant. Problem \ref{prb:14-21} shows that $c=\hbar$, so we have
+    \begin{equation*}
+        \hat{I}_+\beta = \hbar\alpha\tag{1}
+    \end{equation*}
+    Now use Equation 3 from Problem \ref{prb:14-18} and the fact that $\hat{I}_z\alpha=\frac{\hbar}{2}\alpha$ to show that
+    \begin{equation*}
+        \hat{I}_-\alpha = c\beta
+    \end{equation*}
+    where $c$ is a proportionality constant. Problem \ref{prb:14-21} shows that $c=\hbar$, so we have
+    \begin{equation*}
+        \hat{I}_-\alpha = \hbar\beta\tag{2}
+    \end{equation*}
+    Notice that $\hat{I}_+$ "raises" the spin function from $\beta$ to $\alpha$, whereas $\hat{I}_-$ "lowers" the spin function from $\alpha$ to $\beta$. Th two operators $\hat{I}_+$ and $\hat{I}_-$ are called the \textbf{raising operator} and \textbf{lowering operator}, respectively.\par
+    Now argue that a consequence of the raising and lowering properties of $\hat{I}_+$ and $\hat{I}_-$ is that
+    \begin{align*}
+        \hat{I}_+\alpha &= 0&
+        \hat{I}_-\beta &= 0\tag{3}
+    \end{align*}
+    Now use Equations 1-3 to show that
+    \begin{align*}
+        \hat{I}_x\alpha &= \frac{\hbar}{2}\beta&
+        \hat{I}_y\alpha &= \frac{i\hbar}{2}\beta\\
+        \hat{I}_x\beta &= \frac{\hbar}{2}\alpha&
+        \hat{I}_y\beta &= -\frac{i\hbar}{2}\alpha
+    \end{align*}
+    \item \label{prb:14-21}This problem shows that the proportionality constant $c$ in
+    \begin{align*}
+        \hat{I}_+\beta &= c\alpha&
+        \hat{I}_-\alpha &= c\beta
+    \end{align*}
+    is equal to $\hbar$. Start with
+    \begin{equation*}
+        \int\alpha^*\alpha\dd{\tau} = 1 = \frac{1}{c^2}\int(\hat{I}_+\beta)^*(\hat{I}_+\beta)\dd{\tau}
+    \end{equation*}
+    Let $\hat{I}_+=\hat{I}_x+i\hat{I}_y$ in the second factor in the above integral and use the fact that $\hat{I}_x$ and $\hat{I}_y$ are Hermitian to get
+    \begin{equation*}
+        \int(\hat{I}_x\hat{I}_+\beta)^*\beta\dd{\tau}+i\int(\hat{I}_y\hat{I}_+\beta)^*\beta\dd{\tau} = c^2
+    \end{equation*}
+    Now take the complex conjugate of both sides to get
+    \begin{align*}
+        \int\beta^*\hat{I}_x\hat{I}_+\beta\dd{\tau}-i\int\beta^*\hat{I}_y\hat{I}_+\beta\dd{\tau} &= c^2\\
+        &= \int\beta^*\hat{I}_-\hat{I}_+\beta\dd{\tau}
+    \end{align*}
+    Now use the result in Problem \ref{prb:14-19} to show that
+    \begin{align*}
+        c^2 &= \int\beta^*\hat{I}_-\hat{I}_+\beta\dd{\tau}\\
+        &= \int\beta^*(\hat{I}^2-\hat{I}_z^2-\hbar\hat{I}_z)\beta\dd{\tau}\\
+        &= \int\beta^*\left( \frac{3}{4}\hbar^2-\frac{1}{4}\hbar^2+\frac{\hbar^2}{2} \right)\beta\dd{\tau}\\
+        &= \hbar^2
+    \end{align*}
+    or that $c=\hbar$.
+    % \item \label{prb:14-22}Show that
+    % \begin{align*}
+    %     H_{y,11} &= \frac{hJ_{12}}{\hbar^2}\iint\dd{\tau_1}\dd{\tau_2}\alpha^*(1)\alpha^*(2)\hat{I}_{y1}\hat{I}_{y2}\alpha(1)\alpha(2)\\
+    %     &= 0
+    % \end{align*}
+    % and more generally that
+    % \begin{equation*}
+    %     H_{x,jj} = H_{y,jj} = 0
+    % \end{equation*}
+    % for $j=1,2,3,4$.
+\end{enumerate}
 
 
 
