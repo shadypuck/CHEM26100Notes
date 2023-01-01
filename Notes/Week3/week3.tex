@@ -78,7 +78,7 @@
         \item However, because this is a quantum system, the attainable energy levels will be quantized (see Figure \ref{fig:parabolicPotentiala}).
         \item We can use a parabolic well to approximate the minimum of the potential well (see Figure \ref{fig:parabolicPotentialb}).
     \end{itemize}
-    \item \textbf{Reduced mass}: For two objects of mass $m_A,m_B$, the quantity
+    \item \textbf{Reduced mass}: The following quantity, which corresponds to two objects of mass $m_A,m_B$. \emph{Denoted by} $\bm{\mu}$. \emph{Given by}
     \begin{equation*}
         \mu = \frac{m_Am_B}{m_A+m_B}
     \end{equation*}
@@ -94,14 +94,14 @@
     \begin{itemize}
         \item We reduce by noting that $W'(a)=0$ at the minimum of the potential well, we can let $W(a)=0$, we can set $a=0$ to be the origin of our coordinate system, and we can let $k=W''(a)$.
     \end{itemize}
-    \item The Schr\"{o}dinger equation describing this system is
+    \item The Schr\"{o}dinger equation describing this system is\footnote{All aspects of this derivation are covered in greater detail in the notes on \textcite{bib:HarmonicOscillator}.}
     \begin{equation*}
         -\frac{\hbar^2}{2m}\dv[2]{x}\psi(x)+\frac{1}{2}m\omega^2x^2\psi(x) = E\psi(x)
     \end{equation*}
     \begin{itemize}
         \item Note that since $\omega=\sqrt{k/m}$, we substituted $k=m\omega^2$.
     \end{itemize}
-    \item If we let $x=y\sqrt{\hbar/m\omega}$ and $E=\omega\hbar\epsilon/2$, then we can simplify the above to the form
+    \item If we change coordinates via $x=y\sqrt{\hbar/m\omega}$, $\psi(x)=\psi(y)$, and $E=\omega\hbar\epsilon/2$, then we can simplify to
     \begin{equation*}
         \dv[2]{y}\psi(y)+(\epsilon-y^2)\psi(y) = 0
     \end{equation*}
@@ -109,26 +109,23 @@
     \begin{equation*}
         \dv[2]{y}\psi(y)-y^2\psi(y) = 0
     \end{equation*}
-    \item General form solution:
+    \item Linearly independent solutions:
     \begin{equation*}
         \psi(y) = y^p\e[-y^2/2]
     \end{equation*}
     \begin{itemize}
         \item This is the Gaussian exponential.
-        \item $p$ is any integer.
+        \item $p$ is any integer; each value of $p$ gives rise to a linearly independent solution.
     \end{itemize}
-    \item Because the sign of the exponential must be negative for the wave function to be bounded, we have the form
+    \item Since the general solution is the linear combination of all linearly independent solutions, it has the form
     \begin{equation*}
         \psi(y) = \e[-y^2/2]H(y)
     \end{equation*}
-    where $H(y)$ are polynomials.
-    \item Hermite equation:
+    where $H$ is a polynomial in $y$.
+    \item Substituting the above back into the equation before the asymptotic solution, we learn that the polynomials $H$ must satisfy the \textbf{Hermite equation} in order to yield a full solution.
     \begin{equation*}
-        \dv[2]{y}H(y)-2y\dv{y}H(y)-(\epsilon-1)H(y) = 0
+        \dv[2]{y}H(y)-2y\dv{y}H(y)+(\epsilon-1)H(y) = 0
     \end{equation*}
-    \begin{itemize}
-        \item Whenever $H(y)$ solves this equation, it yields a full solution.
-    \end{itemize}
     \item What are the correct polynomials?
     \begin{itemize}
         \item The polynomials that are even about the origin will give us the even solutions, and vice versa for the odd ones.
@@ -226,13 +223,15 @@
     \end{itemize}
     \item Classical harmonic oscillator:
     \begin{itemize}
-        \item Position: $x=x_0\sin(\omega t)$.
-        \item Velocity: $v=\cos x_0\sin(\omega t)$.
-        \item Energy: $E=m\omega^2x_0^2/2$.
-        \item Turning point: $x_0=\sqrt{2E/m\omega^2}$.
+        \item Position: $x(t)=x_0\sin(\omega t)$.
+        \item Velocity: $v(x)=\omega x_0\cos(\omega t)=\omega x_0\cos(\sin^{-1}(x/x_0))=\omega\sqrt{x_0^2-x^2}$.
+        \item Energy: $E=mv_\text{max}^2/2=m\omega^2x_0^2/2$. Alternatively, turning point: $x_0=\sqrt{2E/m\omega^2}$.
+        \item Period: $T=2\pi/\omega$.
         \item Probability of the oscillator being at $x$:
         \begin{equation*}
-            P(x)\dd{x} = \frac{\frac{2\dd{x}}{v}}{T} = \frac{\dd{x}}{\pi\sqrt{x_0^2-x^2}}
+            P(x)\dd{x} = \frac{2\dd{t}}{T}
+            = \frac{\frac{2\dd{x}}{v(x)}}{T}
+            = \frac{\dd{x}}{\pi\sqrt{x_0^2-x^2}}
         \end{equation*}
         \begin{itemize}
             \item Thus, classically, the oscillator spends most of its time at the turning points (this makes intuitive sense because a pendulum slows down at the turning points, spending more time there).
@@ -753,12 +752,12 @@
     \begin{equation*}
         \prb{x} = \int_{-\infty}^\infty\psi_v(x)x\psi_v(x)\dd{x} = 0
     \end{equation*}
-    for a harmonic operator
+    for a harmonic oscillator.
     \item Similarly, since the derivative of an even function is odd and the product of an even and odd function is odd, we have that
     \begin{equation*}
         \prb{p} = \int_{-\infty}^\infty\psi_v(x)\left( -i\hbar\dv{x} \right)\psi_v(x)\dd{x} = 0
     \end{equation*}
-    for a harmonic operator.
+    for a harmonic oscillator.
 \end{itemize}
 
 
@@ -846,7 +845,7 @@
     where $H(y)$ is some function.
     \item Substituting this general solution back into the simplified differential equation yields a condition that the function(s) $H(y)$ must satisfy.
     \begin{align*}
-        0 &= \dv[2]{y}(\psi(y))-y^2\psi(y)\\
+        0 &= \dv[2]{y}(\psi(y))+(\epsilon-y^2)\psi(y)\\
         &= \dv{y}(\dv{y}(H(y)\e[-y^2/2]))+(\epsilon-y^2)H(y)\e[-y^2/2]\\
         &= \dv{y}(\dv{H(y)}{y}\e[-y^2/2]-yH(y)\e[-y^2/2])+(\epsilon-y^2)H(y)\e[-y^2/2]\\
         &= \dv{y}(\dv{H(y)}{y}\e[-y^2/2])+\dv{y}(-yH(y)\e[-y^2/2])+(\epsilon-y^2)H(y)\e[-y^2/2]\\

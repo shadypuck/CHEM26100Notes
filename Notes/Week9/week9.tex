@@ -431,7 +431,7 @@
             \item Energy density $\rho$ in units of $\si{\joule\per\cubic\meter}$.
             \item Spectral energy density $\rho_\nu(\nu_{12})$ in units of energy density per unit frequency (i.e., $\si{\joule\second\per\cubic\meter}$).
         \end{itemize}
-        \item Three types of changes tha can occur to our population.
+        \item Three types of changes that can occur to our population.
         \begin{enumerate}
             \item Absorption: A photon comes in, gets absorbed by a molecule in the ground state, and gets excited to the excited state.
             \begin{equation*}
@@ -547,7 +547,7 @@
         \end{equation*}
         \item Invoking the Boltzmann distribution and setting this equal to the Planck blackbody distribution yields
         \begin{equation*}
-            \frac{8\pi h}{c^3}\frac{\nu_{12}^3}{\e[h\nu_{12}/k_\text{B}T]-1} = \frac{A_{21}}{B_{12}\e[h\nu_{12}/k_\text{B}T]-B_{12}}
+            \frac{8\pi h}{c^3}\frac{\nu_{12}^3}{\e[h\nu_{12}/\kB T]-1} = \frac{A_{21}}{B_{12}\e[h\nu_{12}/\kB T]-B_{12}}
         \end{equation*}
         \begin{itemize}
             \item So our first notions of quantum mechanics connect back to our most modern advances. The first line of the story is also the last.
@@ -1788,7 +1788,7 @@
     \begin{itemize}
         \item Consider a sample of $N_\text{total}$ identical atoms having only two nondegenerate electronic energy levels $E_1<E_2$.
         \item Let number of atoms in stated $i$ be denoted by $N_i$.
-        \item Let the sample of atoms have insufficient thermal energy to occupy state 2, i.e., $k_\text{B}T<<E_2-E_1$.
+        \item Let the sample of atoms have insufficient thermal energy to occupy state 2, i.e., $\kB T<<E_2-E_1$.
         \item Expose the sample to EM radiation of frequency $\nu_{12}$ where $h\nu_{12}=E_2-E_1$.
         \item The energy density of said EM radiation is described by the \textbf{radiant energy density} and the \textbf{spectral radiant energy density}.
         \item Einstein proposes that the rate $-\dv*{N_1}{t}=\dv*{N_2}{t}$ of excitation from the ground electronic state to the excited electronic state is proportional to $\rho_\nu(\nu_{12})$ and $N_1(t)$. In particular,
@@ -1840,13 +1840,13 @@
         \begin{equation*}
             \rho_\nu(\nu_{12}) = \frac{A_{21}}{(N_1/N_2)B_{12}-B_{21}}
         \end{equation*}
-        \item Applying the fact (see Chapter 17) that for a system in equilibrium at temperature $T$, the number of atoms or molecules in the state $j$ with energy $E_j$ is $N_j=c\e[-E_j/k_\text{B}T]$, we have that
+        \item Applying the fact (see Chapter 17) that for a system in equilibrium at temperature $T$, the number of atoms or molecules in the state $j$ with energy $E_j$ is $N_j=c\e[-E_j/\kB T]$, we have that
         \begin{equation*}
-            \frac{N_2}{N_1} = \e[-(E_2-E_1)/k_\text{B}T] = \e[-h\nu_{12}/k_\text{B}T]
+            \frac{N_2}{N_1} = \e[-(E_2-E_1)/\kB T] = \e[-h\nu_{12}/\kB T]
         \end{equation*}
         \item Plug this into the above equation and set it equal to Planck's blackbody distribution law.
         \begin{equation*}
-            \frac{8\pi h}{c^3}\frac{\nu_{12}^3}{\e[h\nu_{12}/k_\text{B}T]-1} = \frac{A_{21}}{B_{12}\e[h\nu_{12}/k_\text{B}T]-B_{21}}
+            \frac{8\pi h}{c^3}\frac{\nu_{12}^3}{\e[h\nu_{12}/\kB T]-1} = \frac{A_{21}}{B_{12}\e[h\nu_{12}/\kB T]-B_{21}}
         \end{equation*}
         \item From the above equation it is clear that
         \begin{equation*}
@@ -1872,7 +1872,7 @@
     \end{itemize}
     \item \textbf{Population inversion}: A situation where the population of the excited state is greater than that of the lower state.
     \begin{itemize}
-        \item By the above equation for $N_2/N_1$, we must have $N_2/N_1<1$ when the system is at equilibrium since $h\nu_{12}/k_\text{B}T$ is a strictly positive quantity.
+        \item By the above equation for $N_2/N_1$, we must have $N_2/N_1<1$ when the system is at equilibrium since $h\nu_{12}/\kB T$ is a strictly positive quantity.
         \item Thus, population inversions constitute nonequilibrium situations.
     \end{itemize}
     \item A population inversion cannot occur in a nondegenerate two-level system.

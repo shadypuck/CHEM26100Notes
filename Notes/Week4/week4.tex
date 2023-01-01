@@ -199,7 +199,7 @@
         \end{equation*}
         we have that
         \begin{equation*}
-            \frac{1}{2\mu}\left( \hat{p}_r^2+\frac{l(l+1)\hbar^2}{r^2}+V(r) \right)R_n(r) = E_nR_n(r)
+            \left( \frac{1}{2\mu}\left( \hat{p}_r^2+\frac{l(l+1)\hbar^2}{r^2} \right)+V(r) \right)R_n(r) = E_nR_n(r)
         \end{equation*}
         \begin{itemize}
             \item We have reduced the three-dimensional case of the hydrogen atom to a one-dimensional differential equation.
@@ -253,7 +253,7 @@
     \end{equation*}
     \item Energy levels:
     \begin{equation*}
-        E_n = -\frac{\mu}{2\hbar^2}\left( \frac{(Ze)e}{4\pi\epsilon} \right)^2\frac{1}{n^2}
+        E_n = -\frac{\mu}{2\hbar^2}\left( \frac{(Ze)e}{4\pi\epsilon_0} \right)^2\frac{1}{n^2}
     \end{equation*}
     \begin{itemize}
         \item These are the discrete energies of Bohr!
@@ -266,11 +266,11 @@
     \begin{itemize}
         \item The probability is
         \begin{equation*}
-            \text{Pr} = |\psi(r,\theta,\phi)|^2r^2\sin\theta
+            \Prob = |\psi(r,\theta,\phi)|^2r^2\sin\theta
         \end{equation*}
         \item The radial probability is
         \begin{equation*}
-            \text{Pr}(r) = r^2|R_{nl}(r)|^2
+            \Prob(r) = r^2|R_{nl}(r)|^2
         \end{equation*}
         \begin{itemize}
             \item The radial probability peaks at $a_0$, the \textbf{Bohr radius}.
@@ -279,7 +279,7 @@
     \end{itemize}
     \item The average distance from the nucleus (the expectation value of $r$) is
     \begin{align*}
-        \prb{r} &= \int_0^\infty\text{Pr}(r)r\dd{r}\\
+        \prb{r} &= \int_0^\infty\Prob(r)r\dd{r}\\
         &= \int_0^\infty\psi^*(r)r\psi(r)\dd{r}
     \end{align*}
     \begin{itemize}
@@ -660,9 +660,7 @@
     \begin{equation*}
         P_l^{|m|}(x) = (1-x^2)^{|m|/2}\dv[|m|]{x}P_l(x)
     \end{equation*}
-    \begin{itemize}
-        \item Note that only the magnitude of $m$ is present because $m^2$ is the only form of $m$ present in Legendre's equation.
-    \end{itemize}
+    \pagebreak
     \begin{table}[h!]\marginnote{10/30:}
         \centering
         \small
@@ -686,6 +684,10 @@
         \caption{The first few associated Legendre functions.}
         \label{tab:associatedLegendreFunctions}
     \end{table}
+    \begin{itemize}
+        \item Note that only the magnitude of $m$ is present because $m^2$ is the only form of $m$ present in Legendre's equation.
+        \item Notice how the $\theta$-coordinates functions mirror those in Table 0.2 of \textcite{bib:IChemNotes}.
+    \end{itemize}
     \item Relating the normalization and orthogonality conditions back to the variable of interest ($\theta$), we have (for the Legendre polynomials) that
     \begin{equation*}
         \int_0^\pi P_l(\cos\theta)P_n(\cos\theta)\sin\theta\dd{\theta} = \frac{2\delta_{ln}}{2l+1}

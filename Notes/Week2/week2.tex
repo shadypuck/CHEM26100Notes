@@ -25,13 +25,13 @@
         E &= \hbar\omega&
         p &= \hbar k
     \end{align*}
-    \item What is the wave that we might associate with a de Broglie particle?
+    \item What is the wave that we might associate with a de Broglie particle? Start with a completely general oscillator $A\e[iy]$ (are we also using complex coordinates to rigorously describe a circular Bohr orbit??), and substitute in the periodicity conditions from the classical wave equation, i.e., $kx-\omega t$ to get
     \begin{equation*}
-        \psi(x) = A\e[ikx-i\omega t]
+        \psi(x) = A\e[i(kx-\omega t)]
     \end{equation*}
     \item Probability:
     \begin{itemize}
-        \item Classically, such a wave might be associated with EM radiation hitting a surface with intensity $I=|\psi(x)|^2=\psi(x)\psi^*(x)$.
+        \item By the classical wave power equation, such a wave might be associated with EM radiation hitting a surface with intensity $I=|\psi(x)|^2=\psi(x)\psi^*(x)$.
         \item As soon as we associate a particle (photon) with the wave, the intensity may be re-interpreted as the number of particles reaching the surface or the probability of a particle being at the surface.
         \item Thus, the probability of finding a particle at the surface becomes $|\psi(x)|^2$, as well.
     \end{itemize}
@@ -41,7 +41,7 @@
     \end{itemize}
     \item What is the probability of finding the particle at the origin?
     \begin{align*}
-        Pr &= \left| A\e[ik\cdot 0] \right|^2\\
+        \Prob &= \left| A\e[ik\cdot 0] \right|^2\\
         &= |A|^2\\
     \end{align*}
     \begin{itemize}
@@ -255,7 +255,7 @@
         \item In region II, the particle is moving with momentum $p_\text{II}=\sqrt{2m(E-V)}$.
         \begin{itemize}
             \item If $E_0<V$, the particle \emph{never} passes from region $\text{I}\to\text{II}$.
-            \item If $E_0>V$, the particle \emph{always} passes from $\text{I}\to\text{II}$, but has less KE in II than I\footnote{Note that the classical resolution to the case $E=V_0$ is that the particle never has $E_0=V$; it always has energy $\epsilon$ above or $\epsilon$ below $V$. However, in some sense, there \emph{is} another answer: Classical mechanics is not an "accurate" reflection of reality, and this is a place where it shows. Indeed, we \emph{need} quantum mechanics to treat this case.}.
+            \item If $E_0>V$, the particle \emph{always} passes from $\text{I}\to\text{II}$, but has less KE in II than I\footnote{Note that the classical resolution to the case $E=V_0$ is that the particle never has $E=V_0$; it always has energy $\epsilon$ above or $\epsilon$ below $V$. However, in some sense, there \emph{is} another answer: Classical mechanics is not an "accurate" reflection of reality, and this is a place where it shows. Indeed, we \emph{need} quantum mechanics to treat this case.}.
         \end{itemize}
     \end{itemize}
     \item Quantum particle motion:
@@ -285,7 +285,7 @@
                 B &= \frac{C(\alpha-\beta)}{2\alpha}+\frac{D(\alpha+\beta)}{2\alpha}
             \end{align*}
             \item Assume that the particles only travel from left to right in II, i.e., $D=0$.
-            \item The flux of the particle: The probability of the particle going left to right in region I is $|A|^2$. Thus, since the incident flux factors in the speed $v_I$ of the particle, the incident flux is $v_\text{I}|A|^2$. Similarly, the transmitted flux of the particle is $v_\text{II}|C|^2$.
+            \item The flux of the particle: The probability of the particle going left to right in region I is $|A|^2$. Thus, since the incident flux factors in the speed $v_\text{I}$ of the particle, the incident flux is $v_\text{I}|A|^2$. Similarly, the transmitted flux of the particle is $v_\text{II}|C|^2$.
             \item Consequently, the reflected flux of the particles is
             \begin{equation*}
                 R = \frac{c|B|^2}{c|A|^2} = \frac{|B|^2}{|A|^2} = \frac{(\alpha-\beta)^2}{(\alpha+\beta)^2}
@@ -308,8 +308,8 @@
             \begin{equation*}
                 \beta = \frac{\sqrt{2m(E-V_0)}}{\hbar}
             \end{equation*}
-            and $E-V_0<0$, $\beta$ will be a complex number.
-            \item Thus, to treat the real and complex portions of $\beta$ separately, we define $\beta_2$ to be a real number.
+            and $E-V_0<0$, $\beta$ will be an imaginary number.
+            \item Thus, we define $\beta_2$ to be the real number such that $\beta=i\beta_2$.
             \item Consequently, we may write
             \begin{equation*}
                 R = \frac{|B|^2}{|A|^2} = \frac{|\alpha-\beta|^2}{|\alpha+\beta|^2} = \frac{|\alpha-i\beta_2|^2}{|\alpha+i\beta_2|^2} = \frac{\alpha^2+\beta_2^2}{\alpha^2+\beta_2^2} = 1
@@ -414,7 +414,7 @@
         \item An alternate form of $\sigma_x^2$:
         \begin{align*}
             \sigma_x^2 &= \sum_{j=1}^n(x_j-\prb{x})^2p_j\\
-            &= \sum_{j=1}^n(x_j^2-2\prb{x}x_j+\prb{x}^2)-p_j\\
+            &= \sum_{j=1}^n(x_j^2-2\prb{x}x_j+\prb{x}^2)p_j\\
             &= \sum_{j=1}^nx_j^2p_j-2\prb{x}\sum_{j=1}^nx_jp_j+\prb{x}^2\sum_{j=1}^np_j\\
             &= \prb{x^2}-2\prb{x}\cdot\prb{x}+\prb{x}^2\cdot 1\\
             &= \prb{x^2}-\prb{x}^2
@@ -490,16 +490,16 @@
     \begin{equation*}
         \hat{A}[c_1f_1(x)+c_2f_2(x)] = c_1\hat{A}f_1(x)+c_2\hat{A}f_2(x)
     \end{equation*}
-    where $c_1,c_2$ are possible complex constants.
+    where $c_1,c_2$ are (possibly complex) constants.
     \item \textbf{Eigenvalue problem}: The problem of determining $\phi(x)$ and $a$ given $\hat{A}$ such that
     \begin{equation*}
         \hat{A}\phi(x) = a\phi(x)
     \end{equation*}
     \item \textbf{Eigenfunction}: The function $\phi(x)$ in an eigenvalue problem.
     \item \textbf{Eigenvalue}: The constant $a$ in an eigenvalue problem.
-    \item \textbf{Hamiltonian operator}: The following operator. \emph{Denoted by} $\bm{\bar{H}}$. \emph{Given by}
+    \item \textbf{Hamiltonian operator}: The following operator. \emph{Denoted by} $\bm{\hat{H}}$. \emph{Given by}
     \begin{equation*}
-        \bar{H} = -\frac{\hbar^2}{2m}\dv[2]{x}+V(x)
+        \hat{H} = -\frac{\hbar^2}{2m}\dv[2]{x}+V(x)
     \end{equation*}
     \item The substitution of the Hamiltonian operator into the Schr\"{o}dinger equation allows us to formulate the Schr\"{o}dinger equation as an eigenvalue problem.
     \begin{itemize}

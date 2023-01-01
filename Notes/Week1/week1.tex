@@ -92,14 +92,14 @@
         \item Waves come from atoms in the walls of the BB cavity, which act as linear harmonic oscillators at a frequency $\nu=c/\lambda$.
         \item Assuming thermal equilibrium, we obtain
         \begin{align*}
-            \bar{\epsilon} &= \frac{\int_0^\infty\epsilon\e[-\epsilon/kT]}{\int_0^\infty\e[-\epsilon/kT]}\\
+            \bar{\epsilon} &= \frac{\int_0^\infty\epsilon\e[-\epsilon/kT]\dd\epsilon}{\int_0^\infty\e[-\epsilon/kT]\dd\epsilon}\\
             &= -\pdv{\beta}\ln\left( \int_0^\infty\e[-\beta\epsilon]\dd{\epsilon} \right)\\
             &= \frac{1}{\beta}\\
             &= kT
         \end{align*}
         where $k$ is the Boltzmann constant.
         \begin{itemize}
-            \item Basically, we sum all energies $\epsilon$, weighted by the probability $\e[-\epsilon/kT]$ of the energy existing, and divided by the total energy.
+            \item Basically, we sum all energies $\epsilon$, weighted by the probability $\e[-\epsilon/kT]$ of the energy existing, and divide by the total energy.
             \item The first equation is equivalent to the second with $\beta=1/kT$.
         \end{itemize}
         \item Therefore,
@@ -139,8 +139,8 @@
     \begin{itemize}
         \item Background radiation from the universe itself.
         \item $\lambda_\text{max}=\SI{7.35}{\centi\meter}$.
-        \item Isotropic radio signal, that comes form everywhere.
-        \item From this, you can workout the temperature of the universe from Wien's first law.
+        \item \textbf{Isotropic} radio signal (comes from everywhere).
+        \item From this, you can workout the temperature of the universe using Wien's first law.
         \item Thus, the whole universe is a blackbody with a temperature of approximately $\SI{3}{\kelvin}$.
     \end{itemize}
 \end{itemize}
@@ -187,10 +187,10 @@
             \item You can shine as much light as you want below a certain frequency and nothing will happen.
             \item However, as soon as you reach that frequency, you get a spark.
         \end{itemize}
-        \item The maximum kinetic energy (KE necessary to overcome the voltage PE???) depends linearly upon the frequency and is independent of the intensity.
+        \item The maximum kinetic energy (KE necessary to overcome the voltage PE) is directly proportional to the frequency and is independent of the intensity.
     \end{enumerate}
     \item Einstein (1906) proposes that light consists of quanta called photons.
-    \item If you assume this, Max KE obeys the following form.
+    \item If you assume this, the max KE obeys
     \begin{equation*}
         \frac{1}{2}mv_\text{max}^2 = h\nu-W
     \end{equation*}
@@ -204,7 +204,7 @@
     \end{itemize}
     \item Millikan (1914-1917), hot off the success of the oil drop experiment, experimentally corroborates Einstein's theory at UChicago in Ryerson.
     \begin{itemize}
-        \item Noting that $KE=eV$ as well where $e$ is the charge of an electron and $V$ is the stopping voltage, Millikan obtains
+        \item Noting that we also have $KE=eV$, where $e$ is the charge of an electron and $V$ is the stopping voltage, Millikan obtains
         \begin{equation*}
             V = \frac{h}{e}\nu-\frac{W}{e}
         \end{equation*}
@@ -247,7 +247,7 @@
     \item It follows that the translational kinetic energy $T$ is given by
     \begin{align*}
         T &= \frac{1}{2}mv^2\\
-        &= \frac{m}{2\hbar}\left( \frac{Ze^2}{4\pi\epsilon_0} \right)^2\frac{1}{n^2}
+        &= \frac{m}{2\hbar^2}\left( \frac{Ze^2}{4\pi\epsilon_0} \right)^2\frac{1}{n^2}
     \end{align*}
     \begin{itemize}
         \item This is the origin of the $1/n^2$ in the Bohr model.
@@ -260,7 +260,7 @@
     \item It follows that the total energy $E$ is given by
     \begin{align*}
         E_n &= T+V\\
-        &= -\frac{m}{\hbar^2}\left( \frac{Ze^2}{4\pi\epsilon_0} \right)^2\frac{1}{n^2}
+        &= -\frac{m}{2\hbar^2}\left( \frac{Ze^2}{4\pi\epsilon_0} \right)^2\frac{1}{n^2}
     \end{align*}
     \item Thus, the reason we have discrete transitions is because the atom has discrete energy levels.
     \item Indeed, energy transitions are described by the following.
@@ -292,8 +292,8 @@
     \item Nobel-prize winning experiment done by Otto Stern and W. Gerlach (1922). Stern was Gerlach's grad student.
     \item \textbf{Magnetic dipole moment}: Think about an electron moving in a circle with velocity $v$. Then the charge creates a magnetic field $M$ perpendicular to the plane of the circle.
     \item Thus, we want to detect the magnetic moment of atoms. They will measure this by measuring the deflection of the atoms by an \textbf{inhomogeneous} field.
-    \item \textbf{Inhomogeneous} (magnetic field): Because they're not setting up the magnetic field so that its equal everywhere in space through which the beam travels.
-    \item They put the atoms in an "oven" to get them hot, and then shoot them through a beam. The beam passes through a magnet, and if the beam has a magnetic moment, it will break up. There is a collection plate at the far end.
+    \item \textbf{Inhomogeneous} (magnetic field): A magnetic field that does not have equal magnitude and direction everywhere within some space.
+    \item They put the atoms in an "oven" to get them hot and then shoot them out in a beam. The beam passes through a magnet, and if the beam has a magnetic moment, it will break up. There is a collection plate at the far end.
     \item Effect of the $\vec{B}$ field: $PE=-\vec{M}\cdot\vec{B}=W$.
     \item It follows that $F=-\nabla W$.
     \item Additionally,
@@ -304,9 +304,9 @@
     \item Stern and Gerlach expect it to be discrete/quantized. Focused on \ce{Ag} atoms. Thought two discrete lines would be formed symmetrically about the center. Thought they would see similar results for \ce{Na}, \ce{Cs}, \ce{K}, \ce{H}.
     \item Didn't see anything at first.
     \item Smoked some cigars, released sulfate, and \ce{AgSO4} (black) showed up on the collection plate in 2 discrete piles.
-    \item Bohr quantization (varies from $-\ell$ to $+\ell$, where $\ell$ is orbital angular momentum). $L=\ell\hbar$ (approximately), $L_z=m\hbar$.
+    \item Bohr quantization (varies from $-\ell$ to $+\ell$, where $\ell$ is orbital angular momentum). $L=\ell\hbar$ (approximately), $L_z=m\hbar$ (where $m$ is the quantum number, not a mass??).
     \item Actual quantum mechanics gives us $L=\sqrt{\ell(\ell+1)}\hbar$.
-    \item But this does not explain the Stern-Gerlach experiment. According to this theory...
+    \item But this does not explain the Stern-Gerlach experiment. According to this theory\dots
     \begin{itemize}
         \item If $\ell=0$ and $m=0$, then we'll observe just 1 spot.
         \item If $\ell=1$ and $m=-1,0,+1$, then we'll observe 3 spots.
@@ -321,9 +321,9 @@
         \item Able to show that the splitting of spectral lines when atoms are placed in $\vec{B}$ fields. The electron must have an intrinsic spin (magnetic moment $M_1$) where two values are allowed: $M_1=\pm\frac{1}{2}$.
         \item They postulate that this is a form of intrinsic angular momentum of spin: $S=\sqrt{s(s+1)}\hbar$.
     \end{itemize}
-    \item Total angular momentum: The vector addition of all angular momentum of the part.
+    \item \textbf{Total angular momentum}: The vector sum of all partial angular momenta.
     \begin{itemize}
-        \item The angular momentum of the nuclei may be neglected. Addition of the orbital and spin angular momentum of the electrons.
+        \item The angular momentum of the nuclei may be neglected. Addition of the orbital and spin angular momenta of the electrons.
     \end{itemize}
     \item Stern and Gerlach:
     \begin{itemize}
@@ -366,7 +366,7 @@
     \item "Many theoretical physicists tried to derive expressions consistent with these experimental curves of intensity versus frequency [see Figure \ref{fig:WienLaw1}], but they were all unsuccessful. In fact, the expression that is derived according to the laws of nineteenth century physics is" as follows \parencite[3]{bib:McQuarrieSimon}.
     \item \textbf{Rayleigh-Jeans law}: The equation
     \begin{equation*}
-        \dd{\rho(\nu,T)} = \rho_\nu(T)\dd{\nu} = \frac{8\pi k_BT}{c^3}\nu^2\dd{\nu}
+        \dd{\rho(\nu,T)} = \rho_\nu(T)\dd{\nu} = \frac{8\pi\kB T}{c^3}\nu^2\dd{\nu}
     \end{equation*}
     where $\rho_\nu(T)\dd{\nu}$ is the "radiant energy density between the frequencies $\nu$ and $\nu+\dd{\nu}$" \parencite[3]{bib:McQuarrieSimon}.
     \item The ultraviolet catastrophe is so named because the frequency increases as the radiation enters the ultraviolet region.
@@ -379,18 +379,19 @@
     \end{itemize}
     \item \textbf{Planck distribution law for blackbody radiation}: The equation
     \begin{equation*}
-        \dd{\rho(\nu,T)} = \rho_\nu(T)\dd{\nu} = \frac{8\pi h}{c^3}\frac{\nu^3\dd{\nu}}{\e[h\nu/k_BT]-1}
+        \dd{\rho(\nu,T)} = \rho_\nu(T)\dd{\nu} = \frac{8\pi h}{c^3}\frac{\nu^3\dd{\nu}}{\e[h\nu/\kB T]-1}
     \end{equation*}
     \begin{itemize}
         \item Note that for small frequencies, the Planck distribution law and Rayleigh-Jeans law converge, but they diverge for large frequencies, as expected.
         \item Because $\nu$ and $\lambda$ are related by $\lambda\nu=c$ (and subsequently by $\dd{\nu}=-c/\lambda^2\dd{\lambda}$), we can write the Planck distribution law in terms of wavelength, as well.
         \begin{equation*}
-            \dd{\rho(\lambda,T)} = \rho_\lambda(T)\dd{\lambda} = \frac{8\pi hc}{\lambda^5}\frac{\dd{\lambda}}{\e[hc/\lambda k_BT]-1}
+            \dd{\rho(\lambda,T)} = \rho_\lambda(T)\dd{\lambda} = \frac{8\pi hc}{\lambda^5}\frac{\dd{\lambda}}{\e[hc/\lambda\kB T]-1}
         \end{equation*}
+        \item This is equivalent to the form given in class under the substitution $hc/\lambda=\epsilon=\epsilon_0$.
     \end{itemize}
     \item Differentiating $\rho_\lambda(T)$ with respect to $\lambda$ gives an alternate formulation for $b$:
     \begin{equation*}
-        \lambda_\text{max}T = \frac{hc}{4.965k_B}
+        \lambda_\text{max}T = \frac{hc}{4.965\kB}
     \end{equation*}
     \item Astronomers use the theory of blackbody radiation to estimate the surface temperatures of stars.
     \begin{itemize}
@@ -432,7 +433,10 @@
     \begin{itemize}
         \item The Rydberg formula accounts for all the lines in the hydrogen atomic spectrum.
     \end{itemize}
-    \item \textbf{Rydberg constant}: The constant $\SI{109677.57}{\per\centi\meter}$. \emph{Denoted by} $\bm{R_H}$.
+    \item \textbf{Rydberg constant}: The proportionality constant in the Rydberg formula. \emph{Denoted by} $\bm{R_\textbf{H}}$. \emph{Given by}
+    \begin{equation*}
+        R_\text{H}^{} = \SI{109677.57}{\per\centi\meter}
+    \end{equation*}
     \item The first four series of lines composing the hydrogen atomic spectrum are described in Table \ref{tab:spectralSeriesH}.
     \begin{table}[h!]
         \centering
@@ -515,7 +519,15 @@
             &= -\frac{m_ee^4}{8\epsilon_0^2h^2}\cdot\frac{1}{n^2}
         \end{align*}
         \begin{itemize}
-            \item The negative sign in this equation indicates that the energy states are bound states; the energies given are less than when the proton and electron are infinitely separated.
+            \item The negative sign in this equation indicates that the energy states are bound states; the energies given for finite $n$ are less than when the proton and electron are infinitely separated ($n=\infty$ and $E=0$).
+            \item From the second to the third line above, we substitute the expression for $m_ev^2$ obtainable from the original Newton's second law $\sum f_c=0$ equation.
+        \end{itemize}
+        \item Note that this derivation is entirely analogous to the one presented in class, although it may look quite different on the surface. Key differences:
+        \begin{itemize}
+            \item The one in class jumps straight to quantization of orbital angular momentum instead of deriving it.
+            \item This one expands $\hbar$ and cancels it's $2\pi$ part with the $4\pi$ coefficient to $\epsilon_0$.
+            \item The one in class uses $Z$ to be more general; this one just treats hydrogen ($Z=1$).
+            \item We can convert the final expression for $E_n$ in the in-class one to the final expression for $E$ in this one by substituting $Z=1$, $\hbar=h/2\pi$, and simplifying.
         \end{itemize}
     \end{itemize}
     \item \textbf{First Bohr orbit}: The Bohr orbit corresponding to $n=1$, having radius $\SI{52.92}{\pico\meter}$. \emph{Denoted by} $\bm{a_0}$.
@@ -539,7 +551,7 @@
         \end{equation*}
         \item It follows that we should have
         \begin{equation*}
-            R_\infty = \frac{m_ee^4}{8\epsilon_0^2ch^3}
+            R_\text{H} = \frac{m_ee^4}{8\epsilon_0^2ch^3}
         \end{equation*}
         which we indeed do.
     \end{itemize}
