@@ -350,6 +350,116 @@
 
 
 
+\section{Chapter 2: The Classical Wave Equation}
+\emph{From \textcite{bib:McQuarrieSimon}.}
+\begin{itemize}
+    \item \marginnote{1/3/23:}Goal.
+    \begin{itemize}
+        \item Ground the study of the Schr\"{o}dinger equation (a PDE) with an easily visualized and highly related example from classical physics. Introduce the mathematics required for such problems and show how it relates to physical reality.
+    \end{itemize}
+    \item Consider a uniform vibrating string stretched between two fixed points at $x=0,l$.
+    \begin{itemize}
+        \item At position $x$ and time $t$, we say that the string is displaced $u(x,t)$ from its equilibrium position.
+    \end{itemize}
+    \item \textbf{Amplitude} (of a string): The maximum displacement of the string from its equilibrium horizontal position.
+    \item It can be shown --- see Figure 15.2 and the associated discussion in \textcite{bib:PHYS13300Notes} --- that $u(x,t)$ satisfies the \textbf{classical wave equation}.
+    \item \textbf{Classical wave equation}: The following linear partial differential equation. \emph{Given by}
+    \begin{equation*}
+        \pdv[2]{u(x,t)}{x} = \frac{1}{v^2}\pdv[2]{u(x,t)}{t}
+    \end{equation*}
+    \item \textbf{Partial differential equation}: An equation in which the unknown occurs in partial derivatives. \emph{Also known as} \textbf{PDE}.
+    \item \textbf{Independent variable}: A variable in a PDE such as $x$ or $t$.
+    \item \textbf{Dependent variable}: A variable in a PDE that depends on the independent variables, such as $u(x,t)$.
+    \item \textbf{Linear differential equation}: A differential equation in which the dependent variable and its derivatives appear only to the first power, and in which there are no cross terms.
+    \item Additional physical conditions $u(x,t)$ must satisfy.
+    \begin{itemize}
+        \item The ends of the string are held fixed. Thus, the amplitude at these two points is always zero. Mathematically,
+        \begin{align*}
+            u(0,t) &= 0&
+            u(l,t) &= 0
+        \end{align*}
+        for all $t$.
+    \end{itemize}
+    \item \textbf{Boundary condition}: A condition that specifies the behavior of the dependent variable at the boundaries.
+    \begin{itemize}
+        \item The above additional physical conditions are boundary conditions.
+        \item In general, PDEs are solved subject to boundary conditions, the nature of which derives from physical considerations.
+    \end{itemize}
+    \item \textbf{Separation of variables}: The method needed to solve the classical wave equation, the Schr\"{o}dinger equation, and many other PDEs that arise in physical chemistry. \emph{Procedure}
+    \begin{enumerate}
+        \item Assume that the dependent variable factors into the product of functions of its independent variables\footnote{In the domain of differential equations, we can always assume that the solution has any form we want, and then solve to find all solutions \emph{of this form}. However, this set of solution may not encapsulate \emph{all} solutions, i.e., it may not be the \emph{general solution}.}.
+        \item Substitute in the \textbf{ansatz} and algebraically rearrange the equation to gather all instances of each independent variable into distinct additive terms.
+        \item Set each term equal to the \textbf{separation constant}.
+        \begin{itemize}
+            \item This is allowed because the equality derived in step two must be valid under any variation of the independent variables. But since the \emph{independent} variables can be varied independently, we can move any one of them around while holding the others constant and the equality must be preserved; thus, since the other terms are certainly constant under no variation, the term being varied must be constant as well.
+            \item This will yield one \textbf{ordinary differential equation} for each variable. These can be solved using knowledge from previous calculus courses.
+        \end{itemize}
+    \end{enumerate}
+    \item \textbf{Ansatz}: The assumed form of an unknown function.
+    \item \textbf{Separation constant}: A to-be-determined constant.
+    \item \textbf{Ordinary differential equation}: An equation in which the unknown occurs in ordinary derivatives. \emph{Also known as} \textbf{ODE}.
+    \item Applying the method of separation of variables to the classical wave equation.
+    \begin{enumerate}
+        \item Assume $u(x,t)$ factors into a function $X(x)$ of $x$ times a function $T(t)$ of $t$, that is,
+        \begin{equation*}
+            u(x,t) = X(x)T(t)
+        \end{equation*}
+        \item Substitute and rearrange.
+        \begin{align*}
+            \pdv[2]{X(x)T(t)}{x} &= \frac{1}{v^2}\pdv[2]{X(x)T(t)}{t}\\
+            T(t)\dv[2]{X(x)}{x} &= \frac{1}{v^2}X(x)\dv[2]{T(t)}{t}\\
+            \frac{1}{X(x)}\dv[2]{X(x)}{x} &= \frac{1}{v^2T(t)}\dv[2]{T(t)}{t}
+        \end{align*}
+        \item Let $K$ denote the separation constant. Then we obtain the following two ODEs.
+        \begin{align*}
+            \frac{1}{X(x)}\dv[2]{X(x)}{x} &= K&
+                \frac{1}{v^2T(t)}\dv[2]{T(t)}{t} &= K\\
+            \dv[2]{X(x)}{x}-KX(x) &= 0&
+                \dv[2]{T(t)}{t}-Kv^2T(t) &= 0\\
+        \end{align*}
+        \begin{itemize}
+            \item In particular, these equations are \textbf{linear differential equations with constant coefficients}, which can be solved as follows.
+        \end{itemize}
+    \end{enumerate}
+    \item Interrogating the resultant ODEs.
+    \begin{itemize}
+        \item $K$ is yet to be determined. Let's see what the solutions look like for different values.
+        \item \underline{$K=0$}: This yields the solutions
+        \begin{align*}
+            X(x) &= a_1x+b_1&
+            T(t) &= a_2t+b_2
+        \end{align*}
+        where $a_1,a_2,b_1,b_2$ are constants of integration.
+        \begin{itemize}
+            \item Applying the boundary conditions, we learn that
+            \begin{align*}
+                u(0,t) &= X(0)T(t) = 0&
+                u(l,t) &= X(l)T(t) = 0
+            \end{align*}
+            \item We now divide into two cases.
+            \item If $T(t)=0$ for all $t$, then the solution is $u(x,t)=X(x)\cdot 0=0$. This is referred to as the \textbf{trivial solution}, and it corresponds to the string at rest.
+            \item If $T(t)\neq 0$ for some $T$, then $X(0)=X(l)=0$, which implies that $a_1=b_1=0$ (think about the functional form algebraically). It follows that $X(x)=0\cdot x+0=0$ for all $x$, and we obtain the trivial solution again.
+        \end{itemize}
+        \item \underline{$K>0$}: Every (linearly independent) solution to equations of this type is of the form $\e[\alpha x]$\footnote{See \textcite{bib:MATH25700Notes} for more.}. Substituting into the ODE describing $X(x)$, we obtain
+        \begin{equation*}
+            (\alpha^2-K^2)X(x) = 0
+        \end{equation*}
+        \begin{itemize}
+            \item Assuming $X(x)$ is nontrivial, we must have $\alpha^2-K^2=0$, or $\alpha=\pm K$.
+            \item Thus, there are two solutions: $X(x)=\e[kx],\e[-kx]$.
+            \item It follows from the fact that the relevant ODE is \emph{linear} that
+            \begin{equation*}
+                X(x) = c_1\e[kx]+c_2\e[-kx]
+            \end{equation*}
+            is also a solution.
+            \item \textcite{bib:McQuarrieSimon} attempts to justify why the above is the general solution; a more rigorous explanation can be found in \textcite{bib:MATH25700Notes}.
+        \end{itemize}
+    \end{itemize}
+    \item \textcite{bib:McQuarrieSimon} provides further examples of ODEs that can be solved by the ansatz $\e[\alpha x]$ and factoring a binomial, as well as solving for $c_1,c_2$ using initial conditions.
+\end{itemize}
+
+
+
 \section{MathChapter B: Probability and Statistics}
 \emph{From \textcite{bib:McQuarrieSimon}.}
 \begin{itemize}
@@ -395,7 +505,6 @@
         \item It is helpful to interpret a probability distribution like $p_j$ as a distribution of a unit mass along the $x$-axis in a discrete manner such that $p_j$ is the fraction of mass located at the point $x_j$.
         \item According to this interpretation, the average value of $x$ is the center of mass of this system.
     \end{itemize}
-    \pagebreak
     \item \textbf{Second moment} (of the distribution $\{p_j\}$): The following quantity.
     \begin{equation*}
         \prb{x^2} = \sum_{j=1}^nx_j^2p_j
